@@ -168,8 +168,8 @@ const routes: Routes = [
 
   { path: 'product-management', component: ProductManagementComponent },
   { path: 'add-product-management', component: AddProductManagementComponent },
-  { path: 'edit-product-management', component: EditProductManagementComponent },
-  { path: 'view-product-management', component: ViewProductManagementComponent },
+  { path: 'edit-product-management/:id', component: EditProductManagementComponent },
+  { path: 'view-product-management/:id', component: ViewProductManagementComponent },
 
   { path: 'gift-card-management', component: GiftCardManagementComponent },
   { path: 'add-gift', component: AddGiftComponent},

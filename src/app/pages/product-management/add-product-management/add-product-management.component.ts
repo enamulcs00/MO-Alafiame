@@ -11,6 +11,7 @@ import { FormGroup, FormControl,Validators } from '@angular/forms';
 export class AddProductManagementComponent implements OnInit {
   addproductForm: FormGroup;
   image: any= 'assets/img/profile-img.jpg';
+  fileToupload: File= null;
 
   constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) {
     this.addproductForm = new FormGroup({
@@ -55,5 +56,14 @@ export class AddProductManagementComponent implements OnInit {
   }
 
   
-
+    handleFileInput(file: FileList)
+    {
+        
+        this.fileToupload = file.item(0);
+        var reader = new FileReader();
+        reader.onload = (event : any) =>{
+          this.image = event.target.result;
+        }
+        reader.readAsDataURL(this.fileToupload);
+    }
 }
