@@ -20,13 +20,9 @@
                                             <div class="filter_search mb20 width100">
                                                 <div class="input-group filter_search_group">
                                                     <input type="text" class="form-control overflow-text"
-                                                    [(ngModel)]="search"
-                                                        placeholder="Search by name"
-                                                        maxlength="60" style="margin-left: -7%;">
-                                                    <div class="input-group-append">
-                                                        <button class="btn btn_search_group" type="button"><img
-                                                                src="assets/img/icon-search.png" alt="Search"></button>
-                                                    </div>
+                                                    [(ngModel)]="filterName" (keyup)="searchValue($event.target.value)" placeholder="Search by name"
+                                                        maxlength="60"><i class="fa fa-search"></i>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -57,8 +53,8 @@
                                         <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
                                       </tr>
                                 </thead>
-                                <tbody>
-                                    <tr class="text-center">
+                                <tbody *ngIf="productlists">
+                                    <tr class="text-center" *ngFor="let items of productlists | paginate : {itemsPerPage:10, currentPage:page, totalItems:total}; let i=index">
 
                                     <td class="content" >1</td>
                                     <td class="content" > Hair Dryer</td>

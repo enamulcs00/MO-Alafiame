@@ -43,6 +43,7 @@ export class EditProductManagementComponent implements OnInit {
   }
   editProduct()
   {
+    this.mainService.showSpinner();
     let data = 
     {
       'productId': this.productId,
@@ -53,7 +54,7 @@ export class EditProductManagementComponent implements OnInit {
       
 
     }
-    this.mainService.showSpinner();
+    
     this.mainService.putApi('admin/editProduct', data, 1).subscribe((res: any) => {
       console.log("editProduct response ==>", res)
       if (res.responseCode == 200) {

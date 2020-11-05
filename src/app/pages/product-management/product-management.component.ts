@@ -12,10 +12,10 @@ import { ApiUrls } from 'src/app/config/api-urls/api-urls';
   styleUrls: ['./product-management.component.css']
 })
 export class ProductManagementComponent implements OnInit {
-  search: any;
+  
   filterName: string;
   productlists: any = [];
-  page: 1;
+  page: 0;
   limit: 10;
 
   constructor(private router: Router,public mainService: MainService) {
@@ -24,6 +24,7 @@ export class ProductManagementComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.productList();
   }
   searchValue(value) {
     this.filterName = value
@@ -33,28 +34,28 @@ export class ProductManagementComponent implements OnInit {
   }
   productList()
   {
+    this.mainService.showSpinner();
     
     let object = {
       "search": this.filterName,
       "page": this.page,
-      "limit": this.limit,
-    }
-    this.mainService.postApi('admin/productList', object, 1).subscribe(res => {
-      console.log('res==>>', res)
-      if (res.body.response_code == 200) {
-        // this.spinner.hide()
-        // this.subAdminLists=res.body.result.docs?res.body.result.docs:res.body.result  
-        this.productlists = res.body.result.docs;
-        console.log('packagelistspackagelists==>>>', this.productlists)
-     
-  
-      } else {
-        // this.spinner.hide()
-        // this.service.toastErr(res.body.response_message)          
+      "limit": this.limit
       }
-    }, error => {
-      // this.spinner.hide()
-      // this.service.toastErr(error.response_message)
+    this.mainService.postApi('admin/productList', object, 1).subscribe(res => {
+      console.log(" productList==>", res)
+      if (res.responseCode == 200) {
+        this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage)
+        
+        
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+      error => {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(error.responseMessage)
+      }
     })
   }
 
