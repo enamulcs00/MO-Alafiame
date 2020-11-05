@@ -23,7 +23,7 @@ margin-left: 2%;">
                         <span class="text text-danger" *ngIf="addGiftForm.get('maxAmount').hasError('required') && addGiftForm.get('maxAmount').touched">*Maximum amount is Required</span><br>
                         <input type="date" class="form-control" formControlName="expiry">
                         <span class="text text-danger" *ngIf="addGiftForm.get('expiry').hasError('required') && addGiftForm.get('expiry').touched">*Expiry date is Required</span><br>
-                        <input type="file" class="form-control" formControlName="image">
+                        <input type="file" class="form-control" formControlName="image" (change)="convertimg($event)">
                         <span class="text text-danger" *ngIf="addGiftForm.get('image').hasError('required') && addGiftForm.get('image').touched">*Image is Required</span><br>
                     </div>
                 </div>

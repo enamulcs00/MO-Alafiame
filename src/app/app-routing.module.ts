@@ -173,7 +173,7 @@ const routes: Routes = [
 
   { path: 'gift-card-management', component: GiftCardManagementComponent },
   { path: 'add-gift', component: AddGiftComponent},
-  { path: 'edit-gift', component: EditGiftComponent },
+  { path: 'edit-gift/:id', component: EditGiftComponent },
 
   { path: 'home-visit-service', component: HomeVisitServiceComponent },
   { path: 'add-home-visit', component: AddHomeVisitComponent },
