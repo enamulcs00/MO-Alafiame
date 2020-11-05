@@ -13,6 +13,10 @@ import { ApiUrls } from 'src/app/config/api-urls/api-urls';
 })
 export class ProductManagementComponent implements OnInit {
   search: any;
+  filterName: string;
+  productlists: any = [];
+  page: 1;
+  limit: 10;
 
   constructor(private router: Router,public mainService: MainService) {
     
@@ -20,6 +24,38 @@ export class ProductManagementComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+  searchValue(value) {
+    this.filterName = value
+    console.log('filterName==>>', this.filterName)
+    this.productlists = [];
+    this.productList();
+  }
+  productList()
+  {
+    
+    let object = {
+      "search": this.filterName,
+      "page": this.page,
+      "limit": this.limit,
+    }
+    this.mainService.postApi('admin/productList', object, 1).subscribe(res => {
+      console.log('res==>>', res)
+      if (res.body.response_code == 200) {
+        // this.spinner.hide()
+        // this.subAdminLists=res.body.result.docs?res.body.result.docs:res.body.result  
+        this.productlists = res.body.result.docs;
+        console.log('packagelistspackagelists==>>>', this.productlists)
+     
+  
+      } else {
+        // this.spinner.hide()
+        // this.service.toastErr(res.body.response_message)          
+      }
+    }, error => {
+      // this.spinner.hide()
+      // this.service.toastErr(error.response_message)
+    })
   }
 
 }

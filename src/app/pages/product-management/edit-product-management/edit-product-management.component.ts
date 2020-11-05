@@ -9,12 +9,14 @@ import { FormGroup, FormControl,Validators } from '@angular/forms';
   styleUrls: ['./edit-product-management.component.css']
 })
 export class EditProductManagementComponent implements OnInit {
-  id: string = "1";
+  productId: string;
   editproductForm: FormGroup;
+  image: any= 'assets/img/profile-img.jpg';
+  fileToupload: File= null;
 
-  constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) { 
+  constructor(private actRoute:ActivatedRoute,private route:Router,public mainService: MainService) { 
     
-    const id = this.activate.snapshot.paramMap.get('id');
+     
     this.editproductForm = new FormGroup({
       productName: new FormControl('',[Validators.required]),
       price: new FormControl('',[Validators.required]),
@@ -24,6 +26,50 @@ export class EditProductManagementComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.actRoute.paramMap.subscribe(params => {
+      this.productId = params.get('id');
+      console.log("productId",this.productId);
+    });
+  }
+  handleFileInput(file: FileList)
+  {
+    this.fileToupload = file.item(0);
+        var reader = new FileReader();
+        reader.onload = (event : any) =>{
+          this.image = event.target.result;
+        }
+        reader.readAsDataURL(this.fileToupload);
+
+  }
+  editProduct()
+  {
+    let data = 
+    {
+      'productId': this.productId,
+      'productName': this.editproductForm.value.productName,
+      'price': this.editproductForm.value.price,
+      'usedFor ': this.editproductForm.value.UsedFor,
+      'type ': this.editproductForm.value.type
+      
+
+    }
+    this.mainService.showSpinner();
+    this.mainService.putApi('admin/editProduct', data, 1).subscribe((res: any) => {
+      console.log("editProduct response ==>", res)
+      if (res.responseCode == 200) {
+        this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage)
+        this.route.navigateByUrl('product-management')
+        
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+      error => {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(error.responseMessage)
+      }
+    })
   }
 
 }
