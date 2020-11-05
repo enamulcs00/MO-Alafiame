@@ -53,8 +53,8 @@
                                         <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
                                       </tr>
                                 </thead>
-                                <tbody *ngIf="productlists">
-                                    <tr class="text-center" *ngFor="let items of productlists | paginate : {itemsPerPage:10, currentPage:page, totalItems:total}; let i=index">
+                                 <tbody > <!--*ngIf="productlists" -->
+                                     <tr class="text-center" > <!--*ngFor="let items of productlists | paginate : {itemsPerPage:10, currentPage:page, totalItems:total}; let i=index" -->
 
                                     <td class="content" >1</td>
                                     <td class="content" > Hair Dryer</td>
@@ -63,11 +63,12 @@
                                     <td class="content">Saloon</td>
                                     <td class="justify-content-center d-flex">
                             
-                                    
+                                        <button class="btn btn-info ml-2 bt-margin"  (click)="blockFunction(1)">
+                                            Block</button>
                                         <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-product-management','1']">Edit</button>
-                                         <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-product-management']">
+                                         <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-product-management','1']">
                                          View</button>
-                                         <button class="btn btn-danger ml-2 bt-margin" data-toggle="modal" data-target="#deleteModal"
+                                         <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(1)"
                                              >Delete</button>
                                              
                                     </td>
@@ -208,4 +209,33 @@
     </div>
 </div>
 <!-- logout modal end -->
+
+<!-- block user-management modal Start -->
+<div class="modal fade global-modal reset-modal" id="blockModal">
+    <div class="modal-dialog max-WT-500">
+        <form class="change_password">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center modal-header-custm">
+                    <h5 class="modal-title d-inline-block">Block</h5>
+                </div>
+                <div class="modal-inner-content">
+                    <div class="modal-body">
+                        <div class="text-center modal_flax_height d-flex align-items-center justify-content-center">
+                            <div class="w-100">
+                                <p>Are you sure you want to block this customer?</p>
+                                <div class="modal-btn-box">
+                                    <button type="submit" class="btn btn-theme" (click)="blockUser()">Yes</button>
+                                    <button type="button" class="btn btn-danger btn-theme ml-2"
+                                        data-dismiss="modal">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- end block  user-management modal -->
+
 

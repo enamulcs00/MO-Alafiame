@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
 import { ApiUrls } from 'src/app/config/api-urls/api-urls';
+declare var $: any;
+
 
 
 
@@ -17,6 +19,7 @@ export class ProductManagementComponent implements OnInit {
   productlists: any = [];
   page: 0;
   limit: 10;
+  productId: any;
 
   constructor(private router: Router,public mainService: MainService) {
     
@@ -58,5 +61,63 @@ export class ProductManagementComponent implements OnInit {
       }
     })
   }
+  deleteFunction(id) {
+     this.productId  = id
+     console.log('delete modal', this.productId)
+    $('#deleteModal').modal({ backdrop: 'static', keyboard: false })
+  }
+  deleteUser()
+  {
+    this.mainService.showSpinner()
+    let object = {
+      'productId': this.productId
+    }
+
+    this.mainService.deleteApi('admin/deleteProduct',object,1).subscribe(res => {
+      console.log('delete id=========>', res)
+      if (res.responseCode == 200) {
+       this.productList()
+        this.mainService.hideSpinner()
+        this.mainService.successToast(res.responseMessage)
+        this.productList()
+      } else {
+        this.mainService.hideSpinner()
+        this.mainService.errorToast(res.responseMessage)
+      }
+    }, error => {
+      this.mainService.hideSpinner()
+      this.mainService.errorToast(error.responseMessage)
+    })
+  }
+  blockFunction(id)
+  {
+    this.productId  = id
+     console.log('Block Modal', this.productId)
+    $('#blockModal').modal({ backdrop: 'static', keyboard: false })
+ }
+ blockUser()
+ {
+  this.mainService.showSpinner()
+  let data = {
+    'productId': this.productId
+  }
+
+  this.mainService.postApi('admin/blockUnblockProduct',data,1).subscribe(res => {
+    console.log('block id=========>', res)
+    if (res.responseCode == 200) {
+      this.productList()
+      this.mainService.hideSpinner()
+      this.mainService.successToast(res.responseMessage)
+      this.productList()
+    } else {
+      this.mainService.hideSpinner()
+      this.mainService.errorToast(res.responseMessage)
+    }
+  }, error => {
+    this.mainService.hideSpinner()
+    this.mainService.errorToast(error.responseMessage)
+  })
+
+ }
 
 }

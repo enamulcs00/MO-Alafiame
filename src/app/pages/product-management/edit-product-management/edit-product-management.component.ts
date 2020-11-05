@@ -10,8 +10,9 @@ import { FormGroup, FormControl,Validators } from '@angular/forms';
 })
 export class EditProductManagementComponent implements OnInit {
   productId: string;
+  profile: any;
   editproductForm: FormGroup;
-  image: any= 'assets/img/profile-img.jpg';
+  
   fileToupload: File= null;
 
   constructor(private actRoute:ActivatedRoute,private route:Router,public mainService: MainService) { 
@@ -31,16 +32,31 @@ export class EditProductManagementComponent implements OnInit {
       console.log("productId",this.productId);
     });
   }
-  handleFileInput(file: FileList)
-  {
-    this.fileToupload = file.item(0);
-        var reader = new FileReader();
-        reader.onload = (event : any) =>{
-          this.image = event.target.result;
-        }
-        reader.readAsDataURL(this.fileToupload);
+  // handleFileInput(file: FileList)
+  // {
+  //   this.fileToupload = file.item(0);
+  //       var reader = new FileReader();
+  //       reader.onload = (event : any) =>{
+  //         this.image = event.target.result;
+  //       }
+  //       reader.readAsDataURL(this.fileToupload);
 
-  }
+  // }
+// *************************Image upload event****************//
+
+handleInputChange(e) {
+  var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+  
+  var reader = new FileReader();
+  reader.onload = this._handleReaderLoaded.bind(this);
+  reader.readAsDataURL(file);
+}
+_handleReaderLoaded(e) {
+  let reader = e.target;
+  this.profile = reader.result;
+  console.log("profile", this.profile)
+}
+
   editProduct()
   {
     this.mainService.showSpinner();
@@ -50,7 +66,8 @@ export class EditProductManagementComponent implements OnInit {
       'productName': this.editproductForm.value.productName,
       'price': this.editproductForm.value.price,
       'usedFor ': this.editproductForm.value.UsedFor,
-      'type ': this.editproductForm.value.type
+      'type ': this.editproductForm.value.type,
+      'image': this.profile
       
 
     }
