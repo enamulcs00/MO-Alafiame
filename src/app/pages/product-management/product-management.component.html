@@ -20,8 +20,8 @@
                                             <div class="filter_search mb20 width100">
                                                 <div class="input-group filter_search_group">
                                                     <input type="text" class="form-control overflow-text"
-                                                    [(ngModel)]="filterName" (keyup)="searchValue($event.target.value)" placeholder="Search by name"
-                                                        maxlength="60"><i class="fa fa-search"></i>
+                                                    [(ngModel)]="search"  placeholder="Search by name"
+                                                        maxlength="60" ><i class="fa fa-search"  (click)="searchValue()"></i>
                                                     
                                                 </div>
                                             </div>

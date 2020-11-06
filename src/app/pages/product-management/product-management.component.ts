@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
-import { ApiUrls } from 'src/app/config/api-urls/api-urls';
 declare var $: any;
 
 
@@ -15,10 +14,10 @@ declare var $: any;
 })
 export class ProductManagementComponent implements OnInit {
   
-  filterName: string;
+  search: string;
   productlists: any = [];
-  page: 0;
-  limit: 10;
+  page: number= 0;
+  limit:number= 10;
   productId: any;
 
   constructor(private router: Router,public mainService: MainService) {
@@ -29,18 +28,39 @@ export class ProductManagementComponent implements OnInit {
   ngOnInit() {
     this.productList();
   }
-  searchValue(value) {
-    this.filterName = value
-    console.log('filterName==>>', this.filterName)
-    this.productlists = [];
-    this.productList();
+
+  searchValue() {
+    this.mainService.showSpinner();
+    
+    let object = {
+      "search": this.search,
+      "page": this.page,
+      "limit": this.limit
+      }
+    this.mainService.postApi('admin/productList', object, 1).subscribe(res => {
+      console.log(" productList==>", res)
+      if (res.responseCode == 200) {
+        this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage)
+        
+        
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+      error => {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(error.responseMessage)
+      }
+    })
+    
+    
   }
   productList()
   {
     this.mainService.showSpinner();
     
     let object = {
-      "search": this.filterName,
       "page": this.page,
       "limit": this.limit
       }
@@ -78,8 +98,9 @@ export class ProductManagementComponent implements OnInit {
       if (res.responseCode == 200) {
        this.productList()
         this.mainService.hideSpinner()
+        $('#deleteModal').modal('hide');
         this.mainService.successToast(res.responseMessage)
-        this.productList()
+       
       } else {
         this.mainService.hideSpinner()
         this.mainService.errorToast(res.responseMessage)
@@ -107,8 +128,8 @@ export class ProductManagementComponent implements OnInit {
     if (res.responseCode == 200) {
       this.productList()
       this.mainService.hideSpinner()
+      $('#blockModal').modal('hide');
       this.mainService.successToast(res.responseMessage)
-      this.productList()
     } else {
       this.mainService.hideSpinner()
       this.mainService.errorToast(res.responseMessage)
