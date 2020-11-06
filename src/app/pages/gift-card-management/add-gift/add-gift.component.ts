@@ -22,21 +22,6 @@ export class AddGiftComponent implements OnInit {
       'image': new FormControl('',Validators.required),
     })
   }
-  // convertimg(event) {
-  //   this.file = event.target.files;
-  //   console.log("hdsfghsdfhsdfghsdfg", this.file)
-  //   if (this.file[0]) {
-  //     this.imageType = this.file[0].type;
-  //     const reader = new FileReader();
-  //     reader.onload = (e: any) => {
-  //       console.log("fdgsdfgs", e)
-  //       this.imgUrl = e.target.result;
-  //       console.log(this.imgUrl)
-  //     };
-  //     reader.readAsDataURL(this.file[0]);
-  //   }
-  // }
-
   convertimg(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     var reader = new FileReader();

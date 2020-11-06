@@ -5,12 +5,12 @@
             <h1 class="page_title"> NOTIFICATION MANAGEMENT</h1>
         </div>
         <hr style="background: black; opacity: 0.5;">
-    
+
         <div class="content-section">
             <div class="outer-box">
-         <div class="global-table no-radius p0">
+                <div class="global-table no-radius p0">
                     <div class="tab-content1">
-                        <div class="tab-pane1" >
+                        <div class="tab-pane1">
                             <div class="sec_head_new sec_head_new_after">
                                 <form [formGroup]="notificationForm">
                                     <div class="row">
@@ -18,10 +18,10 @@
                                             <div class="filter_search mb20 width100">
                                                 <div class="input-group filter_search_group" style="margin-top: 3.5%;">
                                                     <input type="text" class="form-control overflow-text"
-                                                        formControlName="search"
-                                                        placeholder="Search by name"
+                                                        formControlName="search" placeholder="Search by name"
                                                         maxlength="60">
-                                                    <div class="input-group-append" style="height: 0px;margin-left: -14%;margin-top: 1px;">
+                                                    <div class="input-group-append"
+                                                        style="height: 0px;margin-left: -14%;margin-top: 1px;">
                                                         <button class="btn btn_search_group" type="button"><img
                                                                 src="assets/img/icon-search.png" alt="Search"></button>
                                                     </div>
@@ -30,62 +30,69 @@
                                         </div>
                                         <div class="col-md-2" style="margin-top: -2%;">
                                             <label>Fromdate:</label>
-                                            <input type="date" class="form-control"  formControlName="startdate" >
+                                            <input type="date" class="form-control" formControlName="startdate">
                                         </div>
                                         <div class="col-md-2" style="margin-top: -2%;">
                                             <label>Todate:</label>
-                                            <input type="date" class="form-control"  formControlName="enddate" >
+                                            <input type="date" class="form-control" formControlName="enddate">
                                         </div>
                                         <div class="col-xl-2 col-lg-2 col-md-2">
                                             <div class="text-center admin-btn" style="margin-top: 10%;">
-                                                <button type="button" class="btn btn-theme Go_btn ml-1" (click)="searchGift()">Search</button>
-                                                    <button type="button" class="btn btn-theme Go_btn ml-1" style="margin-left:5% ;" [routerLink]="['/add-notification']">Add new</button>
-                                                   <button type="button" class="btn btn-theme Go_btn ml-1" >Export CSV</button>
+                                                <button type="button" class="btn btn-theme Go_btn ml-1"
+                                                    (click)="searchNotification()">Search</button>
+                                                <button type="button" class="btn btn-theme Go_btn ml-1"
+                                                    style="margin-left:5% ;" [routerLink]="['/add-notification']">Add
+                                                    new</button>
+                                                <button type="button" class="btn btn-theme Go_btn ml-1">Export
+                                                    CSV</button>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                      
+
                         <div class="table-responsive">
                             <table class="table table-bordered" aria-describedby="user management list">
                                 <thead>
                                     <tr class="no_wrap_th text-center">
                                         <th scope="col" class="Sorting-img">S.No</th>
-                                       <th scope="col" class="Sorting-img">Title</th>
+                                        <th scope="col" class="Sorting-img">Title</th>
                                         <th scope="col" class="Sorting-img" style="width: 15%;">Description</th>
                                         <th scope="col" class="Sorting-img">Broad cast Date</th>
                                         <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
-                                      </tr>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let item of notificationList | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: total}; let i = index"
-                                    class="text-center">
-                                    <td class="content" >{{itemPerPage * (currentPage-1)+ i+1}}</td>
-                                    <td class="content" >{{item.title}}</td>
-                                    <td class="content" >{{item.description}}</td>
-                                    <td class="content">{{item.updatedAt | date}}</td>
-                                    <td class="justify-content-center d-flex">
-                                        <button  [routerLink]="['/view-notification']" class="btn btn-info ml-2 bt-margin" title="view">
-                                        <i  class="fa fa-eye" aria-hidden="true"style="color:white"></i></button>
-                                    <button class="btn btn-danger ml-2 bt-margin" title="delete" data-toggle="modal" data-target="#deleteModal">
-                                        <i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i>
-                                    </button>
-                                    </td>
-                                </tr>
+                                        class="text-center">
+                                        <td class="content">{{itemPerPage * (currentPage-1)+ i+1}}</td>
+                                        <td class="content">{{item.title}}</td>
+                                        <td class="content">{{item.description}}</td>
+                                        <td class="content">{{item.updatedAt | date}}</td>
+                                        <td class="justify-content-center d-flex">
+                                            <button routerLink="/view-notification/{{item._id}}"
+                                                class="btn btn-info ml-2 bt-margin" title="view">
+                                                <i class="fa fa-eye" aria-hidden="true"
+                                                    style="color:white"></i></button>
+                                            <button class="btn btn-danger ml-2 bt-margin" title="delete"
+                                                (click)="openModal(item._Id)">
+                                                <i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
                                     <!-- <tr *ngIf="!userDataList.length">
                                         <td class="table-no-record" colspan="9">No Record Found</td>
                                     </tr> -->
                                 </tbody>
                             </table>
                             <div class="custom-pagination mt-2 text-align-end" *ngIf="total > 10">
-                                <pagination-controls  (pageChange)="currentPage=$event"></pagination-controls>
+                                <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
                             </div>
                         </div>
                     </div>
                 </div>
-             </div>
+            </div>
         </div>
     </main>
 </div>
@@ -104,7 +111,8 @@
                             <div class="w-100">
                                 <p>Are you sure you want to delete this notification?</p>
                                 <div class="modal-btn-box">
-                                    <button type="submit" class="btn btn-theme" (click)="deleteUser()">Yes</button>
+                                    <button type="submit" class="btn btn-theme"
+                                        (click)="deleteNotification()">Yes</button>
                                     <button type="button" class="btn btn-danger btn-theme ml-2"
                                         data-dismiss="modal">No</button>
                                 </div>
@@ -117,6 +125,3 @@
     </div>
 </div>
 <!-- end delete gift-card-management modal -->
-
-
-

@@ -103,7 +103,7 @@ const routes: Routes = [
   
   { path: 'notification-management', component: NotificationManagementComponent },
   { path: 'add-notification', component: AddNotificationComponent },
-  { path: 'view-notification', component: ViewNotificationComponent},
+  { path: 'view-notification/:id', component: ViewNotificationComponent},
 
 
   // static content management

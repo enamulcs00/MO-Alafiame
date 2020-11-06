@@ -2,57 +2,64 @@
     <main class="middle-content">
         <div class="page_title_block">
             <h1 class="page_title"> Notification Management> Add new notification
-
-
-
- 
-
             </h1>
             <hr style="background: black; opacity: 0.5;">
-
         </div>
-
-
-            <div class="col">
-
-                <div class="row"  style=" margin-left: 4%;
-                margin-top: 0%;">
-                    <label>Title :
-
-                    </label>
-                    <input type="text" class="form-control" style="width: 70%; margin-left: 15%;
-                    ">
-                </div>
-
-                <div class="row" style=" margin-left: 4%;
-                margin-top: 2%;">
-                    <label>Description :
-
-                    </label>
-                    <input type="text" class="form-control" style="width: 70%; margin-left: 10%;
-                   ">
-                </div>
-
-                <div class="row" style="margin-left: 4%;
-                margin-top: 2%;">
-                    <label>Shared with :
-
-                    </label>
-                    <select class="form-control" style="width: 70%; margin-left: 10%;" >
-                        <option value="">Shared with</option>
-                        <option value="NationalBankTransfer">All users</option>
-                        <option value="IMPS">All consultants</option>
-                        <option value="paypal">All end-users</option>
-
-                        </select>    
-                </div>
-
-                
-
-                    <div class="row" style="margin-left: 31%;
-                    margin-top: 10%; margin-bottom: 8%; width: 155%; " >
-                        <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;">Cancel</button>
-                        <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;">Broadcast The notification </button>
+        <form [formGroup]="addNotificationForm">
+            <div class="card" style="margin-left: 10%;width: 70%;">
+                <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+                    <div class="col">
+                        <label>Title :</label><br><br>
+                        <label>Description :</label><br><br>
+                        <label>Shared with : </label><br><br>
                     </div>
+                    <div class="col" style=" margin-top: -1.5%;">
+                        <input type="text" class="form-control" formControlName="title">
+                        <span class="text text-danger" *ngIf="addNotificationForm.get('title').hasError('required') && addNotificationForm.get('title').touched">*Title is Required</span><br>
+                        <input type="text" class="form-control" formControlName="description">
+                        <span class="text text-danger" *ngIf="addNotificationForm.get('description').hasError('required') && addNotificationForm.get('description').touched">*Discount is Required</span><br>
+                        <select class="form-control" formControlName="sharedWith">
+                            <option value="">Select</option>
+                            <option value="All users">All users</option>
+                            <option value="All consultants">All consultants</option>
+                            <option value="All end-users">All end-users</option>
+                        </select>
+                        <span class="text text-danger" *ngIf="addNotificationForm.get('sharedWith').hasError('required') && addNotificationForm.get('sharedWith').touched">*Maximum amount is Required</span><br>
+                    </div>
+                </div>
+                <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
+                    <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                        [routerLink]="['/notification-management']">Cancel</button>
+                    <button type="button" class="btn btn-theme" style="margin-left: 5%;" [disabled]=addNotificationForm.invalid
+                        (click)="broadcast()">Broadcast The Notification </button>
+                </div>
             </div>
-        
+        </form>
+
+
+
+
+        <!-- <div class="col">
+            <div class="row" style=" margin-left: 4%;margin-top: 0%;">
+                <label>Title :</label>
+                <input type="text" class="form-control" style="width: 70%; margin-left: 15%;">
+            </div>
+            <div class="row" style=" margin-left: 4%;margin-top: 2%;">
+                <label>Description :</label>
+                <input type="text" class="form-control" style="width: 70%; margin-left: 10%;">
+            </div>
+            <div class="row" style="margin-left: 4%;margin-top: 2%;">
+                <label>Shared with :</label>
+                <select class="form-control" style="width: 70%; margin-left: 10%;">
+                    <option value="">Shared with</option>
+                    <option value="NationalBankTransfer">All users</option>
+                    <option value="IMPS">All consultants</option>
+                    <option value="paypal">All end-users</option>
+                </select>
+            </div>
+            <div class="row" style="margin-left: 31%;margin-top: 10%; margin-bottom: 8%; width: 155%; ">
+                <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;">Cancel</button>
+                <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;">Broadcast
+                    Thenotification </button>
+            </div>
+        </div> -->
