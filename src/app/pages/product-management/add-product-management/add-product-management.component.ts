@@ -12,6 +12,7 @@ export class AddProductManagementComponent implements OnInit {
   addproductForm: FormGroup;
   image: any= 'assets/img/profile-img.jpg';
   fileToupload: File= null;
+  profile: any;
 
   constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) {
     this.addproductForm = new FormGroup({
@@ -23,6 +24,7 @@ export class AddProductManagementComponent implements OnInit {
  }
 
   ngOnInit() {
+   // this.addProductcategory();
   }
 
   addProduct()
@@ -33,7 +35,7 @@ export class AddProductManagementComponent implements OnInit {
       'price': this.addproductForm.value.price,
       'usedFor ': this.addproductForm.value.UsedFor,
       'type ': this.addproductForm.value.type,
-      'categoryId': "string"
+      'categoryId': this.addProductcategory()
 
     }
     this.mainService.showSpinner();
@@ -56,14 +58,44 @@ export class AddProductManagementComponent implements OnInit {
   }
 
   
-    handleFileInput(file: FileList)
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    
+    var reader = new FileReader();
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.profile = reader.result;
+    console.log("profile", this.profile)
+  }
+  
+    addProductcategory()
     {
+      let data = 
+    {
+      'categoryName': this.addproductForm.value.productName,
+      'categoryImage': this.profile
+
+    }
+    this.mainService.showSpinner();
+    this.mainService.postApi('admin/addProductCategory', data, 1).subscribe((res: any) => {
+      console.log("addProduct response ==>", res)
+      if (res.responseCode == 200) {
+        this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage)
+        this.route.navigateByUrl('product-management')
         
-        this.fileToupload = file.item(0);
-        var reader = new FileReader();
-        reader.onload = (event : any) =>{
-          this.image = event.target.result;
-        }
-        reader.readAsDataURL(this.fileToupload);
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+      error => {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(error.responseMessage)
+      }
+    })
+
     }
 }

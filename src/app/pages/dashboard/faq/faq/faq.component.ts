@@ -12,8 +12,8 @@ declare var $: any;
 })
 export class FaqComponent implements OnInit {
   searchForm: FormGroup;
-  itemPerPage = 10;
-  currentPage = 1;
+  itemPerPage: number = 10;
+  currentPage :number=0;
   total: any;
   helplineId: any
   faqList: any = [];
@@ -57,7 +57,7 @@ export class FaqComponent implements OnInit {
       limit: this.itemPerPage
     }
     this.mainService.showSpinner();
-    this.mainService.postApi(ApiUrls.faqList, data, 1).subscribe((res: any) => {
+    this.mainService.postApi('faq/faqsList', data, 1).subscribe((res: any) => {
       if (res.responseCode == 200) {
         this.faqList = res.result.docs ? res.result.docs : '';
         this.total = res.result.total;

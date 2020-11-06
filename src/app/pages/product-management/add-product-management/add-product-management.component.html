@@ -6,9 +6,10 @@ margin-left: 2%;">
             <hr style="background: black; opacity: 0.5;width: 135%;">
         </div>
         <div style="margin-left: 49%;">
-            <img style="border-radius: 50%;" [src]="image" alt="" />
-             <i class="fa fa-camera" (change)="handleFileInput($event.target.files)">
-        <input type="file" #Image accept="image/*" style="position: absolute; position: absolute;opacity: -0.9;"> </i> </div>
+            <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
+             <i class="fa fa-camera" >
+        <input type="file" name="imageUrl" accept="image/*"
+        (change)="handleInputChange($event)" style="position: absolute; position: absolute;opacity: -0.9;"> </i> </div>
         <form [formGroup]="addproductForm">
             <div class="card" style="margin-left: 18%;">
                 <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
