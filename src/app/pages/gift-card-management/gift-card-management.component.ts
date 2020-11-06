@@ -28,7 +28,7 @@ export class GiftCardManagementComponent implements OnInit {
   giftList() {
     this.service.showSpinner()
     let formData = {
-      "page": this.currentPage,
+      "page": this.currentPage -1,
       "limit": this.itemPerPage
     }
     this.service.postApi('admin/giftList', formData, 1).subscribe((res: any) => {

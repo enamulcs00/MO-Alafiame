@@ -23,7 +23,15 @@ margin-left: 2%;">
                         <span class="text text-danger" *ngIf="editGiftForm.get('maxAmount').hasError('required') && editGiftForm.get('maxAmount').touched">*Maximum amount is Required</span><br>
                         <input type="date" class="form-control" formControlName="expiry">
                         <span class="text text-danger" *ngIf="editGiftForm.get('expiry').hasError('required') && editGiftForm.get('expiry').touched">*Expiry date is Required</span><br>
-                        <input type="file" class="form-control" formControlName="image">
+                        <div class="image-box">
+                            <img src="{{img || 'assets/img/profile-img.jpg'}}" id="sub-admin-image" alt="">
+                            <label class="upload-label">
+                                <input type="file" formControlName="image" name="image"
+                                    accept="image/jpg,image/jpeg,image/png" id="image"
+                                    (change)="ValidateFileUpload($event)" maxlength="56">
+                                <em class="fa fa-pencil" style="color: #86559f!important;font-size: 12px"></em>
+                            </label>
+                        </div>
                         <span class="text text-danger" *ngIf="editGiftForm.get('image').hasError('required') && editGiftForm.get('image').touched">*Image is Required</span><br>
                     </div>
                 </div>
