@@ -27,7 +27,7 @@ export class AddFaqComponent implements OnInit {
       message: this.form.value.answer
     }
     this.mainService.showSpinner();
-    this.mainService.postApi(ApiUrls.addFaq, data, 1).subscribe((res: any) => {
+    this.mainService.postApi('admin/addFaq', data, 1).subscribe((res: any) => {
       console.log("add faq response ==>", res)
       if (res.responseCode == 200) {
         this.router.navigate(['faq'])

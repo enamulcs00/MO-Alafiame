@@ -79,7 +79,7 @@ const routes: Routes = [
   // faq
   { path: 'faq', component: FaqComponent },
   { path: 'add-faq', component: AddFaqComponent },
-  { path: 'edit-faq', component: EditFaqComponent },
+  { path: 'edit-faq/:id', component: EditFaqComponent },
   { path: 'view-faq', component: ViewFaqComponent },
   // helpline number
  
@@ -179,28 +179,7 @@ const routes: Routes = [
   { path: 'add-home-visit', component: AddHomeVisitComponent },
   { path: 'edit-home-visit', component: EditHomeVisitComponent },
   { path: 'view-home-visit', component: ViewHomeVisitComponent }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- ];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
