@@ -21,7 +21,7 @@ export class ViewTermsComponent implements OnInit {
   }
   getStaticData(){
     this.mainService.showSpinner();
-    this.mainService.getApi(`static/viewStaticPage/{type}?type=${this.type}`, 1).subscribe((res: any) => {
+    this.mainService.getApi(`static/viewStaticPage?type=${this.type}`, 1).subscribe((res: any) => {
       console.log("get user management list response ==>", res)
       if (res.responseCode == 200) {
         this.result = res.result ? res.result : ''
