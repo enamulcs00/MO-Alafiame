@@ -1,34 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
 declare var $: any;
 
 
-
-
 @Component({
-  selector: 'app-product-management',
-  templateUrl: './product-management.component.html',
-  styleUrls: ['./product-management.component.css']
+  selector: 'app-product-category',
+  templateUrl: './product-category.component.html',
+  styleUrls: ['./product-category.component.css']
 })
-export class ProductManagementComponent implements OnInit {
-  
-  search: string;
-  productlists: any = [];
-  page: number= 0;
-  limit:number= 10;
+export class ProductCategoryComponent implements OnInit {
+  search: any;
+  page: number=0;
+  limit: number=10;
   productId: any;
-
-  constructor(private router: Router,public mainService: MainService) {
-    
-    
-   }
+  constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) { }
 
   ngOnInit() {
-    this.productList();
   }
-
   searchValue() {
     this.mainService.showSpinner();
     

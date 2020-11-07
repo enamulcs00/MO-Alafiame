@@ -66,6 +66,10 @@ import { EditPrivacyPolicyComponent } from './pages/edit-privacy-policy/edit-pri
 import { ViewTermsComponent } from './pages/view-terms/view-terms.component';
 import { EditTermsComponent } from './pages/edit-terms/edit-terms.component';
 import { LinkManagementComponent } from './pages/link-management/link-management.component';
+import { ProductCategoryComponent } from './pages/product-category/product-category.component';
+import { ViewProductCategoryComponent } from './pages/view-product-category/view-product-category.component';
+import { EditproductCategoryComponent } from './pages/editproduct-category/editproduct-category.component';
+import { AddproductCategoryComponent } from './pages/addproduct-category/addproduct-category.component';
 
 
 const routes: Routes = [
@@ -180,7 +184,11 @@ const routes: Routes = [
   { path: 'add-home-visit', component: AddHomeVisitComponent },
   { path: 'edit-home-visit', component: EditHomeVisitComponent },
   { path: 'view-home-visit', component: ViewHomeVisitComponent },
-  { path: 'link-management', component: LinkManagementComponent }
+  { path: 'link-management', component: LinkManagementComponent },
+  { path: 'product-category', component: ProductCategoryComponent },
+  { path: 'view-productcategory/:id', component: ViewProductCategoryComponent },
+  { path: 'edit-productcategory/:id', component: EditproductCategoryComponent },
+  { path: 'add-productcategory', component: AddproductCategoryComponent }
 
 ];
 

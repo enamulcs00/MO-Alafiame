@@ -87,6 +87,10 @@ import { ViewTermsComponent } from './pages/view-terms/view-terms.component';
 import { EditTermsComponent } from './pages/edit-terms/edit-terms.component';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { LinkManagementComponent } from './pages/link-management/link-management.component';
+import { ProductCategoryComponent } from './pages/product-category/product-category.component';
+import { ViewProductCategoryComponent } from './pages/view-product-category/view-product-category.component';
+import { EditproductCategoryComponent } from './pages/editproduct-category/editproduct-category.component';
+import { AddproductCategoryComponent } from './pages/addproduct-category/addproduct-category.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -165,7 +169,11 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     EditPrivacyPolicyComponent,
     ViewTermsComponent,
     EditTermsComponent,
-    LinkManagementComponent
+    LinkManagementComponent,
+    ProductCategoryComponent,
+    ViewProductCategoryComponent,
+    EditproductCategoryComponent,
+    AddproductCategoryComponent
   ],
   imports: [
     BrowserModule,
