@@ -65,6 +65,7 @@ import { ViewPrivacyPolicyComponent } from './pages/view-privacy-policy/view-pri
 import { EditPrivacyPolicyComponent } from './pages/edit-privacy-policy/edit-privacy-policy.component';
 import { ViewTermsComponent } from './pages/view-terms/view-terms.component';
 import { EditTermsComponent } from './pages/edit-terms/edit-terms.component';
+import { LinkManagementComponent } from './pages/link-management/link-management.component';
 
 
 const routes: Routes = [
@@ -178,7 +179,9 @@ const routes: Routes = [
   { path: 'home-visit-service', component: HomeVisitServiceComponent },
   { path: 'add-home-visit', component: AddHomeVisitComponent },
   { path: 'edit-home-visit', component: EditHomeVisitComponent },
-  { path: 'view-home-visit', component: ViewHomeVisitComponent }
+  { path: 'view-home-visit', component: ViewHomeVisitComponent },
+  { path: 'link-management', component: LinkManagementComponent }
+
 ];
 
 @NgModule({

@@ -13,6 +13,7 @@ export class AddProductManagementComponent implements OnInit {
   image: any= 'assets/img/profile-img.jpg';
   fileToupload: File= null;
   profile: any;
+  user: any;
 
   constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) {
     this.addproductForm = new FormGroup({
@@ -29,13 +30,14 @@ export class AddProductManagementComponent implements OnInit {
 
   addProduct()
   {
+    this.addProductcategory();
     let data = 
     {
       'productName': this.addproductForm.value.productName,
       'price': this.addproductForm.value.price,
       'usedFor ': this.addproductForm.value.UsedFor,
       'type ': this.addproductForm.value.type,
-      'categoryId': this.addProductcategory()
+      'categoryId': this.user
 
     }
     this.mainService.showSpinner();
@@ -82,10 +84,12 @@ export class AddProductManagementComponent implements OnInit {
     this.mainService.showSpinner();
     this.mainService.postApi('admin/addProductCategory', data, 1).subscribe((res: any) => {
       console.log("addProduct response ==>", res)
-      if (res.responseCode == 200) {
+      if (res.responseCode == 200 && res.result) {
         this.mainService.hideSpinner();
+        this.user=res.result._id;
+        console.log("categoryId",this.user)
         this.mainService.successToast(res.responseMessage)
-        this.route.navigateByUrl('product-management')
+         this.route.navigateByUrl('product-management')
         
       } else {
         this.mainService.hideSpinner();

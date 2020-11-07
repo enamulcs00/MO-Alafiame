@@ -86,6 +86,7 @@ import { EditPrivacyPolicyComponent } from './pages/edit-privacy-policy/edit-pri
 import { ViewTermsComponent } from './pages/view-terms/view-terms.component';
 import { EditTermsComponent } from './pages/edit-terms/edit-terms.component';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { LinkManagementComponent } from './pages/link-management/link-management.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -163,7 +164,8 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     ViewPrivacyPolicyComponent,
     EditPrivacyPolicyComponent,
     ViewTermsComponent,
-    EditTermsComponent
+    EditTermsComponent,
+    LinkManagementComponent
   ],
   imports: [
     BrowserModule,
