@@ -14,7 +14,8 @@ export class EditStaticContentManagementComponent implements OnInit {
   result: any;
   config = {
     uiColor: '#F0F3F4',
-    height: '100%'
+    height: '100%',
+    
   };
   form: FormGroup;
   editorValue;
@@ -23,7 +24,7 @@ export class EditStaticContentManagementComponent implements OnInit {
   constructor(private activatedroute: ActivatedRoute, private router: Router, public mainService: MainService) { }
 
   ngOnInit() {
-    this.activatedroute.queryParams.subscribe((res) => {
+    this.activatedroute.params.subscribe((res) => {
       this.userId = res.id;
       this.type = res.type
       console.log('userId', this.userId, this.type, res);
@@ -38,7 +39,7 @@ export class EditStaticContentManagementComponent implements OnInit {
 
   viewStaticData() {
     this.mainService.showSpinner();
-    this.mainService.getApi(ApiUrls.viewStaticContent + this.type, 1).subscribe((res: any) => {
+    this.mainService.getApi(`static/viewStaticPage?type=${this.type}`, 1).subscribe((res: any) => {
       console.log("get static content management list response ==>", res)
       if (res.responseCode == 200) {
         this.result = res.result;
@@ -62,13 +63,13 @@ export class EditStaticContentManagementComponent implements OnInit {
   Update() {
     const description = this.form.value.editorValue
     let data = {
-      'staticId': this.userId,
+      '_id': this.userId,
       "title": this.form.value.Title,
       "description": description.slice(3, (description.length - 5))
     }
     console.log('data', data)
     this.mainService.showSpinner();
-    this.mainService.putApi(ApiUrls.editStaticContent, data, 1).subscribe((res: any) => {
+    this.mainService.putApi(`static/editStaticPage`, data, 1).subscribe((res: any) => {
       console.log("edit static content management response ==>", res)
       if (res.responseCode == 200) {
         this.mainService.successToast(res.responseMessage);
