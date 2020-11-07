@@ -40,8 +40,9 @@ export class GiftCardManagementComponent implements OnInit {
       }else{
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
-      }
-    
+      } 
+     }, (error) => {
+        this.service.hideSpinner()
     })
   }
 
@@ -64,6 +65,8 @@ export class GiftCardManagementComponent implements OnInit {
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
       }
+     }, (error) => {
+        this.service.hideSpinner()
     })
   }
   //            Delete section
@@ -85,8 +88,9 @@ export class GiftCardManagementComponent implements OnInit {
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
         $('#deleteModal').modal('hide')
-      }
-     
+      } 
+    }, (error) => {
+        this.service.hideSpinner()
     })
   }
    //            Delete section END

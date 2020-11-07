@@ -52,6 +52,8 @@ export class AddGiftComponent implements OnInit {
        this.service.hideSpinner()
        this.service.errorToast(res.message)
      }
+    }, (error) => {
+      this.service.hideSpinner()
     })
   }
 }

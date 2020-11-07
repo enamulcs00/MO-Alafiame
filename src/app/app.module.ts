@@ -81,7 +81,6 @@ import { ViewNotificationComponent } from './pages/dashboard/notification-manage
 import { OtpComponent } from './pages/otp/otp.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { EditAboutUsComponent } from './pages/edit-about-us/edit-about-us.component';
-import { ViewPrivacyPolicyComponent } from './pages/view-privacy-policy/view-privacy-policy.component';
 import { EditPrivacyPolicyComponent } from './pages/edit-privacy-policy/edit-privacy-policy.component';
 import { ViewTermsComponent } from './pages/view-terms/view-terms.component';
 import { EditTermsComponent } from './pages/edit-terms/edit-terms.component';
@@ -160,10 +159,9 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     OtpComponent,
     AboutUsComponent,
     EditAboutUsComponent,
-    ViewPrivacyPolicyComponent,
     EditPrivacyPolicyComponent,
     ViewTermsComponent,
-    EditTermsComponent
+    EditTermsComponent,
   ],
   imports: [
     BrowserModule,

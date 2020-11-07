@@ -61,7 +61,6 @@ import { ViewNotificationComponent } from './pages/dashboard/notification-manage
 import { OtpComponent } from './pages/otp/otp.component';
 import { EditAboutUsComponent } from './pages/edit-about-us/edit-about-us.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { ViewPrivacyPolicyComponent } from './pages/view-privacy-policy/view-privacy-policy.component';
 import { EditPrivacyPolicyComponent } from './pages/edit-privacy-policy/edit-privacy-policy.component';
 import { ViewTermsComponent } from './pages/view-terms/view-terms.component';
 import { EditTermsComponent } from './pages/edit-terms/edit-terms.component';
@@ -132,9 +131,8 @@ const routes: Routes = [
   // static content management
   { path: 'static-content-management', component: StaticContentManagementComponent },
   { path: 'edit-static-content-management', component: EditStaticContentManagementComponent },
-  { path: 'view_privacy_policy', component: ViewPrivacyPolicyComponent },
   { path: 'edit_privacy_policy', component: EditPrivacyPolicyComponent },
-  { path: 'view_terms', component: ViewTermsComponent },
+  { path: 'view_terms/:type', component: ViewTermsComponent },
   { path: 'edit_terms', component: EditTermsComponent },
 
   // test center management

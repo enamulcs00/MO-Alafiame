@@ -21,7 +21,7 @@ export class StaticContentManagementComponent implements OnInit {
   // get static content data
   viewStaticData() {
     this.mainService.showSpinner();
-    this.mainService.getApi(ApiUrls.staticContentList, 1).subscribe((res: any) => {
+    this.mainService.getApi(`static/staticList`, 1).subscribe((res: any) => {
       console.log("get user management list response ==>", res)
       if (res.responseCode == 200) {
         this.result = res.result ? res.result : ''
@@ -32,6 +32,8 @@ export class StaticContentManagementComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
+    }, (error) => {
+      this.mainService.hideSpinner()
     })
   }
 

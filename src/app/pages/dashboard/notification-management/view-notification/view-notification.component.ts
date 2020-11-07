@@ -32,6 +32,8 @@ getNotificatins(){
       this.service.hideSpinner()
       this.service.errorToast(res.responseMessage)
     }
+  }, (error) => {
+    this.service.hideSpinner()
   })
 }
 }

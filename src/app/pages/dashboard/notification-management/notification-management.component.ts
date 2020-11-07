@@ -51,6 +51,8 @@ export class NotificationManagementComponent implements OnInit {
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
       }
+    }, (error) => {
+      this.service.hideSpinner()
     })
   }
 
@@ -73,6 +75,8 @@ export class NotificationManagementComponent implements OnInit {
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
       }
+    }, (error) => {
+      this.service.hideSpinner()
     })
   }
 
@@ -80,6 +84,7 @@ export class NotificationManagementComponent implements OnInit {
   openModal(id){
       $('#deleteModal').modal('show')
       this.notificationId = id
+      console.log(this.notificationId)
   }
   deleteNotification(){
     this.service.showSpinner()
@@ -96,7 +101,8 @@ export class NotificationManagementComponent implements OnInit {
         this.service.errorToast(res.responseMessage)
         $('#deleteModal').modal('hide')
       }
-     
+    }, (error) => {
+      this.service.hideSpinner()
     })
   }
   

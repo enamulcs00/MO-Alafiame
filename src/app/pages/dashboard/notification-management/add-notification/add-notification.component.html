@@ -20,9 +20,9 @@
                         <span class="text text-danger" *ngIf="addNotificationForm.get('description').hasError('required') && addNotificationForm.get('description').touched">*Discount is Required</span><br>
                         <select class="form-control" formControlName="sharedWith">
                             <option value="">Select</option>
-                            <option value="All users">All users</option>
-                            <option value="All consultants">All consultants</option>
-                            <option value="All end-users">All end-users</option>
+                            <option value="ALL_USERS">All users</option>
+                            <option value="ALL_CONSULTANTS">All consultants</option>
+                            <option value="ALL_END_USERS">All end-users</option>
                         </select>
                         <span class="text text-danger" *ngIf="addNotificationForm.get('sharedWith').hasError('required') && addNotificationForm.get('sharedWith').touched">*Maximum amount is Required</span><br>
                     </div>
@@ -35,31 +35,3 @@
                 </div>
             </div>
         </form>
-
-
-
-
-        <!-- <div class="col">
-            <div class="row" style=" margin-left: 4%;margin-top: 0%;">
-                <label>Title :</label>
-                <input type="text" class="form-control" style="width: 70%; margin-left: 15%;">
-            </div>
-            <div class="row" style=" margin-left: 4%;margin-top: 2%;">
-                <label>Description :</label>
-                <input type="text" class="form-control" style="width: 70%; margin-left: 10%;">
-            </div>
-            <div class="row" style="margin-left: 4%;margin-top: 2%;">
-                <label>Shared with :</label>
-                <select class="form-control" style="width: 70%; margin-left: 10%;">
-                    <option value="">Shared with</option>
-                    <option value="NationalBankTransfer">All users</option>
-                    <option value="IMPS">All consultants</option>
-                    <option value="paypal">All end-users</option>
-                </select>
-            </div>
-            <div class="row" style="margin-left: 31%;margin-top: 10%; margin-bottom: 8%; width: 155%; ">
-                <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;">Cancel</button>
-                <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;">Broadcast
-                    Thenotification </button>
-            </div>
-        </div> -->
