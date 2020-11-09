@@ -40,10 +40,7 @@
 
                                         <td class="content">Question:  {{item.question}}<br>Answer:  {{item.answer}}</td>
                                         <td class="justify-content-center d-flex" style="padding-top: 18px;">
-                                            <!-- <button class="btn btn-info ml-2 bt-margin" title="view"
-                                                (click)="viewUser()"> -->
-                                            <!-- <i class="fa fa-eye" aria-hidden="true"
-                                                    style="color:white"></i></button> -->
+                                            
                                             <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-faq',item?._id]"><i
                                                     class="fa fa-edit" aria-hidden="true"
                                                     style="color:white"></i></button>
