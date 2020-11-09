@@ -13,16 +13,16 @@
                         <label>Description :</label><br><br>
                         <label>Shared with : </label><br><br>
                     </div>
-                    <div class="col" style=" margin-top: -1.5%;">
+                    <div class="col" style=" margin-top: 1.5%;">
                         <input type="text" class="form-control" formControlName="title">
                         <span class="text text-danger" *ngIf="addNotificationForm.get('title').hasError('required') && addNotificationForm.get('title').touched">*Title is Required</span><br>
                         <input type="text" class="form-control" formControlName="description">
                         <span class="text text-danger" *ngIf="addNotificationForm.get('description').hasError('required') && addNotificationForm.get('description').touched">*Discount is Required</span><br>
-                        <select class="form-control" formControlName="sharedWith">
-                            <option value="">Select</option>
-                            <option value="ALL_USERS">All users</option>
-                            <option value="ALL_CONSULTANTS">All consultants</option>
-                            <option value="ALL_END_USERS">All end-users</option>
+                        <select class="form-control" formControlName="sharedWith"> <span class="caret"></span>
+                            <option  value="">Select</option>
+                            <option  value="ALL_USERS">All users</option>
+                            <option  value="ALL_CONSULTANTS">All consultants</option>
+                            <option  value="ALL_END_USERS">All end-users</option>
                         </select>
                         <span class="text text-danger" *ngIf="addNotificationForm.get('sharedWith').hasError('required') && addNotificationForm.get('sharedWith').touched">*Maximum amount is Required</span><br>
                     </div>

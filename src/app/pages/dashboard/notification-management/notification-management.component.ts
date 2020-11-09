@@ -32,7 +32,10 @@ export class NotificationManagementComponent implements OnInit {
         'enddate': new FormControl(''),
     })
   }
-
+  reset(){
+    this.notificationForm.reset()
+    this.getNotification()
+  }
   getNotification() {
     this.service.showSpinner()
     let formData = {

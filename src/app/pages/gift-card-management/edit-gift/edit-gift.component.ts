@@ -37,7 +37,7 @@ this.activatedroute.params.subscribe((res:any)=>{
       if(res.responseCode==200){
         this.img=res.result.docs[0].giftImage
         this.editGiftForm.patchValue({
-          'title':res.result.docs[0].title,
+          'title':res.result.docs[0].title, 
           'discount':res.result.docs[0].discount,
           'maxAmount':res.result.docs[0].maxAmount,
           'expiry':res.result.docs[0].expiryDate.split('T')[0],
@@ -62,16 +62,27 @@ this.activatedroute.params.subscribe((res:any)=>{
     })
   }
  
-  ValidateFileUpload(e) {
-    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-    var reader = new FileReader();
-    reader.onload = this._handleReaderLoaded.bind(this);
-    reader.readAsDataURL(file);
-  }
-  _handleReaderLoaded(e) {
-    let reader = e.target;
-    this.img = reader.result;
-    console.log("profile", this.img)
+  // ValidateFileUpload(e) {
+  //   var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+  //   var reader = new FileReader();
+  //   reader.onload = this._handleReaderLoaded.bind(this);
+  //   reader.readAsDataURL(file);
+  // }
+  // _handleReaderLoaded(e) {
+  //   let reader = e.target;
+  //   this.img = reader.result;
+  //   console.log("profile", this.img)
+  // }
+  ValidateFileUpload(event) {
+    this.file = event.target.files;
+    if (this.file[0]) {
+      this.imageType = this.file[0].type;
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.img = e.target.result;
+      };
+      reader.readAsDataURL(this.file[0]);
+    }
   }
 
   editGift(){

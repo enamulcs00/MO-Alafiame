@@ -45,8 +45,12 @@ export class GiftCardManagementComponent implements OnInit {
         this.service.hideSpinner()
     })
   }
-
+  reset(){
+    this.searchForm.reset()
+    this.giftList()
+  }
   searchGift() {
+    this.userDataList=''
     this.service.showSpinner()
     let formData = {
       "page": 0,
