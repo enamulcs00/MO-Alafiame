@@ -47,75 +47,38 @@
                                 <thead>
                                     <tr class="no_wrap_th text-center">
                                         <th scope="col" class="Sorting-img">S.No</th>
-                                       <th scope="col" class="Sorting-img">Name of Product</th>
-                                        <th scope="col" class="Sorting-img">Charges</th>
-                                        <th scope="col" class="Sorting-img">Used For</th>
-                                        <th scope="col" class="Sorting-img">Service Type</th>
+                                       <th scope="col" class="Sorting-img">Name of Product Category</th>
+                                        <th scope="col" class="Sorting-img">Category Image</th>
+                                        
                                         <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
                                       </tr>
                                 </thead>
                                  <tbody > <!--*ngIf="productlists" -->
-                                     <tr class="text-center" > <!--*ngFor="let items of productlists | paginate : {itemsPerPage:10, currentPage:page, totalItems:total}; let i=index" -->
+                                     <tr class="text-center"*ngFor="let item of categoryList | paginate : {itemsPerPage:10, currentPage:page, totalItems:total} ; let i=index" > <!--*ngFor="let items of productlists | paginate : {itemsPerPage:10, currentPage:page, totalItems:total}; let i=index" -->
 
-                                    <td class="content" >1</td>
-                                    <td class="content" > Hair Dryer</td>
-                                    <td class="content" >2000</td>
-                                    <td class="content" >Hair</td>
-                                    <td class="content">Saloon</td>
+                                    <td class="content" >{{i+1}}</td>
+                                    <td class="content" > {{item.categoryName}}</td>
+                                    <td class="content" ><img src="{{item.categoryImage}}" alt="" style="height:34px;"></td>
+                                    
                                     <td class="justify-content-center d-flex">
                             
                                         
-                                        <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-productcategory','1']">Edit</button>
-                                         <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-productcategory','1']">
+                                        <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-productcategory',item?._id]">Edit</button>
+                                         <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-productcategory',item?._id]">
                                          View</button>
-                                         <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(1)"
+                                         <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(item?._id)"
                                              >Delete</button>
                                              
                                     </td>
                                 </tr>
-
-                               
-                                
-
-                               
-
-                                
-                                    <!-- <tr *ngFor="let item of userDataList | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: total}; let i = index"
-                                        class="text-center">
-                                        <td><input type="checkbox" class="tabel-body-checkbox" [value]="item._id"
-                                                [(ngModel)]="item.isChecked" [ngModelOptions]="{standalone: true}"
-                                                (change)="onCheckboxChange($event)" />
-                                            {{itemPerPage * (currentPage-1)+ i+1}}</td>
-                                        <td class="content" [tooltip]="item?.firstName + ' ' + item?.lastName || '--'">
-                                            {{item?.firstName + ' ' + item?.lastName || '--'}}</td>
-                                        <td class="content" [tooltip]="item?.email || '--'">{{item?.email || '--'}}</td>
-                                        <td class="content" [tooltip]="item?.mobileNumber || '--'">
-                                            {{item?.mobileNumber || '--'}}</td>
-                                        <td class="content">{{item?.disease || '--'}}</td>
-                                        <td class="content">{{item?.createdAt | date :'d/M/y' || '--'}}</td>
-                                        <td class="content">{{item?.testCount}}</td>
-                                        <td class="content">{{item?.testStatus || '--'}}</td>
-                                        <td class="justify-content-center d-flex">
-                                            <button class="btn btn-info ml-2 bt-margin" title="view"
-                                                (click)="viewUser(item?._id)">
-                                                <i class="fa fa-eye" aria-hidden="true"
-                                                    style="color:white"></i></button>
-                                            <button class="btn btn-info ml-2 bt-margin" (click)="editUser(item?._id)"><i
-                                                    class="fa fa-edit" aria-hidden="true"
-                                                    style="color:white"></i></button>
-                                            <button class="btn btn-danger ml-2 bt-margin" title="delete"
-                                                (click)="deleteUserModal(item?._id)"><i class="fa fa-trash"
-                                                    aria-hidden="true" style="color:white"></i></button>
-                                        </td>
-                                    </tr> -->
-                                    <!-- <tr *ngIf="!userDataList.length">
+                                <tr *ngIf="!categoryList.length">
                                         <td class="table-no-record" colspan="9">No Record Found</td>
-                                    </tr> -->
+                                    </tr>
                                 </tbody>
                             </table>
-                            <!-- <div class="custom-pagination mt-2 text-align-end" *ngIf="total > 10">
+                            <div class="custom-pagination mt-2 text-align-end" *ngIf="total > 10">
                                 <pagination-controls (pageChange)="pagination($event)"></pagination-controls>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -136,7 +99,7 @@
                     <div class="modal-body">
                         <div class="text-center modal_flax_height d-flex align-items-center justify-content-center">
                             <div class="w-100">
-                                <p>Are you sure you want to delete this product?</p>
+                                <p>Are you sure you want to delete this product Category?</p>
                                 <div class="modal-btn-box">
                                     <button type="submit" class="btn btn-theme" (click)="deleteUser()">Yes</button>
                                     <button type="button" class="btn btn-danger btn-theme ml-2"

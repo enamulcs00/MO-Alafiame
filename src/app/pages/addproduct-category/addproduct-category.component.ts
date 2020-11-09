@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MainService } from 'src/app/provider/main.service';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-addproduct-category',
@@ -6,10 +9,94 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addproduct-category.component.css']
 })
 export class AddproductCategoryComponent implements OnInit {
+  addproductcategoryForm: FormGroup;
+  user: any;
+  profile: any;
 
-  constructor() { }
+  constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) {
+    this.addproductcategoryForm = new FormGroup({
+      productName: new FormControl('',[Validators.required]),
+      price: new FormControl('',[Validators.required]),
+      UsedFor: new FormControl('',[Validators.required]),
+      type: new FormControl('',[Validators.required])
+     })
+   }
 
   ngOnInit() {
   }
+  addProduct()
+  {
+    //this.addProductcategory();
+    let data = 
+    {
+      'productName': this.addproductcategoryForm.value.productName,
+      'price': this.addproductcategoryForm.value.price,
+      'usedFor ': this.addproductcategoryForm.value.UsedFor,
+      'type ': this.addproductcategoryForm.value.type,
+      'categoryId': this.user
+
+    }
+    this.mainService.showSpinner();
+    this.mainService.postApi('admin/addProduct', data, 1).subscribe((res: any) => {
+      console.log("addProduct response ==>", res)
+      if (res.responseCode == 200) {
+        this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage)
+        this.route.navigateByUrl('product-management')
+        
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+      error => {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(error.responseMessage)
+      }
+    })
+  }
+
+  
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    
+    var reader = new FileReader();
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.profile = reader.result;
+    console.log("profile", this.profile)
+  }
+  
+  addProductCategory()
+    {
+      let data = 
+    {
+      'categoryName': this.addproductcategoryForm.value.productName,
+      'categoryImage': this.profile
+
+    }
+    this.mainService.showSpinner();
+    this.mainService.postApi('admin/addProductCategory', data, 1).subscribe((res: any) => {
+      console.log("addProduct response ==>", res)
+      if (res.responseCode == 200 && res.result) {
+        this.mainService.hideSpinner();
+        this.user=res.result._id;
+        console.log("categoryId",this.user)
+        this.mainService.successToast(res.responseMessage)
+         this.route.navigateByUrl('product-management')
+        
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+      error => {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(error.responseMessage)
+      }
+    })
+
+    }
 
 }
