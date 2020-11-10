@@ -24,36 +24,7 @@ export class AddproductCategoryComponent implements OnInit {
 
   ngOnInit() {
   }
-  addProduct()
-  {
-    //this.addProductcategory();
-    let data = 
-    {
-      'productName': this.addproductcategoryForm.value.productName,
-      'price': this.addproductcategoryForm.value.price,
-      'usedFor ': this.addproductcategoryForm.value.UsedFor,
-      'type ': this.addproductcategoryForm.value.type,
-      'categoryId': this.user
-
-    }
-    this.mainService.showSpinner();
-    this.mainService.postApi('admin/addProduct', data, 1).subscribe((res: any) => {
-      console.log("addProduct response ==>", res)
-      if (res.responseCode == 200) {
-        this.mainService.hideSpinner();
-        this.mainService.successToast(res.responseMessage)
-        this.route.navigateByUrl('product-management')
-        
-      } else {
-        this.mainService.hideSpinner();
-        this.mainService.errorToast(res.responseMessage)
-      }
-      error => {
-        this.mainService.hideSpinner();
-        this.mainService.errorToast(error.responseMessage)
-      }
-    })
-  }
+  
 
   
   handleInputChange(e) {
@@ -66,7 +37,7 @@ export class AddproductCategoryComponent implements OnInit {
   _handleReaderLoaded(e) {
     let reader = e.target;
     this.profile = reader.result;
-    console.log("profile", this.profile)
+    console.log("profile123", this.profile)
   }
   
   addProductCategory()
@@ -85,7 +56,7 @@ export class AddproductCategoryComponent implements OnInit {
         this.user=res.result._id;
         console.log("categoryId",this.user)
         this.mainService.successToast(res.responseMessage)
-         this.route.navigateByUrl('product-management')
+        this.route.navigateByUrl('product-category')
         
       } else {
         this.mainService.hideSpinner();

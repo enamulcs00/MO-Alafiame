@@ -82,7 +82,7 @@ export class ProductCategoryComponent implements OnInit {
   }
   deleteFunction(id) {
      this.productId  = id
-     console.log('delete modal', this.productId)
+     console.log('delete category modal', this.productId)
     $('#deleteModal').modal({ backdrop: 'static', keyboard: false })
   }
   deleteUser()
@@ -93,14 +93,16 @@ export class ProductCategoryComponent implements OnInit {
     }
 
     this.mainService.deleteApi('admin/deleteProductCategory',object,1).subscribe(res => {
-      console.log('delete id=========>', res)
+      
       if (res.responseCode == 200) {
        //this.productList()
+       console.log('delete category id=========>', res)
         this.mainService.hideSpinner()
         $('#deleteModal').modal('hide');
         this.mainService.successToast(res.responseMessage)
        
       } else {
+        console.log('amay');
         this.mainService.hideSpinner()
         this.mainService.errorToast(res.responseMessage)
       }

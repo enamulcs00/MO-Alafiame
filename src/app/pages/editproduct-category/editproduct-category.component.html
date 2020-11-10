@@ -1,1 +1,77 @@
-<p>editproduct-category works!</p>
+<!-- <div class="wrapper" style="width: 80%;
+margin-left: 2%;">
+    <main class="middle-content">
+        <div class="page_title_block">
+            <h1 class="page_title">EDIT PRODUCT</h1>
+            <hr style="background: black; opacity: 0.5;width: 135%;">
+        </div>
+        <div style="margin-left: 49%;">
+            <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
+             <i class="fa fa-camera" >
+        <input type="file" name="imageUrl" accept="image/*"
+        (change)="handleInputChange($event)" style="position: absolute; position: absolute;opacity: -0.9;"> </i> </div>
+        <form [formGroup]="editpdtcategoryForm">
+            <div class="card" style="margin-left: 18%;">
+                <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+                    <div class="col">
+                        <label>Name of product :</label><br><br>
+                        <label>Price :</label><br><br>
+                        <label>Used for :</label><br><br>
+                        <label>Type : </label><br><br>
+                    </div>
+                    <div class="col" style=" margin-top: -1.5%;">
+                        <input type="text" class="form-control" formControlName="productName">
+                        <span class="text text-danger" *ngIf="editpdtcategoryForm.controls.productName.touched && editpdtcategoryForm.controls.productName.invalid && editpdtcategoryForm.controls.productName.errors.required">*Product Name is Required</span><br>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
+                    <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                    [routerLink]="['/product-management']">Back</button>
+                    <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;" [disabled]=editpdtcategoryForm.invalid
+                        (click)="editProduct()">Save </button>
+                </div>
+            </div>
+        </form>
+    </main>
+</div> -->
+<div class="wrapper">
+    <main class="middle-content">
+      <div class="page_title_block">
+        <h1 class="page_title">EDIT PRODUCT CATEGORY</h1>
+        <hr style="width: 118%; margin-left: -9%; background-color: black;">
+      </div>
+      <div style="margin-left: 49%;">
+        <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
+         <i class="fa fa-camera" >
+    <input type="file" name="imageUrl" accept="image/*"
+    (change)="handleInputChange($event)" style="position: absolute; position: absolute;opacity: -0.9;"> </i> </div>
+      <form [formGroup]="editpdtcategoryForm">
+  
+        <div class="content-section">
+          <div class="order-view max-WT setting-page" style="width:53%;">
+            <div class="mb40">
+              <div class="add-store-block input-style mb20 ">
+                <div class="form-group row align-items-baseline">
+                  <div class="col-md-12">
+                    <h4 class="mt20" style="font-size: 17px;">Name of Product Category:</h4>
+                   
+                    <input type="text" class="form-control" formControlName="productName" maxlength="512"
+                      (keypress)="mainService.preventSpace($event)" style="width: 51%;margin-top: -6%;margin-left: 49%;">
+                      <span class="text text-danger" *ngIf="editpdtcategoryForm.controls.productName.touched && editpdtcategoryForm.controls.productName.invalid && editpdtcategoryForm.controls.productName.errors.required">*Product Name is Required</span>
+                  </div>
+                </div>
+                
+              </div>
+              <div class="text-center mt40 mb40">
+                <button class="btn btn-large  max-WT-150 btn-theme" [routerLink]="['/product-category']"
+                   >Back</button>
+                   <button class="btn btn-large  max-WT-150 btn-theme" (click)="editFaq()"
+                  [disabled]="!editpdtcategoryForm.valid" style="margin-left: 5%;">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </main>
+  </div>
