@@ -9,9 +9,12 @@ import { FormGroup, FormControl,Validators } from '@angular/forms';
   styleUrls: ['./editproduct-category.component.css']
 })
 export class EditproductCategoryComponent implements OnInit {
-  productId: string;
+  
   profile: any;
   editpdtcategoryForm: FormGroup;
+  user: any;
+  categoryId: string;
+  
 
   constructor(private actRoute:ActivatedRoute,private route:Router,public mainService: MainService) {
     this.editpdtcategoryForm = new FormGroup({
@@ -21,9 +24,10 @@ export class EditproductCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.actRoute.paramMap.subscribe(params => {
-      this.productId = params.get('id');
-      console.log("productId",this.productId);
+      this.categoryId = params.get('id');
+      console.log("productId",this.categoryId);
     });
+    this.getproductcategory();
   }
   handleInputChange(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
@@ -37,39 +41,49 @@ export class EditproductCategoryComponent implements OnInit {
     this.profile = reader.result;
     console.log("profile", this.profile)
   }
+  getproductcategory()
+  {
+    this.mainService.showSpinner();
+    this.mainService.getApi('admin/viewProductCagtegory?categoryId='+this.categoryId,1).subscribe((res: any) => {
+      if (res.responseCode == 200 && res.result) {
+       this.user = res.result;
+       this.profile = this.user.categoryImage
+       this.editpdtcategoryForm.patchValue({
+         'productName': this.user.categoryName
+       })
+        this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage);
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+    })
+  }
   
-    // editProduct()
-    // {
-    //   this.mainService.showSpinner();
-    //   let data = 
-    //   {
-    //     'productId': this.productId,
-    //     'productName': this.editproductForm.value.productName,
-    //     'price': this.editproductForm.value.price,
-    //     'usedFor ': this.editproductForm.value.UsedFor,
-    //     'type ': this.editproductForm.value.type,
-    //     'image': this.profile
-        
-  
-    //   }
-      
-    //   this.mainService.putApi('admin/editProduct', data, 1).subscribe((res: any) => {
-    //     console.log("editProduct response ==>", res)
-    //     if (res.responseCode == 200) {
-    //       this.mainService.hideSpinner();
-    //       this.mainService.successToast(res.responseMessage)
-    //       this.route.navigateByUrl('product-management')
-          
-    //     } else {
-    //       this.mainService.hideSpinner();
-    //       this.mainService.errorToast(res.responseMessage)
-    //     }
-    //     error => {
-    //       this.mainService.hideSpinner();
-    //       this.mainService.errorToast(error.responseMessage)
-    //     }
-    //   })
-    // }
+    editProduct()
+    {
+      this.mainService.showSpinner();
+      let data = 
+      {
+        'categoryId ': this.categoryId,
+        'categoryName ': this.editpdtcategoryForm.value.productName,
+        'categoryImage': this.profile
+      }
+      this.mainService.putApi('admin/editProductCategory', data, 1).subscribe((res: any) => {
+       if (res.responseCode == 200) {
+          this.mainService.hideSpinner();
+          this.mainService.successToast(res.responseMessage)
+          this.route.navigateByUrl('product-category')
+        } else {
+          this.mainService.hideSpinner();
+          this.mainService.errorToast(res.responseMessage)
+        }
+        error => {
+          this.mainService.hideSpinner();
+          this.mainService.errorToast(error.responseMessage)
+        }
+      })
+    }
   
 
 }

@@ -39,7 +39,7 @@ margin-left: 2%;">
     <main class="middle-content">
       <div class="page_title_block">
         <h1 class="page_title">EDIT PRODUCT CATEGORY</h1>
-        <hr style="width: 118%; margin-left: -9%; background-color: black;">
+        <hr style="width: 118%; margin-left: -9%; background-color: gray;">
       </div>
       <div style="margin-left: 49%;">
         <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
@@ -49,7 +49,7 @@ margin-left: 2%;">
       <form [formGroup]="editpdtcategoryForm">
   
         <div class="content-section">
-          <div class="order-view max-WT setting-page" style="width:53%;">
+          <div class="order-view max-WT setting-page" style="width:73%;">
             <div class="mb40">
               <div class="add-store-block input-style mb20 ">
                 <div class="form-group row align-items-baseline">
@@ -66,7 +66,7 @@ margin-left: 2%;">
               <div class="text-center mt40 mb40">
                 <button class="btn btn-large  max-WT-150 btn-theme" [routerLink]="['/product-category']"
                    >Back</button>
-                   <button class="btn btn-large  max-WT-150 btn-theme" (click)="editFaq()"
+                   <button class="btn btn-large  max-WT-150 btn-theme" (click)="editProduct()"
                   [disabled]="!editpdtcategoryForm.valid" style="margin-left: 5%;">Save</button>
               </div>
             </div>
