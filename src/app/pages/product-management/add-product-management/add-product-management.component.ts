@@ -14,18 +14,24 @@ export class AddProductManagementComponent implements OnInit {
   fileToupload: File= null;
   profile: any;
   user: any;
+  categoryList: any=[];
+  total: any;
+  page: any=0;
+  limit: any=10;
+  id: any;
 
   constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) {
     this.addproductForm = new FormGroup({
       productName: new FormControl('',[Validators.required]),
       price: new FormControl('',[Validators.required]),
       UsedFor: new FormControl('',[Validators.required]),
-      type: new FormControl('',[Validators.required])
+      type: new FormControl('',[Validators.required]),
+      category: new FormControl('')
      })
  }
 
   ngOnInit() {
-   // this.addProductcategory();
+   this.getPdttcategoryList();
   }
 
   addProduct()
@@ -100,6 +106,37 @@ export class AddProductManagementComponent implements OnInit {
         this.mainService.errorToast(error.responseMessage)
       }
     })
+
+    }
+    getPdttcategoryList()
+    {
+      let object = {
+        "page": this.page,
+        "limit": this.limit
+        }
+      this.mainService.postApi('admin/productCategoryList', object, 1).subscribe(res => {
+        console.log(" productList==>", res)
+        if (res.responseCode == 200 && res.result && res.result.docs) {
+          this.categoryList= res.result.docs;
+          this.total = res.result.total;
+          console.log('xyz',this.categoryList)
+          this.mainService.hideSpinner();
+          this.mainService.successToast(res.responseMessage)
+           } else {
+          this.mainService.hideSpinner();
+          this.mainService.errorToast(res.responseMessage)
+        }
+        error => {
+          this.mainService.hideSpinner();
+          this.mainService.errorToast(error.responseMessage)
+        }
+      })
+    }
+    viewid(item: any)
+    {
+      this.id = item._id;
+      console.log('anny1234',this.id)
+      
 
     }
 }

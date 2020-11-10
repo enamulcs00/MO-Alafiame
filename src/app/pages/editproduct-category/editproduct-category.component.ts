@@ -13,19 +13,19 @@ export class EditproductCategoryComponent implements OnInit {
   profile: any;
   editpdtcategoryForm: FormGroup;
   user: any;
-  categoryId: string;
+  categoryId: any;
   
 
   constructor(private actRoute:ActivatedRoute,private route:Router,public mainService: MainService) {
     this.editpdtcategoryForm = new FormGroup({
-      productName: new FormControl('',[Validators.required]),
+      productName: new FormControl('',[Validators.required])
      })
    }
 
   ngOnInit() {
     this.actRoute.paramMap.subscribe(params => {
       this.categoryId = params.get('id');
-      console.log("productId",this.categoryId);
+      console.log("categoryId",this.categoryId);
     });
     this.getproductcategory();
   }
@@ -65,15 +65,18 @@ export class EditproductCategoryComponent implements OnInit {
       this.mainService.showSpinner();
       let data = 
       {
-        'categoryId ': this.categoryId,
-        'categoryName ': this.editpdtcategoryForm.value.productName,
+        'categoryId': this.categoryId,
+        'categoryName': this.editpdtcategoryForm.value.productName,
         'categoryImage': this.profile
       }
+      console.log('editcat',data)
       this.mainService.putApi('admin/editProductCategory', data, 1).subscribe((res: any) => {
        if (res.responseCode == 200) {
           this.mainService.hideSpinner();
+          this.route.navigateByUrl('product-category')
           this.mainService.successToast(res.responseMessage)
           this.route.navigateByUrl('product-category')
+          console.log('editcat123')
         } else {
           this.mainService.hideSpinner();
           this.mainService.errorToast(res.responseMessage)

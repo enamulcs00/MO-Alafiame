@@ -19,6 +19,8 @@ export class ProductManagementComponent implements OnInit {
   page: number= 0;
   limit:number= 10;
   productId: any;
+  itemPerPage: any;
+  
 
   constructor(private router: Router,public mainService: MainService) {
     
@@ -66,8 +68,9 @@ export class ProductManagementComponent implements OnInit {
       }
     this.mainService.postApi('admin/productList', object, 1).subscribe(res => {
       console.log(" productList==>", res)
-      if (res.responseCode == 200) {
+      if (res.responseCode == 200 && res.result && res.result.docs) {
         console.log('shweta',res.result)
+        this.productlists = res.result.docs
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
         
@@ -141,5 +144,10 @@ export class ProductManagementComponent implements OnInit {
   })
 
  }
+ pagination(event) {
+  console.log(event)
+  this.itemPerPage = event;
+  this.productList()
+}
 
 }

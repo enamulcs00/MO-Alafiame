@@ -55,41 +55,32 @@
                                       </tr>
                                 </thead>
                                  <tbody > <!--*ngIf="productlists" -->
-                                     <tr class="text-center" > <!--*ngFor="let items of productlists | paginate : {itemsPerPage:10, currentPage:page, totalItems:total}; let i=index" -->
+                                     <tr class="text-center" *ngFor="let items of productlists | paginate : {itemsPerPage:10, currentPage:page, totalItems:total}; let i=index">
 
-                                    <td class="content" >1</td>
-                                    <td class="content" > Hair Dryer</td>
-                                    <td class="content" >2000</td>
-                                    <td class="content" >Hair</td>
-                                    <td class="content">Saloon</td>
+                                    <td class="content" >{{i+1}}</td>
+                                    <td class="content" >{{items?.productName}}</td>
+                                    <td class="content" >{{items?.price}}</td>
+                                    <td class="content" >{{items?.usedFor}}</td>
+                                    <td class="content">{{items?.type}}</td>
                                     <td class="justify-content-center d-flex">
                             
-                                        <button class="btn btn-info ml-2 bt-margin"  (click)="blockFunction(1)">
+                                        <button class="btn btn-info ml-2 bt-margin"  (click)="blockFunction(items?._id)">
                                             Block</button>
-                                        <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-product-management','1']">Edit</button>
-                                         <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-product-management','1']">
-                                         View</button>
-                                         <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(1)"
+                                        <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-product-management',items?._id]">Edit</button>
+                                         <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-product-management',items?._id]">View</button>
+                                         <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(items?._id)"
                                              >Delete</button>
                                              
                                     </td>
                                 </tr>
-
-                               
-                                
-
-                               
-
-                                
-                                   
-                                    <!-- <tr *ngIf="!userDataList.length">
+                                       <tr *ngIf="!productlists.length">
                                         <td class="table-no-record" colspan="9">No Record Found</td>
-                                    </tr> -->
+                                    </tr>
                                 </tbody>
                             </table>
-                            <!-- <div class="custom-pagination mt-2 text-align-end" *ngIf="total > 10">
+                            <div class="custom-pagination mt-2 text-align-end" *ngIf="total > 10">
                                 <pagination-controls (pageChange)="pagination($event)"></pagination-controls>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>

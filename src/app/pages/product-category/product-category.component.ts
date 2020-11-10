@@ -81,24 +81,24 @@ export class ProductCategoryComponent implements OnInit {
     })
   }
   deleteFunction(id) {
-     this.productId  = id
+     this.productId = id
      console.log('delete category modal', this.productId)
-    $('#deleteModal').modal({ backdrop: 'static', keyboard: false })
+    $('#deleteModal').modal({ backdrop:'static',keyboard: false})
   }
   deleteUser()
   {
     this.mainService.showSpinner()
     let object = {
-      'categoryId ': this.productId
+      'categoryId': this.productId
     }
+    console.log('object',object)
 
     this.mainService.deleteApi('admin/deleteProductCategory',object,1).subscribe(res => {
       
       if (res.responseCode == 200) {
-       //this.productList()
-       console.log('delete category id=========>', res)
         this.mainService.hideSpinner()
         $('#deleteModal').modal('hide');
+        this.route.navigateByUrl('product-category')
         this.mainService.successToast(res.responseMessage)
        
       } else {
@@ -111,36 +111,8 @@ export class ProductCategoryComponent implements OnInit {
       this.mainService.errorToast(error.responseMessage)
     })
   }
-  blockFunction(id)
-  {
-    this.productId  = id
-     console.log('Block Modal', this.productId)
-    $('#blockModal').modal({ backdrop: 'static', keyboard: false })
- }
- blockUser()
- {
-  this.mainService.showSpinner()
-  let data = {
-    'productId': this.productId
-  }
-
-  this.mainService.postApi('admin/blockUnblockProduct',data,1).subscribe(res => {
-    console.log('block id=========>', res)
-    if (res.responseCode == 200) {
-      //this.productList()
-      this.mainService.hideSpinner()
-      $('#blockModal').modal('hide');
-      this.mainService.successToast(res.responseMessage)
-    } else {
-      this.mainService.hideSpinner()
-      this.mainService.errorToast(res.responseMessage)
-    }
-  }, error => {
-    this.mainService.hideSpinner()
-    this.mainService.errorToast(error.responseMessage)
-  })
-
- }
+  
+ 
  pagination(event) {
   console.log(event)
   this.itemPerPage = event;
