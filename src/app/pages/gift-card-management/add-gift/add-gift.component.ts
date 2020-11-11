@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup ,Validator, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
 @Component({
   selector: 'app-add-gift',
@@ -11,7 +12,7 @@ export class AddGiftComponent implements OnInit {
   file: any = [];
   imageType: any;
   imgUrl: any;
-  constructor(private service:MainService) { }
+  constructor(private service:MainService,private router:Router) { }
 
   ngOnInit() {
     this.addGiftForm = new FormGroup({
@@ -48,7 +49,8 @@ export class AddGiftComponent implements OnInit {
      if(res.responseCode==200){
        this.service.hideSpinner()
       this.service.successToast(res.responseMessage)
-     }else{
+      this.router.navigate(['/gift-card-management'])
+         }else{
        this.service.hideSpinner()
        this.service.errorToast(res.message)
      }

@@ -13,7 +13,8 @@ export class GiftCardManagementComponent implements OnInit {
   currentPage: number = 1;
   itemPerPage:number=10;
   gifiId: any;
-  userDataList: any;
+  userDataList:any= [];
+  result: any;
 
   constructor(private service: MainService) { }
 
@@ -23,6 +24,11 @@ export class GiftCardManagementComponent implements OnInit {
       'startdate': new FormControl(''),
       'enddate': new FormControl(''),
     })
+    this.giftList()
+  }
+  pagination(page) {
+    this.currentPage = page;
+    console.log(this.currentPage)
     this.giftList()
   }
   giftList() {
@@ -50,10 +56,9 @@ export class GiftCardManagementComponent implements OnInit {
     this.giftList()
   }
   searchGift() {
-    this.userDataList=''
     this.service.showSpinner()
     let formData = {
-      "page": 0,
+      "page":this.currentPage -1,
       "limit": this.itemPerPage,
       "search": this.searchForm.value.search,
       "fromDate":Math.round(new Date(this.searchForm.value.startdate).getTime()),
@@ -63,7 +68,7 @@ export class GiftCardManagementComponent implements OnInit {
       if(res.responseCode==200){
         this.service.hideSpinner()
         this.service.successToast(res.responseMessage)
-        this.userDataList =res.result.docs
+        this.userDataList=res.result.docs
         this.total=res.result.total
       }else{
         this.service.hideSpinner()

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router'
+import {ActivatedRoute, Router} from '@angular/router'
 import { MainService } from 'src/app/provider/main.service';
 import { from } from 'rxjs';
 @Component({
@@ -16,11 +16,11 @@ export class EditGiftComponent implements OnInit {
   file: any;
   imageType: any;
 
-  constructor(private service:MainService, private activatedroute:ActivatedRoute) { }
+  constructor(private service:MainService, private activatedroute:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
 this.activatedroute.params.subscribe((res:any)=>{
-  res.id=this.giftId
+  this.giftId=res.id
 })
     this.giftList()
     this.editFormValidation()
@@ -35,7 +35,7 @@ this.activatedroute.params.subscribe((res:any)=>{
     }
     this.service.postApi('admin/giftList', formData, 1).subscribe((res: any) => {
       if(res.responseCode==200){
-        this.img=res.result.docs[0].giftImage
+        this.img= res.result.docs[0].giftImage
         this.editGiftForm.patchValue({
           'title':res.result.docs[0].title, 
           'discount':res.result.docs[0].discount,
@@ -84,7 +84,7 @@ this.activatedroute.params.subscribe((res:any)=>{
       reader.readAsDataURL(this.file[0]);
     }
   }
-
+  
   editGift(){
     let data={
       'title':this.editGiftForm.value.title,
@@ -96,7 +96,18 @@ this.activatedroute.params.subscribe((res:any)=>{
     }
     console.log(data)
    this.service.postApi('admin/editGift',data,1).subscribe((res:any)=>{
-     console.log(res)
-   })
-  }
+    if(res.responseCode==200){
+      this.service.hideSpinner()
+      this.service.successToast(res.responseMessage)
+      this.router.navigate(['/gift-card-management'])
+    }else{
+      this.service.hideSpinner()
+      this.service.errorToast(res.responseMessage)
+    } 
+   }, (error) => {
+      this.service.hideSpinner()
+  })
+}
+  
+  
 }

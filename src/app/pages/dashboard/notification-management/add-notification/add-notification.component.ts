@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { MainService } from 'src/app/provider/main.service';
 export class AddNotificationComponent implements OnInit {
   addNotificationForm: FormGroup;
 
-  constructor(private service:MainService) { }
+  constructor(private service:MainService,private router:Router) { }
 
   ngOnInit() {
     this.addNotificationForm = new FormGroup({
@@ -31,6 +32,7 @@ broadcast(){
    if(res.responseCode==200){
      this.service.hideSpinner()
     this.service.successToast(res.responseMessage)
+    this.router.navigate(['/notification-management'])
    }else{
      this.service.hideSpinner()
      this.service.errorToast(res.message)
