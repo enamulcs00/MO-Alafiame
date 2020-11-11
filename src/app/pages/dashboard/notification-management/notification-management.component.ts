@@ -11,7 +11,7 @@ declare var $:any;
 })
 export class NotificationManagementComponent implements OnInit {
   notificationForm: FormGroup;
-  itemPerPage: number=10;
+  itemPerPage: number=1;
   currentPage: number=1;
   notificationList: any;
   total: any;
@@ -34,6 +34,10 @@ export class NotificationManagementComponent implements OnInit {
   }
   reset(){
     this.notificationForm.reset()
+    this.getNotification()
+  }
+  paginate(page){
+    this.currentPage=page;
     this.getNotification()
   }
   getNotification() {
@@ -75,6 +79,7 @@ export class NotificationManagementComponent implements OnInit {
         this.notificationList =res.result.docs
         this.total=res.result.total
       }else{
+        this.notificationList=[]
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
       }

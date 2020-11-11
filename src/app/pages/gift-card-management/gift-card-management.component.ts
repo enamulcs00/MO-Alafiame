@@ -68,9 +68,10 @@ export class GiftCardManagementComponent implements OnInit {
       if(res.responseCode==200){
         this.service.hideSpinner()
         this.service.successToast(res.responseMessage)
-        this.userDataList=res.result.docs
+        this.userDataList=res.result?res.result.docs:[]
         this.total=res.result.total
       }else{
+        this.userDataList=[]
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
       }

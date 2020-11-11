@@ -70,7 +70,7 @@
                                         <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody  *ngIf="notificationList?.length!='0'">
                                     <tr *ngFor="let item of notificationList | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: total}; let i = index"
                                         class="text-center">
                                         <td class="content">{{itemPerPage * (currentPage-1)+ i+1}}</td>
@@ -88,13 +88,15 @@
                                             </button>
                                         </td>
                                     </tr>
-                                    <!-- <tr *ngIf="!userDataList.length">
+                                </tbody>
+                                <tbody  *ngIf="notificationList?.length=='0'">
+                                    <tr>
                                         <td class="table-no-record" colspan="9">No Record Found</td>
-                                    </tr> -->
+                                    </tr>
                                 </tbody>
                             </table>
-                            <div class="custom-pagination mt-2 text-align-end" *ngIf="total > 10">
-                                <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
+                            <div class="custom-pagination mt-2 text-align-end" >
+                                <pagination-controls (pageChange)="paginate($event)"></pagination-controls>
                             </div>
                         </div>
                     </div>
