@@ -31,7 +31,7 @@ import { ViewTestCenterComponent } from './pages/dashboard/test-center-managemen
 import { ViewPatientManagementHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-patient-management-hospital/view-patient-management-hospital.component';
 import { ViewPlasmaDonatedPatientManagementHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-plasma-donated-patient-management-hospital/view-plasma-donated-patient-management-hospital.component';
 import { ViewPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-patient-management-test-center/view-patient-management-test-center.component';
-// import { ViewPlasmaDonatedPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-plasma-donated-patient-management-test-center/view-plasma-donated-patient-management-test-center.component';
+//import { ViewPlasmaDonatedPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-plasma-donated-patient-management-test-center/view-plasma-donated-patient-management-test-center.component';
 import { ViewHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-hospital/view-hospital.component';
 import { AddUserComponent } from './pages/dashboard/user-management/add-user/add-user.component';
 import { CorporateCustomerManagementComponent } from './pages/corporate-customer-management/corporate-customer-management.component';
@@ -61,9 +61,15 @@ import { ViewNotificationComponent } from './pages/dashboard/notification-manage
 import { OtpComponent } from './pages/otp/otp.component';
 import { EditAboutUsComponent } from './pages/edit-about-us/edit-about-us.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ViewPrivacyPolicyComponent } from './pages/view-privacy-policy/view-privacy-policy.component';
 import { EditPrivacyPolicyComponent } from './pages/edit-privacy-policy/edit-privacy-policy.component';
 import { ViewTermsComponent } from './pages/view-terms/view-terms.component';
 import { EditTermsComponent } from './pages/edit-terms/edit-terms.component';
+import { LinkManagementComponent } from './pages/link-management/link-management.component';
+import { ProductCategoryComponent } from './pages/product-category/product-category.component';
+import { ViewProductCategoryComponent } from './pages/view-product-category/view-product-category.component';
+import { EditproductCategoryComponent } from './pages/editproduct-category/editproduct-category.component';
+import { AddproductCategoryComponent } from './pages/addproduct-category/addproduct-category.component';
 
 
 const routes: Routes = [
@@ -78,7 +84,7 @@ const routes: Routes = [
   // faq
   { path: 'faq', component: FaqComponent },
   { path: 'add-faq', component: AddFaqComponent },
-  { path: 'edit-faq', component: EditFaqComponent },
+  { path: 'edit-faq/:id', component: EditFaqComponent },
   { path: 'view-faq', component: ViewFaqComponent },
   // helpline number
  
@@ -166,8 +172,8 @@ const routes: Routes = [
 
   { path: 'product-management', component: ProductManagementComponent },
   { path: 'add-product-management', component: AddProductManagementComponent },
-  { path: 'edit-product-management', component: EditProductManagementComponent },
-  { path: 'view-product-management', component: ViewProductManagementComponent },
+  { path: 'edit-product-management/:id', component: EditProductManagementComponent },
+  { path: 'view-product-management/:id', component: ViewProductManagementComponent },
 
   { path: 'gift-card-management', component: GiftCardManagementComponent },
   { path: 'add-gift', component: AddGiftComponent},
@@ -176,29 +182,14 @@ const routes: Routes = [
   { path: 'home-visit-service', component: HomeVisitServiceComponent },
   { path: 'add-home-visit', component: AddHomeVisitComponent },
   { path: 'edit-home-visit', component: EditHomeVisitComponent },
-  { path: 'view-home-visit', component: ViewHomeVisitComponent }
+  { path: 'view-home-visit', component: ViewHomeVisitComponent },
+  { path: 'link-management', component: LinkManagementComponent },
+  { path: 'product-category', component: ProductCategoryComponent },
+  { path: 'view-productcategory/:id', component: ViewProductCategoryComponent },
+  { path: 'edit-productcategory/:id', component: EditproductCategoryComponent },
+  { path: 'add-productcategory', component: AddproductCategoryComponent }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- ];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

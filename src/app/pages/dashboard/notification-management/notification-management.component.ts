@@ -11,7 +11,7 @@ declare var $:any;
 })
 export class NotificationManagementComponent implements OnInit {
   notificationForm: FormGroup;
-  itemPerPage: number=1;
+  itemPerPage: number=10;
   currentPage: number=1;
   notificationList: any;
   total: any;
@@ -43,7 +43,7 @@ export class NotificationManagementComponent implements OnInit {
   getNotification() {
     this.service.showSpinner()
     let formData = {
-      "page": this.currentPage - 1,
+      "page": this.currentPage,
       "limit": this.itemPerPage
     }
     this.service.postApi('admin/notificationList', formData, 1).subscribe((res: any) => {
@@ -66,7 +66,7 @@ export class NotificationManagementComponent implements OnInit {
   searchNotification() {
     this.service.showSpinner()
     let formData = {
-      "page": 0,
+      "page": this.currentPage,
       "limit": this.itemPerPage,
       "search": this.notificationForm.value.search,
       "fromDate":Math.round(new Date(this.notificationForm.value.startdate).getTime()),

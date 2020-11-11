@@ -14,16 +14,23 @@ export class EditFaqComponent implements OnInit {
   faqList: any;
   faqId: any;
 
-  constructor(public mainService: MainService, private activatedroute: ActivatedRoute, private router: Router) { }
-
-  ngOnInit() {
-    this.activatedroute.queryParams.subscribe((res) => {
-      this.faqId = res.id;
-    })
+  constructor(public mainService: MainService, private activatedroute: ActivatedRoute, private router: Router) { 
     this.form = new FormGroup({
       "question": new FormControl('', Validators.required),
       "answer": new FormControl('', Validators.required),
     });
+  }
+
+  ngOnInit() {
+    // this.activatedroute.queryParams.subscribe((res) => {
+    //   this.faqId = res.id;
+    //   console.log('shivangi',this.faqId)
+    // });
+    this.activatedroute.paramMap.subscribe(params => {
+      this.faqId = params.get('id');
+      console.log("shivangi",this.faqId);
+    });
+    
     this.getFaqList()
     console.log('form data', this.form);
 
@@ -31,7 +38,7 @@ export class EditFaqComponent implements OnInit {
 
   getFaqList() {
     this.mainService.showSpinner();
-    this.mainService.getApi(ApiUrls.viewFaq + this.faqId, 1).subscribe((res: any) => {
+    this.mainService.getApi('faq/faqs/'+this.faqId, 1).subscribe((res: any) => {
       if (res.responseCode == 200) {
         this.faqList = res.result;
         this.form.patchValue({
@@ -49,12 +56,12 @@ export class EditFaqComponent implements OnInit {
 
   editFaq() {
     const data = {
-      question: this.form.value.question,
-      message: this.form.value.answer,
+      'question': this.form.value.question,
+      'answer': this.form.value.answer,
       "faqId": this.faqId
     }
     this.mainService.showSpinner();
-    this.mainService.putApi(ApiUrls.editFaq, data, 1).subscribe((res: any) => {
+    this.mainService.putApi('faq/faqs',data,1).subscribe((res: any) => {
       console.log("helpline number list response ==>", res)
       if (res.responseCode == 200) {
         this.router.navigate(['faq'])

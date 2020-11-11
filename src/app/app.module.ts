@@ -1,6 +1,6 @@
 // module
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -81,10 +81,16 @@ import { ViewNotificationComponent } from './pages/dashboard/notification-manage
 import { OtpComponent } from './pages/otp/otp.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { EditAboutUsComponent } from './pages/edit-about-us/edit-about-us.component';
+import { ViewPrivacyPolicyComponent } from './pages/view-privacy-policy/view-privacy-policy.component';
 import { EditPrivacyPolicyComponent } from './pages/edit-privacy-policy/edit-privacy-policy.component';
 import { ViewTermsComponent } from './pages/view-terms/view-terms.component';
 import { EditTermsComponent } from './pages/edit-terms/edit-terms.component';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { LinkManagementComponent } from './pages/link-management/link-management.component';
+import { ProductCategoryComponent } from './pages/product-category/product-category.component';
+import { ViewProductCategoryComponent } from './pages/view-product-category/view-product-category.component';
+import { EditproductCategoryComponent } from './pages/editproduct-category/editproduct-category.component';
+import { AddproductCategoryComponent } from './pages/addproduct-category/addproduct-category.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -159,9 +165,15 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     OtpComponent,
     AboutUsComponent,
     EditAboutUsComponent,
+    ViewPrivacyPolicyComponent,
     EditPrivacyPolicyComponent,
     ViewTermsComponent,
     EditTermsComponent,
+    LinkManagementComponent,
+    ProductCategoryComponent,
+    ViewProductCategoryComponent,
+    EditproductCategoryComponent,
+    AddproductCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -186,6 +198,7 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     NgMultiSelectDropDownModule.forRoot()
 
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, AuthGuard],
   bootstrap: [AppComponent]
 })

@@ -34,7 +34,7 @@ export class GiftCardManagementComponent implements OnInit {
   giftList() {
     this.service.showSpinner()
     let formData = {
-      "page": this.currentPage -1,
+      "page": this.currentPage ,
       "limit": this.itemPerPage
     }
     this.service.postApi('admin/giftList', formData, 1).subscribe((res: any) => {
@@ -58,7 +58,7 @@ export class GiftCardManagementComponent implements OnInit {
   searchGift() {
     this.service.showSpinner()
     let formData = {
-      "page":this.currentPage -1,
+      "page":this.currentPage,
       "limit": this.itemPerPage,
       "search": this.searchForm.value.search,
       "fromDate":Math.round(new Date(this.searchForm.value.startdate).getTime()),

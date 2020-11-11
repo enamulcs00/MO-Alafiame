@@ -12,8 +12,8 @@ declare var $: any;
 })
 export class FaqComponent implements OnInit {
   searchForm: FormGroup;
-  itemPerPage = 10;
-  currentPage = 1;
+  itemPerPage: number = 10;
+  page :number=0;
   total: any;
   helplineId: any
   faqList: any = [];
@@ -46,20 +46,21 @@ export class FaqComponent implements OnInit {
 
   pagination(event) {
     console.log(event)
-    this.currentPage = event;
+    this.itemPerPage = event;
     this.getFaqList()
   }
 
   // ------- get helpline number list -------- //
   getFaqList() {
     const data = {
-      page: this.currentPage,
+      page: this.page,
       limit: this.itemPerPage
     }
     this.mainService.showSpinner();
-    this.mainService.postApi(ApiUrls.faqList, data, 1).subscribe((res: any) => {
+    this.mainService.postApi('faq/faqsList', data, 1).subscribe((res: any) => {
       if (res.responseCode == 200) {
         this.faqList = res.result.docs ? res.result.docs : '';
+        console.log("faqlist", this.faqList);
         this.total = res.result.total;
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage);
@@ -77,12 +78,10 @@ export class FaqComponent implements OnInit {
   viewUser() {
     this.router.navigate(['view-faq'])
   }
-  editFaq() {
-    this.router.navigate(['/edit-faq'])
-
-  }
   
-  deleteFaqModal() {
+  
+  deleteFaqModal(item: any) {
+    this.faqId =item;
     $('#delete').modal('show')
   }
 
@@ -91,7 +90,7 @@ export class FaqComponent implements OnInit {
       faqId: this.faqId
     }
     this.mainService.showSpinner();
-    this.mainService.deleteApi(ApiUrls.deleteFaq, data, 1).subscribe((res: any) => {
+    this.mainService.deleteApi('faq/faqs', data, 1).subscribe((res: any) => {
       $('#delete').modal('hide')
       if (res.responseCode == 200) {
         this.faqList = res.result;

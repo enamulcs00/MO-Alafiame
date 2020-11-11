@@ -48,6 +48,9 @@
                             class="side_page_name head_color">PRODUCT Management</span></a>
                 </div>
             </div>
+            <div style="text-align: center;" class="menu-box toggle-menu"  routerLink="/product-category">
+                <h6>Product category</h6>
+            </div>
 
             <div class="menu-box toggle-menu" [ngClass]="currentUrl === '/test-center-management' ? 'active': ''">
                 <div class="card-header clearfix" [routerLink]="['/home-visit-service']" id="headingThree"
@@ -99,6 +102,17 @@
                 </div>
             </div>
 
+            
+            <div class="menu-box toggle-menu" [ngClass]="currentUrl === '/link-management' ? 'active': ''">
+                <div class="card-header clearfix" [routerLink]="['/link-management']" id="headingThree"
+                    data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                    aria-controls="collapseThree">
+                    <a class="side_menu">
+                        
+                        <span class="side_menu_icon"><i class="fa fa-file-text" aria-hidden="true"></i></span><span
+                            class="side_page_name head_color">LINK MANAGEMENT</span></a>
+                </div>
+            </div>
             <div class="menu-box">
                 <div class="card-header clearfix" id="headingOne">
                     <a class="side_menu" (click)="logOutModal()">
