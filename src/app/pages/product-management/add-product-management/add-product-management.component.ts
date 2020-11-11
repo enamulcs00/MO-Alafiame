@@ -19,6 +19,7 @@ export class AddProductManagementComponent implements OnInit {
   page: any=0;
   limit: any=10;
   id: any;
+  item: string;
 
   constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) {
     this.addproductForm = new FormGroup({
@@ -43,7 +44,7 @@ export class AddProductManagementComponent implements OnInit {
       'price': this.addproductForm.value.price,
       'usedFor ': this.addproductForm.value.UsedFor,
       'type ': this.addproductForm.value.type,
-      'categoryId': this.user
+      'categoryId': this.addproductForm.value.category._id
 
     }
     this.mainService.showSpinner();
@@ -132,11 +133,10 @@ export class AddProductManagementComponent implements OnInit {
         }
       })
     }
-    viewid(item: any)
-    {
-      this.id = item._id;
-      console.log('anny1234',this.id)
-      
-
+    selected( id: string)
+  {
+    this.item=id
+      console.log('id123456789',this.item);
     }
+    
 }

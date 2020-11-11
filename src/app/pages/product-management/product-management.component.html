@@ -21,7 +21,7 @@
                                                 <div class="input-group filter_search_group">
                                                     <input type="text" class="form-control overflow-text"
                                                     [(ngModel)]="search"  placeholder="Search by name"
-                                                        maxlength="60" ><button (click)="searchValue()" style="width: 39px;
+                                                        maxlength="60" ><button (click)="searchValue($event)" style="width: 39px;
                                                         background-color: #86559f;"><i class="fa fa-search"></i></button>
                                                     
                                                 </div>
@@ -55,7 +55,7 @@
                                       </tr>
                                 </thead>
                                  <tbody > <!--*ngIf="productlists" -->
-                                     <tr class="text-center" *ngFor="let items of productlists | paginate : {itemsPerPage:10963..36, currentPage:page, totalItems:total}; let i=index">
+                                     <tr class="text-center" *ngFor="let items of productlists | paginate : {itemsPerPage:10, currentPage:page, totalItems:total}; let i=index">
 
                                     <td class="content" >{{i+1}}</td>
                                     <td class="content" >{{items?.productName}}</td>
