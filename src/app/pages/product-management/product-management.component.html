@@ -55,7 +55,7 @@
                                       </tr>
                                 </thead>
                                  <tbody > <!--*ngIf="productlists" -->
-                                     <tr class="text-center" *ngFor="let items of productlists | paginate : {itemsPerPage:10, currentPage:page, totalItems:total}; let i=index">
+                                     <tr class="text-center" *ngFor="let items of productlists | paginate : {itemsPerPage:10963..36, currentPage:page, totalItems:total}; let i=index">
 
                                     <td class="content" >{{i+1}}</td>
                                     <td class="content" >{{items?.productName}}</td>
@@ -78,7 +78,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="custom-pagination mt-2 text-align-end" *ngIf="total > 10">
+                            <div class="custom-pagination mt-2 text-align-end">
                                 <pagination-controls (pageChange)="pagination($event)"></pagination-controls>
                             </div>
                         </div>

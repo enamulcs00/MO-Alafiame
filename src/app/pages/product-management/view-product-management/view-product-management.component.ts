@@ -10,6 +10,8 @@ import { MainService } from 'src/app/provider/main.service';
 })
 export class ViewProductManagementComponent implements OnInit {
   productId: string;
+  user: any;
+  profile: void;
   
 
   constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) { }
@@ -29,7 +31,9 @@ export class ViewProductManagementComponent implements OnInit {
 
     this.mainService.getApi('admin/viewProduct?productId='+this.productId,1).subscribe((res: any) => {
       console.log("viewProduct response ==>", res)
-      if (res.responseCode == 200) {
+      if (res.responseCode == 200 && res.result) {
+        this.user = res.result;
+        this.profile= this.user.image;
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
        } else {

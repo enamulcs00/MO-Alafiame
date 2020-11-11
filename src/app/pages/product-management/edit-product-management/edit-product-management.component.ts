@@ -14,6 +14,7 @@ export class EditProductManagementComponent implements OnInit {
   editproductForm: FormGroup;
   
   fileToupload: File= null;
+  user: any;
 
   constructor(private actRoute:ActivatedRoute,private route:Router,public mainService: MainService) { 
     
@@ -31,18 +32,8 @@ export class EditProductManagementComponent implements OnInit {
       this.productId = params.get('id');
       console.log("productId",this.productId);
     });
+    this.ViewProduct();
   }
-  // handleFileInput(file: FileList)
-  // {
-  //   this.fileToupload = file.item(0);
-  //       var reader = new FileReader();
-  //       reader.onload = (event : any) =>{
-  //         this.image = event.target.result;
-  //       }
-  //       reader.readAsDataURL(this.fileToupload);
-
-  // }
-// *************************Image upload event****************//
 
 handleInputChange(e) {
   var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
@@ -89,5 +80,37 @@ _handleReaderLoaded(e) {
       }
     })
   }
+  ViewProduct()
+  {
+    this.mainService.showSpinner();
+    this.mainService.getApi('admin/viewProduct?productId='+this.productId,1).subscribe((res: any) => {
+      console.log("editProduct response ==>",res)
+      if (res.responseCode == 200 && res.result) {
+        this.user = res.result;
+        this.profile = this.user.image;
+        this.editproductForm.patchValue({
+      'productName': this.user.productName,
+      'price': this.user.price,
+      'UsedFor': this.user.usedFor,
+      'type': this.user.type
+
+        })
+        this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage)
+       // this.route.navigateByUrl('product-management')
+        
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+      error => {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(error.responseMessage)
+      }
+    })
+
+  }
+    
+  
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 declare var $: any;
 
 
@@ -19,7 +20,7 @@ export class ProductManagementComponent implements OnInit {
   page: number= 0;
   limit:number= 10;
   productId: any;
-  itemPerPage: any;
+  itemPerPage: any=1;
   
 
   constructor(private router: Router,public mainService: MainService) {
@@ -33,7 +34,6 @@ export class ProductManagementComponent implements OnInit {
 
   searchValue() {
     this.mainService.showSpinner();
-    
     let object = {
       "search": this.search,
       "page": this.page,

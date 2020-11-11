@@ -29,9 +29,9 @@ margin-left: 2%;">
                         <span class="text text-danger" *ngIf="addproductForm.controls.UsedFor.touched && addproductForm.controls.UsedFor.invalid && addproductForm.controls.UsedFor.errors.required">*UsedFor  is Required</span><br>
                         <input type="text" class="form-control" formControlName="type">
                         <span class="text text-danger" *ngIf="addproductForm.controls.type.touched && addproductForm.controls.type.invalid && addproductForm.controls.type.errors.required">*Type is Required</span><br>
-                        <select class="form-control" id="category"  placeholder="Enter Category"
+                        <select class="form-control" placeholder="Enter Category"
                                     formControlName="category" (change)="viewid(item)">
-                                    <option [ngValue]='null' disabled>Choose Category</option>
+                                    <option  [ngValue]='null' disabled>Choose Category</option>
                                     <option *ngFor="let item of categoryList" [ngValue]="item._id" (change)="viewid(item)"> {{item.categoryName}}
                                     </option>
                                 </select>
