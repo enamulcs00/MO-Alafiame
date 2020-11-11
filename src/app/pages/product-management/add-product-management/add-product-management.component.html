@@ -30,9 +30,9 @@ margin-left: 2%;">
                         <input type="text" class="form-control" formControlName="type">
                         <span class="text text-danger" *ngIf="addproductForm.controls.type.touched && addproductForm.controls.type.invalid && addproductForm.controls.type.errors.required">*Type is Required</span><br>
                         <select class="form-control" placeholder="Enter Category"
-                                    formControlName="category" (click)="selected(item?._id)" >
+                                    formControlName="category" (change)="selected($event)" >
                                     <!-- <option  [ngValue]='null' disabled>Choose Category</option> -->
-                                    <option *ngFor="let item of categoryList" [ngValue]="item"  > {{item.categoryName}}
+                                    <option *ngFor="let item of categoryList" value="{{item._id}}"  > {{item.categoryName}}
                                     </option>
                                 </select>
                                
