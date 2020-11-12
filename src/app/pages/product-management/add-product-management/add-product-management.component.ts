@@ -19,6 +19,7 @@ export class AddProductManagementComponent implements OnInit {
   page: any=0;
   limit: any=10;
   id: any;
+  item: string;
 
   constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) {
     this.addproductForm = new FormGroup({
@@ -36,15 +37,14 @@ export class AddProductManagementComponent implements OnInit {
 
   addProduct()
   {
-    this.addProductcategory();
     let data = 
     {
       'productName': this.addproductForm.value.productName,
       'price': this.addproductForm.value.price,
-      'usedFor ': this.addproductForm.value.UsedFor,
-      'type ': this.addproductForm.value.type,
-      'categoryId': this.user
-
+      'usedFor': this.addproductForm.value.UsedFor,
+      'type': this.addproductForm.value.type,
+      'categoryId': this.item,
+      'image': this.profile
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/addProduct', data, 1).subscribe((res: any) => {
@@ -93,7 +93,6 @@ export class AddProductManagementComponent implements OnInit {
       if (res.responseCode == 200 && res.result) {
         this.mainService.hideSpinner();
         this.user=res.result._id;
-        console.log("categoryId",this.user)
         this.mainService.successToast(res.responseMessage)
          this.route.navigateByUrl('product-management')
         
@@ -119,7 +118,6 @@ export class AddProductManagementComponent implements OnInit {
         if (res.responseCode == 200 && res.result && res.result.docs) {
           this.categoryList= res.result.docs;
           this.total = res.result.total;
-          console.log('xyz',this.categoryList)
           this.mainService.hideSpinner();
           this.mainService.successToast(res.responseMessage)
            } else {
@@ -132,11 +130,9 @@ export class AddProductManagementComponent implements OnInit {
         }
       })
     }
-    viewid(item: any)
-    {
-      this.id = item._id;
-      console.log('anny1234',this.id)
-      
-
+    selected( id)
+  {
+    this.item=id.target['value'];
     }
+    
 }

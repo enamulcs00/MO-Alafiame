@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
-import { NgxPaginationModule } from 'ngx-pagination';
 declare var $: any;
 
 
@@ -17,10 +16,12 @@ export class ProductManagementComponent implements OnInit {
   
   search: string;
   productlists: any = [];
-  page: number= 0;
+  page: number= 1;
   limit:number= 10;
   productId: any;
-  itemPerPage: any=1;
+  itemPerPage: number=10;
+  p: any=0;
+  status: any;
   
 
   constructor(private router: Router,public mainService: MainService) {
@@ -33,6 +34,7 @@ export class ProductManagementComponent implements OnInit {
   }
 
   searchValue() {
+   
     this.mainService.showSpinner();
     let object = {
       "search": this.search,
@@ -45,7 +47,6 @@ export class ProductManagementComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
         this.productlists = res.result.docs
-        
       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
@@ -114,9 +115,15 @@ export class ProductManagementComponent implements OnInit {
       this.mainService.errorToast(error.responseMessage)
     })
   }
-  blockFunction(id)
+  blockFunction(id,status)
   {
     this.productId  = id
+    if(status=="ACTIVE"){
+this.status="BLOCK"
+    }
+    else{
+      this.status="ACTIVE"
+    }
      console.log('Block Modal', this.productId)
     $('#blockModal').modal({ backdrop: 'static', keyboard: false })
  }

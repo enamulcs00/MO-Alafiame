@@ -7,8 +7,7 @@ margin-left: 2%;">
         </div>
         <div style="margin-left: 49%;">
             <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
-           
-                <input type="file" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="position: relative;top: 33px;left: -54px;opacity: -0.9;"> <i class="fa fa-camera" style=" position: relative;left: 19%;bottom: 31px;"></i>
+                <input type="file" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="position: relative;top: 33px;left: -54px;opacity: -0.9;"> <i class="fa fa-camera" style=" position: relative;left: -118%;bottom: 36px;"></i>
         </div>
         <form [formGroup]="addproductForm">
             <div class="card" style="margin-left: 18%;">
@@ -34,16 +33,14 @@ margin-left: 2%;">
                             *ngIf="addproductForm.controls.UsedFor.touched && addproductForm.controls.UsedFor.invalid && addproductForm.controls.UsedFor.errors.required">*UsedFor
                             is Required</span><br>
                         <input type="text" class="form-control" formControlName="type">
-                        <span class="text text-danger"
-                            *ngIf="addproductForm.controls.type.touched && addproductForm.controls.type.invalid && addproductForm.controls.type.errors.required">*Type
-                            is Required</span><br>
-                        <select class="form-control" placeholder="Enter Category" formControlName="category"
-                            (change)="viewid(item)">
-                            <option [ngValue]='null' disabled>Choose Category</option>
-                            <option *ngFor="let item of categoryList" [ngValue]="item._id" (change)="viewid(item)">
-                                {{item.categoryName}}
-                            </option>
-                        </select>
+                        <span class="text text-danger" *ngIf="addproductForm.controls.type.touched && addproductForm.controls.type.invalid && addproductForm.controls.type.errors.required">*Type is Required</span><br>
+                        <select class="form-control" placeholder="Enter Category"
+                                    formControlName="category" (change)="selected($event)" >
+                                    <!-- <option  [ngValue]='null' disabled>Choose Category</option> -->
+                                    <option *ngFor="let item of categoryList" value="{{item._id}}"  > {{item.categoryName}}
+                                    </option>
+                                </select>
+                               
                     </div>
                 </div>
 

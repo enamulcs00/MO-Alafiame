@@ -6,9 +6,9 @@
       </div>
       <div style="margin-left: 37%;">
         <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
-         <i class="fa fa-camera" >
-    <input type="file" name="imageUrl" accept="image/*"
-    (change)="handleInputChange($event)" style="position: absolute; position: absolute;opacity: -0.9;"> </i> </div>
+         
+    <input type="file" name="imageUrl" accept="image/*" style="position: relative;left: -50px;top: 25px; opacity: -0.9;"
+    (change)="handleInputChange($event)" ><i class="fa fa-camera" style="position: relative;left: -327px;top: 25px;font-size: xx-large"></i></div>
       <form [formGroup]="editproductForm">
   
         <div class="card" style="margin-left: 13%;
