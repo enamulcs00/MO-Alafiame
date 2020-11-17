@@ -27,7 +27,8 @@ export class MainService {
     disableAutoFocus: true,
   };
   // baseURL = 'http://ec2-35-176-66-190.eu-west-2.compute.amazonaws.com:1503/api/v1/';
-  baseURL = 'http://182.72.203.245:1802/api/v1/';
+  // baseURL = 'http://182.72.203.245:1802/api/v1/';
+  baseURL = 'https://responsiveapp-api.mobiloitte.com/api/v1/';
 
   constructor(private router: Router, public httpClient: HttpClient, private toastrService: ToastrService, private spinnerService: NgxSpinnerService) { }
 
