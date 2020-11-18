@@ -13,7 +13,7 @@
                                     <ul class="view-ul view-ul2">
                                         <li><label>Test Center ID <span>:</span></label></li>
                                         <li>
-                                            <p class="content-view" [tooltip]="testCenterData?._id || '--'">
+                                            <p class="content-view" >
                                                 {{(testCenterData?._id | slice: -4) || '--'}}</p>
                                         </li>
                                     </ul>
@@ -22,7 +22,7 @@
                                     <ul class="view-ul view-ul2">
                                         <li><label>Test Center Name <span>:</span></label></li>
                                         <li>
-                                            <p class="content-view" [tooltip]="testCenterData?.hospitalName || '--'">
+                                            <p class="content-view" >
                                                 {{testCenterData?.hospitalName || '--'}}</p>
                                         </li>
                                     </ul>
@@ -31,7 +31,7 @@
                                     <ul class="view-ul view-ul2">
                                         <li><label>Email Address<span>:</span></label></li>
                                         <li>
-                                            <p class="content-view" [tooltip]="testCenterData?.email || '--'">
+                                            <p class="content-view" >
                                                 {{testCenterData?.email || '--'}}</p>
                                         </li>
                                     </ul>
@@ -41,7 +41,7 @@
                                         <li><label>Phone Number <span>:</span></label></li>
                                         <li>
                                             <p class="content-view"
-                                                [tooltip]="(testCenterData?.countryCode + ' ' + testCenterData?.mobileNumber) || '--'">
+                                                >
                                                 {{(testCenterData?.countryCode + ' ' + testCenterData?.mobileNumber) || '--'}}
                                             </p>
                                         </li>
