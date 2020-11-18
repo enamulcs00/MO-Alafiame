@@ -13,7 +13,7 @@
                                     <ul class="view-ul view-ul2">
                                         <li><label>Hospital ID <span>:</span></label></li>
                                         <li>
-                                            <p class="content-view" [tooltip]="hospitalData?._id || '--'">
+                                            <p class="content-view" >
                                                 {{(hospitalData?._id | slice: -4) || '--'}}</p>
                                         </li>
                                     </ul>
@@ -22,7 +22,7 @@
                                     <ul class="view-ul view-ul2">
                                         <li><label>Hospital Name <span>:</span></label></li>
                                         <li>
-                                            <p class="content-view" [tooltip]="hospitalData?.hospitalName || '--'">
+                                            <p class="content-view" >
                                                 {{hospitalData?.hospitalName || '--'}}</p>
                                         </li>
                                     </ul>
@@ -31,7 +31,7 @@
                                     <ul class="view-ul view-ul2">
                                         <li><label>Email Address<span>:</span></label></li>
                                         <li>
-                                            <p class="content-view" [tooltip]="hospitalData?.email || '--'">
+                                            <p class="content-view" >
                                                 {{hospitalData?.email || '--'}}</p>
                                         </li>
                                     </ul>
@@ -41,7 +41,7 @@
                                         <li><label>Phone Number <span>:</span></label></li>
                                         <li>
                                             <p class="content-view"
-                                                [tooltip]="((hospitalData?.countryCode + ' ' + hospitalData?.mobileNumber) || '--')">
+                                                >
                                                 {{(hospitalData?.countryCode + ' ' + hospitalData?.mobileNumber) || '--'}}
                                             </p>
                                         </li>

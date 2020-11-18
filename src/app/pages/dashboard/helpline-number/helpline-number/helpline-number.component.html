@@ -65,8 +65,8 @@
                                                 [(ngModel)]="item.isChecked" [ngModelOptions]="{standalone: true}"
                                                 (change)="onCheckboxChange($event)" />
                                             {{itemPerPage * (currentPage-1)+ i+1}}</td>
-                                        <td class="content" [tooltip]="item?.title || '--'">{{item?.title || '--'}}</td>
-                                        <td class="content" [tooltip]="item?.contactNumber || '--'">
+                                        <td class="content" >{{item?.title || '--'}}</td>
+                                        <td class="content" >
                                             {{item?.contactNumber}}</td>
                                         <td class="justify-content-center d-flex">
                                             <button class="btn btn-info ml-2 bt-margin"
