@@ -5,6 +5,7 @@ stages:
 
 sonarqube_test:
         stage: sonarqube_test
+        script:
         - chmod +x sonarqube.sh
         - ./sonarqube.sh
 
