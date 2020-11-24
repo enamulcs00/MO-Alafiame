@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'digital-identity-solution-admin-panel';
+  constructor(){
+    console.log('This is title',this.title)
+  }
 }
