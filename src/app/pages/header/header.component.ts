@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(public mainService: MainService) { }
 
   ngOnInit() {
-    this.mainService.loginStatus.subscribe((res: boolean) => console.log("status", this.showLoginHeader = res))
+    this.mainService.loginStatus.subscribe((res: boolean) => this.showLoginHeader = res)
     if (localStorage.getItem('token')) {
       this.showLoginHeader = true
     }
