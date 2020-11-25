@@ -18,7 +18,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -45,9 +45,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -126,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "digital-identity-solution-admin-panel"
+    }
+  },
+  "defaultProject": "digital-identity-solution-admin-panel",
+  "cli": {
+    "analytics": "330588a0-839c-4513-841f-73de0c8f0b55"
+  }
 }

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { StaticContentManagementComponent } from './static-content-management.component';
 
@@ -6,7 +6,7 @@ describe('StaticContentManagementComponent', () => {
   let component: StaticContentManagementComponent;
   let fixture: ComponentFixture<StaticContentManagementComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ StaticContentManagementComponent ]
     })
