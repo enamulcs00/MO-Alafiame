@@ -35,4 +35,3 @@ deploy:
             url: responsiveadmin.mobiloitte.com
         only:
             - UAT
-
