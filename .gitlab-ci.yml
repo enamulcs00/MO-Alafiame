@@ -8,7 +8,6 @@ sonarqube_test:
         script:
         - chmod +x sonarqube.sh
         - ./sonarqube.sh
-build:
         stage: build
         script:
         - echo "Creating build"
