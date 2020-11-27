@@ -159,6 +159,13 @@ export class MainService {
       event.preventDefault();
     }
   }
+//====================To check Number Only=====================
+NumOnly(event) {
+   let Numpattern = /^([0-9])*$/;
+   let resultNum =    Numpattern.test(event.key);
+   return  resultNum;
+
+  }
 
   BlockFuture() {
     $(() => {
@@ -175,5 +182,6 @@ export class MainService {
       $('#toDate').attr('max', this.maxDate);
     });
   }
+
   
 }
