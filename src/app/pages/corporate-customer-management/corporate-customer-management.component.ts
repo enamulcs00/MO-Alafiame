@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/provider/main.service';
 
 @Component({
   selector: 'app-corporate-customer-management',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./corporate-customer-management.component.css']
 })
 export class CorporateCustomerManagementComponent implements OnInit {
-
-  constructor() { }
+corporateList:any = [];
+  constructor(private service:MainService) { }
 
   ngOnInit() {
+    this.getCorporateList()
   }
-
+getCorporateList(){
+  let url = "admin/corporateList"
+  this.service.getApi(url,1).subscribe((res)=>{
+console.log('This is Response :',res);
+  })
+}
 }
