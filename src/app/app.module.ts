@@ -54,7 +54,7 @@ import { ViewPatientManagementHospitalComponent } from './pages/dashboard/hospit
 import { ViewPlasmaDonatedPatientManagementHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-plasma-donated-patient-management-hospital/view-plasma-donated-patient-management-hospital.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AddUserComponent } from './pages/dashboard/user-management/add-user/add-user.component';
-import { CorporateCustomerManagementComponent } from './pages/corporate-customer-management/corporate-customer-management.component';
+//import { CorporateCustomerManagementComponent } from './pages/corporate-customer-management/corporate-customer-management.component';
 import { AddCorporateCustomerComponent } from './pages/corporate-customer-management/add-corporate-customer/add-corporate-customer.component';
 import { EditCorporateCustomerComponent } from './pages/corporate-customer-management/edit-corporate-customer/edit-corporate-customer.component';
 import { ViewCorporateCustomerComponent } from './pages/corporate-customer-management/view-corporate-customer/view-corporate-customer.component';
@@ -138,7 +138,7 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     ViewPatientManagementHospitalComponent,
     ViewPlasmaDonatedPatientManagementHospitalComponent,
     AddUserComponent,
-    CorporateCustomerManagementComponent,
+  //  CorporateCustomerManagementComponent,
     AddCorporateCustomerComponent,
     EditCorporateCustomerComponent,
     ViewCorporateCustomerComponent,
