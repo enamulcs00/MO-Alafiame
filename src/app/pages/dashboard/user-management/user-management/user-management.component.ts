@@ -1158,7 +1158,7 @@ export class UserManagementComponent implements OnInit {
 
   
   // ------------------------------- delete functinality start----------------------------- //
-  deleteUserModal(userId,status) {
+  deleteUserModal(userId) {
     $('#deleteModal').modal('show')
     this.userId = userId
     this.status=status
@@ -1217,7 +1217,7 @@ export class UserManagementComponent implements OnInit {
     })
   }
 
-  DeleteUserModal(userId,status) {
+  DeleteUserModal(userId) {
     $('#DeleteModal').modal('show')
     this.userId = userId
     this.status=status
@@ -1330,19 +1330,7 @@ export class UserManagementComponent implements OnInit {
 
     }
   }
-
-
-
-
-
-
-  // ------------------------------- block/unblock functinality end----------------------------- //
-
-  
-
-
-
-    
+// ------------------------------- block/unblock functinality end----------------------------- //
 }
 
 
