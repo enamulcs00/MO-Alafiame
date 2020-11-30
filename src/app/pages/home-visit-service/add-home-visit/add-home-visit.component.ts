@@ -9,7 +9,6 @@ export class AddHomeVisitComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

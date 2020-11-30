@@ -22,7 +22,7 @@ export class ProductManagementComponent implements OnInit {
   itemPerPage: number=10;
   p: any=0;
   status: any;
-  
+  total:any;
 
   constructor(private router: Router,public mainService: MainService) {
     
@@ -156,5 +156,5 @@ this.status="BLOCK"
   this.itemPerPage = event;
   this.productList()
 }
-
+deleteMultiUser(){}
 }

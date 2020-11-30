@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-visit-service.component.css']
 })
 export class HomeVisitServiceComponent implements OnInit {
-
+  search:any;
+  total:any;
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  searchValue(){}
+
+  pagination(event){}
+
+  deleteUser(){}
 }
