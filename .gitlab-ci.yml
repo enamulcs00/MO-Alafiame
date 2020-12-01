@@ -8,6 +8,7 @@ sonarqube_test:
         script:
         - chmod +x sonarqube.sh
         - ./sonarqube.sh
+        
 build:
         stage: build
         script:
@@ -16,6 +17,7 @@ build:
         - rm -rf node_modules
         - rm -rf package-lock.json
         - npm install
+        - npm install ng2-tooltip-directive@2.8.17
         - CI=false npm run build
         - echo "Build completed"
 
