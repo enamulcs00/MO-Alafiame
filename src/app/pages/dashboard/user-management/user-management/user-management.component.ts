@@ -268,7 +268,7 @@ export class UserManagementComponent implements OnInit {
       'limit':this.itemPerPage,
     }
     this.mainService.postApi('admin/listUsers',data, 1).subscribe((res:any)=>{
-      
+      console.log('CustomerLength',res)
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.customerData=res.result.docs;

@@ -22,7 +22,7 @@ export class ProductManagementComponent implements OnInit {
   itemPerPage: number=10;
   p: any=0;
   status: any;
-  total:any;
+  ProductLenght:any;
 
 
   constructor(private router: Router,public mainService: MainService) {
@@ -71,8 +71,9 @@ export class ProductManagementComponent implements OnInit {
     this.mainService.postApi('admin/productList', object, 1).subscribe(res => {
       console.log(" productList==>", res)
       if (res.responseCode == 200 && res.result && res.result.docs) {
-        console.log('shweta',res.result)
+        console.log('ProductList',res.result)
         this.productlists = res.result.docs
+        this.ProductLenght = res.result.total;
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
         
