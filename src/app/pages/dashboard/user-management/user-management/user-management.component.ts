@@ -440,7 +440,7 @@ export class UserManagementComponent implements OnInit {
       'limit':this.itemPerPage,
     }
     this.mainService.postApi('admin/corporateList',data, 1).subscribe((res:any)=>{
-      
+      console.log('Response of corporate--:',res)
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.corporateData=res.result.docs;
@@ -587,10 +587,6 @@ export class UserManagementComponent implements OnInit {
       }
     })
   }
-
-  
-
-
   changeCorporateValue(){
     this.getCorporate()
     this.corporateUserValue=true;
