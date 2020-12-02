@@ -134,5 +134,4 @@ export class AddProductManagementComponent implements OnInit {
   {
     this.item=id.target['value'];
     }
-    
 }
