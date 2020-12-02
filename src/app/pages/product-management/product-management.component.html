@@ -57,7 +57,7 @@
                                  <tbody > 
                                      <tr class="text-center" *ngFor="let items of productlists | paginate : {itemsPerPage:itemPerPage, currentPage:currentPage, totalItems:ProductLenght}; let i=index">
 
-                                    <td class="content" >{{i+1}}</td>
+                                    <td class="content" > {{itemPerPage * (currentPage-1)+ i+1}}</td>
                                     <td class="content" >{{items?.productName}}</td>
                                     <td class="content" >{{items?.price}}</td>
                                     <td class="content" >{{items?.usedFor}}</td>
@@ -69,9 +69,8 @@
                                          <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-product-management',items?._id]">View</button>
                                          <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(items?._id)"
                                              >Delete</button>
-                                             
-                                    </td>
-                                </tr>
+                                             </td>
+                                            </tr>
                                        <tr *ngIf="!productlists.length">
                                         <td class="table-no-record" colspan="9">No Record Found</td>
                                     </tr>

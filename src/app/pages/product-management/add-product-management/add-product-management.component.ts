@@ -64,8 +64,6 @@ export class AddProductManagementComponent implements OnInit {
       }
     })
   }
-
-  
   handleInputChange(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     
