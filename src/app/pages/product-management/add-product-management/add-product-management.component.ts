@@ -46,9 +46,9 @@ export class AddProductManagementComponent implements OnInit {
       'categoryId': this.item,
       'image': this.profile
     }
-    this.mainService.showSpinner();
+   this.mainService.showSpinner();
     this.mainService.postApi('admin/addProduct', data, 1).subscribe((res: any) => {
-      console.log("addProduct response ==>", res)
+      console.log("addProduct response ==>", res);
       if (res.responseCode == 200) {
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)

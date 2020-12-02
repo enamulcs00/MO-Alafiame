@@ -5,11 +5,16 @@ margin-left: 2%;">
             <h1 class="page_title"> ADD PRODUCT</h1>
             <hr style="background: black; opacity: 0.5;width: 135%;">
         </div>
-        <div style="margin-left: 49%;">
-            <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
-                <input type="file" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="position: relative;top: 33px;left: -54px;opacity: -0.9;"> <i class="fa fa-camera" style=" position: relative;left: -118%;bottom: 36px;"></i>
-        </div>
         <form [formGroup]="addproductForm">
+            <div style="margin-left: 49%;">
+                <label for="fileInput">
+                    
+                <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
+                
+                <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="position: relative;top: 33px;left: -54px;opacity: -0.9;"> 
+                
+            </label>
+            </div>
             <div class="card" style="margin-left: 18%;">
                 <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
                     <div class="col">
