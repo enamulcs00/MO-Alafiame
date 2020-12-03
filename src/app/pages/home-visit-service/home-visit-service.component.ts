@@ -13,6 +13,7 @@ export class HomeVisitServiceComponent implements OnInit {
   currentPage: number = 1;
   itemPerPage:number=10;
 servicelists: any=[];
+subCategoryItem:any = [];
 categoryList: any=[];
   categoryId: string;
  
@@ -85,10 +86,13 @@ categoryList: any=[];
       "limit": this.itemPerPage
       }
     this.mainService.postApi('admin/serviceList',object,1).subscribe(res => {
-      console.log("Service & productList==>", res.result.docs.subCategoryName)
+      console.log("Service & productList==>", res.result.docs)
       if (res.responseCode == 200 && res.result && res.result.docs) {
-        console.log('shweta',res.result)
         this.servicelists = res.result.docs
+        for( var item of this.servicelists){
+          this.subCategoryItem.push(item.subCategoryName)
+        }
+        
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
         
