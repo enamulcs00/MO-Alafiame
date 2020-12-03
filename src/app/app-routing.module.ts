@@ -181,8 +181,8 @@ const routes: Routes = [
 
   { path: 'home-visit-service', component: HomeVisitServiceComponent },
   { path: 'add-home-visit', component: AddHomeVisitComponent },
-  { path: 'edit-home-visit', component: EditHomeVisitComponent },
-  { path: 'view-home-visit', component: ViewHomeVisitComponent },
+  { path: 'edit-home-visit/:id', component: EditHomeVisitComponent },
+  { path: 'view-home-visit/:id', component: ViewHomeVisitComponent },
   { path: 'link-management', component: LinkManagementComponent },
   { path: 'product-category', component: ProductCategoryComponent },
   { path: 'view-productcategory/:id', component: ViewProductCategoryComponent },

@@ -11,10 +11,11 @@ declare var $: any;
 export class HomeVisitServiceComponent implements OnInit {
   search: string;
   currentPage: number = 1;
-  itemPerPage:number=10;
+  itemPerPage:number=5;
 servicelists: any=[];
 subCategoryItem:any = [];
 categoryList: any=[];
+categoryLength:any;
   categoryId: string;
  
 
@@ -59,10 +60,11 @@ categoryList: any=[];
       "limit": this.itemPerPage
       }
     this.mainService.postApi('admin/categoryList',object,1).subscribe(res => {
-      console.log(" productList Checking==>", res)
+      console.log(" productList Checking==>", res.result)
       if (res.responseCode == 200 && res.result && res.result.docs) {
         console.log('shweta',res.result)
         this.categoryList = res.result.docs
+        this.categoryLength = res.result.total
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
         
@@ -138,8 +140,9 @@ categoryList: any=[];
   }
 
  pagination(event) {
-  console.log(event)
+  console.log('PageNo',event)
   this.currentPage = event;
+  this.categoryLists();
   this.serviceList();
 }
 
