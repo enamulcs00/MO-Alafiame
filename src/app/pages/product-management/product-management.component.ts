@@ -17,10 +17,10 @@ export class ProductManagementComponent implements OnInit {
   search: string;
   productlists: any = [];
   
-  limit:number= 10;
+  limit:number= 5;
   currentPage = 1;
   productId: any;
-  itemPerPage = 4;
+  itemPerPage = 5;
   p: any=0;
   status: any;
   ProductLenght:any;
@@ -155,8 +155,8 @@ this.status="BLOCK"
 
  }
  pagination(event) {
-  console.log(event)
-  this.itemPerPage = event;
+  console.log('This event will display page number:->',event);
+  this.currentPage = event;
   this.productList()
 }
 deleteMultiUser(){}
