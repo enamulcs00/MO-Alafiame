@@ -59,7 +59,7 @@
                                         <td class="content"> {{item?.categoryName}}</td>
                                         <td class="content"><img [src]="item?.categoryImage" alt="" style="width: 66px;">
                                         </td>
-                                        <td class="content" ><!--{{data?.subCategoryName}}*ngFor=" let data of servicelists" -->
+                                        <td class="content" *ngFor=" let data of servicelists">{{data?.subCategoryName}} 
                                       </td>
                                         <td class="content">{{item?.updatedAt | date}}</td>
                                         <td class="justify-content-center d-flex" style="padding-top: 27px;padding-bottom: 24px;">

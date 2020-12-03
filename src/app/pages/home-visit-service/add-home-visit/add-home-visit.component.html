@@ -10,7 +10,7 @@ margin-left: 2%;">
                 <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
                     <div class="col">
                         <label>Category name:</label><br><br>
-                        <label>Category image:</label><br><br><br><br>
+                        <label>Category image:</label><br><br><br><br><br>
                         <label>Subcategories:</label>
                     </div>
                     <div class="col" style=" margin-top: -1.5%;">
@@ -19,7 +19,7 @@ margin-left: 2%;">
                         <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
                         <input type="file" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="bottom: 64px;
                         position: absolute;
-                        left: 116px;"><br>
+                        left: 116px;"><br><br>
                         <input type="text" class="form-control" formControlName="subCategories">
                         <span class="text text-danger" *ngIf="addhomeForm.controls.subCategories.touched && addhomeForm.controls.subCategories.invalid && addhomeForm.controls.subCategories.errors.required">*Subcategory  is Required</span><br>
                         

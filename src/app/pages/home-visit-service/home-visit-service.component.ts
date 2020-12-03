@@ -58,7 +58,7 @@ categoryList: any=[];
       "limit": this.itemPerPage
       }
     this.mainService.postApi('admin/categoryList',object,1).subscribe(res => {
-      console.log(" productList==>", res)
+      console.log(" productList Checking==>", res)
       if (res.responseCode == 200 && res.result && res.result.docs) {
         console.log('shweta',res.result)
         this.categoryList = res.result.docs
@@ -85,7 +85,7 @@ categoryList: any=[];
       "limit": this.itemPerPage
       }
     this.mainService.postApi('admin/serviceList',object,1).subscribe(res => {
-      console.log(" productList==>", res)
+      console.log("Service & productList==>", res.result.docs.subCategoryName)
       if (res.responseCode == 200 && res.result && res.result.docs) {
         console.log('shweta',res.result)
         this.servicelists = res.result.docs

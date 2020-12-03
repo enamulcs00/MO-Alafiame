@@ -40,7 +40,9 @@ export class AddHomeVisitComponent implements OnInit {
     let data = 
     {
       'categoryName': this.addhomeForm.value.categoryName,
-      'categoryImage': this.profile
+      
+      'categoryImage': this.profile,
+      
 
     }
     this.mainService.showSpinner();
