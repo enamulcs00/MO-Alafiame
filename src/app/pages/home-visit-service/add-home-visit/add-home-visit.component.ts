@@ -20,6 +20,7 @@ export class AddHomeVisitComponent implements OnInit {
     });
    }
 
+<<<<<<< HEAD
   ngOnInit() {
   }
   handleInputChange(e) {
@@ -65,5 +66,8 @@ export class AddHomeVisitComponent implements OnInit {
 
 
   }
+=======
+  ngOnInit() {}
+>>>>>>> 27e696c67efb2e0b9f2133990aa92825880f1c2a
 
 }

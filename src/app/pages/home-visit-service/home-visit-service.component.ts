@@ -9,6 +9,7 @@ declare var $: any;
   styleUrls: ['./home-visit-service.component.css']
 })
 export class HomeVisitServiceComponent implements OnInit {
+<<<<<<< HEAD
   search: string;
   currentPage: number = 1;
   itemPerPage:number=5;
@@ -146,5 +147,17 @@ categoryLength:any;
   this.serviceList();
 }
 
+=======
+  search:any;
+  total:any;
+  constructor() { }
 
+  ngOnInit() {}
+
+  searchValue(){}
+
+  pagination(event){}
+>>>>>>> 27e696c67efb2e0b9f2133990aa92825880f1c2a
+
+  deleteUser(){}
 }

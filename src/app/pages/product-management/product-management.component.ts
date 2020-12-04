@@ -23,8 +23,12 @@ export class ProductManagementComponent implements OnInit {
   itemPerPage = 5;
   p: any=0;
   status: any;
+<<<<<<< HEAD
   ProductLenght:any;
 
+=======
+  total:any;
+>>>>>>> 27e696c67efb2e0b9f2133990aa92825880f1c2a
 
   constructor(private router: Router,public mainService: MainService) {
     
