@@ -16,10 +16,11 @@ margin-left: 2%;">
                     <div class="col" style=" margin-top: -1.5%;">
                         <input type="text" class="form-control" formControlName="categoryName">
                         <span class="text text-danger" *ngIf="addhomeForm.controls.categoryName.touched && addhomeForm.controls.categoryName.invalid && addhomeForm.controls.categoryName.errors.required">*Category Name is Required</span><br>
-                        <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
-                        <input type="file" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="bottom: 64px;
-                        position: absolute;
-                        left: 116px;"><br><br>
+                        <label for="fileInput">
+                        <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
+                        <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
+                        <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="visibility:hidden;">
+                    </label>
                         <input type="text" class="form-control" formControlName="subCategories">
                         <span class="text text-danger" *ngIf="addhomeForm.controls.subCategories.touched && addhomeForm.controls.subCategories.invalid && addhomeForm.controls.subCategories.errors.required">*Subcategory  is Required</span><br>
                         
