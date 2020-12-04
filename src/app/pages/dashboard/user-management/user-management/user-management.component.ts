@@ -1060,10 +1060,7 @@ export class UserManagementComponent implements OnInit {
         else if (this.currTab === 'Practioner'){
           this.practionerData=res.result.docs;
         }
-        
-        
-        
-      }
+        }
       else if(res.responseCode==404){
         if(this.currTab === 'Customer'){
           this.customerData=[];

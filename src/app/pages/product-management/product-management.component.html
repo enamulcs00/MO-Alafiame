@@ -28,11 +28,8 @@
                                             </div>
                                         </div>
                                         
-                                                <button type="button" class="btn btn-theme" style="margin-left: 39%;
-                                                height: 8%;    width: 12%;" 
-                                                    >Export
-                                                    csv</button>
-                                                    <button type="button" class="btn btn-theme Go_btn ml-2" style="margin-left: 45%;
+            <button type="button" (click)="exportCSV()" class="btn btn-theme" style="margin-left: 39%;height: 8%;    width: 12%;">Export csv</button>
+            <button type="button" class="btn btn-theme Go_btn ml-2" style="margin-left: 45%;
                                                     height: 8%;    width: 12%;" [routerLink]="['/add-product-management']"
                                                    >Add new
                                                     </button>

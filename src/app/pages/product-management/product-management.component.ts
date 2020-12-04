@@ -58,9 +58,19 @@ export class ProductManagementComponent implements OnInit {
         this.mainService.errorToast(error.responseMessage)
       }
     })
-    
-    
-  }
+    }
+    exportCSV(){
+      let dataArr = [];
+      dataArr.push({
+         sno: "S.No.",
+         Name: "Name",
+         DOB: "D.O.B",
+         Email:"Email",
+         Contact:"Contact Number"
+     })
+
+    }
+
   productList()
   {
     this.mainService.showSpinner();
