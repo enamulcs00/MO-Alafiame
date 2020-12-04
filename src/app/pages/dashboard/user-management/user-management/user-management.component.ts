@@ -268,7 +268,7 @@ export class UserManagementComponent implements OnInit {
       'limit':this.itemPerPage,
     }
     this.mainService.postApi('admin/listUsers',data, 1).subscribe((res:any)=>{
-      
+      console.log('CustomerLength',res)
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.customerData=res.result.docs;
@@ -440,7 +440,7 @@ export class UserManagementComponent implements OnInit {
       'limit':this.itemPerPage,
     }
     this.mainService.postApi('admin/corporateList',data, 1).subscribe((res:any)=>{
-      
+      console.log('Response of corporate--:',res)
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.corporateData=res.result.docs;
@@ -587,10 +587,6 @@ export class UserManagementComponent implements OnInit {
       }
     })
   }
-
-  
-
-
   changeCorporateValue(){
     this.getCorporate()
     this.corporateUserValue=true;
@@ -1158,7 +1154,7 @@ export class UserManagementComponent implements OnInit {
 
   
   // ------------------------------- delete functinality start----------------------------- //
-  deleteUserModal(userId,status) {
+  deleteUserModal(userId) {
     $('#deleteModal').modal('show')
     this.userId = userId
     this.status=status
@@ -1217,7 +1213,7 @@ export class UserManagementComponent implements OnInit {
     })
   }
 
-  DeleteUserModal(userId,status) {
+  DeleteUserModal(userId) {
     $('#DeleteModal').modal('show')
     this.userId = userId
     this.status=status
@@ -1330,19 +1326,7 @@ export class UserManagementComponent implements OnInit {
 
     }
   }
-
-
-
-
-
-
-  // ------------------------------- block/unblock functinality end----------------------------- //
-
-  
-
-
-
-    
+// ------------------------------- block/unblock functinality end----------------------------- //
 }
 
 

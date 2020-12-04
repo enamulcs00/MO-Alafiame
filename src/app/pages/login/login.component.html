@@ -12,7 +12,7 @@
                                 <div class="login-box-body">
                                     <div class="form-group">
                                         <input type="text" formControlName="number"
-                                            (keypress)="mainService.toCheckSpaceChar($event)" maxlength="20"
+                                            (keypress)="mainService.NumOnly($event)" maxlength="20"
                                             id="loginPhoneNumber" class="form-control"
                                             placeholder="Enter Mobile Number" />
                                         <div class="text-danger"
@@ -21,7 +21,7 @@
                                         </div>
                                         <ng-template #check>
                                             <div class="text-danger"
-                                                *ngIf="(loginForm.get('number').hasError('pattern') || isValidNumbers === false) && loginForm.get('number').dirty">
+                                                *ngIf="(loginForm.get('number').hasError('pattern')) && loginForm.get('number').dirty">
                                                 *Please enter valid mobile number.
                                             </div>
                                         </ng-template>

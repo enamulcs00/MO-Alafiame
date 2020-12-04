@@ -34,7 +34,7 @@ import { ViewPatientManagementTestCenterComponent } from './pages/dashboard/test
 //import { ViewPlasmaDonatedPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-plasma-donated-patient-management-test-center/view-plasma-donated-patient-management-test-center.component';
 import { ViewHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-hospital/view-hospital.component';
 import { AddUserComponent } from './pages/dashboard/user-management/add-user/add-user.component';
-import { CorporateCustomerManagementComponent } from './pages/corporate-customer-management/corporate-customer-management.component';
+//import { CorporateCustomerManagementComponent } from './pages/corporate-customer-management/corporate-customer-management.component';
 import { AddCorporateCustomerComponent } from './pages/corporate-customer-management/add-corporate-customer/add-corporate-customer.component';
 import { EditCorporateCustomerComponent } from './pages/corporate-customer-management/edit-corporate-customer/edit-corporate-customer.component';
 import { ViewCorporateCustomerComponent } from './pages/corporate-customer-management/view-corporate-customer/view-corporate-customer.component';
@@ -156,7 +156,7 @@ const routes: Routes = [
   { path: 'view-user', component: ViewUserComponent },
   { path: 'add-user', component: AddUserComponent },
  
-  { path: 'corporate-customer-management', component: CorporateCustomerManagementComponent },
+  // { path: 'corporate-customer-management', component: CorporateCustomerManagementComponent },
   { path: 'add-corporate-customer-management', component: AddCorporateCustomerComponent },
   { path: 'edit-corporate-customer-management', component: EditCorporateCustomerComponent },
   { path: 'view-corporate-customer-management', component: ViewCorporateCustomerComponent },
@@ -181,8 +181,8 @@ const routes: Routes = [
 
   { path: 'home-visit-service', component: HomeVisitServiceComponent },
   { path: 'add-home-visit', component: AddHomeVisitComponent },
-  { path: 'edit-home-visit', component: EditHomeVisitComponent },
-  { path: 'view-home-visit', component: ViewHomeVisitComponent },
+  { path: 'edit-home-visit/:id', component: EditHomeVisitComponent },
+  { path: 'view-home-visit/:id', component: ViewHomeVisitComponent },
   { path: 'link-management', component: LinkManagementComponent },
   { path: 'product-category', component: ProductCategoryComponent },
   { path: 'view-productcategory/:id', component: ViewProductCategoryComponent },

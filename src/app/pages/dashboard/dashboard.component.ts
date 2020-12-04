@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.totalUser=res.result.total
-        console.log("f", this.totalUser);
+        
         
       }
     },(error)=>{
@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
         this.mainService.hideSpinner();
         this.totalCorporate=res.result.total;
 
-        console.log("f", this.totalCorporate);
+        
         
       }
     },(error)=>{
@@ -75,7 +75,7 @@ export class DashboardComponent implements OnInit {
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.totalPractioner=res.result.total
-        console.log("f", this.totalUser);
+        
         
       }
     },(error)=>{

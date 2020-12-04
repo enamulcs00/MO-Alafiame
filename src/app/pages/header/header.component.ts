@@ -11,10 +11,12 @@ export class HeaderComponent implements OnInit {
   showLogo: boolean = false;
   selected: any;
 
-  constructor(public mainService: MainService) { }
+  constructor(public mainService: MainService) {
+    
+  }
 
   ngOnInit() {
-    this.mainService.loginStatus.subscribe((res: boolean) => console.log("status", this.showLoginHeader = res))
+    this.mainService.loginStatus.subscribe((res: boolean) => this.showLoginHeader = res)
     if (localStorage.getItem('token')) {
       this.showLoginHeader = true
     }
