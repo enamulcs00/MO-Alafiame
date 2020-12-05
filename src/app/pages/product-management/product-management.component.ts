@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { MainService } from 'src/app/provider/main.service';
 declare var $: any;
-
-
-
 
 @Component({
   selector: 'app-product-management',
@@ -16,7 +14,6 @@ export class ProductManagementComponent implements OnInit {
   
   search: string;
   productlists: any = [];
-  
   limit:number= 5;
   currentPage = 1;
   productId: any;
@@ -62,12 +59,22 @@ export class ProductManagementComponent implements OnInit {
     exportCSV(){
       let dataArr = [];
       dataArr.push({
-         sno: "S.No.",
-         Name: "Name",
-         DOB: "D.O.B",
-         Email:"Email",
-         Contact:"Contact Number"
-     })
+         sno: "S.No",
+         Name: "Name of product",
+         Charge: "Charges",
+         Use:"Used For",
+         Type:"Service Type"
+     });
+     this.productlists.forEach((element,ind) => {
+      dataArr.push({
+          sno:ind+1,
+          Name:element.productName,
+          Charges:element.price,
+          Use:element.UsedFor,
+          Type:element.type,
+      })
+  }) 
+  new ngxCsv(dataArr, 'Product_management');
 
     }
 
@@ -82,7 +89,7 @@ export class ProductManagementComponent implements OnInit {
     this.mainService.postApi('admin/productList', object, 1).subscribe(res => {
       console.log(" productList==>", res)
       if (res.responseCode == 200 && res.result && res.result.docs) {
-        console.log('ProductList',res.result.total)
+        
         this.productlists = res.result.docs
         this.ProductLenght = res.result.total;
         this.mainService.hideSpinner();
