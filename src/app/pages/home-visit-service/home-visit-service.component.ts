@@ -1,3 +1,4 @@
+import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
@@ -25,6 +26,30 @@ categoryLength:any;
     this.categoryLists();
     this.serviceList();
   }
+
+  exportCSV(){
+    let dataArr = [];
+    dataArr.push({
+       sno: "S.No",
+       Name: "Category Name",
+       Image: "Category Image",
+       Subcategory:"Subcategories",
+       Update:"Updated On"
+   });
+   this.servicelists.forEach((element,ind) => {
+    dataArr.push({
+        sno:ind+1,
+        Name:element.categoryId.categoryName,
+        Charges:element.subCategoryImage,
+        Use:element.subCategoryName,
+        Type:element.updatedAt,
+    })
+}) 
+new ngxCsv(dataArr, 'Service_management');
+
+  }
+
+
   searchValue() {
    
     this.mainService.showSpinner();
