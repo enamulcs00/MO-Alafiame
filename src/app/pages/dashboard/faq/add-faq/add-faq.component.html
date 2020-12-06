@@ -10,8 +10,9 @@
           <div class="add-store-block input-style mb20 ">
             <form [formGroup]="form">
               <div class="form-group row align-items-baseline">
-                <div class="col-md-12">
-                  <h4 class="mt20">Question:</h4>
+                
+                  <label class="col-md-2 col-form-label" id="fontSize">Question:</label>
+                  <div class="col-md-10">
                   <input type="text" class="form-control" formControlName="question" maxlength="512"
                     (keypress)="mainService.preventSpace($event)" style="width: 72%;margin-top: -6%;margin-left: 16%;">
                   <div *ngIf="form.get('question').hasError('required') && form.get('question').dirty"
@@ -21,8 +22,8 @@
                 </div>
               </div>
               <div class="form-group row align-items-baseline">
-                <div class="col-md-12">
-                  <h4 class="mt20">Answer:</h4>
+                <label class="col-md-2 col-form-label" id="fontSize">Answer:</label>
+                  <div class="col-md-10">
                   <textarea class="form-control" formControlName="answer" name="" id="" cols="30" rows="5"
                     (keypress)="mainService.preventSpace($event)" style="margin-top: -5%;margin-left: 16%;width: 72%;"></textarea>
                   <div *ngIf="form.get('answer').hasError('required') && form.get('answer').dirty" class="text-danger">
@@ -30,16 +31,16 @@
                   </div>
                 </div>
               </div>
+              <div class="container" style="padding-left: 240px;">
+                <div class="form-group row">
+                <button class="btn btn-md btn-theme"  [routerLink]="['/faq']">Back</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-md btn-theme" (click)="addFaq()"[disabled]="form.invalid">Save</button>
+                </div>
+              </div>
+              
             </form>
           </div>
-          <div class="text-center mt40 mb40">
-            <button class="btn btn-large  max-WT-150 btn-theme" (click)="addFaq()"
-               style="margin-left: -14%;"[routerLink]="['/faq']">Back</button>
-          </div>
-          <div class="text-center mt40 mb40">
-            <button class="btn btn-large  max-WT-150 btn-theme" (click)="addFaq()"
-              [disabled]="form.invalid" style="margin-left: 40%; margin-top: -21%;"[routerLink]="['/faq']">Save</button>
-          </div>
+        
         </div>
       </div>
     </div>
