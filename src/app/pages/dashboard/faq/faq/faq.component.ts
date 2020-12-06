@@ -12,8 +12,8 @@ declare var $: any;
 })
 export class FaqComponent implements OnInit {
   searchForm: FormGroup;
-  itemPerPage: number = 10;
-  page :number=0;
+  itemPerPage: number = 5;
+  currentPage :number=1;
   total: any;
   helplineId: any
   faqList: any = [];
@@ -46,18 +46,19 @@ export class FaqComponent implements OnInit {
 
   pagination(event) {
     console.log(event)
-    this.itemPerPage = event;
+    this.currentPage = event;
     this.getFaqList()
   }
 
   // ------- get helpline number list -------- //
   getFaqList() {
     const data = {
-      page: this.page,
+      page: this.currentPage,
       limit: this.itemPerPage
     }
     this.mainService.showSpinner();
     this.mainService.postApi('faq/faqsList', data, 1).subscribe((res: any) => {
+      console.log('This is faq items:--->',res)
       if (res.responseCode == 200) {
         this.faqList = res.result.docs ? res.result.docs : '';
         console.log("faqlist", this.faqList);

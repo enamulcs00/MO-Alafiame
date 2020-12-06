@@ -24,13 +24,13 @@ export class AddFaqComponent implements OnInit {
   addFaq() {
     const data = {
       question: this.form.value.question,
-      message: this.form.value.answer
+      answer: this.form.value.answer
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/addFaq', data, 1).subscribe((res: any) => {
       console.log("add faq response ==>", res)
       if (res.responseCode == 200) {
-        this.router.navigate(['faq'])
+        //this.router.navigate(['faq'])
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage);
       } else {
