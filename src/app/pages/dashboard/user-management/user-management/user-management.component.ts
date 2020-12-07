@@ -323,7 +323,7 @@ export class UserManagementComponent implements OnInit {
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/editCustomer',data, 1).subscribe((res:any)=>{
-      
+      console.log('This is Edit User items',res);
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.customerData=res.result;
@@ -502,7 +502,7 @@ export class UserManagementComponent implements OnInit {
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/editCorporateCustomer',data, 1).subscribe((res:any)=>{
-      
+      console.log('editCorporateForm Valuse--->:',res)
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.corporateDataa=res.result;
@@ -515,6 +515,7 @@ export class UserManagementComponent implements OnInit {
           'image':this.imageUrl,
           'company':this.corporateDataa.company,
         })
+        console.log("Patch vales in EditCorporate", this.editCorporateForm.value);
         console.log("f", this.practionerData);
         
       }
@@ -1251,7 +1252,8 @@ export class UserManagementComponent implements OnInit {
     $('#blockModal').modal('show')
     this.userId = userId
     this.status=status
-    console.log('f',status);
+    console.log('UserId is',this.userId)
+    console.log('Status of User is-->:',status);
     
   }
 

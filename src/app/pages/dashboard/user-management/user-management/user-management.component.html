@@ -73,7 +73,7 @@
                                                         <button type="button" class="btn  btn-theme Go_btn" style="margin-left: -36%;
                                                                 min-width: 50px;" (click)="search()">Go</button>
                                                         <button type="button" class="btn  btn-theme ml-2 Go_btn"
-                                                            style="min-width: 50px;" (click)="reset()">Reset</button>
+                                                            style="min-width: 60px;" (click)="reset()">Reset</button>
                                                         <button type="button" class="btn btn-theme"
                                                             style="margin-left: 25%;" (click)="exportCSV()">Export
                                                             csv</button>
@@ -118,7 +118,7 @@
                                                         (click)="viewUser(item?._id)">
                                                         <i class="fa fa-eye" aria-hidden="true"
                                                             style="color:white"></i></button>
-                                                    <button class="btn btn-info ml-2 bt-margin"
+                                                    <button class="btn btn-info ml-2 bt-margin" title="edit"
                                                         (click)="editUser(item?._id)"><i class="fa fa-edit"
                                                             aria-hidden="true" style="color:white"></i></button>
                                                     <button class="btn btn-success ml-2 bt-margin"
@@ -222,9 +222,7 @@
                                 <div class="page_title_block">
                                     <h1 class="page_title">Edit Customer</h1>
                                 </div>
-                               
-                                
-                                <div class="content-section">
+                               <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="  mb40">
                                             <div class="add-store-block input-style mb20 mt20 ">
@@ -238,8 +236,8 @@
                                                                     accept="image/jpg,image/jpeg,image/png" id="image"
                                                                     (change)="ValidateFileUpload($event)"
                                                                     maxlength="56">
-                                                                <em class="fa fa-camera"
-                                                                    style="color: #86559f!important;font-size: 12px"></em>
+                                                                    
+                                        <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -345,10 +343,10 @@
                                             </div>
                                             <div class="text-center mt40 mb40">
                                                 <button class="btn btn-large  max-WT-150 btn-theme"
+                                                    (click)="changeValue()">Back</button>
+                                                    <button class="btn btn-large  max-WT-150 btn-theme"
                                                     [disabled]="!editUserForm.valid"
                                                     (click)="UpdateUser()">Save</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
-                                                    (click)="changeValue()">Back</button>
                                             </div>
                                         </div>
                                     </div>
@@ -506,10 +504,11 @@
                                             </div>
                                             <div class="text-center mt40 mb40">
                                                 <button class="btn btn-large  max-WT-150 btn-theme"
+                                                    (click)="changeValue()">Back</button>
+                                                <button class="btn btn-large  max-WT-150 btn-theme"
                                                     [disabled]="!addUserForm.valid"
                                                     (click)="addUserDetail()">Add</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
-                                                    (click)="changeValue()">Back</button>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -612,7 +611,7 @@
                                                         (click)="viewcorporate(item?._id)">
                                                         <i class="fa fa-eye" aria-hidden="true"
                                                             style="color:white"></i></button>
-                                                    <button class="btn btn-info ml-2 bt-margin"
+                                                    <button class="btn btn-info ml-2 bt-margin" title="edit"
                                                         (click)="editCorporate(item?._id)"><i class="fa fa-edit"
                                                             aria-hidden="true" style="color:white"></i></button>
                                                     <button class="btn btn-success ml-2 bt-margin"
@@ -859,10 +858,11 @@
                                             </div>
                                             <div class="text-center mt40 mb40">
                                                 <button class="btn btn-large  max-WT-150 btn-theme"
+                                                    (click)="changeCorporateValue()">Back</button>
+                                                <button class="btn btn-large  max-WT-150 btn-theme"
                                                     [disabled]="!editCorporateForm.valid"
                                                     (click)="UpdateCorporate()">Save</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
-                                                    (click)="changeCorporateValue()">Back</button>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -1189,7 +1189,7 @@
                                                         (click)="viewcorporateCompany(item?._id)">
                                                         <i class="fa fa-eye" aria-hidden="true"
                                                             style="color:white"></i></button>
-                                                    <button class="btn btn-info ml-2 bt-margin"
+                                                    <button class="btn btn-info ml-2 bt-margin" title="edit"
                                                         (click)="editCorporateCompany(item?._id)"><i class="fa fa-edit"
                                                             aria-hidden="true" style="color:white"></i></button>
                                                     
@@ -1413,7 +1413,7 @@
                                                         (click)="viewPractioner(item?._id)">
                                                         <i class="fa fa-eye" aria-hidden="true"
                                                             style="color:white"></i></button>
-                                                    <button class="btn btn-info ml-2 bt-margin"
+                                                    <button class="btn btn-info ml-2 bt-margin" title="edit"
                                                         (click)="editPractioner(item?._id)"><i class="fa fa-edit"
                                                             aria-hidden="true" style="color:white"></i></button>
                                                     <button class="btn btn-success ml-2 bt-margin"
