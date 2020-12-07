@@ -7,14 +7,14 @@ margin-left: 2%;">
         </div>
         <form [formGroup]="addGiftForm">
             <div class="order-view main-block-innner mb20 mt40 view-label-align" style="margin-left: 18%;">
-                <div class="form-group row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+                <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
                     <div class="col">
                         <label>Title :</label><br><br>
-                        <label>Discount (in %) :</label><br><br>
+                        <label>Discount (in %) :</label><br>
                         <label>Maximum amount :</label><br>
-                        <label>Expiry date : </label><br><br>
+                        <label>Expiry date : </label><br>
                     </div>
-                    <div class="col" style=" margin-top: -1.5%;">
+                    <div class="col">
                         <input type="text" class="form-control" formControlName="title">
                         <span class="text text-danger" *ngIf="addGiftForm.get('title').hasError('required') && addGiftForm.get('title').touched">*Title is Required</span><br>
                         <input type="text" class="form-control" formControlName="discount">

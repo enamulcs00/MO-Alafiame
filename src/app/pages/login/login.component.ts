@@ -54,12 +54,12 @@ export class LoginComponent implements OnInit {
         this.mainService.successToast(res.responseMessage)
         localStorage.setItem('token', res.result.token);
         this.mainService.loginStatus.next(true)
-        this.router.navigate(['dashboard'])
-        this.getProfile()
+      this.router.navigate(['dashboard'])
+        //this.getProfile()
         console.log(this.loginForm.value.rememberMe)
         if (this.loginForm.value.rememberMe) {
           let remData = {
-            "email": window.btoa(this.loginForm.value.email),
+            "mobileNumber": window.btoa(this.loginForm.value.number),
             "password": window.btoa(this.loginForm.value.password),
             "rememberMe": window.btoa(this.loginForm.value.rememberMe)
           }
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
         }
       } else {
         this.mainService.hideSpinner();
-        this.mainService.errorToast(res.responseMessage)
+        //this.mainService.errorToast(res.responseMessage)
       }
     })
   }
