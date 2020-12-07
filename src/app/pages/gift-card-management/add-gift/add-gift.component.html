@@ -7,7 +7,7 @@ margin-left: 2%;">
         </div>
         <form [formGroup]="addGiftForm">
             <div class="order-view main-block-innner mb20 mt40 view-label-align" style="margin-left: 18%;">
-                <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+                <div class="form-group row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
                     <div class="col">
                         <label>Title :</label><br><br>
                         <label>Discount (in %) :</label><br><br>
@@ -23,8 +23,14 @@ margin-left: 2%;">
                         <span class="text text-danger" *ngIf="addGiftForm.get('maxAmount').hasError('required') && addGiftForm.get('maxAmount').touched">*Maximum amount is Required</span><br>
                         <input type="date" class="form-control" formControlName="expiry">
                         <span class="text text-danger" *ngIf="addGiftForm.get('expiry').hasError('required') && addGiftForm.get('expiry').touched">*Expiry date is Required</span><br>
-                        <input type="file" class="form-control" formControlName="image" (change)="convertimg($event)">
-                        <span class="text text-danger" *ngIf="addGiftForm.get('image').hasError('required') && addGiftForm.get('image').touched">*Image is Required</span><br>
+                        
+                    </div>
+                    <div class="col">
+                        <label for="fileInput">
+                            <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
+                            <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
+                            <input type="file" id="fileInput" class="form-control" formControlName="image" name="imageUrl" accept="image/*" (change)="convertimg($event)" style="visibility:hidden;">
+                        </label>
                     </div>
                 </div>
 
