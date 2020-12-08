@@ -1152,10 +1152,14 @@ export class UserManagementComponent implements OnInit {
 
   
   // ------------------------------- delete functinality start----------------------------- //
-  deleteUserModal(userId) {
-    $('#deleteModal').modal('show')
-    this.userId = userId
-    this.status=status
+  deleteUserModal(id,UserStatus) {
+    this.userId = id;
+    this.status=UserStatus;
+    console.log("Status is: -> ",UserStatus)
+    console.log("Id is: -> ",id)
+   $('#deleteModal').modal('show')
+    
+   
   }
   deleteUser() {
     // let data = {
@@ -1183,7 +1187,7 @@ export class UserManagementComponent implements OnInit {
       }
       var url2="admin/deletePractitioner"
     }
-    console.log(data)
+    console.log('This is customer data:-->',data)
     this.mainService.showSpinner();
     this.mainService.postApi(url ||url1 ||url2, data || data1 || data2, 1).subscribe((res: any) => {
       console.log("delete user response ==>", res)
@@ -1284,7 +1288,7 @@ export class UserManagementComponent implements OnInit {
     }
     this.mainService.showSpinner();
     this.mainService.postApi(url ||url1 ||url2, data || data1 || data2, 1).subscribe((res: any) => {
-      console.log("delete user response ==>", res)
+      console.log("Blocked user response ==>", res)
       if (res.responseCode == 200) {
         $('#blockModal').modal('hide');
         this.mainService.successToast(res.responseMessage);
