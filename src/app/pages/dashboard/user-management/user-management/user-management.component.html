@@ -133,7 +133,7 @@
                                                             class="fa fa-ban" style="color:white;background-color: red"
                                                             aria-hidden="true"></i></button>
                                                     <button class="btn btn-danger ml-2 bt-margin" title="delete"
-                                                        (click)="deleteUserModal(item?._id,item?.status)"><i
+                                                        (click)="deleteUserModal(item?._id)"><i
                                                             class="fa fa-trash" aria-hidden="true"
                                                             style="color:white"></i></button>
                                                 </td>
@@ -725,7 +725,7 @@
                                                             <img src="{{imageUrl || 'assets/img/profile-img.jpg'}}"
                                                                 id="sub-admin-image" alt="">
                                                             <label class="upload-label">
-                                                                <input type="file" formControlName="image" 
+                                                                <input type="file"  
                                                                     accept="image/jpg,image/jpeg,image/png" id="image"
                                                                     (change)="ValidateFileUpload($event)"
                                                                     maxlength="56">
@@ -860,7 +860,7 @@
                                                 <button class="btn btn-large  max-WT-150 btn-theme"
                                                     (click)="changeCorporateValue()">Back</button>
                                                 <button class="btn btn-large  max-WT-150 btn-theme"
-                                                    [disabled]="!editCorporateForm.valid"
+                                                    [disabled] = "editCorporateForm.invalid"
                                                     (click)="UpdateCorporate()">Save</button>
                                                 
                                             </div>
@@ -885,7 +885,7 @@
                                                             <img src="{{imageUrl || 'assets/img/profile-img.jpg'}}"
                                                                 id="sub-admin-image" alt="">
                                                             <label class="upload-label">
-                                                                <input type="file" formControlName="image" name="image"
+                                                                <input type="file" 
                                                                     accept="image/jpg,image/jpeg,image/png" id="image"
                                                                     (change)="ValidateFileUpload($event)"
                                                                     maxlength="56">
@@ -1043,10 +1043,11 @@
                                             </div>
                                             <div class="text-center mt40 mb40">
                                                 <button class="btn btn-large  max-WT-150 btn-theme"
+                                                    (click)="changeCorporateValue()">Back</button>
+                                                <button class="btn btn-large  max-WT-150 btn-theme"
                                                     [disabled]="!addCorporateForm.valid"
                                                     (click)="addCorporateDetail()">Add</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
-                                                    (click)="changeCorporateValue()">Back</button>
+                                                
                                             </div>
                                         </div>
                                     </div>

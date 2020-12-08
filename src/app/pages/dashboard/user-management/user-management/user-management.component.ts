@@ -342,6 +342,7 @@ export class UserManagementComponent implements OnInit {
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
     })
+    
   }
 
   // update customer
@@ -531,6 +532,7 @@ export class UserManagementComponent implements OnInit {
 
 
   UpdateCorporate(){
+
     let data = {
       'corporateId':this.userId,
       'name': this.editCorporateForm.value.firstName,
@@ -554,6 +556,7 @@ export class UserManagementComponent implements OnInit {
         this.mainService.errorToast(res.responseMessage)
       }
     })
+    
   }
 
   // add corporate addCorporateForm
@@ -1156,44 +1159,39 @@ export class UserManagementComponent implements OnInit {
 
   
   // ------------------------------- delete functinality start----------------------------- //
-  deleteUserModal(id,UserStatus) {
+  deleteUserModal(id) {
     this.userId = id;
-    this.status=UserStatus;
-    console.log("Status is: -> ",UserStatus)
     console.log("Id is: -> ",id)
    $('#deleteModal').modal('show')
     
    
   }
   deleteUser() {
-    // let data = {
-    //   customerId: this.userId,
-    //   status:this.status
-    // }
+    
     if(this.currTab === 'Customer'){
       var data = {
         customerId: this.userId,
-        status:this.status
+        status:"DELETE"
       }
       var url="admin/deleteAndBlockCustomer"
     }
     else if(this.currTab === 'Corporate'){
       var data1 = {
         corporateId: this.userId,
-        status:this.status
+        status:"DELETE"
       }
       var url1="admin/deleteAndBlockCorporateCustomer"
     }
     else if (this.currTab === 'Practioner'){
       var data2 = {
         practitionerId: this.userId,
-        status:this.status
+        status:"DELETE"
       }
       var url2="admin/deletePractitioner"
     }
     console.log(`This is Data of: ${this.currTab} :`,data || data1 || data2);
     this.mainService.showSpinner();
-    this.mainService.postApi(url ||url1 ||url2, data || data1 || data2, 1).subscribe((res: any) => {
+    this.mainService.postApi(url || url1 || url2, data || data1 || data2, 1).subscribe((res: any) => {
       console.log("delete user response ==>", res)
       if (res.responseCode == 200) {
         $('#deleteModal').modal('hide');
