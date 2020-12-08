@@ -49,7 +49,8 @@ export class UserManagementComponent implements OnInit {
   viewCorporate: any;
   editCorporateForm: FormGroup;
   corporateDataPatch: any;
-  corporateDataa: any;
+  corporateDataa: any=[];
+  corpcompany:any;
   addCorporateForm: FormGroup;
   status: any;
   viewPractionerDataa: any;
@@ -502,18 +503,21 @@ export class UserManagementComponent implements OnInit {
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/editCorporateCustomer',data, 1).subscribe((res:any)=>{
-      console.log('editCorporateForm Valuse--->:',res)
+      console.log('editCorporateForm Valuse--->:',res.result)
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.corporateDataa=res.result;
-        this.imageUrl=res.result.profilePic
-        this.editCorporateForm.patchValue({
+        this.imageUrl=res.result.profilePic;
+        this.corpcompany = res.result.company;
+        console.log('Company is: ',this.corpcompany)
+        this.editCorporateForm.setValue({
           'firstName':this.corporateDataa.name,
           'email':this.corporateDataa.email,
+          'company':this.corpcompany,
           'number':this.corporateDataa.mobileNumber,
           'DOB':this.corporateDataa.dateOfBirth,
           'image':this.imageUrl,
-          'company':this.corporateDataa.company,
+          
         })
         console.log("Patch vales in EditCorporate", this.editCorporateForm.value);
         console.log("f", this.practionerData);
@@ -1187,7 +1191,7 @@ export class UserManagementComponent implements OnInit {
       }
       var url2="admin/deletePractitioner"
     }
-    console.log('This is customer data:-->',data)
+    console.log(`This is Data of: ${this.currTab} :`,data || data1 || data2);
     this.mainService.showSpinner();
     this.mainService.postApi(url ||url1 ||url2, data || data1 || data2, 1).subscribe((res: any) => {
       console.log("delete user response ==>", res)
