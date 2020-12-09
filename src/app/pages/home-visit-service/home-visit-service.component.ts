@@ -1,3 +1,4 @@
+import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
@@ -9,12 +10,11 @@ declare var $: any;
   styleUrls: ['./home-visit-service.component.css']
 })
 export class HomeVisitServiceComponent implements OnInit {
-<<<<<<< HEAD
   search: string;
   currentPage: number = 1;
   itemPerPage:number=5;
 servicelists: any=[];
-subCategoryItem:any = [];
+
 categoryList: any=[];
 categoryLength:any;
   categoryId: string;
@@ -26,6 +26,30 @@ categoryLength:any;
     this.categoryLists();
     this.serviceList();
   }
+
+  exportCSV(){
+    let dataArr = [];
+    dataArr.push({
+       sno: "S.No",
+       Name: "Category Name",
+       Image: "Category Image",
+       Subcategory:"Subcategories",
+       Update:"Updated On"
+   });
+   this.servicelists.forEach((element,ind) => {
+    dataArr.push({
+        sno:ind+1,
+        Name:element.categoryId.categoryName,
+        Charges:element.subCategoryImage,
+        Use:element.subCategoryName,
+        Type:element.updatedAt,
+    })
+}) 
+new ngxCsv(dataArr, 'Service_management');
+
+  }
+
+
   searchValue() {
    
     this.mainService.showSpinner();
@@ -61,9 +85,9 @@ categoryLength:any;
       "limit": this.itemPerPage
       }
     this.mainService.postApi('admin/categoryList',object,1).subscribe(res => {
-      console.log(" productList Checking==>", res.result)
+      console.log(" product List==>", res.result)
       if (res.responseCode == 200 && res.result && res.result.docs) {
-        console.log('shweta',res.result)
+        
         this.categoryList = res.result.docs
         this.categoryLength = res.result.total
         this.mainService.hideSpinner();
@@ -89,13 +113,9 @@ categoryLength:any;
       "limit": this.itemPerPage
       }
     this.mainService.postApi('admin/serviceList',object,1).subscribe(res => {
-      console.log("Service & productList==>", res.result.docs)
+      console.log("Service List==>", res.result.docs)
       if (res.responseCode == 200 && res.result && res.result.docs) {
         this.servicelists = res.result.docs
-        for( var item of this.servicelists){
-          this.subCategoryItem.push(item.subCategoryName)
-        }
-        
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
         
@@ -147,17 +167,7 @@ categoryLength:any;
   this.serviceList();
 }
 
-=======
-  search:any;
-  total:any;
-  constructor() { }
-
-  ngOnInit() {}
-
-  searchValue(){}
-
-  pagination(event){}
->>>>>>> 27e696c67efb2e0b9f2133990aa92825880f1c2a
-
-  deleteUser(){}
+getsubcat(){
+  
+}
 }

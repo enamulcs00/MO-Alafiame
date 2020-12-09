@@ -20,8 +20,8 @@ export class AddHomeVisitComponent implements OnInit {
     });
    }
 
-<<<<<<< HEAD
   ngOnInit() {
+    
   }
   handleInputChange(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
@@ -43,8 +43,6 @@ export class AddHomeVisitComponent implements OnInit {
       'categoryName': this.addhomeForm.value.categoryName,
       
       'categoryImage': this.profile,
-      
-
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/addServiceCategory', data, 1).subscribe((res: any) => {
@@ -66,8 +64,5 @@ export class AddHomeVisitComponent implements OnInit {
 
 
   }
-=======
-  ngOnInit() {}
->>>>>>> 27e696c67efb2e0b9f2133990aa92825880f1c2a
-
+ 
 }

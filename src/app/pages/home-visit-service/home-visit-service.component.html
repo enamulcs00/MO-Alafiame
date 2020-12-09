@@ -28,8 +28,7 @@
 
                                     <div class="col-xl-4 col-lg-4 col-md-4">
                                         <div class="text-center admin-btn" style="margin-left: 137%;">
-                                            <button type="button" class="btn btn-theme Go_btn ml-2">Export CSV
-                                            </button>
+                    <button type="button" class="btn btn-theme Go_btn ml-2" (click)="exportCSV()">Export CSV</button>
                                             <button type="button" class="btn btn-theme Go_btn ml-2"
                                                 [routerLink]="['/add-home-visit']">Add new
                                             </button>
@@ -53,27 +52,26 @@
                                 </thead>
                                 <tbody>
                                     <tr class="text-center"
-                                        *ngFor="let item of categoryList | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: categoryLength}; let i = index">
+                                        *ngFor="let item of servicelists | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: categoryLength}; let i = index">
 
                                         <td class="content">{{itemPerPage * (currentPage-1)+ i+1}}</td>
-                                        <td class="content"> {{item?.categoryName}}</td>
-                                        <td class="content"><img [src]="item?.categoryImage" alt="" style="width: 66px;">
+                                        <td class="content"> {{item?.categoryId.categoryName}}</td>
+                                        <td class="content"><img [src]="item?.subCategoryImage" alt="" style="width: 66px;">
                                         </td>
-                                        <td class="content">{{subCategoryItem[i]}} 
-                                      </td>
+                                        <td class="content">{{item?.subCategoryName}}</td>
+                                      
                                         <td class="content">{{item?.updatedAt | date}}</td>
                                         <td class="justify-content-center d-flex" style="padding-top: 27px;padding-bottom: 24px;">
-                                     <button [routerLink]="['/view-home-visit',item?._id]"
+                                     <button [routerLink]="['/view-home-visit',item?.categoryId._id]"
                                                 class="btn btn-info ml-2 bt-margin" title="view">
                                                 <i class="fa fa-eye" aria-hidden="true"
                                                     style="color:white"></i></button>
-                                            <button [routerLink]="['/edit-home-visit',item?._id]"
+                                            <button [routerLink]="['/edit-home-visit',item?.categoryId._id]"
                                                 class="btn btn-info ml-2 bt-margin"><i class="fa fa-edit"
                                                     aria-hidden="true" style="color:white"></i></button>
                                             <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(item?._id)">
                                                 <i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i>
 
-<<<<<<< HEAD
                                             </button>
                                             </td>
 
@@ -82,11 +80,6 @@
                                     <tr *ngIf="!categoryList.length">
                                         <td class="table-no-record" colspan="9">No Record Found</td>
                                     </tr>
-=======
-                    
-                                </tr>
-     
->>>>>>> 27e696c67efb2e0b9f2133990aa92825880f1c2a
                                 </tbody>
                             </table>
                             <div class="custom-pagination mt-2 text-align-end" *ngIf="categoryLength >5">
@@ -98,10 +91,10 @@
             </div>
         </div>
     </main>
-</div> 
+</div>
 
 <!-- delete gift-card-management modal Start -->
- <div class="modal fade global-modal reset-modal" id="deleteModal">
+<div class="modal fade global-modal reset-modal" id="deleteModal">
     <div class="modal-dialog max-WT-500">
         <form class="change_password">
             <div class="modal-content">
@@ -126,11 +119,4 @@
         </form>
     </div>
 </div>
-<<<<<<< HEAD
 <!-- end delete gift-card-management modal -->
-=======
-<!-- end delete gift-card-management modal -->
-
-
- 
->>>>>>> 27e696c67efb2e0b9f2133990aa92825880f1c2a

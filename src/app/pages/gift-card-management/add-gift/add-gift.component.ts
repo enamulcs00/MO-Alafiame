@@ -10,8 +10,7 @@ import { MainService } from 'src/app/provider/main.service';
 export class AddGiftComponent implements OnInit {
   addGiftForm: FormGroup;
   file: any = [];
-  imageType: any;
-  imgUrl: any;
+  profile: any;
   constructor(private service:MainService,private router:Router) { }
 
   ngOnInit() {
@@ -25,14 +24,15 @@ export class AddGiftComponent implements OnInit {
   }
   convertimg(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    
     var reader = new FileReader();
     reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
   }
   _handleReaderLoaded(e) {
     let reader = e.target;
-    this.imgUrl = reader.result;
-    console.log("profile", this.imgUrl)
+    this.profile = reader.result;
+    console.log("profile", this.profile)
   }
   
   addGift(){
@@ -42,7 +42,7 @@ export class AddGiftComponent implements OnInit {
       'discount': this.addGiftForm.value.discount,
       'maxAmount': this.addGiftForm.value.maxAmount,
       'expiryDate':Math.round(new Date(this.addGiftForm.value.expiry).getTime()),
-      'giftImage' :this.imgUrl,
+      'giftImage' :this.profile
     }
     console.log(data)
     this.service.postApi('admin/addGift',data,1).subscribe((res:any)=>{
