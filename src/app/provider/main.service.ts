@@ -166,6 +166,17 @@ NumOnly(event) {
    return  resultNum;
 
   }
+//=================Character Only============
+
+AlphabetOnly(event){
+
+  let pattAlpha = /^([a-zA-Z ])*$/;
+
+  let resultAlpha = pattAlpha.test(event.key);
+
+  return resultAlpha;
+
+   }
 
   BlockFuture() {
     $(() => {

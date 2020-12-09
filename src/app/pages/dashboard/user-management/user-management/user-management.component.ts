@@ -146,7 +146,7 @@ export class UserManagementComponent implements OnInit {
     this.addCorporateForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
-      'number': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
+      'number': new FormControl('', [Validators.required,Validators.pattern(/^[6-9]{1}[0-9]{9}$/)]),
       'DOB': new FormControl('', Validators.required),
       'image': new FormControl(''),
       'company':new FormControl('', [Validators.required,Validators.pattern(/^[^0-9][a-zA-Z ]*$/i)]),
@@ -566,7 +566,6 @@ export class UserManagementComponent implements OnInit {
     this.corporateUserAddValue=false;
     this.corporateValue=false;
   }
-
   // add user api
   addCorporateDetail(){
     let data = {
@@ -578,6 +577,7 @@ export class UserManagementComponent implements OnInit {
       'password':this.addCorporateForm.value.password,
       'company':this.addCorporateForm.value.company,
     }
+    
     this.mainService.showSpinner();
     this.mainService.postApi('admin/addCorporateCustomer', data, 1).subscribe((res: any) => {
       console.log("add helpline number list response ==>", res)
@@ -585,6 +585,16 @@ export class UserManagementComponent implements OnInit {
         this.mainService.hideSpinner()
         this.mainService.successToast(res.responseMessage);
         this.selectTab('Corporate');
+        this.imageUrl = '';
+        this.addCorporateForm.patchValue({
+          'firstName': '',
+          'email': '',
+          'number':'',
+          'DOB':'',
+          'password':'',
+          'company':'',
+          
+        })
         this.corporateUserValue=true;
         this.corporateUserEditValue=true;
         this.corporateUserAddValue=true;
