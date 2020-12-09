@@ -248,7 +248,7 @@
                                                             <div class="form-group">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Name" formControlName="firstName"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.AlphabetOnly($event)"
                                                                     maxlength="60">
                                                                 <div class="text-danger">
                                                                     <span
@@ -301,7 +301,7 @@
                                                             <div class="form-group ">
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.NumOnly($event)"
                                                                     maxlength="15">
                                                                 <div class="text-danger">
                                                                     <span
@@ -1544,7 +1544,7 @@
                                                             <div class="form-group">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Name" formControlName="firstName"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.AlphabetOnly($event)"
                                                                     maxlength="60">
                                                                 <div class="text-danger">
                                                                     <span
@@ -1597,7 +1597,7 @@
                                                             <div class="form-group ">
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.NumOnly($event)"
                                                                     maxlength="15">
                                                                 <div class="text-danger">
                                                                     <span
@@ -1639,10 +1639,11 @@
                                             </div>
                                             <div class="text-center mt40 mb40">
                                                 <button class="btn btn-large  max-WT-150 btn-theme"
+                                                    (click)="changePractionerValue()">Back</button>
+                                                <button class="btn btn-large  max-WT-150 btn-theme"
                                                     [disabled]="!editPractionerForm.valid"
                                                     (click)="UpdatePractioner()">Save</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
-                                                    (click)="changePractionerValue()">Back</button>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -1680,7 +1681,7 @@
                                                             <div class="form-group">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Name" formControlName="firstName"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.AlphabetOnly($event)"
                                                                     maxlength="60">
                                                                 <div class="text-danger">
                                                                     <span
@@ -1733,7 +1734,7 @@
                                                             <div class="form-group ">
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.NumOnly($event)"
                                                                     maxlength="15">
                                                                 <div class="text-danger">
                                                                     <span

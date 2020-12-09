@@ -11,9 +11,7 @@ export class HeaderComponent implements OnInit {
   showLogo: boolean = false;
   selected: any;
 
-  constructor(public mainService: MainService) {
-    
-  }
+  constructor(public mainService: MainService) {}
 
   ngOnInit() {
     this.mainService.loginStatus.subscribe((res: boolean) => this.showLoginHeader = res)
@@ -34,5 +32,7 @@ export class HeaderComponent implements OnInit {
       this.showLogo = false;
     }
   }
-
+  logout(){
+    this.mainService.logout();
+  }
 }
