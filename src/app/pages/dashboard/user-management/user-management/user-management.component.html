@@ -157,8 +157,8 @@
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="mb40">
 
-                                            <div class="add-store-block input-style view-label-align">
-                                                <div class="form-group row align-items-baseline">
+                                            <div class="add-store-block input-style view-label-align"  style="margin-left: 25%;">
+                                                <div class="form-group row align-items-baseline" style="margin-left: -50%;margin-bottom: 5%;">
                                                     <div class="col-md-12" style="text-align: center">
                                                         <img alt=""
                                                             src="{{viewCustomer?.profilePic || 'assets/img/profile-img.jpg' }}"
@@ -650,8 +650,8 @@
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="mb40">
 
-                                            <div class="add-store-block input-style view-label-align">
-                                                <div class="form-group row align-items-baseline">
+                                            <div class="add-store-block input-style view-label-align"  style="margin-left: 25%;">
+                                                <div class="form-group row align-items-baseline"  style="margin-left: -50%;margin-bottom: 5%;">
                                                     <div class="col-md-12" style="text-align: center">
                                                         <img alt=""
                                                             src="{{viewCorporate?.profilePic || 'assets/img/profile-img.jpg' }}"
@@ -1224,9 +1224,9 @@
                                         <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                             <div class="mb40">
     
-                                                <div class="add-store-block input-style view-label-align">
+                                                <div class="add-store-block input-style view-label-align" style="margin-left: 25%">
                                                     
-                                                    <div class="form-group row align-items-baseline">
+                                                    <div class="form-group row align-items-baseline"  style="margin-left: -50%;margin-bottom: 5%;">
                                                         <label class="col-md-4 textalignright ">Name <span>:</span></label>
                                                         <div class="col-md-8 textaligncenter">
                                                             <div class="form-group">
@@ -1453,9 +1453,9 @@
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="mb40">
 
-                                            <div class="add-store-block input-style view-label-align">
-                                                <div class="form-group row align-items-baseline">
-                                                    <div class="col-md-12" style="text-align: center">
+                                            <div class="add-store-block input-style view-label-align" style="margin-left: 25%;">
+                                                <div class="form-group row align-items-baseline" style="margin-left: -46%;margin-bottom: 5%;">
+                                                    <div class="col-md-12" style="text-align: center"  >
                                                         <img alt=""
                                                             src="{{viewPractionerDataa?.profilePic || 'assets/img/profile-img.jpg' }}"
                                                             style="height: 100px;width: 100px; border-radius: 50%; border: 1px solid black!important;">
@@ -1799,10 +1799,11 @@
                                             </div>
                                             <div class="text-center mt40 mb40">
                                                 <button class="btn btn-large  max-WT-150 btn-theme"
+                                                (click)="changeValue()">Back</button>
+                                                <button class="btn btn-large  max-WT-150 btn-theme"
                                                     [disabled]="!addPractionerForm.valid"
                                                     (click)="addPractionerDetail()">Add</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
-                                                    (click)="changeValue()">Back</button>
+                                               
                                             </div>
                                         </div>
                                     </div>
