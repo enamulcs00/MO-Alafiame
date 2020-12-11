@@ -83,10 +83,10 @@
                                                 [(ngModel)]="item.isChecked" [ngModelOptions]="{standalone: true}"
                                                 (change)="onCheckboxChange($event)" />
                                             {{itemPerPage * (currentPage-1)+ i+1}}</td>
-                                        <td class="content" [tooltip]="item?.hospitalName || '--'">
+                                        <td class="content" >
                                             {{item?.hospitalName || '--'}}</td>
-                                        <td class="content" [tooltip]="item?.email || '--'">{{item?.email || '--'}}</td>
-                                        <td class="content" [tooltip]="item?.mobileNumber || '--'">
+                                        <td class="content" >{{item?.email || '--'}}</td>
+                                        <td class="content" >
                                             {{item?.mobileNumber || '--'}}</td>
                                         <td class="content">{{item?.createdAt | date:'d/M/y'}}</td>
                                         <td class="content">{{item?.updatedAt | date:'d/M/y'}}</td>

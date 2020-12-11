@@ -12,7 +12,7 @@
                                 <div class="login-box-body">
                                     <div class="form-group">
                                         <input type="text" formControlName="number"
-                                            (keypress)="mainService.toCheckSpaceChar($event)" maxlength="20"
+                                            (keypress)="mainService.NumOnly($event)" maxlength="20"
                                             id="loginPhoneNumber" class="form-control"
                                             placeholder="Enter Mobile Number" />
                                         <div class="text-danger"
@@ -21,7 +21,7 @@
                                         </div>
                                         <ng-template #check>
                                             <div class="text-danger"
-                                                *ngIf="(loginForm.get('number').hasError('pattern') || isValidNumbers === false) && loginForm.get('number').dirty">
+                                                *ngIf="(loginForm.get('number').hasError('pattern')) && loginForm.get('number').dirty">
                                                 *Please enter valid mobile number.
                                             </div>
                                         </ng-template>
@@ -33,7 +33,7 @@
                                     <div class="form-group eyeicon">
                                         <input [type]="showPassOrText ? 'text': 'password'"
                                             (keypress)="mainService.preventSpace($event)" maxlength="18"
-                                            formControlName="password" class="form-control "
+                                            formControlName="password" class="form-control"
                                             placeholder="Enter Password" />
                                         <em [class]="showEyeOrCrossEye? 'fa fa-eye':'fa fa-eye-slash'"
                                             aria-hidden="true" (click)="showPassword()"></em>
@@ -56,7 +56,7 @@
                                         <div class="col-lg-12">
                                             <div class="rememberme-section">
                                                 <label class="checkbox-design" style="color:black">
-                                                    <input type="checkbox" /><span></span>Remember me
+                                                    <input type="checkbox" formControlName="rememberMe" class="form-control"/><span></span>Remember me
                                                 </label>
                                                 <div class="forgot-links">
                                                     <a [routerLink]="['/forgot-password']">Forgot Password?</a>

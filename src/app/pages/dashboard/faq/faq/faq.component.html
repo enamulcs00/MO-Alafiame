@@ -28,22 +28,21 @@
                                 <thead>
                                     <tr class="no_wrap_th text-center">
                                         <th scope="col" class="Sorting-img"> S.No.</th>
-                                        <!-- <th scope="col" class="Sorting-img">Question</th> -->
                                         <th scope="col" class="Sorting-img"></th>
                                         <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of faqList | paginate : {itemsPerPage:10, currentPage:page, totalItems:total} ; let i=index">
+                                    <tr *ngFor="let item of faqList | paginate : {itemsPerPage:itemPerPage, currentPage:currentPage, totalItems:total} ; let i=index">
 
-                                        <td class="text-center"> {{i+1}}</td>
+                                        <td class="text-center">{{itemPerPage * (currentPage-1)+ i+1}}</td>
 
                                         <td class="content">Question:  {{item.question}}<br>Answer:  {{item.answer}}</td>
                                         <td class="justify-content-center d-flex" style="padding-top: 18px;">
                                             
                                             <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-faq',item?._id]"><i
                                                     class="fa fa-edit" aria-hidden="true"
-                                                    style="color:white"></i></button>
+                                                    style="color:white"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <button class="btn btn-danger ml-2 bt-margin" title="delete"
                                                 (click)="deleteFaqModal(item?._id)"><i class="fa fa-trash" aria-hidden="true"
                                                     style="color:white"></i></button>
@@ -54,7 +53,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="custom-pagination mt-2 text-align-end" *ngIf="total > 10">
+                            <div class="custom-pagination mt-2 text-align-end" *ngIf="total > itemPerPage">
                                 <pagination-controls (pageChange)="pagination($event)"></pagination-controls>
                             </div>
                         </div>

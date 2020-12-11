@@ -1,3 +1,5 @@
+import { Tab } from 'bootstrap';
+import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-companies-view.component.css']
 })
 export class ViewCompaniesViewComponent implements OnInit {
-
+  total:any;
+  searchForm:FormGroup;
+  currTab:Tab
   constructor() { }
 
   ngOnInit() {
   }
+  pagination(event){}
 
+  deleteUser(){}
 }

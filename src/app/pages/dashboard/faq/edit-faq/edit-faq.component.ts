@@ -41,9 +41,9 @@ export class EditFaqComponent implements OnInit {
     this.mainService.getApi('faq/faqs/'+this.faqId, 1).subscribe((res: any) => {
       if (res.responseCode == 200) {
         this.faqList = res.result;
-        this.form.patchValue({
+        this.form.setValue({
           "question": this.faqList.question,
-          "answer": this.faqList.message
+          "answer": this.faqList.answer
         })
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage);
@@ -73,5 +73,4 @@ export class EditFaqComponent implements OnInit {
       }
     })
   }
-
 }

@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MainService } from 'src/app/provider/main.service';
 import { Router } from '@angular/router';
 import { ApiUrls } from 'src/app/config/api-urls/api-urls';
+import { ngxCsv } from 'ngx-csv/ngx-csv';
 declare var $:any;
 @Component({
   selector: 'app-notification-management',
@@ -24,6 +25,28 @@ export class NotificationManagementComponent implements OnInit {
     this.notificationFormValidation();
     this.getNotification()
   }
+  exportCSV(){
+    let dataArr = [];
+    dataArr.push({
+       sno: 'S.No',
+       title: 'Title',
+       Desc: 'Description',
+       castDate:'Brod cast date'
+       
+   });
+   this.notificationList.forEach((element,ind) => {
+    dataArr.push({
+        sno:ind+1,
+        title:element.title,
+        Desc:element.description,
+        castDate:element.updatedAt
+        
+    })
+}) 
+new ngxCsv(dataArr, 'Notification_management');
+
+  }
+
 
   notificationFormValidation() {
     this.notificationForm = new FormGroup({

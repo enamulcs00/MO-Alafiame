@@ -1,52 +1,40 @@
-<div class="wrapper">
+<div class="wrapper" style="width: 80%;
+margin-left: 2%;">
     <main class="middle-content">
         <div class="page_title_block">
-            <h1 class="page_title"> Category Management> Add New Category
-         </h1>
-         <hr style="background: black; opacity: 0.5;">
-
+            <h1 class="page_title"> ADD CATEGORY</h1>
+            <hr style="background: black; opacity: 0.5;width: 135%;">
         </div>
-
-
-            <div class="col">
-
-                <div class="row"  style=" margin-left: 4%;
-                margin-top: 1%;">
-                    <label>Category name :
-
+        <form [formGroup]="addhomeForm">
+            <div class="card" style="margin-left: 18%;">
+                <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+                    <div class="col">
+                        <label>Category name:</label><br><br>
+                        <label>Category image:</label><br><br><br><br><br>
+                        <label>Subcategories:</label>
+                    </div>
+                    <div class="col" style=" margin-top: -1.5%;">
+                        <input type="text" class="form-control" formControlName="categoryName">
+                        <span class="text text-danger" *ngIf="addhomeForm.controls.categoryName.touched && addhomeForm.controls.categoryName.invalid && addhomeForm.controls.categoryName.errors.required">*Category Name is Required</span><br>
+                        <label for="fileInput">
+                        <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
+                        <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
+                        <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="visibility:hidden;">
                     </label>
-                    <input type="text" style="width: 30%; margin-left: 20%;
-                    " value="GIF001">
+                        <input type="text" class="form-control" formControlName="subCategories">
+                        <span class="text text-danger" *ngIf="addhomeForm.controls.subCategories.touched && addhomeForm.controls.subCategories.invalid && addhomeForm.controls.subCategories.errors.required">*Subcategory  is Required</span><br>
+                        
+                               
+                    </div>
                 </div>
 
-                <div class="col">
-
-                    <div class="row"  style=" margin-left: 4%;
-                    margin-top: 4%;">
-                        <label style="margin-left: -1.5%;">Category image :
-    
-                        </label>
-                        <i class="fa fa-id-card" aria-hidden="true" style="font-size: 200px; margin-left: 19%;"></i>
-                        
-                    </div>
-
-                    <div class="col">
-
-                        <div class="row"  style=" margin-left: 2%;
-                        margin-top: 4%;">
-                            <label>Subcategories :
-        
-                            </label>
-                            <input type="text" style="width: 30%; margin-left: 20%;
-                            " value="GIF001">
-                        </div>
-
-                
-
-                    <div class="row" style="margin-left: 15%;
-                    margin-top: 10%; margin-bottom: 8%; " >
-                        <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;" [routerLink]="['/home-visit-service']">Cancel</button>
-                        <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;" [routerLink]="['/home-visit-service']">Save </button>
-                    </div>
+                <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
+                    <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                    [routerLink]="['/home-visit-service']">Back</button>
+                    <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                        (click)="addservice()" [disabled]=addhomeForm.invalid>Save</button>
+                </div>
             </div>
-        
+        </form>
+    </main>
+</div>

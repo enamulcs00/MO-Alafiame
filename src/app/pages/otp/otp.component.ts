@@ -16,6 +16,7 @@ export class OtpComponent implements OnInit {
     'otp': new FormControl('')
     })
     }
+    sendOtp(){}
   }
   
 

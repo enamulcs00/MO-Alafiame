@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { MainService } from 'src/app/provider/main.service';
 declare var $: any;
-
-
-
 
 @Component({
   selector: 'app-product-management',
@@ -16,13 +14,14 @@ export class ProductManagementComponent implements OnInit {
   
   search: string;
   productlists: any = [];
-  page: number= 1;
-  limit:number= 10;
+  limit:number= 5;
+  currentPage = 1;
   productId: any;
-  itemPerPage: number=10;
+  itemPerPage = 5;
   p: any=0;
   status: any;
-  
+  ProductLenght:any;
+
 
   constructor(private router: Router,public mainService: MainService) {
     
@@ -38,7 +37,7 @@ export class ProductManagementComponent implements OnInit {
     this.mainService.showSpinner();
     let object = {
       "search": this.search,
-      "page": this.page,
+      "page": this.currentPage,
       "limit": this.limit
       }
     this.mainService.postApi('admin/productList', object, 1).subscribe(res => {
@@ -56,22 +55,43 @@ export class ProductManagementComponent implements OnInit {
         this.mainService.errorToast(error.responseMessage)
       }
     })
-    
-    
-  }
+    }
+    exportCSV(){
+      let dataArr = [];
+      dataArr.push({
+         sno: "S.No",
+         Name: "Name of product",
+         Charge: "Charges",
+         Use:"Used For",
+         Type:"Service Type"
+     });
+     this.productlists.forEach((element,ind) => {
+      dataArr.push({
+          sno:ind+1,
+          Name:element.productName,
+          Charges:element.price,
+          Use:element.UsedFor,
+          Type:element.type,
+      })
+  }) 
+  new ngxCsv(dataArr, 'Product_management');
+
+    }
+
   productList()
   {
     this.mainService.showSpinner();
     
     let object = {
-      "page": this.page,
+      "page": this.currentPage,
       "limit": this.limit
       }
     this.mainService.postApi('admin/productList', object, 1).subscribe(res => {
       console.log(" productList==>", res)
       if (res.responseCode == 200 && res.result && res.result.docs) {
-        console.log('shweta',res.result)
+        
         this.productlists = res.result.docs
+        this.ProductLenght = res.result.total;
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
         
@@ -152,9 +172,9 @@ this.status="BLOCK"
 
  }
  pagination(event) {
-  console.log(event)
-  this.itemPerPage = event;
+  console.log('This event will display page number:->',event);
+  this.currentPage = event;
   this.productList()
 }
-
+deleteMultiUser(){}
 }

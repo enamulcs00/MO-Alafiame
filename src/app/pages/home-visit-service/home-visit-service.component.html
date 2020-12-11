@@ -5,38 +5,37 @@
             <h1 class="page_title"> SERVICE MANAGEMENT</h1>
         </div>
         <hr style="background: black; opacity: 0.5;">
-    
+
         <div class="content-section">
             <div class="outer-box">
-         <div class="global-table no-radius p0">
+                <div class="global-table no-radius p0">
                     <div class="tab-content1">
-                        <div class="tab-pane1" >
+                        <div class="tab-pane1">
                             <div class="sec_head_new sec_head_new_after">
-                                
-                                    <div class="row">
-                                        <div class="col-xl-4 col-lg-4 col-md-4">
-                                            <div class="filter_search mb20 width100">
-                                                <div class="input-group filter_search_group">
-                                                    <input type="text" class="form-control overflow-text"
-                                                    [(ngModel)]="search"  placeholder="Search by name"
-                                                        maxlength="60" ><button (click)="searchValue()" style="width: 39px;
-                                                        background-color: #86559f;"><i class="fa fa-search"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-xl-4 col-lg-4 col-md-4">
-                                            <div class="text-center admin-btn" style="margin-left: 137%;">
-                                                <button type="button" class="btn btn-theme Go_btn ml-2" 
-                                                   >Export CSV
-                                                    </button>
-                                                    <button type="button" class="btn btn-theme Go_btn ml-2"  [routerLink]="['/add-home-visit']"
-                                                   >Add new
-                                                    </button>
+
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-4">
+                                        <div class="filter_search mb20 width100">
+                                            <div class="input-group filter_search_group">
+                                                <input type="text" class="form-control overflow-text"
+                                                    [(ngModel)]="search" placeholder="Search by name"
+                                                    maxlength="60"><button (click)="searchValue()" style="width: 39px;
+                                                        background-color: #86559f;"><i
+                                                        class="fa fa-search"></i></button>
                                             </div>
                                         </div>
                                     </div>
-                                
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4">
+                                        <div class="text-center admin-btn" style="margin-left: 137%;">
+                    <button type="button" class="btn btn-theme Go_btn ml-2" (click)="exportCSV()">Export CSV</button>
+                                            <button type="button" class="btn btn-theme Go_btn ml-2"
+                                                [routerLink]="['/add-home-visit']">Add new
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -44,98 +43,52 @@
                                 <thead>
                                     <tr class="no_wrap_th text-center">
                                         <th scope="col" class="Sorting-img">S.No</th>
-                                       <th scope="col" class="Sorting-img">Category name</th>
+                                        <th scope="col" class="Sorting-img">Category name</th>
                                         <th scope="col" class="Sorting-img">Category Image</th>
                                         <th scope="col" class="Sorting-img" style="width: 15%;">Subcategories</th>
                                         <th scope="col" class="Sorting-img">Updated on</th>
                                         <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
-                                      </tr>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="text-center">
+                                    <tr class="text-center"
+                                        *ngFor="let item of servicelists | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: categoryLength}; let i = index">
 
-                                    <td class="content" >1</td>
-                                    <td class="content" > Category 1</td>
-                                    <td class="content" ><i class="fa fa-id-card" aria-hidden="true" style="font-size: xx-large;"></i>
-                                    </td>
-                                    <td class="content" >SubCategory 1 <br>
-                                    SubCategory 2
-                                    <i
-                                         class="fa fa-sort" aria-hidden="true"></i>
-                        
-                                </td>
-                                    <td class="content">17/07/2020</td>
-                                    <td class="justify-content-center d-flex">
-                                    
-                                        <button  [routerLink]="['/view-home-visit']" class="btn btn-info ml-2 bt-margin" title="view"
-                                        >
-                                        <i  class="fa fa-eye" aria-hidden="true"
-                                            style="color:white"></i></button>
-                                    <button [routerLink]="['/edit-home-visit']" class="btn btn-info ml-2 bt-margin" ><i
-                                            class="fa fa-edit" aria-hidden="true"
-                                            style="color:white"></i></button>
-                                    <button class="btn btn-danger ml-2 bt-margin" title="delete" data-toggle="modal" data-target="#deleteModal">
-                                        <i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i>
-
-                                    </button>
-
-                    
-                                </tr>
-
-                                
-
-                               
-
-                                
-
-                                
-
-                               
-                               
-                               
-
-                                
-                                
-                                    <!-- <tr *ngFor="let item of userDataList | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: total}; let i = index"
-                                        class="text-center">
-                                        <td><input type="checkbox" class="tabel-body-checkbox" [value]="item._id"
-                                                [(ngModel)]="item.isChecked" [ngModelOptions]="{standalone: true}"
-                                                (change)="onCheckboxChange($event)" />
-                                            {{itemPerPage * (currentPage-1)+ i+1}}</td>
-                                        <td class="content" [tooltip]="item?.firstName + ' ' + item?.lastName || '--'">
-                                            {{item?.firstName + ' ' + item?.lastName || '--'}}</td>
-                                        <td class="content" [tooltip]="item?.email || '--'">{{item?.email || '--'}}</td>
-                                        <td class="content" [tooltip]="item?.mobileNumber || '--'">
-                                            {{item?.mobileNumber || '--'}}</td>
-                                        <td class="content">{{item?.disease || '--'}}</td>
-                                        <td class="content">{{item?.createdAt | date :'d/M/y' || '--'}}</td>
-                                        <td class="content">{{item?.testCount}}</td>
-                                        <td class="content">{{item?.testStatus || '--'}}</td>
-                                        <td class="justify-content-center d-flex">
-                                            <button class="btn btn-info ml-2 bt-margin" title="view"
-                                                (click)="viewUser(item?._id)">
+                                        <td class="content">{{itemPerPage * (currentPage-1)+ i+1}}</td>
+                                        <td class="content"> {{item?.categoryId.categoryName}}</td>
+                                        <td class="content"><img [src]="item?.subCategoryImage" alt="" style="width: 66px;">
+                                        </td>
+                                        <td class="content">{{item?.subCategoryName}}</td>
+                                      
+                                        <td class="content">{{item?.updatedAt | date}}</td>
+                                        <td class="justify-content-center d-flex" style="padding-top: 27px;padding-bottom: 24px;">
+                                     <button [routerLink]="['/view-home-visit',item?.categoryId._id]"
+                                                class="btn btn-info ml-2 bt-margin" title="view">
                                                 <i class="fa fa-eye" aria-hidden="true"
                                                     style="color:white"></i></button>
-                                            <button class="btn btn-info ml-2 bt-margin" (click)="editUser(item?._id)"><i
-                                                    class="fa fa-edit" aria-hidden="true"
-                                                    style="color:white"></i></button>
-                                            <button class="btn btn-danger ml-2 bt-margin" title="delete"
-                                                (click)="deleteUserModal(item?._id)"><i class="fa fa-trash"
+                                            <button [routerLink]="['/edit-home-visit',item?.categoryId._id]"
+                                                class="btn btn-info ml-2 bt-margin"><i class="fa fa-edit"
                                                     aria-hidden="true" style="color:white"></i></button>
-                                        </td>
-                                    </tr> -->
-                                    <!-- <tr *ngIf="!userDataList.length">
+                                            <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(item?._id)">
+                                                <i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i>
+
+                                            </button>
+                                            </td>
+
+
+                                    </tr>
+                                    <tr *ngIf="!categoryList.length">
                                         <td class="table-no-record" colspan="9">No Record Found</td>
-                                    </tr> -->
+                                    </tr>
                                 </tbody>
                             </table>
-                            <div class="custom-pagination mt-2 text-align-end" *ngIf="total > 10">
+                            <div class="custom-pagination mt-2 text-align-end" *ngIf="categoryLength >5">
                                 <pagination-controls (pageChange)="pagination($event)"></pagination-controls>
                             </div>
                         </div>
                     </div>
                 </div>
-             </div>
+            </div>
         </div>
     </main>
 </div>
@@ -167,6 +120,3 @@
     </div>
 </div>
 <!-- end delete gift-card-management modal -->
-
-
-

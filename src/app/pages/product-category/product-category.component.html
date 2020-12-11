@@ -1,4 +1,4 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
     <main class="middle-content">
         <div class="page_title_block">
             <h1 class="page_title">PRODUCT CATEGORY MANAGEMENT</h1>
@@ -53,8 +53,8 @@
                                         <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
                                       </tr>
                                 </thead>
-                                 <tbody > <!--*ngIf="productlists" -->
-                                     <tr class="text-center"*ngFor="let item of categoryList | paginate : {itemsPerPage:10, currentPage:page, totalItems:total} ; let i=index" > <!--*ngFor="let items of productlists | paginate : {itemsPerPage:10, currentPage:page, totalItems:total}; let i=index" -->
+                                 <tbody > 
+                                     <tr class="text-center"*ngFor="let item of categoryList | paginate : {itemsPerPage:10, currentPage:page, totalItems:total} ; let i=index" > 
 
                                     <td class="content" >{{i+1}}</td>
                                     <td class="content" > {{item.categoryName}}</td>
@@ -84,10 +84,10 @@
              </div>
         </div>
     </main>
-</div>
+</div> -->
 
 <!-- delete product-management modal Start -->
-<div class="modal fade global-modal reset-modal" id="deleteModal">
+<!-- <div class="modal fade global-modal reset-modal" id="deleteModal">
     <div class="modal-dialog max-WT-500">
         <form class="change_password">
             <div class="modal-content">
@@ -111,24 +111,22 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->
 <!-- end delete product-management modal -->
 
 <!-- delete multiple hospital modal Start -->
-<div class="modal fade global-modal reset-modal" id="deleteMultiUser">
+<!-- <div class="modal fade global-modal reset-modal" id="deleteMultiUser">
     <div class="modal-dialog max-WT-500">
         <form class="change_password">
             <div class="modal-content">
                 <div class="modal-header d-block text-center modal-header-custm">
-                    <!-- <h5 *ngIf="userIds.length == 1" class="modal-title d-inline-block">Delete User?</h5>
-                    <h5 *ngIf="userIds.length > 1" class="modal-title d-inline-block">Delete Users?</h5> -->
+                    
                 </div>
                 <div class="modal-inner-content">
                     <div class="modal-body">
                         <div class="text-center modal_flax_height d-flex align-items-center justify-content-center">
                             <div class="w-100">
-                                <!-- <p *ngIf="userIds.length == 1">Are you sure you want to delete this user?</p>
-                                <p *ngIf="userIds.length > 1">Are you sure you want to delete these users?</p> -->
+                                
                                 <div class="modal-btn-box">
                                     <button type="submit" class="btn btn-theme" (click)="deleteMultiUser()">Yes</button>
                                     <button type="button" class="btn btn-danger btn-theme ml-2"
@@ -141,11 +139,11 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->
 <!-- end delete multiple hospital modal -->
 
 <!-- logout modal start -->
-<div class="modal fade global-modal reset-modal" id="logoutModal">
+<!-- <div class="modal fade global-modal reset-modal" id="logoutModal">
     <div class="modal-dialog max-WT-500">
         <form class="change_password">
             <div class="modal-content">
@@ -169,11 +167,11 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->
 <!-- logout modal end -->
 
 <!-- block user-management modal Start -->
-<div class="modal fade global-modal reset-modal" id="blockModal">
+<!-- <div class="modal fade global-modal reset-modal" id="blockModal">
     <div class="modal-dialog max-WT-500">
         <form class="change_password">
             <div class="modal-content">
@@ -197,7 +195,7 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->
 <!-- end block  user-management modal -->
 
-
+ -->

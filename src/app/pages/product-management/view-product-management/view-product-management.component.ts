@@ -12,8 +12,6 @@ export class ViewProductManagementComponent implements OnInit {
   productId: string;
   user: any;
   profile: void;
-  
-
   constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) { }
 
   ngOnInit() {
