@@ -1,5 +1,4 @@
-
-  <div class="wrapper">
+<div class="wrapper">
     <main class="middle-content">
         <div class="page_title_block">
             <h1 class="page_title"> Category Management> View category
@@ -10,12 +9,12 @@
         </div>
 
         <div class="content-section">
-        <div class="card" style="width: 333px;
+        <div class="order-view  max-WT-700 mrgn-0-auto setting-page" style="width: 400px;
         left: 146px;
         bottom: 13px;">
             <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
                 <div class="col">
-                    <label>Category Name:</label><br><br>
+                    <label>Category Name :</label><br><br>
                     <label>Category Image :</label><br><br>
                     
                 </div>
@@ -33,7 +32,7 @@
             </div>
         </div>
         <h3>SubCategories<button type="button" class="btn btn-theme Go_btn ml-2"
-        [routerLink]="['/add-subcategories',id]" style="float:right">Add
+      style="float:right" (click)=openAdd()>Add
     </button></h3>
         <div class="card">
             <div class="table-responsive">
@@ -51,7 +50,7 @@
                             <td class="content">{{i+1}}</td>
                             <td class="content">{{item?.subCategoryName}}</td>
                             <td class="justify-content-center d-flex" style="padding-top: 27px;padding-bottom: 24px;">
-                          <button [routerLink]="['/edit-subcategories',item?.categoryId]"
+                          <button (click)="editFunction(item?._id)"
                                     class="btn btn-info ml-2 bt-margin"><i class="fa fa-edit"
                                         aria-hidden="true" style="color:white"></i></button>
                                 <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(item?._id)">
@@ -94,3 +93,87 @@
 </form>
 </div>
 </div>
+
+       <!-- Add sub category modal Start -->
+       <div class="modal fade global-modal reset-modal" id="addSub">
+        <div class="modal-dialog max-WT-500">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center modal-header-custm">
+                    <h5 class="modal-title d-inline-block">Add Sub Category</h5>
+                </div>
+                <div class="modal-inner-content">
+                    <div class="modal-body">
+                        <form [formGroup]="addSubForm">
+                                <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+                                    <div class="col">
+                                        <div class="row">
+                                            <label class="col-md-4">Category name</label>
+                                            <span class="col-md-1">:</span>
+                                            <input type="text" class="form-control col-md-5" formControlName="categoryName">
+                                            <span class="text text-danger" *ngIf="addSubForm.controls.categoryName.touched && addSubForm.controls.categoryName.invalid && addSubForm.controls.categoryName.errors.required">*Category Name is Required</span>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-md-4">Category image</label>
+                                            <span class="col-md-1">:</span>
+                                            <label class="form-control col-md-5" for="fileInput">
+                                                <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
+                                                <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
+                                                <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="visibility:hidden;">
+                                                 </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
+                                    <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                                    data-dismiss="modal">Back</button>
+                                    <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                                        (click)="addSubService()" [disabled]=addSubForm.invalid>Save</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+         <!-- edit sub category modal Start -->
+       <div class="modal fade global-modal reset-modal" id="editSub">
+        <div class="modal-dialog max-WT-500">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center modal-header-custm">
+                    <h5 class="modal-title d-inline-block">Add Sub Category</h5>
+                </div>
+                <div class="modal-inner-content">
+                    <div class="modal-body">
+                        <form [formGroup]="editSubForm">
+                                <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+                                    <div class="col">
+                                        <div class="row">
+                                            <label class="col-md-4">Category name</label>
+                                            <span class="col-md-1">:</span>
+                                            <input type="text" class="form-control col-md-5" formControlName="categoryName">
+                                            <span class="text text-danger" *ngIf="editSubForm.controls.categoryName.touched && editSubForm.controls.categoryName.invalid && editSubForm.controls.categoryName.errors.required">*Category Name is Required</span>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-md-4">Category image</label>
+                                            <span class="col-md-1">:</span>
+                                            <label class="form-control col-md-5" for="fileInput">
+                                                <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
+                                                <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
+                                                <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="visibility:hidden;">
+                                                 </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
+                                    <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                                    data-dismiss="modal">Back</button>
+                                    <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                                        (click)="editSubService()" [disabled]=editSubForm.invalid>Save</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
