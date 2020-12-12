@@ -193,6 +193,8 @@ AlphabetOnly(event){
       $('#toDate').attr('max', this.maxDate);
     });
   }
-
-  
+  // =============DOB Can't be accept Future Date==========
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+    }
 }

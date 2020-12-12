@@ -169,7 +169,7 @@ export class UserManagementComponent implements OnInit {
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
       'number': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
       'DOB': new FormControl('', Validators.required),
-      'image': new FormControl(''),
+      //'image': new FormControl(''),
       
     });
     this.addPractionerForm= new FormGroup({
