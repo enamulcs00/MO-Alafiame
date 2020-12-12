@@ -15,12 +15,18 @@ export class ViewHomeVisitComponent implements OnInit {
   id: any;
   subcategorList: any=[];
   addSubForm: FormGroup;
+  editSubForm: FormGroup;
+  serviceId: any;
+  servicedata: any;
   constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) { }
   ngOnInit() {
     this.activate.paramMap.subscribe(params => {
       this.categoryId  = params.get('id');
     });
     this.addSubForm = new FormGroup({
+      "categoryName": new FormControl('', Validators.required),
+    });
+    this.editSubForm = new FormGroup({
       "categoryName": new FormControl('', Validators.required),
     });
     this.viewCategory();
@@ -74,11 +80,29 @@ export class ViewHomeVisitComponent implements OnInit {
  }
 
  openAdd(){
- 
   $('#addSub').modal('show')
-
  }
-
+ editFunction(id){
+  $('#editSub').modal('show')
+  this.mainService.showSpinner();
+  this.mainService.getApi(`admin/viewService?serviceId=${id}`, 1).subscribe((res: any) => {
+    if (res.responseCode == 200 && res.result) {
+      this.mainService.hideSpinner();
+      this.mainService.successToast(res.responseMessage)
+      this.profile=res.result.subCategoryImage
+      this.editSubForm.patchValue({
+        "categoryName":res.result.subCategoryName
+       })
+    } else {
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(res.responseMessage)
+    }
+    error => {
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(error.responseMessage)
+    }
+  })
+ }
 
  addSubService(){
   let data = 
@@ -107,6 +131,32 @@ export class ViewHomeVisitComponent implements OnInit {
 
  }
 
+ editSubService(){
+  let data = 
+  {
+    'serviceId':this.serviceId,
+    'subCategoryName': this.editSubForm.value.categoryName,
+    'subCategoryImage': this.profile,
+  }
+  this.mainService.showSpinner();
+  this.mainService.postApi('admin/addService', data, 1).subscribe((res: any) => {
+    console.log("addProduct response ==>", res)
+    if (res.responseCode == 200 && res.result) {
+      this.mainService.hideSpinner();
+      this.mainService.successToast(res.responseMessage)
+      $('#editSub').modal('hide');
+    } else {
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(res.responseMessage)
+      $('#editSub').modal('hide');
+
+    }
+    error => {
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(error.responseMessage)
+    }
+  })
+ }
 
  handleInputChange(e) {
   var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
