@@ -1419,13 +1419,13 @@
                                                             aria-hidden="true" style="color:white"></i></button>
                                                     <button class="btn btn-success ml-2 bt-margin"
                                                         *ngIf="item?.status == 'ACTIVE'"
-                                                        (click)="blockModal(item?._id, 'BLOCK')" title="deactivate"><i
+                                                        (click)="blockPractionerModal(item?._id, 'BLOCK')" title="deactivate"><i
                                                             class="fa fa-ban"
                                                             style="color:white;background-color: green"
                                                             aria-hidden="true"></i></button>
                                                     <button class="btn btn-danger ml-2 bt-margin"
                                                         *ngIf="item?.status == 'BLOCK'"
-                                                        (click)="blockModal(item?._id, 'ACTIVE')" title="activate"><i
+                                                        (click)="blockPractionerModal(item?._id, 'ACTIVE')" title="activate"><i
                                                             class="fa fa-ban" style="color:white;background-color: red"
                                                             aria-hidden="true"></i></button>
                                                     <button class="btn btn-danger ml-2 bt-margin" title="delete"

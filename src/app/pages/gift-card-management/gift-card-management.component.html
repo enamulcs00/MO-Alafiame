@@ -73,9 +73,10 @@
                                     <td class="content" >{{item.discount}}%</td>
                                     <td class="content">{{item.maxAmount}}</td>
                                     <td class="content">{{item.expiryDate | date}}</td>
-                                    <td class="justify-content-center d-flex">
+                                    <td class="content">
                                     <button class="btn btn-info ml-2 bt-margin" routerLink="/edit-gift/{{item._id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>&nbsp;
-                                    <button class="btn btn-danger ml-2 bt-margin" (click)="openModal(item._id)"><i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i></button></td>
+                                    <button class="btn btn-danger ml-2 bt-margin" (click)="openModal(item._id)"><i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i></button>
+                                </td>
                                 </tr>
                               </tbody>
                                <tbody *ngIf="userDataList?.length==0">

@@ -787,14 +787,14 @@ export class UserManagementComponent implements OnInit {
       'limit':this.itemPerPage,
     }
     this.mainService.postApi('admin/practitionerList',data, 1).subscribe((res:any)=>{
-      
+      console.log("This is For PractionerList", res);
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.practionerData=res.result.docs;
         this.practionerLength=res.result.total
         this.status=res.result.docs.status;
 
-        console.log("f", this.practionerData);
+        
       }
       else if(res.responseCode==404){
         this.mainService.hideSpinner()
@@ -1327,19 +1327,26 @@ export class UserManagementComponent implements OnInit {
     })
   }
 
-  // block company
-  blockModal(userId,status){
+  // block practioner
+  blockPractionerModal(userId,status){
     $('#BlockModal').modal('show')
     this.userId = userId
     this.status=status
-    console.log('f',status);
+    console.log('Practioner UserId is',this.userId)
+    console.log('Status of Practioner is-->:',status);
     
   }
 
   BlockUser(){
+    var channel ="admin/blockUnblockPractitioner"
     let data={
-
+      practitionerId: this.userId,
+      status:this.status
     }
+  //  this.mainService.showSpinner();
+    this.mainService.postApi(channel,data,1).subscribe((res:any)=>{
+console.log('This is practioner Block sections',res)
+    })
   }
 // ------------------------------- block/unblock functinality end----------------------------- //
 }
