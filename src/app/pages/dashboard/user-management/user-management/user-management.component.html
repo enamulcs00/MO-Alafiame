@@ -248,7 +248,7 @@
                                                             <div class="form-group">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Name" formControlName="firstName"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.AlphabetOnly($event)"
                                                                     maxlength="60">
                                                                 <div class="text-danger">
                                                                     <span
@@ -301,7 +301,7 @@
                                                             <div class="form-group ">
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.NumOnly($event)"
                                                                     maxlength="15">
                                                                 <div class="text-danger">
                                                                     <span
@@ -324,8 +324,7 @@
                                                             <div class="form-group ">
                                                                 <input type="date" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="DOB"
-                                                                    (keypress)="mainService.preventSpace($event)"
-                                                                    maxlength="15">
+                                                                     [max]="mainService.getToday()">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="editUserForm.get('DOB').hasError('required') && (editUserForm.get('DOB').dirty || editUserForm.get('DOB').touched)">
@@ -368,7 +367,7 @@
                                                             <img src="{{imageUrl || 'assets/img/profile-img.jpg'}}"
                                                                 id="sub-admin-image" alt="">
                                                             <label class="upload-label">
-                                                                <input type="file" formControlName="image" 
+                                                                <input type="file" 
                                                                     accept="image/jpg,image/jpeg,image/png" id="image"
                                                                     (change)="ValidateFileUpload($event)"
                                                                     maxlength="56">
@@ -384,7 +383,7 @@
                                                             <div class="form-group">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Name" formControlName="firstName"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.AlphabetOnly($event)"
                                                                     maxlength="60">
                                                                 <div class="text-danger">
                                                                     <span
@@ -437,8 +436,8 @@
                                                             <div class="form-group ">
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
-                                                                    (keypress)="mainService.preventSpace($event)"
-                                                                    maxlength="15">
+                                                                    (keypress)="mainService.NumOnly($event)"
+                                                                    maxlength="10">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="addUserForm.get('number').hasError('required') && (addUserForm.get('number').dirty || addUserForm.get('number').touched)">
@@ -460,8 +459,7 @@
                                                             <div class="form-group ">
                                                                 <input type="date" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="DOB"
-                                                                    (keypress)="mainService.preventSpace($event)"
-                                                                    maxlength="15">
+                                                                    [max]="mainService.getToday()">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="addUserForm.get('DOB').hasError('required') && (addUserForm.get('DOB').dirty || addUserForm.get('DOB').touched)">
@@ -741,7 +739,7 @@
                                                             <div class="form-group">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Name" formControlName="firstName"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.AlphabetOnly($event)"
                                                                     maxlength="60">
                                                                 <div class="text-danger">
                                                                     <span
@@ -794,7 +792,7 @@
                                                             <div class="form-group ">
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.NumOnly($event)"
                                                                     maxlength="15">
                                                                 <div class="text-danger">
                                                                     <span
@@ -817,8 +815,7 @@
                                                             <div class="form-group ">
                                                                 <input type="date" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="DOB"
-                                                                    (keypress)="mainService.preventSpace($event)"
-                                                                    maxlength="15">
+                                                                    [max]="mainService.getToday()">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="editCorporateForm.get('DOB').hasError('required') && (editCorporateForm.get('DOB').dirty || editCorporateForm.get('DOB').touched)">
@@ -885,7 +882,7 @@
                                                             <img src="{{imageUrl || 'assets/img/profile-img.jpg'}}"
                                                                 id="sub-admin-image" alt="">
                                                             <label class="upload-label">
-                                                                <input type="file" formControlName="image" name="image"
+                                                                <input type="file"
                                                                     accept="image/jpg,image/jpeg,image/png" id="image"
                                                                     (change)="ValidateFileUpload($event)"
                                                                     maxlength="56">
@@ -901,7 +898,7 @@
                                                             <div class="form-group">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Name" formControlName="firstName"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.AlphabetOnly($event)"
                                                                     maxlength="60">
                                                                 <div class="text-danger">
                                                                     <span
@@ -954,8 +951,8 @@
                                                             <div class="form-group ">
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
-                                                                    (keypress)="mainService.preventSpace($event)"
-                                                                    maxlength="15">
+                                                                    (keypress)="mainService.NumOnly($event)"
+                                                                    maxlength="10" minlength="10">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="addCorporateForm.get('number').hasError('required') && (addCorporateForm.get('number').dirty || addCorporateForm.get('number').touched)">
@@ -977,8 +974,7 @@
                                                             <div class="form-group ">
                                                                 <input type="date" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="DOB"
-                                                                    (keypress)="mainService.preventSpace($event)"
-                                                                    maxlength="15">
+                                                                    [max]="mainService.getToday()">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="addCorporateForm.get('DOB').hasError('required') && (addCorporateForm.get('DOB').dirty || addCorporateForm.get('DOB').touched)">
@@ -1419,13 +1415,13 @@
                                                             aria-hidden="true" style="color:white"></i></button>
                                                     <button class="btn btn-success ml-2 bt-margin"
                                                         *ngIf="item?.status == 'ACTIVE'"
-                                                        (click)="blockModal(item?._id, 'BLOCK')" title="deactivate"><i
+                                                        (click)="blockPractionerModal(item?._id, 'BLOCK')" title="deactivate"><i
                                                             class="fa fa-ban"
                                                             style="color:white;background-color: green"
                                                             aria-hidden="true"></i></button>
                                                     <button class="btn btn-danger ml-2 bt-margin"
                                                         *ngIf="item?.status == 'BLOCK'"
-                                                        (click)="blockModal(item?._id, 'ACTIVE')" title="activate"><i
+                                                        (click)="blockPractionerModal(item?._id, 'ACTIVE')" title="activate"><i
                                                             class="fa fa-ban" style="color:white;background-color: red"
                                                             aria-hidden="true"></i></button>
                                                     <button class="btn btn-danger ml-2 bt-margin" title="delete"
@@ -1528,7 +1524,7 @@
                                                             <img src="{{imageUrl || 'assets/img/profile-img.jpg'}}"
                                                                 id="sub-admin-image" alt="">
                                                             <label class="upload-label">
-                                                                <input type="file" formControlName="image" name="image"
+                                                                <input type="file"
                                                                     accept="image/jpg,image/jpeg,image/png" id="image"
                                                                     (change)="ValidateFileUpload($event)"
                                                                     maxlength="56">
@@ -1544,7 +1540,7 @@
                                                             <div class="form-group">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Name" formControlName="firstName"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.AlphabetOnly($event)"
                                                                     maxlength="60">
                                                                 <div class="text-danger">
                                                                     <span
@@ -1597,7 +1593,7 @@
                                                             <div class="form-group ">
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.NumOnly($event)"
                                                                     maxlength="15">
                                                                 <div class="text-danger">
                                                                     <span
@@ -1620,8 +1616,7 @@
                                                             <div class="form-group ">
                                                                 <input type="date" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="DOB"
-                                                                    (keypress)="mainService.preventSpace($event)"
-                                                                    maxlength="15">
+                                                                    [max]="mainService.getToday()">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="editPractionerForm.get('DOB').hasError('required') && (editPractionerForm.get('DOB').dirty || editPractionerForm.get('DOB').touched)">
@@ -1639,10 +1634,11 @@
                                             </div>
                                             <div class="text-center mt40 mb40">
                                                 <button class="btn btn-large  max-WT-150 btn-theme"
+                                                    (click)="changePractionerValue()">Back</button>
+                                                <button class="btn btn-large  max-WT-150 btn-theme"
                                                     [disabled]="!editPractionerForm.valid"
                                                     (click)="UpdatePractioner()">Save</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
-                                                    (click)="changePractionerValue()">Back</button>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -1680,7 +1676,7 @@
                                                             <div class="form-group">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Name" formControlName="firstName"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.AlphabetOnly($event)"
                                                                     maxlength="60">
                                                                 <div class="text-danger">
                                                                     <span
@@ -1733,7 +1729,7 @@
                                                             <div class="form-group ">
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
-                                                                    (keypress)="mainService.preventSpace($event)"
+                                                                    (keypress)="mainService.NumOnly($event)"
                                                                     maxlength="15">
                                                                 <div class="text-danger">
                                                                     <span
@@ -1756,8 +1752,7 @@
                                                             <div class="form-group ">
                                                                 <input type="date" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="DOB"
-                                                                    (keypress)="mainService.preventSpace($event)"
-                                                                    maxlength="15">
+                                                                    [max]="mainService.getToday()">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="addPractionerForm.get('DOB').hasError('required') && (addPractionerForm.get('DOB').dirty || addPractionerForm.get('DOB').touched)">

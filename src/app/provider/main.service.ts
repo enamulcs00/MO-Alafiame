@@ -166,6 +166,17 @@ NumOnly(event) {
    return  resultNum;
 
   }
+//=================Character Only============
+
+AlphabetOnly(event){
+
+  let pattAlpha = /^([a-zA-Z ])*$/;
+
+  let resultAlpha = pattAlpha.test(event.key);
+
+  return resultAlpha;
+
+   }
 
   BlockFuture() {
     $(() => {
@@ -182,6 +193,8 @@ NumOnly(event) {
       $('#toDate').attr('max', this.maxDate);
     });
   }
-
-  
+  // =============DOB Can't be accept Future Date==========
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+    }
 }
