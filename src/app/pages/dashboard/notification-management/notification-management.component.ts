@@ -25,6 +25,11 @@ export class NotificationManagementComponent implements OnInit {
     this.notificationFormValidation();
     this.getNotification()
   }
+
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+  }
+
   exportCSV(){
     let dataArr = [];
     dataArr.push({

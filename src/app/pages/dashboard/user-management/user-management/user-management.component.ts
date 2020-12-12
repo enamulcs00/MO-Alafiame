@@ -79,6 +79,13 @@ export class UserManagementComponent implements OnInit {
     this.getService();
   }
 
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+  }
+  
+   
+ 
+
   // =========tab link====//
   selectTab(tab){
     this.currTab = tab;
