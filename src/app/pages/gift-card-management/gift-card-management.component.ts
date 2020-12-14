@@ -26,6 +26,11 @@ export class GiftCardManagementComponent implements OnInit {
     })
     this.giftList()
   }
+
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+  }
+
   pagination(page) {
     this.currentPage = page;
     console.log(this.currentPage)

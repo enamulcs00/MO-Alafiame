@@ -30,7 +30,8 @@
                                         </div>
                                         <div class="col-md-2" style="margin-top: -2%;">
                                             <label>Fromdate:</label>
-                                            <input type="date" class="form-control"  formControlName="startdate" >
+                                            <input type="date" class="form-control" 
+                                            [max]="service.getToday()" formControlName="startdate" >
                                         </div>
                                         <div class="col-md-2" style="margin-top: -2%;">
                                             <label>Todate:</label>

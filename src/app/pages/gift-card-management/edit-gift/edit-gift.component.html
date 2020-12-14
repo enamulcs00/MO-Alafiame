@@ -26,10 +26,17 @@ margin-left: 2%;">
                         <div class="image-box">
                             <img src="{{img || 'assets/img/profile-img.jpg'}}" id="sub-admin-image" alt="">
                             <label class="upload-label">
-                                <input type="file" formControlName="image" name="image"
+                                <input type="file" formControlName="image" name="image" style="position: relative;
+                                top: -61px;
+                                left: 28px;
+                                opacity: .01;"
                                     accept="image/jpg,image/jpeg,image/png" id="image"
                                     (change)="ValidateFileUpload($event)" maxlength="56">
-                                <em class="fa fa-pencil" style="color: #86559f!important;font-size: 12px"></em>
+                                <em class="fa fa-camera" style="color: #86559f!important;
+                                font-size: 20px;
+                                position: relative;
+                                right: 230px;
+                                top: -57px;"></em>
                             </label>
                         </div>
                         <span class="text text-danger" *ngIf="editGiftForm.get('image').hasError('required') && editGiftForm.get('image').touched">*Image is Required</span><br>

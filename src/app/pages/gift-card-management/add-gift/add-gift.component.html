@@ -28,8 +28,15 @@ margin-left: 2%;">
                     <div class="col">
                         <label for="fileInput">
                             <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
-                            <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
-                            <input type="file" id="fileInput" class="form-control" formControlName="image" name="imageUrl" accept="image/*" (change)="convertimg($event)" style="visibility:hidden;">
+                            <em class="fa fa-camera" style="color: #86559f!important;
+                            font-size: 20px;
+                            position: relative;
+                            right: 60px;
+                            top: 38px;
+                        "></em>
+                            <input type="file" id="fileInput" class="form-control" formControlName="image" name="imageUrl" accept="image/*" (change)="convertimg($event)" style="visibility:hidden; position: relative;
+                            right: 108px;
+                            top: 33px;">
                         </label>
                     </div>
                 </div>

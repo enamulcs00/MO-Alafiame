@@ -60,7 +60,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <input type="date" formControlName="fromDate" class="form-control"
-                                                        style="width: 60%;">
+                                                        style="width: 60%;" [max]="mainService.getToday()">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <input type="date" formControlName="toDate"
@@ -157,8 +157,8 @@
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="mb40">
 
-                                            <div class="add-store-block input-style view-label-align">
-                                                <div class="form-group row align-items-baseline">
+                                            <div class="add-store-block input-style view-label-align"  style="margin-left: 25%;">
+                                                <div class="form-group row align-items-baseline" style="margin-left: -50%;margin-bottom: 5%;">
                                                     <div class="col-md-12" style="text-align: center">
                                                         <img alt=""
                                                             src="{{viewCustomer?.profilePic || 'assets/img/profile-img.jpg' }}"
@@ -324,7 +324,7 @@
                                                             <div class="form-group ">
                                                                 <input type="date" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="DOB"
-                                                                     [max]="mainService.getToday()">
+                                                                    [max]="mainService.getToday()">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="editUserForm.get('DOB').hasError('required') && (editUserForm.get('DOB').dirty || editUserForm.get('DOB').touched)">
@@ -539,7 +539,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <input type="date" formControlName="fromDate" class="form-control"
-                                                        style="width: 60%;">
+                                                        style="width: 60%;" [max]="mainService.getToday()">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <input type="date" formControlName="toDate"
@@ -648,8 +648,8 @@
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="mb40">
 
-                                            <div class="add-store-block input-style view-label-align">
-                                                <div class="form-group row align-items-baseline">
+                                            <div class="add-store-block input-style view-label-align"  style="margin-left: 25%;">
+                                                <div class="form-group row align-items-baseline"  style="margin-left: -50%;margin-bottom: 5%;">
                                                     <div class="col-md-12" style="text-align: center">
                                                         <img alt=""
                                                             src="{{viewCorporate?.profilePic || 'assets/img/profile-img.jpg' }}"
@@ -815,7 +815,8 @@
                                                             <div class="form-group ">
                                                                 <input type="date" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="DOB"
-                                                                    [max]="mainService.getToday()">
+                                                                    
+                                                                    [max]="mainService.getToday()" >
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="editCorporateForm.get('DOB').hasError('required') && (editCorporateForm.get('DOB').dirty || editCorporateForm.get('DOB').touched)">
@@ -1072,7 +1073,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <input type="date" formControlName="fromDate" class="form-control"
-                                                        style="width: 60%;">
+                                                        style="width: 60%;" [max]="mainService.getToday()">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <input type="date" formControlName="toDate"
@@ -1220,9 +1221,9 @@
                                         <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                             <div class="mb40">
     
-                                                <div class="add-store-block input-style view-label-align">
+                                                <div class="add-store-block input-style view-label-align" style="margin-left: 25%">
                                                     
-                                                    <div class="form-group row align-items-baseline">
+                                                    <div class="form-group row align-items-baseline"  style="margin-left: -50%;margin-bottom: 5%;">
                                                         <label class="col-md-4 textalignright ">Name <span>:</span></label>
                                                         <div class="col-md-8 textaligncenter">
                                                             <div class="form-group">
@@ -1356,7 +1357,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <input type="date" formControlName="fromDate" class="form-control"
-                                                        style="width: 60%;">
+                                                        style="width: 60%;" [max]="mainService.getToday()">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <input type="date" formControlName="toDate"
@@ -1415,13 +1416,13 @@
                                                             aria-hidden="true" style="color:white"></i></button>
                                                     <button class="btn btn-success ml-2 bt-margin"
                                                         *ngIf="item?.status == 'ACTIVE'"
-                                                        (click)="blockPractionerModal(item?._id, 'BLOCK')" title="deactivate"><i
+                                                        (click)="blockModal(item?._id, 'BLOCK')" title="deactivate"><i
                                                             class="fa fa-ban"
                                                             style="color:white;background-color: green"
                                                             aria-hidden="true"></i></button>
                                                     <button class="btn btn-danger ml-2 bt-margin"
                                                         *ngIf="item?.status == 'BLOCK'"
-                                                        (click)="blockPractionerModal(item?._id, 'ACTIVE')" title="activate"><i
+                                                        (click)="blockModal(item?._id, 'ACTIVE')" title="activate"><i
                                                             class="fa fa-ban" style="color:white;background-color: red"
                                                             aria-hidden="true"></i></button>
                                                     <button class="btn btn-danger ml-2 bt-margin" title="delete"
@@ -1449,9 +1450,9 @@
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="mb40">
 
-                                            <div class="add-store-block input-style view-label-align">
-                                                <div class="form-group row align-items-baseline">
-                                                    <div class="col-md-12" style="text-align: center">
+                                            <div class="add-store-block input-style view-label-align" style="margin-left: 25%;">
+                                                <div class="form-group row align-items-baseline" style="margin-left: -46%;margin-bottom: 5%;">
+                                                    <div class="col-md-12" style="text-align: center"  >
                                                         <img alt=""
                                                             src="{{viewPractionerDataa?.profilePic || 'assets/img/profile-img.jpg' }}"
                                                             style="height: 100px;width: 100px; border-radius: 50%; border: 1px solid black!important;">
@@ -1524,7 +1525,7 @@
                                                             <img src="{{imageUrl || 'assets/img/profile-img.jpg'}}"
                                                                 id="sub-admin-image" alt="">
                                                             <label class="upload-label">
-                                                                <input type="file"
+                                                                <input type="file" formControlName="image" name="image"
                                                                     accept="image/jpg,image/jpeg,image/png" id="image"
                                                                     (change)="ValidateFileUpload($event)"
                                                                     maxlength="56">
@@ -1793,10 +1794,11 @@
                                             </div>
                                             <div class="text-center mt40 mb40">
                                                 <button class="btn btn-large  max-WT-150 btn-theme"
+                                                (click)="changeValue()">Back</button>
+                                                <button class="btn btn-large  max-WT-150 btn-theme"
                                                     [disabled]="!addPractionerForm.valid"
                                                     (click)="addPractionerDetail()">Add</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
-                                                    (click)="changeValue()">Back</button>
+                                               
                                             </div>
                                         </div>
                                     </div>
