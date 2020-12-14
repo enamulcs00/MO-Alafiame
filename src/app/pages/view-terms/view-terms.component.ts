@@ -15,6 +15,7 @@ export class ViewTermsComponent implements OnInit {
 
   ngOnInit() {
     this.activatedroute.params.subscribe((res:any)=>{
+      console.log('Activated res',res);
       this.type=res.type
     })
     this.getStaticData()
