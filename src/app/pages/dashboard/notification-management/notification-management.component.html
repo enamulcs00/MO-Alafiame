@@ -95,7 +95,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="custom-pagination mt-2 text-align-end" >
+                            <div class="custom-pagination mt-2 text-align-end" *ngIf="total>5">
                                 <pagination-controls (pageChange)="paginate($event)"></pagination-controls>
                             </div>
                         </div>

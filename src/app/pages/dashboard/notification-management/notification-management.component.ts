@@ -12,7 +12,7 @@ declare var $:any;
 })
 export class NotificationManagementComponent implements OnInit {
   notificationForm: FormGroup;
-  itemPerPage: number=10;
+  itemPerPage: number=5;
   currentPage: number=1;
   notificationList: any;
   total: any;

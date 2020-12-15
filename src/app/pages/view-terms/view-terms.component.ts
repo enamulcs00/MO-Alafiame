@@ -29,7 +29,7 @@ export class ViewTermsComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage);
       } else {
-        this.result = res.result ? res.result : ''
+       // this.result = res.result ? res.result : ''
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
