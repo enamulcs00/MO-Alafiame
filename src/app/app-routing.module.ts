@@ -139,7 +139,7 @@ const routes: Routes = [
   { path: 'edit-static-content-management/:type/:id', component: EditStaticContentManagementComponent },
   { path: 'edit_privacy_policy', component: EditPrivacyPolicyComponent },
   { path: 'view_terms/:type', component: ViewTermsComponent },
-  { path: 'edit_terms', component: EditTermsComponent },
+  { path: 'edit_terms/:id', component: EditTermsComponent },
 
   // test center management
   { path: 'test-center-management', component: TestCenterManagementComponent },
