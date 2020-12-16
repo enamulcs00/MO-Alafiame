@@ -430,6 +430,8 @@ export class UserManagementComponent implements OnInit {
     this.customerUserValue=true;
     this.customerUserEditValue=true;
     this.customerUserAddValue=true;
+    this.practionerUserAddValue=true;
+    this.practionerValue=true;
   }
 
 
