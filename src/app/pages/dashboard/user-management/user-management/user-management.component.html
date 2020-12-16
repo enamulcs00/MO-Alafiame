@@ -1131,12 +1131,8 @@
                                     <div class="col-md-10">
                                         <select class="form-control" formControlName="limit"  style="width: 30%; margin-left: 16.5%;">
                                             <option value="">Select</option>
-                                            <option value="0">0</option>
-                                            <option value="5">5</option>
-                                            <option value="10">10</option>
-                                            <option value="15">15</option>
-
-                                        </select>
+                                            <option *ngFor="let UserLimit of companyData">{{UserLimit.userLimit}}</option>
+                                            </select>
                                     </div>
                                     </div>
                                     <div class="row" style=" margin-left: 4%; margin-top: 2%;">

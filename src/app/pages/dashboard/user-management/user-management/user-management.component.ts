@@ -218,11 +218,11 @@ export class UserManagementComponent implements OnInit {
 
     }
     this.mainService.postApi('admin/serviceList','', 1).subscribe((res:any)=>{
-      
+      console.log("This is ServilistResponse:", res);
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.serviceData=res.result.docs;
-        console.log("f", this.serviceData);
+        
         
       }
     },(error)=>{
@@ -664,14 +664,14 @@ export class UserManagementComponent implements OnInit {
       'limit':this.itemPerPage,
     }
     this.mainService.postApi('admin/companyList',data, 1).subscribe((res:any)=>{
-      
+      console.log('This will give Company list',res);
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.companyData=res.result.docs;
         this.companyLength=res.result.total
         this.status=res.result.docs.status;
 
-        console.log("f", this.practionerData);
+        
       }
       else if(res.responseCode==404){
         this.mainService.hideSpinner()
