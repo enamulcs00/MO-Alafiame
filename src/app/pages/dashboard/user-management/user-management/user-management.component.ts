@@ -395,6 +395,7 @@ export class UserManagementComponent implements OnInit {
       if (res.responseCode == 200) {
         this.mainService.hideSpinner()
         this.mainService.successToast(res.responseMessage);
+        this.addUserForm.reset();
         this.selectTab('Customer');
         this.customerValue=true;
         this.customerUserEditValue=true;
@@ -403,6 +404,7 @@ export class UserManagementComponent implements OnInit {
       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
+        
       }
     })
   }

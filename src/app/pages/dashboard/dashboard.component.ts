@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   constructor(public mainService: MainService) { }
 
   ngOnInit() {
-    // this.getDashboard();
+    //this.getDashboard();
     this.getUser();
     this.getPractioner();
     this.getService();
