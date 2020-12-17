@@ -11,7 +11,7 @@ export class GiftCardManagementComponent implements OnInit {
   searchForm: FormGroup;
   total: number;
   currentPage: number = 1;
-  itemPerPage:number=10;
+  itemPerPage:number=5;
   gifiId: any;
   userDataList:any= [];
   result: any;
