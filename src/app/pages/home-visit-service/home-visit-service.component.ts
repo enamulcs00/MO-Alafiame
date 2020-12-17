@@ -14,7 +14,7 @@ export class HomeVisitServiceComponent implements OnInit {
   currentPage: number = 1;
   itemPerPage:number=5;
 servicelists: any=[];
-
+empty:string = "No Data"
 categoryList: any=[];
 categoryLength:any;
   categoryId: string;
@@ -114,12 +114,13 @@ new ngxCsv(dataArr, 'Service_management');
       "limit": this.itemPerPage
       }
     this.mainService.postApi('admin/serviceList',object,1).subscribe(res => {
-      console.log("Service List==>", res.result.docs)
-      if (res.responseCode == 200 && res.result && res.result.docs) {
-        this.servicelists = res.result.docs
+      console.log("Service List==>", res.result[0])
+      
+      if (res.responseCode == 200) {
+        this.servicelists = res.result
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
-        
+        console.log('This serv list',this.servicelists)
         
       } else {
         this.mainService.hideSpinner();

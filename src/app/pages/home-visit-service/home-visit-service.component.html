@@ -52,21 +52,21 @@
                                 </thead>
                                 <tbody>
                                     <tr class="text-center"
-                                        *ngFor="let item of servicelists | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: categoryLength}; let i = index">
+                                        *ngFor="let item of categoryList | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: categoryLength}; let i = index">
 
                                         <td class="content">{{itemPerPage * (currentPage-1)+ i+1}}</td>
-                                        <td class="content"> {{item?.categoryId.categoryName}}</td>
-                                        <td class="content"><img [src]="item?.subCategoryImage" alt="" style="width: 66px;">
+                                        <td class="content"> {{item?.categoryName}}</td>
+                                        <td class="content"><img [src]="item?.categoryImage" alt="" style="width: 66px;">
                                         </td>
-                                        <td class="content">{{item?.subCategoryName}}</td>
+                                        <td class="content">{{empty}}</td>
                                       
                                         <td class="content">{{item?.updatedAt | date}}</td>
                                         <td class="justify-content-center d-flex" style="padding-top: 27px;padding-bottom: 24px;">
-                                     <button [routerLink]="['/view-home-visit',item?.categoryId._id]"
+                                     <button [routerLink]="['/view-home-visit',item?._id]"
                                                 class="btn btn-info ml-2 bt-margin" title="view">
                                                 <i class="fa fa-eye" aria-hidden="true"
                                                     style="color:white"></i></button>
-                                            <button [routerLink]="['/edit-home-visit',item?.categoryId._id]"
+                                            <button [routerLink]="['/edit-home-visit',item?._id]"
                                                 class="btn btn-info ml-2 bt-margin"><i class="fa fa-edit"
                                                     aria-hidden="true" style="color:white"></i></button>
                                             <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(item?._id)">
