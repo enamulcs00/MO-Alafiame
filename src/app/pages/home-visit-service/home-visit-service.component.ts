@@ -25,6 +25,7 @@ categoryLength:any;
   ngOnInit() {
     this.categoryLists();
     this.serviceList();
+    
   }
 
   exportCSV(){
@@ -170,4 +171,5 @@ new ngxCsv(dataArr, 'Service_management');
 getsubcat(){
   
 }
+
 }
