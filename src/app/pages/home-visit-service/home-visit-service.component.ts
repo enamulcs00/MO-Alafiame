@@ -90,7 +90,7 @@ new ngxCsv(dataArr, 'Service_management');
       if (res.responseCode == 200 && res.result && res.result.docs) {
         
         this.categoryList = res.result.docs
-        this.categoryLength = res.result.total
+        
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
         
@@ -114,15 +114,14 @@ new ngxCsv(dataArr, 'Service_management');
       "limit": this.itemPerPage
       }
     this.mainService.postApi('admin/serviceList',object,1).subscribe(res => {
-      console.log("Service List==>", res.result[0])
-      
-      if (res.responseCode == 200) {
+      console.log("Service List==>", res.result)
+  
+      if (res.responseCode == 200 && res.result) {
         this.servicelists = res.result
+        this.categoryLength = res.result.length
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
-        console.log('This serv list',this.servicelists)
-        
-      } else {
+       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
@@ -140,13 +139,15 @@ new ngxCsv(dataArr, 'Service_management');
      $('#deleteModal').modal({ backdrop: 'static', keyboard: false })
   }
   deleteUser()
-  {
+{
+  let deletEndpoint = 'admin/deleteService'
     this.mainService.showSpinner()
     let object = {
       'categoryId': this.categoryId
     }
 
-    this.mainService.deleteApi('admin/deleteCategory',object,1).subscribe(res => {
+    this.mainService.deleteApi(deletEndpoint,object,1).subscribe(res => {
+      console.log('This is Delet Details:',res)
      if (res.responseCode == 200) {
         this.mainService.hideSpinner()
         $('#deleteModal').modal('hide');
