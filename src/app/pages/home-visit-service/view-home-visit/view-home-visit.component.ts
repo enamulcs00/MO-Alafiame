@@ -115,6 +115,7 @@ export class ViewHomeVisitComponent implements OnInit {
   this.mainService.postApi('admin/addService', data, 1).subscribe((res: any) => {
     console.log("addProduct response ==>", res)
     if (res.responseCode == 200 && res.result) {
+      this.viewCategory()
       this.mainService.hideSpinner();
       this.mainService.successToast(res.responseMessage)
       $('#addSub').modal('hide');

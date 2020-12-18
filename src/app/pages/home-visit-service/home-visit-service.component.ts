@@ -52,19 +52,20 @@ new ngxCsv(dataArr, 'Service_management');
 
 
   searchValue() {
-   
+    
+
     this.mainService.showSpinner();
     let object = {
       "search": this.search,
       "page": this.currentPage,
       "limit": this.itemPerPage
       }
-    this.mainService.postApi('admin/categoryList', object, 1).subscribe(res => {
-      console.log(" productList==>", res)
-      if (res.responseCode == 200 && res.result) {
+    this.mainService.postApi('admin/serviceList', object, 1).subscribe((res:any) => {
+      console.log("Delete List productList==>", res)
+      if (res.responseCode == 200) {
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
-        this.categoryList = res.result.docs
+        this.servicelists = res.result
       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)

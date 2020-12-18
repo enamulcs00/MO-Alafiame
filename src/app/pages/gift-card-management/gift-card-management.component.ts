@@ -96,6 +96,7 @@ export class GiftCardManagementComponent implements OnInit {
     }
     this.service.deleteApi(`admin/deleteGift`, data, 1).subscribe((res: any) => {
       if(res.responseCode==200){
+        this.giftList()
         this.service.hideSpinner()
         this.service.successToast(res.responseMessage)
         $('#deleteModal').modal('hide')

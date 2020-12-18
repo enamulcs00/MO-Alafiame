@@ -15,11 +15,11 @@ margin-left: 2%;">
                         <label>Expiry date : </label><br>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" formControlName="title">
+                        <input type="text" class="form-control" formControlName="title" (keypress)="service.AlphabetOnly($event)">
                         <span class="text text-danger" *ngIf="addGiftForm.get('title').hasError('required') && addGiftForm.get('title').touched">*Title is Required</span><br>
-                        <input type="text" class="form-control" formControlName="discount">
+                        <input type="text" class="form-control" formControlName="discount" (keypress)="service.NumOnly($event)">
                         <span class="text text-danger" *ngIf="addGiftForm.get('discount').hasError('required') && addGiftForm.get('discount').touched">*Discount is Required</span><br>
-                        <input type="text" class="form-control" formControlName="maxAmount">
+                        <input type="text" class="form-control" formControlName="maxAmount" (keypress)="service.NumOnly($event)">
                         <span class="text text-danger" *ngIf="addGiftForm.get('maxAmount').hasError('required') && addGiftForm.get('maxAmount').touched">*Maximum amount is Required</span><br>
                         <input type="date" class="form-control" formControlName="expiry" [min]="service.getToday()">
                         <span class="text text-danger" *ngIf="addGiftForm.get('expiry').hasError('required') && addGiftForm.get('expiry').touched">*Expiry date is Required</span><br>
