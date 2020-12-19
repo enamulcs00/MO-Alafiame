@@ -63,7 +63,7 @@ export class ViewHomeVisitComponent implements OnInit {
    let object = {
      'serviceId ': this.id
    }
-   this.mainService.deleteApi('admin/deleteCategory',object,1).subscribe(res => {
+   this.mainService.postApi('admin/deleteService',object,1).subscribe(res => {
     if (res.responseCode == 200) {
        this.mainService.hideSpinner()
        $('#deleteModal').modal('hide');

@@ -58,7 +58,13 @@
                                         <td class="content"> {{item?.categoryName}}</td>
                                         <td class="content"><img [src]="item?.categoryImage" alt="" style="width: 66px;">
                                         </td>
-                                        <td class="content">{{item?.subcategoryData.subCategoryName}}</td>
+                                        <td class="content">
+                                            <select name="" id="" class="form-control">
+                                                <option value="{{data?.subCategoryName}}" *ngFor="let data of item?.subcategoryData" class="form-control">
+                                                    {{data?.subCategoryName}}
+                                                </option>
+                                            </select>
+                                            </td>
                                       
                                         <td class="content">{{item?.updatedAt | date}}</td>
                                         <td class="justify-content-center d-flex" style="padding-top: 27px;padding-bottom: 24px;">
@@ -69,7 +75,7 @@
                                             <button [routerLink]="['/edit-home-visit',item?._id]"
                                                 class="btn btn-info ml-2 bt-margin"><i class="fa fa-edit"
                                                     aria-hidden="true" style="color:white"></i></button>
-                                            <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(item?.subcategoryData._id)">
+                                            <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(item?._id)">
                                                 <i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i>
 
                                             </button>

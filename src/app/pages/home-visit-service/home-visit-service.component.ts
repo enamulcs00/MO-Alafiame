@@ -114,12 +114,12 @@ new ngxCsv(dataArr, 'Service_management');
       "page": this.currentPage,
       "limit": this.itemPerPage
       }
-    this.mainService.postApi('admin/serviceList',object,1).subscribe(res => {
-      console.log("Service List==>", res.result)
+    this.mainService.postApi('admin/serviceList',object,1).subscribe((res:any) => {
+      console.log("New Service List==>", res)
   
       if (res.responseCode == 200 && res.result) {
-        this.servicelists = res.result
-        this.categoryLength = res.result.length
+        this.servicelists = res.result.docs
+        this.categoryLength = res.result.total
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
        } else {
@@ -141,7 +141,7 @@ new ngxCsv(dataArr, 'Service_management');
   }
   deleteUser()
 {
-  let deletEndpoint = 'admin/deleteService'
+  let deletEndpoint = 'admin/deleteCategory'
     this.mainService.showSpinner()
     let object = {
       'categoryId': this.categoryId

@@ -43,7 +43,7 @@ export class AddHomeVisitComponent implements OnInit {
       'categoryName': this.addhomeForm.value.categoryName,
       
       'categoryImage': this.profile,
-      'subCategories':this.addhomeForm.value.subCategories
+      'subCategoryName':this.addhomeForm.value.subCategories
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/addServiceCategory', data, 1).subscribe((res: any) => {

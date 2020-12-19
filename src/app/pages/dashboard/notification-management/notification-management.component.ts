@@ -51,9 +51,7 @@ export class NotificationManagementComponent implements OnInit {
 new ngxCsv(dataArr, 'Notification_management');
 
   }
-
-
-  notificationFormValidation() {
+notificationFormValidation() {
     this.notificationForm = new FormGroup({
         'search': new FormControl(''),
         'startdate': new FormControl(''),
@@ -77,7 +75,7 @@ new ngxCsv(dataArr, 'Notification_management');
     this.service.postApi('admin/notificationList', formData, 1).subscribe((res: any) => {
       if(res.responseCode==200){
         this.service.hideSpinner()
-        console.log(res)
+        console.log('This is notification List',res)
         this.service.successToast(res.responseMessage)
         this.notificationList =res.result.docs
         this.total=res.result.total
@@ -120,7 +118,7 @@ new ngxCsv(dataArr, 'Notification_management');
   openModal(id){
       $('#deleteModal').modal('show')
       this.notificationId = id
-      console.log(this.notificationId)
+      console.log('Thie id which will be delete',this.notificationId)
   }
   deleteNotification(){
     this.service.showSpinner()
