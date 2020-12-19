@@ -110,7 +110,4 @@ _handleReaderLoaded(e) {
     })
 
   }
-    
-  
-
 }
