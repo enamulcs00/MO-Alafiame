@@ -11,7 +11,7 @@ import { MainService } from 'src/app/provider/main.service';
 export class ViewProductManagementComponent implements OnInit {
   productId: string;
   user: any;
-  profile: void;
+  profile = '';
   constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) { }
 
   ngOnInit() {
@@ -43,7 +43,7 @@ export class ViewProductManagementComponent implements OnInit {
         this.mainService.errorToast(error.responseMessage)
       }
     })
-    
+
   }
 
 }

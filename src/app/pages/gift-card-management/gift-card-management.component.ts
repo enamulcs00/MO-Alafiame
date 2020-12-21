@@ -16,7 +16,7 @@ export class GiftCardManagementComponent implements OnInit {
   userDataList:any= [];
   result: any;
 
-  constructor(private service: MainService) { }
+  constructor(public service: MainService) { }
 
   ngOnInit() {
     this.searchForm = new FormGroup({
@@ -51,7 +51,7 @@ export class GiftCardManagementComponent implements OnInit {
       }else{
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
-      } 
+      }
      }, (error) => {
         this.service.hideSpinner()
     })
@@ -104,7 +104,7 @@ export class GiftCardManagementComponent implements OnInit {
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
         $('#deleteModal').modal('hide')
-      } 
+      }
     }, (error) => {
         this.service.hideSpinner()
     })

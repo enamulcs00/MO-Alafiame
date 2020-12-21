@@ -11,9 +11,9 @@ export class AddGiftComponent implements OnInit {
   addGiftForm: FormGroup;
   file: any = [];
   profile: any;
-  
-  constructor(private service:MainService,private router:Router) { 
-    
+
+  constructor(public service:MainService,private router:Router) {
+
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class AddGiftComponent implements OnInit {
   }
   convertimg(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-    
+
     var reader = new FileReader();
     reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
@@ -37,7 +37,7 @@ export class AddGiftComponent implements OnInit {
     this.profile = reader.result;
     console.log("profile", this.profile)
   }
-  
+
   addGift(){
     this.service.showSpinner()
     let data={

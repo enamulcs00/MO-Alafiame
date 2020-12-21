@@ -8,7 +8,7 @@ import { MainService } from 'src/app/provider/main.service';
 })
 export class EditTermsComponent implements OnInit {
 
-  constructor(private mainService:MainService) { }
+  constructor(public mainService:MainService) { }
 
   ngOnInit() {
   }
@@ -18,7 +18,7 @@ termEdit(){
     "title": "title",
     "Description":"Description"
   }
-  let channel = "static/editStaticPage" 
+  let channel = "static/editStaticPage"
   this.mainService.putApi(channel,object,1).subscribe((res:any)=>
   {
     console.log('This is Edit Terms',res);

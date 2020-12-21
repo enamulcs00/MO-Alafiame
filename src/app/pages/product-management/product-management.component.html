@@ -5,7 +5,7 @@
             <hr style="background: black; opacity: 0.5;">
 
         </div>
-    
+
         <div class="content-section">
 
 
@@ -14,29 +14,29 @@
                     <div class="tab-content1">
                         <div class="tab-pane1" >
                             <div class="sec_head_new sec_head_new_after">
-                                
+
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-4">
                                             <div class="filter_search mb20 width100">
                                                 <div class="input-group filter_search_group">
                                                     <input type="text" class="form-control overflow-text"
                                                     [(ngModel)]="search"  placeholder="Search by name"
-                                                        maxlength="60" ><button (click)="searchValue($event)" style="width: 39px;
+                                                        maxlength="60" ><button (click)="searchValue()" style="width: 39px;
                                                         background-color: #86559f;"><em class="fa fa-search"></em></button>
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
             <button type="button" (click)="exportCSV()" class="btn btn-theme" style="margin-left: 39%;height: 8%;    width: 12%;">Export csv</button>
             <button type="button" class="btn btn-theme Go_btn ml-2" style="margin-left: 45%;
                                                     height: 8%;    width: 12%;" [routerLink]="['/add-product-management']"
                                                    >Add new
                                                     </button>
                                             </div>
-                                        
-                                    
-                                
+
+
+
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -51,7 +51,7 @@
                                         <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
                                       </tr>
                                 </thead>
-                                 <tbody > 
+                                 <tbody >
                                      <tr class="text-center" *ngFor="let items of productlists | paginate : {itemsPerPage:itemPerPage, currentPage:currentPage, totalItems:ProductLenght}; let i=index">
 
                                     <td class="content" >{{itemPerPage * (currentPage-1)+ i+1}}</td>
@@ -60,7 +60,7 @@
                                     <td class="content" >{{items?.usedFor}}</td>
                                     <td class="content">{{items?.type}}</td>
                                     <td class="justify-content-center d-flex">
-                            
+
                                         <button class="btn btn-info ml-2 bt-margin"  (click)="blockFunction(items?._id,items?.status)">{{items?.status}}</button>
                                         <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-product-management',items?._id]">Edit</button>
                                          <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-product-management',items?._id]">View</button>
@@ -118,13 +118,13 @@
         <form class="change_password">
             <div class="modal-content">
                 <div class="modal-header d-block text-center modal-header-custm">
-                    
+
                 </div>
                 <div class="modal-inner-content">
                     <div class="modal-body">
                         <div class="text-center modal_flax_height d-flex align-items-center justify-content-center">
                             <div class="w-100">
-                                
+
                                 <div class="modal-btn-box">
                                     <button type="submit" class="btn btn-theme" (click)="deleteMultiUser()">Yes</button>
                                     <button type="button" class="btn btn-danger btn-theme ml-2"
