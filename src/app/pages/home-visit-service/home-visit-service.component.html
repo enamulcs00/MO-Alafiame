@@ -59,13 +59,13 @@
                                         <td class="content"><img [src]="item?.categoryImage" alt="" style="width: 66px;">
                                         </td>
                                         <td class="content">
-                                            <select name="" id="" class="form-control" style="border: none;">
+                                            <select class="form-control" style="border: none;" size="2">
                                                 <option value="{{data?.subCategoryName}}" *ngFor="let data of item?.subcategoryData" class="form-control">
                                                     {{data?.subCategoryName}}
                                                 </option>
                                             </select>
                                             </td>
-                                      
+
                                         <td class="content">{{item?.updatedAt | date}}</td>
                                         <td class="justify-content-center d-flex" style="padding-top: 27px;padding-bottom: 24px;">
                                      <button [routerLink]="['/view-home-visit',item?._id]"

@@ -18,14 +18,14 @@ empty:string = "No Data"
 categoryList: any=[];
 categoryLength:any;
   categoryId: string;
- 
+
 
   constructor(private router: Router,public mainService: MainService) { }
 
   ngOnInit() {
     this.categoryLists();
     this.serviceList();
-    
+
   }
 
   exportCSV(){
@@ -45,14 +45,14 @@ categoryLength:any;
         Use:element.subCategoryName,
         Type:element.updatedAt,
     })
-}) 
+})
 new ngxCsv(dataArr, 'Service_management');
 
   }
 
 
   searchValue() {
-    
+
 
     this.mainService.showSpinner();
     let object = {
@@ -75,13 +75,13 @@ new ngxCsv(dataArr, 'Service_management');
         this.mainService.errorToast(error.responseMessage)
       }
     })
-    
-    
+
+
   }
   categoryLists()
   {
     this.mainService.showSpinner();
-    
+
     let object = {
       "page": this.currentPage,
       "limit": this.itemPerPage
@@ -89,13 +89,13 @@ new ngxCsv(dataArr, 'Service_management');
     this.mainService.postApi('admin/categoryList',object,1).subscribe(res => {
       console.log(" product List==>", res.result)
       if (res.responseCode == 200 && res.result && res.result.docs) {
-        
+
         this.categoryList = res.result.docs
-        
+
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
-        
-        
+
+
       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
@@ -109,14 +109,14 @@ new ngxCsv(dataArr, 'Service_management');
   serviceList()
   {
      this.mainService.showSpinner();
-    
+
     let object = {
       "page": this.currentPage,
       "limit": this.itemPerPage
       }
     this.mainService.postApi('admin/serviceList',object,1).subscribe((res:any) => {
       console.log("New Service List==>", res)
-  
+
       if (res.responseCode == 200 && res.result) {
         this.servicelists = res.result.docs
         this.categoryLength = res.result.total
@@ -134,9 +134,10 @@ new ngxCsv(dataArr, 'Service_management');
 
   }
 
-  
+
   deleteFunction(id) {
      this.categoryId  = id
+     console.log('This is Cat Id',id)
      $('#deleteModal').modal({ backdrop: 'static', keyboard: false })
   }
   deleteUser()
@@ -152,8 +153,10 @@ new ngxCsv(dataArr, 'Service_management');
      if (res.responseCode == 200) {
         this.mainService.hideSpinner()
         $('#deleteModal').modal('hide');
+        this.serviceList();
         this.mainService.successToast(res.responseMessage)
-       
+
+
       } else {
         this.mainService.hideSpinner()
         this.mainService.errorToast(res.responseMessage)
@@ -172,7 +175,7 @@ new ngxCsv(dataArr, 'Service_management');
 }
 
 getsubcat(){
-  
+
 }
 
 }

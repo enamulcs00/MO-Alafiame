@@ -17,7 +17,7 @@ export class NotificationManagementComponent implements OnInit {
   notificationList: any;
   total: any;
   notificationId: any;
- 
+
 
   constructor(private router: Router, public service: MainService) { }
 
@@ -37,7 +37,7 @@ export class NotificationManagementComponent implements OnInit {
        title: 'Title',
        Desc: 'Description',
        castDate:'Brod cast date'
-       
+
    });
    this.notificationList.forEach((element,ind) => {
     dataArr.push({
@@ -45,9 +45,9 @@ export class NotificationManagementComponent implements OnInit {
         title:element.title,
         Desc:element.description,
         castDate:element.updatedAt
-        
+
     })
-}) 
+})
 new ngxCsv(dataArr, 'Notification_management');
 
   }
@@ -115,6 +115,7 @@ notificationFormValidation() {
   }
 
 
+
   openModal(id){
       $('#deleteModal').modal('show')
       this.notificationId = id
@@ -123,13 +124,15 @@ notificationFormValidation() {
   deleteNotification(){
     this.service.showSpinner()
     let data = {
-      'notificationId ': this.notificationId
+      'notificationId': this.notificationId
     }
     this.service.deleteApi(`admin/deleteNotification`, data, 1).subscribe((res: any) => {
+      console.log('This is Notification Delect response:',res);
       if(res.responseCode==200){
         this.service.hideSpinner()
         this.service.successToast(res.responseMessage)
         $('#deleteModal').modal('hide')
+        this.getNotification();
       }else{
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
@@ -139,5 +142,5 @@ notificationFormValidation() {
       this.service.hideSpinner()
     })
   }
-  
+
 }
