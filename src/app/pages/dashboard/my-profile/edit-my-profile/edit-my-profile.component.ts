@@ -14,8 +14,8 @@ export class EditMyProfileComponent implements OnInit {
   imageType: any;
   imageUrl: any;
   id: any;
-  
-  constructor(private router: Router, public mainService: MainService,public active:ActivatedRoute) 
+
+  constructor(private router: Router, public mainService: MainService,public active:ActivatedRoute)
   {
     this.active.queryParams.subscribe((params)=>{
       this.id=params.id
@@ -72,6 +72,7 @@ export class EditMyProfileComponent implements OnInit {
       if (res.responseCode == 200) {
         this.mainService.successToast(res.responseMessage);
         this.mainService.loginData.next(res.result[0]);
+        this.mainService.hideSpinner();
         this.router.navigate(['my-profile'])
       } else {
         this.mainService.hideSpinner();
