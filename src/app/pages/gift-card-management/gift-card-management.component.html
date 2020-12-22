@@ -5,7 +5,7 @@
             <hr style="background: black; opacity: 0.5;">
 
         </div>
-    
+
         <div class="content-section">
             <div class="outer-box">
          <div class="global-table no-radius p0">
@@ -32,7 +32,7 @@
                                         </div>
                                         <div class="col-md-2" style="margin-top: -2%;">
                                             <label>Fromdate:</label>
-                                            <input type="date" class="form-control" 
+                                            <input type="date" class="form-control"
                                             [max]="service.getToday()" formControlName="startdate" >
                                         </div>
                                         <div class="col-md-2" style="margin-top: -2%;">
@@ -74,7 +74,7 @@
                                     <td class="content" >{{item.title}}</td>
                                     <td class="content" ><img src="{{item.giftImage}}" alt=""></td>
                                     <td class="content" >{{item.discount}}%</td>
-                                    <td class="content">{{item.maxAmount}} ₹</td>
+                                    <td class="content">{{item.maxAmount}} $</td>
                                     <td class="content">{{item.expiryDate | date}}</td>
                                     <td class="content">
                                     <button class="btn btn-info ml-2 bt-margin" routerLink="/edit-gift/{{item._id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>&nbsp;

@@ -59,16 +59,17 @@ export class EditMyProfileComponent implements OnInit {
 
 
   editProfile() {
+console.log('This is Id',this.id)
     let data = {
       'userId':this.id,
-      'firstName': this.editProfileForm.value.firstName,
+      'name': this.editProfileForm.value.firstName,
       'email': this.editProfileForm.value.email,
       'profilePic': this.imageUrl,
       'mobileNumber':this.editProfileForm.value.number
     }
     this.mainService.showSpinner();
     this.mainService.postApi('practioner/editProfile', data, 1).subscribe((res: any) => {
-      console.log("add helpline number list response ==>", res)
+      console.log("This Edit profile response ==>", res)
       if (res.responseCode == 200) {
         this.mainService.successToast(res.responseMessage);
         this.mainService.loginData.next(res.result[0]);

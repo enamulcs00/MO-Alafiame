@@ -15,7 +15,7 @@ export class EditStaticContentManagementComponent implements OnInit {
   config = {
     uiColor: '#F0F3F4',
     height: '100%',
-    
+
   };
   form: FormGroup;
   editorValue;
@@ -61,6 +61,7 @@ export class EditStaticContentManagementComponent implements OnInit {
   }
 
   Update() {
+    console.log('UserId',this.userId);
     const description = this.form.value.editorValue
     let data = {
       '_id': this.userId,
