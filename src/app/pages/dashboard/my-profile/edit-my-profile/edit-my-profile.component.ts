@@ -65,7 +65,20 @@ console.log('This is Id',this.id)
       'name': this.editProfileForm.value.firstName,
       'email': this.editProfileForm.value.email,
       'profilePic': this.imageUrl,
-      'mobileNumber':this.editProfileForm.value.number
+      'mobileNumber':this.editProfileForm.value.number,
+      'qualifiedIn':"Angular",
+      'bioImage':this.imageUrl,
+      'gender': "Male" ,
+      'serviceProvider': "Male",
+      'transportMode': "Bus",
+      'mostlyWork':"Day",
+      'bioText': "hf",
+      'experience': "1 year",
+      'costPerHour': "452",
+      'age': "24",
+      'language': "Hindi",
+      'lat': "28.2154",
+      'long':"38.5124"
     }
     this.mainService.showSpinner();
     this.mainService.postApi('practioner/editProfile', data, 1).subscribe((res: any) => {
