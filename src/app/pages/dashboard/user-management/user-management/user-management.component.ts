@@ -67,8 +67,6 @@ export class UserManagementComponent implements OnInit {
   practionerLength: any;
   companyLength: any;
 
-
-
   constructor(private router: Router, public mainService: MainService) { }
 
   ngOnInit() {
@@ -422,9 +420,6 @@ export class UserManagementComponent implements OnInit {
       reader.readAsDataURL(this.file[0]);
     }
   }
-
-
-
   changeValue(){
     this.getCustomer()
     this.customerValue=true;
@@ -790,6 +785,7 @@ export class UserManagementComponent implements OnInit {
         this.practionerData=res.result.docs;
         this.practionerLength=res.result.total
         this.status=res.result.docs.status;
+        this.mainService.successToast(res.responseMessage)
 
 
       }
@@ -1098,7 +1094,7 @@ export class UserManagementComponent implements OnInit {
 
 
         this.mainService.hideSpinner();
-        this.mainService.errorToast(res.result);
+        this.mainService.errorToast(res.responseMessage);
       }
     },(error)=>{
       this.mainService.hideSpinner();

@@ -1041,9 +1041,7 @@
                                             <div class="text-center mt40 mb40">
                                                 <button class="btn btn-large  max-WT-150 btn-theme"
                                                     (click)="changeCorporateValue()">Back</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
-                                                    [disabled]="!addCorporateForm.valid"
-                                                    (click)="addCorporateDetail()">Add</button>
+                                  <button class="btn btn-large  max-WT-150 btn-theme"[disabled]="addCorporateForm.invalid" (click)="addCorporateDetail()">Add</button>
 
                                             </div>
                                         </div>
