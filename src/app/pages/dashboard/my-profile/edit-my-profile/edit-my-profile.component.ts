@@ -14,17 +14,21 @@ export class EditMyProfileComponent implements OnInit {
   imageType: any;
   imageUrl: any;
   id: any;
+  token:any;
 
   constructor(private router: Router, public mainService: MainService,public active:ActivatedRoute)
   {
+     this.token = localStorage.getItem('token');
     this.active.queryParams.subscribe((params)=>{
       this.id=params.id
     })
+
    }
 
   ngOnInit() {
     this.editProfileFormValidation();
     this.getProfile();
+    console.log('This is token ',this.token);
   }
   editProfileFormValidation() {
     this.editProfileForm = new FormGroup({
@@ -39,7 +43,7 @@ export class EditMyProfileComponent implements OnInit {
   getProfile() {
     this.mainService.showSpinner()
     this.mainService.getApi('user/getProfile', 1).subscribe((res: any) => {
-      console.log("profile response ==>", res);
+      console.log("This is profile response ==>", res);
       if (res.responseCode == 200) {
         this.imageUrl = res.result.profilePic ? res.result.profilePic : ''
         this.editProfileForm.patchValue({
@@ -59,6 +63,7 @@ export class EditMyProfileComponent implements OnInit {
 
 
   editProfile() {
+  let channel = 'admin/editProfile'
 console.log('This is Id',this.id)
     let data = {
       'userId':this.id,
@@ -66,22 +71,10 @@ console.log('This is Id',this.id)
       'email': this.editProfileForm.value.email,
       'profilePic': this.imageUrl,
       'mobileNumber':this.editProfileForm.value.number,
-      'qualifiedIn':"Angular",
-      'bioImage':this.imageUrl,
-      'gender': "Male" ,
-      'serviceProvider': "Male",
-      'transportMode': "Bus",
-      'mostlyWork':"Day",
-      'bioText': "hf",
-      'experience': "1 year",
-      'costPerHour': "452",
-      'age': "24",
-      'language': "Hindi",
-      'lat': "28.2154",
-      'long':"38.5124"
+
     }
     this.mainService.showSpinner();
-    this.mainService.postApi('practioner/editProfile', data, 1).subscribe((res: any) => {
+    this.mainService.putApi(channel, data, 1).subscribe((res: any) => {
       console.log("This Edit profile response ==>", res)
       if (res.responseCode == 200) {
         this.mainService.successToast(res.responseMessage);
