@@ -11,10 +11,11 @@ declare var $: any;
 })
 export class HomeVisitServiceComponent implements OnInit {
   search: string;
+  limit:number= 5;
   currentPage: number = 1;
   itemPerPage:number=5;
 servicelists: any=[];
-empty:string = "No Data"
+
 categoryList: any=[];
 categoryLength:any;
   categoryId: string;
@@ -52,20 +53,18 @@ new ngxCsv(dataArr, 'Service_management');
 
 
   searchValue() {
-
-
     this.mainService.showSpinner();
     let object = {
       "search": this.search,
       "page": this.currentPage,
-      "limit": this.itemPerPage
-      }
-    this.mainService.postApi('admin/serviceList', object, 1).subscribe((res:any) => {
-      console.log("Delete List productList==>", res)
+      "limit": this.limit
+     }
+   this.mainService.postApi('admin/serviceList', object, 1).subscribe((res:any) => {
+      console.log("Search List==>", res)
       if (res.responseCode == 200) {
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
-        this.servicelists = res.result
+        this.servicelists = res.result.docs
       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
