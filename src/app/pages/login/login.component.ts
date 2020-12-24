@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
         }
       } else {
         this.mainService.hideSpinner();
-        //this.mainService.errorToast(res.responseMessage)
+        this.mainService.errorToast(res.responseMessage)
       }
     })
   }

@@ -44,7 +44,7 @@ export class UserManagementComponent implements OnInit {
   customerLength: any;
   file: any;
   imageType: any;
-  imageUrl: any;
+  imageUrl = '';
   addUserForm: FormGroup;
   viewCorporate: any;
   editCorporateForm: FormGroup;
@@ -66,8 +66,6 @@ export class UserManagementComponent implements OnInit {
   corporateLength: any;
   practionerLength: any;
   companyLength: any;
-  
-  
 
   constructor(private router: Router, public mainService: MainService) { }
 
@@ -83,7 +81,7 @@ export class UserManagementComponent implements OnInit {
   selectTab(tab){
     this.currTab = tab;
     console.log('hh',this.currTab);
-    
+
     if(this.currTab === 'Customer'){
       this.getCustomer();
       this.customerValue=true;
@@ -99,7 +97,7 @@ export class UserManagementComponent implements OnInit {
       this.corporateUserAddValue=true;
       this.corporateValue=true;
       this.viewCompanyValue=true;
-      
+
     }
     else if (this.currTab === 'Practioner'){
       this.getPractioner();
@@ -107,12 +105,12 @@ export class UserManagementComponent implements OnInit {
       this.practionerUserEditValue=true;
       this.practionerUserAddValue=true;
       this.practionerValue=true;
-      
+
     }
-    
+
   }
 
-  
+
 
   searchFormValidation() {
     this.searchForm = new FormGroup({
@@ -123,14 +121,14 @@ export class UserManagementComponent implements OnInit {
     this.editUserForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
-      'number': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
+      'EditCustomerNumber': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
       'DOB': new FormControl('', Validators.required),
       'image': new FormControl(''),
     });
     this.addUserForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
-      'number': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
+      'Customernumber': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
       'DOB': new FormControl('', Validators.required),
       'image': new FormControl(''),
       'password':new FormControl('', [Validators.required,Validators.pattern(/^(?=^.{8,16}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-])(?!.*\s).*$/)]),
@@ -156,13 +154,13 @@ export class UserManagementComponent implements OnInit {
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'limit': new FormControl('', Validators.required),
       'service': new FormControl('', Validators.required),
-      
+
     });
     this.editCompanyForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'limit': new FormControl('', Validators.required),
       'service': new FormControl('', Validators.required),
-      
+
     });
     this.editPractionerForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
@@ -170,7 +168,7 @@ export class UserManagementComponent implements OnInit {
       'number': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
       'DOB': new FormControl('', Validators.required),
       //'image': new FormControl(''),
-      
+
     });
     this.addPractionerForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
@@ -180,7 +178,7 @@ export class UserManagementComponent implements OnInit {
       'image': new FormControl(''),
       'password':new FormControl('', [Validators.required,Validators.pattern(/^(?=^.{8,16}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-])(?!.*\s).*$/)]),
     });
-    
+
 
   }
   searchFormSubmit() {
@@ -211,19 +209,19 @@ export class UserManagementComponent implements OnInit {
       this.getPractioner()
     }
   }
-  // service api 
+  // service api
   getService(){
     this.mainService.showSpinner();
     let data ={
 
     }
     this.mainService.postApi('admin/serviceList','', 1).subscribe((res:any)=>{
-      
+      console.log("This is ServilistResponse:", res);
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.serviceData=res.result.docs;
-        console.log("f", this.serviceData);
-        
+
+
       }
     },(error)=>{
       this.mainService.hideSpinner();
@@ -232,7 +230,7 @@ export class UserManagementComponent implements OnInit {
   }
 
 
-  
+
 
   // ------- get user list -------- //
   // getUserList() {
@@ -272,13 +270,14 @@ export class UserManagementComponent implements OnInit {
       console.log('Customer data',res)
       if(res.responseCode==200){
         this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage)
         this.customerData=res.result.docs;
         this.customerLength=res.result.total;
         this.status=res.result.docs[0].status;
         console.log("f", this.customerLength);
-        
+
       }
-      
+
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -332,17 +331,17 @@ export class UserManagementComponent implements OnInit {
         this.editUserForm.patchValue({
           'firstName':this.customerData.name,
           'email':this.customerData.email,
-          'number':this.customerData.mobileNumber,
+          'EditCustomerNumber':this.customerData.mobileNumber,
           'DOB':this.customerData.dateOfBirth,
-          
+
         })
-        
+
       }
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
     })
-    
+
   }
 
   // update customer
@@ -352,7 +351,7 @@ export class UserManagementComponent implements OnInit {
       'name': this.editUserForm.value.firstName,
       'email': this.editUserForm.value.email,
       'profilePic': this.imageUrl,
-      'mobileNumber':this.editUserForm.value.number,
+      'mobileNumber':this.editUserForm.value.EditCustomerNumber,
       'dateOfBirth':this.editUserForm.value.DOB,
     }
     this.mainService.showSpinner();
@@ -385,7 +384,7 @@ export class UserManagementComponent implements OnInit {
       'name': this.addUserForm.value.firstName,
       'email': this.addUserForm.value.email,
       'profilePic': this.imageUrl,
-      'mobileNumber':this.addUserForm.value.number,
+      'mobileNumber':this.addUserForm.value.Customernumber,
       'dateOfBirth':this.addUserForm.value.DOB,
       'password':this.addUserForm.value.password,
     }
@@ -395,6 +394,8 @@ export class UserManagementComponent implements OnInit {
       if (res.responseCode == 200) {
         this.mainService.hideSpinner()
         this.mainService.successToast(res.responseMessage);
+        this.imageUrl = '';
+        this.addUserForm.reset();
         this.selectTab('Customer');
         this.customerValue=true;
         this.customerUserEditValue=true;
@@ -403,6 +404,7 @@ export class UserManagementComponent implements OnInit {
       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
+
       }
     })
   }
@@ -419,20 +421,19 @@ export class UserManagementComponent implements OnInit {
       reader.readAsDataURL(this.file[0]);
     }
   }
-
-  
-
   changeValue(){
     this.getCustomer()
     this.customerValue=true;
     this.customerUserValue=true;
     this.customerUserEditValue=true;
     this.customerUserAddValue=true;
+    this.practionerUserAddValue=true;
+    this.practionerValue=true;
   }
 
 
   // =============================== user tab all end =======================================//
-  
+
   //========================== corporate tab start===========================//
   // get corporate
   getCorporate(){
@@ -448,9 +449,9 @@ export class UserManagementComponent implements OnInit {
         this.corporateData=res.result.docs;
         this.corporateLength=res.result.total
         this.status=res.result.docs.status;
-
+        this.mainService.successToast(res.responseMessage);
         console.log("f", this.practionerData);
-        
+
       }
     },(error)=>{
       this.mainService.hideSpinner();
@@ -468,7 +469,7 @@ export class UserManagementComponent implements OnInit {
     this.corporateValue=false;
   }
 
-  // view corporate api 
+  // view corporate api
   viewCorporateData(){
     let data={
       'corporateId':this.userId
@@ -476,7 +477,7 @@ export class UserManagementComponent implements OnInit {
     this.mainService.showSpinner();
     this.mainService.postApi('admin/viewCorporateCustomer',data,1).subscribe((res)=>{
       console.log('hh', res);
-      
+
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.viewCorporate=res.result[0]
@@ -518,11 +519,11 @@ export class UserManagementComponent implements OnInit {
           'number':this.corporateDataa.mobileNumber,
           'DOB':this.corporateDataa.dateOfBirth,
           'image':this.imageUrl,
-          
+
         })
         console.log("Patch vales in EditCorporate", this.editCorporateForm.value);
         console.log("f", this.practionerData);
-        
+
       }
     },(error)=>{
       this.mainService.hideSpinner();
@@ -556,7 +557,7 @@ export class UserManagementComponent implements OnInit {
         this.mainService.errorToast(res.responseMessage)
       }
     })
-    
+
   }
 
   // add corporate addCorporateForm
@@ -577,7 +578,7 @@ export class UserManagementComponent implements OnInit {
       'password':this.addCorporateForm.value.password,
       'company':this.addCorporateForm.value.company,
     }
-    
+
     this.mainService.showSpinner();
     this.mainService.postApi('admin/addCorporateCustomer', data, 1).subscribe((res: any) => {
       console.log("add helpline number list response ==>", res)
@@ -586,15 +587,7 @@ export class UserManagementComponent implements OnInit {
         this.mainService.successToast(res.responseMessage);
         this.selectTab('Corporate');
         this.imageUrl = '';
-        this.addCorporateForm.patchValue({
-          'firstName': '',
-          'email': '',
-          'number':'',
-          'DOB':'',
-          'password':'',
-          'company':'',
-          
-        })
+        this.addCorporateForm.reset()
         this.corporateUserValue=true;
         this.corporateUserEditValue=true;
         this.corporateUserAddValue=true;
@@ -662,14 +655,14 @@ export class UserManagementComponent implements OnInit {
       'limit':this.itemPerPage,
     }
     this.mainService.postApi('admin/companyList',data, 1).subscribe((res:any)=>{
-      
+      console.log('This will give Company list',res);
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.companyData=res.result.docs;
         this.companyLength=res.result.total
         this.status=res.result.docs.status;
 
-        console.log("f", this.practionerData);
+
       }
       else if(res.responseCode==404){
         this.mainService.hideSpinner()
@@ -724,7 +717,7 @@ export class UserManagementComponent implements OnInit {
     }
     this.mainService.showSpinner();
     this.mainService.putApi('admin/editCompany',data, 1).subscribe((res:any)=>{
-      
+
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.companyDataa=res.result;
@@ -733,10 +726,10 @@ export class UserManagementComponent implements OnInit {
           'firstName':this.companyDataa.name,
           'service':this.companyDataa.service,
           'limit':this.companyDataa.userLimit,
-         
+
         })
         console.log("f", this.practionerData);
-        
+
       }
     },(error)=>{
       this.mainService.hideSpinner();
@@ -793,8 +786,9 @@ export class UserManagementComponent implements OnInit {
         this.practionerData=res.result.docs;
         this.practionerLength=res.result.total
         this.status=res.result.docs.status;
+        this.mainService.successToast(res.responseMessage)
 
-        
+
       }
       else if(res.responseCode==404){
         this.mainService.hideSpinner()
@@ -847,7 +841,7 @@ export class UserManagementComponent implements OnInit {
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/editPractitioner',data, 1).subscribe((res:any)=>{
-      
+
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.practionerDataa=res.result;
@@ -860,7 +854,7 @@ export class UserManagementComponent implements OnInit {
           'image':this.imageUrl,
         })
         console.log("f", this.practionerData);
-        
+
       }
     },(error)=>{
       this.mainService.hideSpinner();
@@ -893,7 +887,7 @@ export class UserManagementComponent implements OnInit {
     })
   }
 
-  // add practioner 
+  // add practioner
   addPractioner(){
     this.practionerUserValue=true;
     this.practionerUserEditValue=true;
@@ -916,7 +910,9 @@ export class UserManagementComponent implements OnInit {
     this.mainService.postApi('admin/addPractitioner', data, 1).subscribe((res: any) => {
       console.log("add helpline number list response ==>", res)
       if (res.responseCode == 200) {
-        this.mainService.hideSpinner()
+        this.mainService.hideSpinner();
+        this.imageUrl = '';
+        this.addPractionerForm.reset();
         this.mainService.successToast(res.responseMessage);
         this.selectTab('Practioner');
         this.practionerUserValue=true;
@@ -951,7 +947,7 @@ export class UserManagementComponent implements OnInit {
         Email:"Email",
         Contact:"Contact Number"
     });
-  
+
     this.customerData.forEach((element,ind) => {
         dataArr.push({
             sno:ind+1,
@@ -960,7 +956,7 @@ export class UserManagementComponent implements OnInit {
             Email:element.email?element.email:'--',
             Contact:element.mobileNumber?element.mobileNumber:'--',
         })
-    }) 
+    })
     new ngxCsv(dataArr, 'Customer_management');
     }
     else if(this.currTab=='Corporate'){
@@ -973,7 +969,7 @@ export class UserManagementComponent implements OnInit {
         Contact:"Contact Number",
         Company:"Company Name",
     });
-  
+
     this.practionerData.forEach((element,ind) => {
         dataArr.push({
             sno:ind+1,
@@ -983,7 +979,7 @@ export class UserManagementComponent implements OnInit {
             Contact:element.mobileNumber?element.mobileNumber:'--',
             Company:element.company?element.company:'--',
         })
-    }) 
+    })
     new ngxCsv(dataArr, 'Corporate Customer_management');
     }
     else if(this.currTab=='Practioner'){
@@ -995,7 +991,7 @@ export class UserManagementComponent implements OnInit {
           Email:"Email",
           Contact:"Contact Number"
       });
-    
+
       this.customerData.forEach((element,ind) => {
           dataArr.push({
               sno:ind+1,
@@ -1004,7 +1000,7 @@ export class UserManagementComponent implements OnInit {
               Email:element.email?element.email:'--',
               Contact:element.mobileNumber?element.mobileNumber:'--',
           })
-      }) 
+      })
       new ngxCsv(dataArr, 'Practioner_management');
   }
 }
@@ -1020,7 +1016,7 @@ export class UserManagementComponent implements OnInit {
         CompanyCode:"CompanyCode",
         AddedOn:"AddedOn",
     });
-  
+
     this.companyData.forEach((element,ind) => {
         dataArr.push({
             sno:ind+1,
@@ -1030,21 +1026,21 @@ export class UserManagementComponent implements OnInit {
             CompanyCode:element.companyCode?element.companyCode:'--',
             AddedOn:element.createdAt?element.createdAt.slice(0, 10):'--',
         })
-    }) 
+    })
     new ngxCsv(dataArr, 'Corporate Company_Management');
-  
+
   }
   // ================================ export csv end ================================//
 
   //==========================serach========================================//
   // search
   search(){
-    console.log('h','hh');
-    
+
+
     // if (this.searchForm.value.search || this.searchForm.value.fromDate || this.searchForm.value.toDate) {
     //   return true;
     // }
-    
+
     let data ={
       'search':this.searchForm.value.search,
       'fromDate':this.searchForm.value.fromDate,
@@ -1062,40 +1058,46 @@ export class UserManagementComponent implements OnInit {
     }
 
     this.mainService.postApi(url || url1 || url2,data, 1).subscribe((res:any)=>{
-      
+
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         if(this.currTab === 'Customer'){
         this.customerData=res.result.docs;
         this.customerLength=res.result.docs.total
+        this.mainService.successToast(res.responseMessage)
         console.log("f", this.practionerData);
-    
+
         }
        else if(this.currTab === 'Corporate'){
         this.corporateData=res.result.docs;
+
         console.log("f", this.practionerData);
         }
         else if (this.currTab === 'Practioner'){
           this.practionerData=res.result.docs;
+          this.mainService.successToast(res.responseMessage)
         }
         }
       else if(res.responseCode==404){
         if(this.currTab === 'Customer'){
           this.customerData=[];
           this.customerLength=''
+
         }
         if(this.currTab === 'Corporate'){
           this.corporateData=[];
           this.corporateLength=''
+
         }
         if(this.currTab === 'Practioner'){
           this.practionerData=[];
           this.practionerLength=''
+
         }
 
-        
+
         this.mainService.hideSpinner();
-        this.mainService.errorToast(res.responseMessage)
+        this.mainService.errorToast(res.responseMessage);
       }
     },(error)=>{
       this.mainService.hideSpinner();
@@ -1112,7 +1114,7 @@ export class UserManagementComponent implements OnInit {
       'toDate':this.searchForm.value.toDate,
     }
     this.mainService.postApi('admin/companyList',data, 1).subscribe((res:any)=>{
-      
+
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.companyData=res.result.docs;
@@ -1137,12 +1139,12 @@ export class UserManagementComponent implements OnInit {
   // reset
   reset(){
     if (this.searchForm.value.search || this.searchForm.value.fromDate || this.searchForm.value.toDate) {
-     
+
         this.mainService.hideSpinner();
         if(this.currTab === 'Customer'){
           this.searchForm.reset()
         this.getCustomer();
-    
+
         }
        else if(this.currTab === 'Corporate'){
         this.searchForm.reset()
@@ -1162,22 +1164,22 @@ export class UserManagementComponent implements OnInit {
         this.companyList();
   }
 }
-  
-
-  
 
 
-  
+
+
+
+
   // ------------------------------- delete functinality start----------------------------- //
   deleteUserModal(id) {
     this.userId = id;
     console.log("Id is: -> ",id)
    $('#deleteModal').modal('show')
-    
-   
+
+
   }
   deleteUser() {
-    
+
     if(this.currTab === 'Customer'){
       var data = {
         customerId: this.userId,
@@ -1211,7 +1213,7 @@ export class UserManagementComponent implements OnInit {
           this.customerValue=true;
           this.customerUserValue=true;
           this.customerUserEditValue=true;
-    
+
         }
        else if(this.currTab === 'Corporate'){
           this.getCorporate();
@@ -1236,7 +1238,7 @@ export class UserManagementComponent implements OnInit {
   DeleteUser(){
     let data = {
       companyId: this.userId,
-      
+
     }
     this.mainService.showSpinner();
     this.mainService.deleteApi('admin/deleteCompany',data, 1).subscribe((res: any) => {
@@ -1251,12 +1253,12 @@ export class UserManagementComponent implements OnInit {
         this.corporateValue=false;
         this.viewCompanyValue=false;
           this.companyList();
-          
+
           this.viewCompanyValue=false;
-    
+
         }
       }
-       
+
     })
 
   }
@@ -1270,7 +1272,7 @@ export class UserManagementComponent implements OnInit {
     this.status=status
     console.log('UserId is',this.userId)
     console.log('Status of User is-->:',status);
-    
+
   }
 
   blockUser(){
@@ -1294,8 +1296,8 @@ export class UserManagementComponent implements OnInit {
         practitionerId: this.userId,
         status:this.status
       }
-      
-      
+
+
       var url2="admin/blockUnblockPractitioner"
     }
     this.mainService.showSpinner();
@@ -1311,7 +1313,7 @@ export class UserManagementComponent implements OnInit {
           this.customerValue=true;
           this.customerUserValue=true;
           this.customerUserEditValue=true;
-    
+
         }
        else if(this.currTab === 'Corporate'){
           this.getCorporate();
@@ -1334,7 +1336,7 @@ export class UserManagementComponent implements OnInit {
     this.status=status
     console.log('Practioner UserId is',this.userId)
     console.log('Status of Practioner is-->:',status);
-    
+
   }
 
   BlockUser(){

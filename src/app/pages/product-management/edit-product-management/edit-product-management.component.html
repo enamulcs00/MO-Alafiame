@@ -1,10 +1,94 @@
 <div class="wrapper">
-    <main class="middle-content">
-      <div class="page_title_block">
-        <h1 class="page_title">EDIT PRODUCT</h1>
-        <hr style="width: 118%; margin-left: -9%; background-color: gray;">
-      </div>
-      <div style="margin-left: 37%;">
+  <main class="middle-content">
+    <div class="page_title_block">
+      <h1 class="page_title">EDIT PRODUCT</h1>
+      <hr style="width: 118%; margin-left: -9%; background-color: gray;">
+    </div>
+    <div class="order-view  max-WT-700 mrgn-0-auto setting-page" style="margin-left: 20%;">
+      <form [formGroup]="editproductForm" style="margin-left: -15%;">
+        <div style="margin-left: 43%;">
+          <label for="fileInput">
+            <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
+
+            <input type="file" name="imageUrl" accept="image/*"
+              style="position: relative;left: 62px;top: -49px; opacity: -0.9;" (change)="handleInputChange($event)"><em
+              class="fa fa-camera" style="color: #86559f!important; position: relative;
+              top: -87px;
+              font-size: 20px;
+              right: 190px;"></em>
+            </label>
+            </div>
+
+        
+        <div style="margin-left: 18%;">
+          <div class="row" style=" margin-left: 2%; margin-right: 2%;">
+            <div class="col">
+              <div class="row mt-2">
+                <label class="col-md-4">Name of product</label>
+                <span class="col-md-1">:</span>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" formControlName="productName">
+                  <span class="text text-danger"
+                    *ngIf="editproductForm.controls.productName.touched && editproductForm.controls.productName.invalid && editproductForm.controls.productName.errors.required">*Product
+                    Name is Required</span></div>
+              </div>
+              <div class="row mt-2">
+                <label class="col-md-4">Price</label>
+                <span class="col-md-1">:</span>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" formControlName="price">
+                  <span class="text text-danger"
+                    *ngIf="editproductForm.controls.price.touched && editproductForm.controls.price.invalid && editproductForm.controls.price.errors.required">*Price
+                    is Required</span></div>
+              </div>
+              <div class="row mt-2">
+                <label class="col-md-4">Used for</label>
+                <span class="col-md-1">:</span>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" formControlName="UsedFor">
+                  <span class="text text-danger"
+                    *ngIf="editproductForm.controls.UsedFor.touched && editproductForm.controls.UsedFor.invalid && editproductForm.controls.UsedFor.errors.required">*UsedFor
+                    is Required</span></div>
+              </div>
+              <div class="row mt-2">
+                <label class="col-md-4">Type</label>
+                <span class="col-md-1">:</span>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" formControlName="type">
+                  <span class="text text-danger"
+                    *ngIf="editproductForm.controls.type.touched && editproductForm.controls.type.invalid && editproductForm.controls.type.errors.required">*Type
+                    is Required</span>
+                </div>
+              </div>
+              <!-- <div class="row mt-2" >
+                                  <label class="col-md-4">Category</label>
+                                  <span  class="col-md-1">:</span>
+                                  <div class="col-md-6">
+                                   <select class="form-control " placeholder="Enter Category"
+                                          formControlName="category" (change)="selected($event)" >
+                                          <option *ngFor="let item of categoryList" value="{{item._id}}"  > {{item.categoryName}}
+                                          </option>
+                                      </select></div>
+                              </div> -->
+            </div>
+          </div>
+          <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
+            <button type="button" class="btn btn-theme" style="margin-left: -5%; width: 12%;"
+              [routerLink]="['/product-management']">Back</button>
+            <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+              [disabled]=editproductForm.invalid (click)="editProduct()">Save </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+
+
+
+
+<!-- <div style="margin-left: 37%;">
         <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
          
     <input type="file" name="imageUrl" accept="image/*" style="position: relative;left: -50px;top: 25px; opacity: -0.9;"
@@ -42,4 +126,4 @@
         </div>
       </form>
     </main>
-  </div>
+  </div> -->

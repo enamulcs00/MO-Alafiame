@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" style="overflow-x: hidden;">
     <main class="middle-content">
         <div class="page_title_block">
 
@@ -38,7 +38,7 @@
 
                             </div>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="width: fit-content;">
                             <table class="table table-bordered" aria-describedby="user management list">
                                 <thead>
                                     <tr class="no_wrap_th text-center">
@@ -55,18 +55,24 @@
                                         *ngFor="let item of servicelists | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: categoryLength}; let i = index">
 
                                         <td class="content">{{itemPerPage * (currentPage-1)+ i+1}}</td>
-                                        <td class="content"> {{item?.categoryId.categoryName}}</td>
-                                        <td class="content"><img [src]="item?.subCategoryImage" alt="" style="width: 66px;">
+                                        <td class="content"> {{item?.categoryName}}</td>
+                                        <td class="content"><img [src]="item?.categoryImage" alt="" style="width: 66px;">
                                         </td>
-                                        <td class="content">{{item?.subCategoryName}}</td>
-                                      
+                                        <td class="content">
+                                            <select class="form-control" size="2" style="border:0px; outline:0px;">
+                                                <option value="{{data?.subCategoryName}}" *ngFor="let data of item?.subcategoryData" class="form-control" style="border: none;">
+                                                    {{data?.subCategoryName}}
+                                                </option>
+                                            </select>
+                                            </td>
+
                                         <td class="content">{{item?.updatedAt | date}}</td>
                                         <td class="justify-content-center d-flex" style="padding-top: 27px;padding-bottom: 24px;">
-                                     <button [routerLink]="['/view-home-visit',item?.categoryId._id]"
+                                     <button [routerLink]="['/view-home-visit',item?._id]"
                                                 class="btn btn-info ml-2 bt-margin" title="view">
                                                 <i class="fa fa-eye" aria-hidden="true"
                                                     style="color:white"></i></button>
-                                            <button [routerLink]="['/edit-home-visit',item?.categoryId._id]"
+                                            <button [routerLink]="['/edit-home-visit',item?._id]"
                                                 class="btn btn-info ml-2 bt-margin"><i class="fa fa-edit"
                                                     aria-hidden="true" style="color:white"></i></button>
                                             <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(item?._id)">
@@ -77,7 +83,7 @@
 
 
                                     </tr>
-                                    <tr *ngIf="!categoryList.length">
+                                    <tr *ngIf="!servicelists?.length">
                                         <td class="table-no-record" colspan="9">No Record Found</td>
                                     </tr>
                                 </tbody>

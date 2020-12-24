@@ -11,12 +11,12 @@ export class GiftCardManagementComponent implements OnInit {
   searchForm: FormGroup;
   total: number;
   currentPage: number = 1;
-  itemPerPage:number=10;
+  itemPerPage:number=5;
   gifiId: any;
   userDataList:any= [];
   result: any;
 
-  constructor(private service: MainService) { }
+  constructor(public service: MainService) { }
 
   ngOnInit() {
     this.searchForm = new FormGroup({
@@ -26,6 +26,11 @@ export class GiftCardManagementComponent implements OnInit {
     })
     this.giftList()
   }
+
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+  }
+
   pagination(page) {
     this.currentPage = page;
     console.log(this.currentPage)
@@ -46,7 +51,7 @@ export class GiftCardManagementComponent implements OnInit {
       }else{
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
-      } 
+      }
      }, (error) => {
         this.service.hideSpinner()
     })
@@ -91,6 +96,7 @@ export class GiftCardManagementComponent implements OnInit {
     }
     this.service.deleteApi(`admin/deleteGift`, data, 1).subscribe((res: any) => {
       if(res.responseCode==200){
+        this.giftList()
         this.service.hideSpinner()
         this.service.successToast(res.responseMessage)
         $('#deleteModal').modal('hide')
@@ -98,7 +104,7 @@ export class GiftCardManagementComponent implements OnInit {
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
         $('#deleteModal').modal('hide')
-      } 
+      }
     }, (error) => {
         this.service.hideSpinner()
     })

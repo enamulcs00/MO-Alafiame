@@ -23,10 +23,10 @@
                                 </div>
                             </div>
                             <div class="form-group row align-items-baseline view-label-align">
-                                <label class="col-md-4 textalignright ">Name <span>:</span></label>
+                                <label class="col-md-4 textalignright ">First Name <span>:</span></label>
                                 <div class="col-md-8 textaligncenter">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Name"
+                                        <input type="text" class="form-control" placeholder="First Name"
                                             formControlName="firstName" (keypress)="mainService.preventSpace($event)"
                                             maxlength="60">
                                         <div class="text-danger">
@@ -50,6 +50,34 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group row align-items-baseline view-label-align">
+                              <label class="col-md-4 textalignright ">Last Name <span>:</span></label>
+                              <div class="col-md-8 textaligncenter">
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Last Name"
+                                          formControlName="lastName" (keypress)="mainService.preventSpace($event)"
+                                          maxlength="60">
+                                      <div class="text-danger">
+                                          <span
+                                              *ngIf="editProfileForm.get('lastName').hasError('required') && (editProfileForm.get('lastName').dirty || editProfileForm.get('lastName').touched)">
+                                              *Please enter Last Name.
+                                          </span>
+                                          <span
+                                              *ngIf="editProfileForm.get('lastName').hasError('pattern') && (editProfileForm.get('lastName').dirty || f.submitted)">
+                                              *Name accept only alphabets.
+                                          </span>
+                                          <span
+                                              *ngIf="editProfileForm.get('lastName').hasError('minlength') && !(editProfileForm.get('lastName').hasError('pattern')) && (editProfileForm.get('lastName').dirty || f.submitted)">
+                                              *Minimum length must be 2.
+                                          </span>
+                                          <span
+                                              *ngIf="editProfileForm.get('lastName').hasError('maxlength') && !(editProfileForm.get('lastName').hasError('pattern')) && (editProfileForm.get('lastName').dirty || f.submitted)">
+                                              *Maximum length should not more than 20.
+                                          </span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
                             <div class="form-group row align-items-baseline view-label-align">
                                 <label class="col-md-4 textalignright">Email <span>:</span></label>
                                 <div class="col-md-8 textaligncenter">
@@ -92,9 +120,10 @@
                         </form>
                     </div>
                     <div class="text-center mt40 mb40">
+                      <button class="btn btn-large  max-WT-150 btn-theme" (click)="back()">Back</button>
                         <button class="btn btn-large  max-WT-150 btn-theme" [disabled]="!editProfileForm.valid"
                             (click)="editProfile()">Save</button>
-                        <button class="btn btn-large  max-WT-150 btn-theme" (click)="back()">Back</button>
+
                     </div>
                 </div>
             </div>

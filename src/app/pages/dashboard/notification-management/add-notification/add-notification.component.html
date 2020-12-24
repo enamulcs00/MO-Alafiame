@@ -16,7 +16,7 @@
                     <div class="col" style=" margin-top: 1.5%;">
                         <input type="text" class="form-control" formControlName="title">
                         <span class="text text-danger" *ngIf="addNotificationForm.get('title').hasError('required') && addNotificationForm.get('title').touched">*Title is Required</span><br>
-                        <input type="text" class="form-control" formControlName="description">
+                        <textarea type="text" class="form-control" formControlName="description"></textarea>
                         <span class="text text-danger" *ngIf="addNotificationForm.get('description').hasError('required') && addNotificationForm.get('description').touched">*Discount is Required</span><br>
                         <select class="form-control" formControlName="sharedWith"> <span class="caret"></span>
                             <option  value="">Select</option>

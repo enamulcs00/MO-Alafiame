@@ -6,7 +6,7 @@ margin-left: 2%;">
             <hr style="background: black; opacity: 0.5;width: 135%;">
         </div>
         <form [formGroup]="addhomeForm">
-            <div class="card" style="margin-left: 18%;">
+            <div class="order-view  max-WT-700 mrgn-0-auto setting-page" style="margin-left: 18%;">
                 <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
                     <div class="col">
                         <label>Category name:</label><br><br>
@@ -18,7 +18,8 @@ margin-left: 2%;">
                         <span class="text text-danger" *ngIf="addhomeForm.controls.categoryName.touched && addhomeForm.controls.categoryName.invalid && addhomeForm.controls.categoryName.errors.required">*Category Name is Required</span><br>
                         <label for="fileInput">
                         <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
-                        <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
+                        <em class="fa fa-camera" style="color: #86559f!important;font-size: 20px;
+                        position: relative; right: 12px;"></em>
                         <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="visibility:hidden;">
                     </label>
                         <input type="text" class="form-control" formControlName="subCategories">

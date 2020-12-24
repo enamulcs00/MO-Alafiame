@@ -12,12 +12,12 @@ declare var $:any;
 })
 export class NotificationManagementComponent implements OnInit {
   notificationForm: FormGroup;
-  itemPerPage: number=10;
+  itemPerPage: number=5;
   currentPage: number=1;
   notificationList: any;
   total: any;
   notificationId: any;
- 
+
 
   constructor(private router: Router, public service: MainService) { }
 
@@ -25,6 +25,11 @@ export class NotificationManagementComponent implements OnInit {
     this.notificationFormValidation();
     this.getNotification()
   }
+
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+  }
+
   exportCSV(){
     let dataArr = [];
     dataArr.push({
@@ -32,7 +37,7 @@ export class NotificationManagementComponent implements OnInit {
        title: 'Title',
        Desc: 'Description',
        castDate:'Brod cast date'
-       
+
    });
    this.notificationList.forEach((element,ind) => {
     dataArr.push({
@@ -40,15 +45,13 @@ export class NotificationManagementComponent implements OnInit {
         title:element.title,
         Desc:element.description,
         castDate:element.updatedAt
-        
+
     })
-}) 
+})
 new ngxCsv(dataArr, 'Notification_management');
 
   }
-
-
-  notificationFormValidation() {
+notificationFormValidation() {
     this.notificationForm = new FormGroup({
         'search': new FormControl(''),
         'startdate': new FormControl(''),
@@ -72,7 +75,7 @@ new ngxCsv(dataArr, 'Notification_management');
     this.service.postApi('admin/notificationList', formData, 1).subscribe((res: any) => {
       if(res.responseCode==200){
         this.service.hideSpinner()
-        console.log(res)
+        console.log('This is notification List',res)
         this.service.successToast(res.responseMessage)
         this.notificationList =res.result.docs
         this.total=res.result.total
@@ -112,21 +115,24 @@ new ngxCsv(dataArr, 'Notification_management');
   }
 
 
+
   openModal(id){
       $('#deleteModal').modal('show')
       this.notificationId = id
-      console.log(this.notificationId)
+      console.log('Thie id which will be delete',this.notificationId)
   }
   deleteNotification(){
     this.service.showSpinner()
     let data = {
-      'notificationId ': this.notificationId
+      'notificationId': this.notificationId
     }
     this.service.deleteApi(`admin/deleteNotification`, data, 1).subscribe((res: any) => {
+      console.log('This is Notification Delect response:',res);
       if(res.responseCode==200){
         this.service.hideSpinner()
         this.service.successToast(res.responseMessage)
         $('#deleteModal').modal('hide')
+        this.getNotification();
       }else{
         this.service.hideSpinner()
         this.service.errorToast(res.responseMessage)
@@ -136,5 +142,5 @@ new ngxCsv(dataArr, 'Notification_management');
       this.service.hideSpinner()
     })
   }
-  
+
 }

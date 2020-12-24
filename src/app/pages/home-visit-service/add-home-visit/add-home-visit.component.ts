@@ -43,14 +43,15 @@ export class AddHomeVisitComponent implements OnInit {
       'categoryName': this.addhomeForm.value.categoryName,
       
       'categoryImage': this.profile,
+      'subCategoryName':this.addhomeForm.value.subCategories
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/addServiceCategory', data, 1).subscribe((res: any) => {
-      console.log("addProduct response ==>", res)
+      console.log("addHomeService response ==>", res)
       if (res.responseCode == 200 && res.result) {
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
-        this.route.navigateByUrl('/home-visit-service')
+       this.route.navigateByUrl('/home-visit-service')
         
       } else {
         this.mainService.hideSpinner();

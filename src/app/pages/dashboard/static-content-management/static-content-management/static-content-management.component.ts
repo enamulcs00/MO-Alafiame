@@ -41,5 +41,5 @@ export class StaticContentManagementComponent implements OnInit {
   editStatic(id, type) {
     this.router.navigate(['edit-static-content-management'], { queryParams: { id: id, type: type } })
   }
-  addFaq(){}
+  
 }

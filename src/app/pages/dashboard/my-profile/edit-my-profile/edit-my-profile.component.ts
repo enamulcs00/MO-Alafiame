@@ -14,21 +14,26 @@ export class EditMyProfileComponent implements OnInit {
   imageType: any;
   imageUrl: any;
   id: any;
-  
-  constructor(private router: Router, public mainService: MainService,public active:ActivatedRoute) 
+  token:any;
+
+  constructor(private router: Router, public mainService: MainService,public active:ActivatedRoute)
   {
+     this.token = localStorage.getItem('token');
     this.active.queryParams.subscribe((params)=>{
       this.id=params.id
     })
+
    }
 
   ngOnInit() {
     this.editProfileFormValidation();
     this.getProfile();
+    console.log('This is token ',this.token);
   }
   editProfileFormValidation() {
     this.editProfileForm = new FormGroup({
       'firstName': new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z][A-Za-z ]*$/), Validators.minLength(2), Validators.maxLength(60)]),
+      'lastName': new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z][A-Za-z ]*$/), Validators.minLength(2), Validators.maxLength(60)]),
       'number': new FormControl('', [Validators.required, Validators.pattern(/^[^0][0-9]*$/),  Validators.maxLength(15)]),
       'email': new FormControl('', [Validators.required, Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,10}|[0-9]{1,3})(\]?)$/i)]),
       'image': new FormControl('')
@@ -39,11 +44,12 @@ export class EditMyProfileComponent implements OnInit {
   getProfile() {
     this.mainService.showSpinner()
     this.mainService.getApi('user/getProfile', 1).subscribe((res: any) => {
-      console.log("profile response ==>", res);
+      console.log("This is profile response ==>", res);
       if (res.responseCode == 200) {
         this.imageUrl = res.result.profilePic ? res.result.profilePic : ''
         this.editProfileForm.patchValue({
           'firstName': res.result.firstName ? res.result.firstName : '',
+          'lastName':res.result.lastName? res.result.lastName: '',
           'email': res.result.email ? res.result.email : '',
           'profilePic': this.imageUrl,
           'number':res.result.mobileNumber ? res.result.mobileNumber:''
@@ -59,19 +65,24 @@ export class EditMyProfileComponent implements OnInit {
 
 
   editProfile() {
+  let channel = 'admin/editProfile'
+console.log('This is Id',this.id)
     let data = {
       'userId':this.id,
       'firstName': this.editProfileForm.value.firstName,
+      'lastName': this.editProfileForm.value.lastName,
       'email': this.editProfileForm.value.email,
       'profilePic': this.imageUrl,
-      'mobileNumber':this.editProfileForm.value.number
+      'mobileNumber':this.editProfileForm.value.number,
+
     }
     this.mainService.showSpinner();
-    this.mainService.postApi('practioner/editProfile', data, 1).subscribe((res: any) => {
-      console.log("add helpline number list response ==>", res)
+    this.mainService.putApi(channel, data, 1).subscribe((res: any) => {
+      console.log("This Edit profile response ==>", res)
       if (res.responseCode == 200) {
         this.mainService.successToast(res.responseMessage);
         this.mainService.loginData.next(res.result[0]);
+        this.mainService.hideSpinner();
         this.router.navigate(['my-profile'])
       } else {
         this.mainService.hideSpinner();
