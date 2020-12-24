@@ -910,7 +910,9 @@ export class UserManagementComponent implements OnInit {
     this.mainService.postApi('admin/addPractitioner', data, 1).subscribe((res: any) => {
       console.log("add helpline number list response ==>", res)
       if (res.responseCode == 200) {
-        this.mainService.hideSpinner()
+        this.mainService.hideSpinner();
+        this.imageUrl = '';
+        this.addPractionerForm.reset();
         this.mainService.successToast(res.responseMessage);
         this.selectTab('Practioner');
         this.practionerUserValue=true;
