@@ -33,6 +33,7 @@ export class EditMyProfileComponent implements OnInit {
   editProfileFormValidation() {
     this.editProfileForm = new FormGroup({
       'firstName': new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z][A-Za-z ]*$/), Validators.minLength(2), Validators.maxLength(60)]),
+      'lastName': new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z][A-Za-z ]*$/), Validators.minLength(2), Validators.maxLength(60)]),
       'number': new FormControl('', [Validators.required, Validators.pattern(/^[^0][0-9]*$/),  Validators.maxLength(15)]),
       'email': new FormControl('', [Validators.required, Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,10}|[0-9]{1,3})(\]?)$/i)]),
       'image': new FormControl('')
@@ -48,6 +49,7 @@ export class EditMyProfileComponent implements OnInit {
         this.imageUrl = res.result.profilePic ? res.result.profilePic : ''
         this.editProfileForm.patchValue({
           'firstName': res.result.firstName ? res.result.firstName : '',
+          'lastName':res.result.lastName? res.result.lastName: '',
           'email': res.result.email ? res.result.email : '',
           'profilePic': this.imageUrl,
           'number':res.result.mobileNumber ? res.result.mobileNumber:''
@@ -67,7 +69,8 @@ export class EditMyProfileComponent implements OnInit {
 console.log('This is Id',this.id)
     let data = {
       'userId':this.id,
-      'name': this.editProfileForm.value.firstName,
+      'firstName': this.editProfileForm.value.firstName,
+      'lastName': this.editProfileForm.value.lastName,
       'email': this.editProfileForm.value.email,
       'profilePic': this.imageUrl,
       'mobileNumber':this.editProfileForm.value.number,
