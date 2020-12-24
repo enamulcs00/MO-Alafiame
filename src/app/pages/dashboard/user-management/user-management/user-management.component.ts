@@ -44,7 +44,7 @@ export class UserManagementComponent implements OnInit {
   customerLength: any;
   file: any;
   imageType: any;
-  imageUrl: any;
+  imageUrl = '';
   addUserForm: FormGroup;
   viewCorporate: any;
   editCorporateForm: FormGroup;
@@ -121,14 +121,14 @@ export class UserManagementComponent implements OnInit {
     this.editUserForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
-      'number': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
+      'EditCustomerNumber': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
       'DOB': new FormControl('', Validators.required),
       'image': new FormControl(''),
     });
     this.addUserForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
-      'number': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
+      'Customernumber': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
       'DOB': new FormControl('', Validators.required),
       'image': new FormControl(''),
       'password':new FormControl('', [Validators.required,Validators.pattern(/^(?=^.{8,16}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-])(?!.*\s).*$/)]),
@@ -331,7 +331,7 @@ export class UserManagementComponent implements OnInit {
         this.editUserForm.patchValue({
           'firstName':this.customerData.name,
           'email':this.customerData.email,
-          'number':this.customerData.mobileNumber,
+          'EditCustomerNumber':this.customerData.mobileNumber,
           'DOB':this.customerData.dateOfBirth,
 
         })
@@ -351,7 +351,7 @@ export class UserManagementComponent implements OnInit {
       'name': this.editUserForm.value.firstName,
       'email': this.editUserForm.value.email,
       'profilePic': this.imageUrl,
-      'mobileNumber':this.editUserForm.value.number,
+      'mobileNumber':this.editUserForm.value.EditCustomerNumber,
       'dateOfBirth':this.editUserForm.value.DOB,
     }
     this.mainService.showSpinner();
@@ -384,7 +384,7 @@ export class UserManagementComponent implements OnInit {
       'name': this.addUserForm.value.firstName,
       'email': this.addUserForm.value.email,
       'profilePic': this.imageUrl,
-      'mobileNumber':this.addUserForm.value.number,
+      'mobileNumber':this.addUserForm.value.Customernumber,
       'dateOfBirth':this.addUserForm.value.DOB,
       'password':this.addUserForm.value.password,
     }
@@ -394,6 +394,7 @@ export class UserManagementComponent implements OnInit {
       if (res.responseCode == 200) {
         this.mainService.hideSpinner()
         this.mainService.successToast(res.responseMessage);
+        this.imageUrl = '';
         this.addUserForm.reset();
         this.selectTab('Customer');
         this.customerValue=true;

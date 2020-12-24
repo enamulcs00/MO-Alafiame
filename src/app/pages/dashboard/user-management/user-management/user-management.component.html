@@ -300,16 +300,16 @@
                                                         <div class="col-md-8 textaligncenter">
                                                             <div class="form-group ">
                                                                 <input type="tel" class="form-control"
-                                                                    placeholder="Mobile Number" formControlName="number"
+                                                                    placeholder="Mobile Number" formControlName="EditCustomerNumber"
                                                                     (keypress)="mainService.NumOnly($event)"
-                                                                    maxlength="15">
+                                                                    maxlength="10">
                                                                 <div class="text-danger">
                                                                     <span
-                                                                        *ngIf="editUserForm.get('number').hasError('required') && (editUserForm.get('number').dirty || editUserForm.get('number').touched)">
+                                                                        *ngIf="editUserForm.get('EditCustomerNumber').hasError('required') && (editUserForm.get('EditCustomerNumber').dirty || editUserForm.get('EditCustomerNumber').touched)">
                                                                         *Please enter you number.
                                                                     </span>
                                                                     <span
-                                                                        *ngIf="editUserForm.get('number').hasError('pattern')">
+                                                                        *ngIf="editUserForm.get('EditCustomerNumber').hasError('pattern')">
                                                                         *Please enter valid number.
                                                                     </span>
                                                                 </div>
@@ -323,7 +323,7 @@
                                                         <div class="col-md-8 textaligncenter">
                                                             <div class="form-group ">
                                                                 <input type="date" class="form-control"
-                                                                    placeholder="Mobile Number" formControlName="DOB"
+                                                                    placeholder="Enter Date of Birth" formControlName="DOB"
                                                                     [max]="mainService.getToday()">
                                                                 <div class="text-danger">
                                                                     <span
@@ -435,16 +435,16 @@
                                                         <div class="col-md-8 textaligncenter">
                                                             <div class="form-group ">
                                                                 <input type="tel" class="form-control"
-                                                                    placeholder="Mobile Number" formControlName="number"
+                                                                    placeholder="Mobile Number" formControlName="Customernumber"
                                                                     (keypress)="mainService.NumOnly($event)"
                                                                     maxlength="10">
                                                                 <div class="text-danger">
                                                                     <span
-                                                                        *ngIf="addUserForm.get('number').hasError('required') && (addUserForm.get('number').dirty || addUserForm.get('number').touched)">
-                                                                        *Please enter you number.
+                                                                        *ngIf="addUserForm.get('Customernumber').hasError('required') && (addUserForm.get('Customernumber').dirty || addUserForm.get('Customernumber').touched)">
+                                                                        *Please enter your number.
                                                                     </span>
                                                                     <span
-                                                                        *ngIf="addUserForm.get('number').hasError('pattern')">
+                                                                        *ngIf="addUserForm.get('Customernumber').hasError('pattern')">
                                                                         *Please enter valid number.
                                                                     </span>
                                                                 </div>
