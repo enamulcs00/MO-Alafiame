@@ -15,7 +15,7 @@
                                         <tr class="no_wrap_th text-center">
                                             <th scope="col" class="Sorting-img"> Title </th>
                                             <th scope="col" class="Sorting-img">Description</th>
-                                            <th scope="col" class="action_td_btn3 Sorting-img">Action</th>
+                                            <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -27,19 +27,19 @@
                                             <td class="justify-content-center d-flex">
                                                 <div>
                                                     <button class="btn btn-large  max-WT-150 btn-theme"
-                                                        (click)="addFaq()" 
+
                                                         style="margin-left: -12%;"
                                                         routerLink="/view_terms/{{item.type}}">View</button>
                                                 </div>
                                                 <div>
                                                     <button class="btn btn-large  max-WT-150 btn-theme"
-                                                        (click)="addFaq()" 
+
                                                         style="margin-left: 39%;"
                                                         routerLink="/edit-static-content-management/{{item.type}}/{{item._id}}">Edit</button>
                                                 </div>
                                             </td>
                                         </tr>
-                                        
+
                                     </tbody>
                                 </table>
                             </div>
