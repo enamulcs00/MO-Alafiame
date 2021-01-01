@@ -12,6 +12,7 @@ declare var $: any;
 })
 export class UserManagementComponent implements OnInit {
   searchForm: FormGroup;
+  Isapprove:boolean = false;
   userDataList: any = [];
   itemPerPage = 5;
   currentPage = 1;
@@ -80,10 +81,11 @@ export class UserManagementComponent implements OnInit {
   // =========tab link====//
   selectTab(tab){
     this.currTab = tab;
-    console.log('hh',this.currTab);
+    console.log(`You are in ${this.currTab} Tab`);
 
     if(this.currTab === 'Customer'){
       this.getCustomer();
+      this.Isapprove = false;
       this.customerValue=true;
       this.customerUserValue=true;
       this.customerUserEditValue=true;
@@ -92,6 +94,7 @@ export class UserManagementComponent implements OnInit {
     }
    else if(this.currTab === 'Corporate'){
       this.getCorporate();
+      this.Isapprove = false;
       this.corporateUserValue=true;
       this.corporateUserEditValue=true;
       this.corporateUserAddValue=true;
@@ -101,6 +104,16 @@ export class UserManagementComponent implements OnInit {
     }
     else if (this.currTab === 'Practioner'){
       this.getPractioner();
+      this.Isapprove = false;
+      this.practionerUserValue=true;
+      this.practionerUserEditValue=true;
+      this.practionerUserAddValue=true;
+      this.practionerValue=true;
+
+    }
+    else if (this.currTab === 'Approve'){
+      this.approve();
+      this.Isapprove = true;
       this.practionerUserValue=true;
       this.practionerUserEditValue=true;
       this.practionerUserAddValue=true;
@@ -108,8 +121,14 @@ export class UserManagementComponent implements OnInit {
 
     }
 
-  }
 
+  }
+approve(){
+  let url = 'admin/applicantList'
+  this.mainService.getApi(url,1).subscribe((res:any)=>{
+    console.log('This is Approval list',res);
+  })
+}
 
 
   searchFormValidation() {
@@ -452,6 +471,10 @@ export class UserManagementComponent implements OnInit {
         this.mainService.successToast(res.responseMessage);
         console.log("f", this.practionerData);
 
+      }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
       }
     },(error)=>{
       this.mainService.hideSpinner();

@@ -27,7 +27,10 @@
                                     [ngClass]="{'active': currTab=='Practioner'}" (click)="selectTab('Practioner')"
                                     href="javascript:;">PRACTIONER MANAGEMENT</a>
                             </li>
-
+                            <li class="nav-item flex-fill"> <a class="nav-link active show"
+                              [ngClass]="{'active': currTab=='Approve'}" (click)="selectTab('Approve')"
+                              href="javascript:;">APPROVE MANAGEMENT</a>
+                      </li>
                         </ul>
                     </div>
                 </div>
@@ -1801,6 +1804,70 @@
                             <!-- practioner add end -->
                         </div>
                         <!-- tab link practioner end -->
+<!--Approve Section Start-->
+<div class="table-responsive" *ngIf="Isapprove">
+  <table class="table table-bordered" aria-describedby="user management list">
+      <thead>
+          <tr class="no_wrap_th text-center">
+              <th scope="col" class="Sorting-img">S.No</th>
+              <th scope="col" class="Sorting-img">Name</th>
+              <th scope="col" class="Sorting-img">D.O.B</th>
+              <th scope="col" class="Sorting-img">Email Address</th>
+              <th scope="col" class="Sorting-img">Contact Number</th>
+              <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+
+          <tr *ngFor="let item of customerData | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: customerLength}; let i = index"
+              class="text-center">
+              <td>
+                  {{itemPerPage * (currentPage-1)+ i+1}}</td>
+              <td class="content">
+                  {{item?.name || '--'}}</td>
+              <td class="content">{{item?.dateOfBirth | date:'dd-MM-yyyy' || '--'}}
+              </td>
+              <td class="content">{{item?.email || '--'}}</td>
+              <td class="content">
+                  {{item?.mobileNumber || '--'}}</td>
+
+              <td class="justify-content-center d-flex">
+                  <button class="btn btn-info ml-2 bt-margin" title="view"
+                      (click)="viewUser(item?._id)">
+                      <i class="fa fa-eye" aria-hidden="true"
+                          style="color:white"></i></button>
+                  <button class="btn btn-info ml-2 bt-margin" title="edit"
+                      (click)="editUser(item?._id)"><i class="fa fa-edit"
+                          aria-hidden="true" style="color:white"></i></button>
+                  <button class="btn btn-success ml-2 bt-margin"
+                      *ngIf="item?.status == 'ACTIVE'"
+                      (click)="BlockModal(item?._id, 'BLOCK')" title="deactivate"><i
+                          class="fa fa-ban"
+                          style="color:white;background-color: green"
+                          aria-hidden="true"></i></button>
+                  <button class="btn btn-danger ml-2 bt-margin"
+                      *ngIf="item?.status == 'BLOCK'"
+                      (click)="BlockModal(item?._id, 'ACTIVE')" title="activate"><i
+                          class="fa fa-ban" style="color:white;background-color: red"
+                          aria-hidden="true"></i></button>
+                  <button class="btn btn-danger ml-2 bt-margin" title="delete"
+                      (click)="deleteUserModal(item?._id)"><i
+                          class="fa fa-trash" aria-hidden="true"
+                          style="color:white"></i></button>
+              </td>
+          </tr>
+          <tr *ngIf="!customerData.length">
+              <td class="table-no-record" colspan="6">No Record Found</td>
+          </tr>
+      </tbody>
+  </table>
+  <div class="custom-pagination mt-2 text-align-end" *ngIf="customerLength>5">
+      <pagination-controls (pageChange)="pagination($event)"></pagination-controls>
+  </div>
+</div>
+
+<!--Approve Section End-->
+
                     </div>
                 </div>
 
