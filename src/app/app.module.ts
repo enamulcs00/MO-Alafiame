@@ -91,6 +91,7 @@ import { ProductCategoryComponent } from './pages/product-category/product-categ
 import { ViewProductCategoryComponent } from './pages/view-product-category/view-product-category.component';
 import { EditproductCategoryComponent } from './pages/editproduct-category/editproduct-category.component';
 import { AddproductCategoryComponent } from './pages/addproduct-category/addproduct-category.component';
+import { BannerManagementComponent } from './pages/banner-management/banner-management.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -173,7 +174,8 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     ProductCategoryComponent,
     ViewProductCategoryComponent,
     EditproductCategoryComponent,
-    AddproductCategoryComponent
+    AddproductCategoryComponent,
+    BannerManagementComponent
   ],
   imports: [
     BrowserModule,

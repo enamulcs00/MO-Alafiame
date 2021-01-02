@@ -1,3 +1,4 @@
+import { BannerManagementComponent } from './pages/banner-management/banner-management.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
@@ -87,12 +88,12 @@ const routes: Routes = [
   { path: 'edit-faq/:id', component: EditFaqComponent },
   { path: 'view-faq', component: ViewFaqComponent },
   // helpline number
- 
+
   { path: 'helpline-number', component: HelplineNumberComponent },
   { path: 'add-number', component: AddNumberComponent },
   { path: 'edit-number', component: EditNumberComponent },
   // hospital
- 
+
   { path: 'hospital-management', component: HospitalManagementComponent },
   { path: 'add-hospital', component: AddHospitalComponent },
   { path: 'edit-hospital', component: EditHospitalComponent },
@@ -100,25 +101,25 @@ const routes: Routes = [
   { path: 'view-patient-management-hospital', component: ViewPatientManagementHospitalComponent },
   { path: 'view-plasma-donated-patient-management-hospital', component: ViewPlasmaDonatedPatientManagementHospitalComponent },
   // my profile
- 
- 
+
+
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'edit-profile', component: EditMyProfileComponent },
   // notification
-  
+
   { path: 'notification-management', component: NotificationManagementComponent },
   { path: 'add-notification', component: AddNotificationComponent },
   { path: 'view-notification/:id', component: ViewNotificationComponent},
 
 
   // static content management
- 
-  
+
+
   { path: 'static-content-management', component: StaticContentManagementComponent },
   { path: 'edit-static-content-management', component: EditStaticContentManagementComponent },
   // test center management
-  
-  
+
+
   { path: 'hospital-management', component: HospitalManagementComponent },
   { path: 'add-hospital', component: AddHospitalComponent },
   { path: 'edit-hospital', component: EditHospitalComponent },
@@ -149,13 +150,13 @@ const routes: Routes = [
   { path: 'view-patient-management-test-center', component: ViewPatientManagementTestCenterComponent },
   // { path: 'view-plasma-donated-patient-management-test-center', component: ViewPlasmaDonatedPatientManagementTestCenterComponent },
   // user management
-  
-  
+
+
   { path: 'user-management', component: UserManagementComponent },
   { path: 'edit-user', component: EditUserComponent },
   { path: 'view-user', component: ViewUserComponent },
   { path: 'add-user', component: AddUserComponent },
- 
+  { path: 'banner-management',component:BannerManagementComponent},
   // { path: 'corporate-customer-management', component: CorporateCustomerManagementComponent },
   { path: 'add-corporate-customer-management', component: AddCorporateCustomerComponent },
   { path: 'edit-corporate-customer-management', component: EditCorporateCustomerComponent },
