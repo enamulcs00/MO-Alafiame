@@ -11,7 +11,8 @@ declare var $: any;
   styleUrls: ['./product-management.component.css']
 })
 export class ProductManagementComponent implements OnInit {
-  
+  addSubForm:FormGroup;
+  profile: any;
   search: string;
   productlists: any = [];
   limit:number= 5;
@@ -24,16 +25,66 @@ export class ProductManagementComponent implements OnInit {
 
 
   constructor(private router: Router,public mainService: MainService) {
-    
-    
+
+
    }
 
   ngOnInit() {
     this.productList();
+    this.addSubForm = new FormGroup({
+      "categoryName": new FormControl('', Validators.required),
+    });
+  }
+
+addModal(){
+  $('#addSub').modal('show')
+}
+
+  addProductCategory(){
+let url = 'admin/addProductCategory'
+
+let data =
+  {
+
+    'categoryName': this.addSubForm.value.categoryName,
+    'categoryImage': this.profile,
+  }
+  this.mainService.showSpinner();
+  this.mainService.postApi(url, data, 1).subscribe((res: any) => {
+    console.log("addProduct response ==>", res)
+    if (res.responseCode == 200 && res.result) {
+
+      this.mainService.hideSpinner();
+      this.mainService.successToast(res.responseMessage)
+      $('#addSub').modal('hide');
+
+    } else {
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(res.responseMessage)
+    }
+    error => {
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(error.responseMessage)
+    }
+  })
+
+
+  }
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+
+    var reader = new FileReader();
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.profile = reader.result;
+    console.log("profile", this.profile)
   }
 
   searchValue() {
-   
+
     this.mainService.showSpinner();
     let object = {
       "search": this.search,
@@ -73,7 +124,7 @@ export class ProductManagementComponent implements OnInit {
           Use:element.UsedFor,
           Type:element.type,
       })
-  }) 
+  })
   new ngxCsv(dataArr, 'Product_management');
 
     }
@@ -81,7 +132,7 @@ export class ProductManagementComponent implements OnInit {
   productList()
   {
     this.mainService.showSpinner();
-    
+
     let object = {
       "page": this.currentPage,
       "limit": this.limit
@@ -89,13 +140,13 @@ export class ProductManagementComponent implements OnInit {
     this.mainService.postApi('admin/productList', object, 1).subscribe(res => {
       console.log(" productList==>", res)
       if (res.responseCode == 200 && res.result && res.result.docs) {
-        
+
         this.productlists = res.result.docs
         this.ProductLenght = res.result.total;
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
-        
-        
+
+
       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
@@ -125,7 +176,7 @@ export class ProductManagementComponent implements OnInit {
         this.mainService.hideSpinner()
         $('#deleteModal').modal('hide');
         this.mainService.successToast(res.responseMessage)
-       
+
       } else {
         this.mainService.hideSpinner()
         this.mainService.errorToast(res.responseMessage)

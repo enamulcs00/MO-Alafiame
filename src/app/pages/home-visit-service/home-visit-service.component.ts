@@ -1,6 +1,7 @@
 import { ngxCsv } from 'ngx-csv/ngx-csv';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MainService } from 'src/app/provider/main.service';
 declare var $: any;
 
@@ -11,11 +12,13 @@ declare var $: any;
 })
 export class HomeVisitServiceComponent implements OnInit {
   search: string;
+  profile: any;
+  addSubForm: FormGroup;
   limit:number= 5;
   currentPage: number = 1;
   itemPerPage:number=5;
 servicelists: any=[];
-
+ServiceId:any;
 categoryList: any=[];
 categoryLength:any;
   categoryId: string;
@@ -24,10 +27,58 @@ categoryLength:any;
   constructor(private router: Router,public mainService: MainService) { }
 
   ngOnInit() {
+    this.addSubForm = new FormGroup({
+      "categoryName": new FormControl('', Validators.required),
+    });
     this.categoryLists();
     this.serviceList();
 
   }
+  openAdd(){
+    $('#addSub').modal('show')
+   }
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+
+    var reader = new FileReader();
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.profile = reader.result;
+    console.log("profile", this.profile)
+  }
+
+  addSubService(){
+    let data =
+    {
+       'categoryId':this.ServiceId,
+      'subCategoryName': this.addSubForm.value.categoryName,
+      'subCategoryImage': this.profile,
+    }
+    this.mainService.showSpinner();
+    this.mainService.postApi('admin/addService', data, 1).subscribe((res: any) => {
+      console.log("addProduct response ==>", res)
+      if (res.responseCode == 200 && res.result) {
+        this.profile = ''
+      this.addSubForm.reset();
+      this.serviceList()
+        this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage)
+        $('#addSub').modal('hide');
+
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+      error => {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(error.responseMessage)
+      }
+    })
+
+   }
 
   exportCSV(){
     let dataArr = [];
@@ -104,6 +155,10 @@ new ngxCsv(dataArr, 'Service_management');
         this.mainService.errorToast(error.responseMessage)
       }
     })
+  }
+  selected(id){
+this.ServiceId = id.target.value
+console.log('This is serve id',id.target.value);
   }
   serviceList()
   {

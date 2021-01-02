@@ -26,8 +26,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xl-4 col-lg-4 col-md-4">
-                                        <div class="text-center admin-btn" style="margin-left: 137%;">
+                                    <div>
+                                        <div class="text-center admin-btn" style="margin-left: 66%;">
+                    <button type="button" class="btn btn-theme Go_btn ml-2" (click)="openAdd()">Add Subservice</button>
                     <button type="button" class="btn btn-theme Go_btn ml-2" (click)="exportCSV()">Export CSV</button>
                                             <button type="button" class="btn btn-theme Go_btn ml-2"
                                                 [routerLink]="['/add-home-visit']">Add new
@@ -126,3 +127,57 @@
     </div>
 </div>
 <!-- end delete gift-card-management modal -->
+
+
+ <!-- Add sub category modal Start -->
+ <div class="modal fade global-modal reset-modal" id="addSub">
+  <div class="modal-dialog max-WT-500">
+      <div class="modal-content">
+          <div class="modal-header d-block text-center modal-header-custm">
+              <h5 class="modal-title d-inline-block">Add Sub Category</h5>
+          </div>
+          <div class="modal-inner-content">
+              <div class="modal-body">
+                  <form [formGroup]="addSubForm">
+                          <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+                              <div class="col">
+                                  <div class="row">
+                                      <label class="col-md-4">Category name</label>
+                                      <span class="col-md-1">:</span>
+                                      <input type="text" class="form-control col-md-5" formControlName="categoryName">
+                                      <span class="text text-danger" *ngIf="addSubForm.controls.categoryName.touched && addSubForm.controls.categoryName.invalid && addSubForm.controls.categoryName.errors.required">*Category Name is Required</span>
+                                  </div>
+                                  <div class="row">
+                                      <label class="col-md-4">Category image</label>
+                                      <span class="col-md-1">:</span>
+                                      <label class="form-control col-md-5" for="fileInput">
+                                          <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
+                                          <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
+                                          <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="visibility:hidden;">
+                                           </label>
+                                  </div>
+                                  <div class="row" >
+                                    <label class="col-md-4">Category</label>
+                                    <span  class="col-md-1">:</span>
+
+                                     <select class="form-control " placeholder="Enter Category"
+                                            formControlName="category" (change)="selected($event)">
+                                            <option *ngFor="let item of servicelists" value="{{item?._id}}"  > {{item.categoryName}}
+                                            </option>
+                                        </select>
+                                      </div>
+
+                              </div>
+                          </div>
+                          <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
+                              <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                              data-dismiss="modal">Back</button>
+                              <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                                  (click)="addSubService()" [disabled]=addSubForm.invalid>Save</button>
+                          </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>

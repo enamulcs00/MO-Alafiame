@@ -1814,7 +1814,7 @@
               <th scope="col" class="Sorting-img">UserType</th>
               <th scope="col" class="Sorting-img">Email-Id</th>
               <th scope="col" class="Sorting-img">Contact Number</th>
-              <th scope="col" class="Sorting-img">Status</th>
+              <th scope="col" class="Sorting-img">Approve</th>
               <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
           </tr>
       </thead>
@@ -1830,7 +1830,7 @@
               </td>
               <td class="content">{{item?.email || '--'}}</td>
               <td class="content">{{item?.mobileNumber || '--'}}</td>
-              <td class="content">{{item?.status || '--'}}</td>
+              <td class="content">{{item?.applicantStatus || '--'}}</td>
 
               <td class="justify-content-center d-flex">
                   <button class="btn btn-info ml-2 bt-margin" title="view"
@@ -2143,14 +2143,38 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <label class="col">KEY</label>
-          <label class="col">VALUE</label>
+          <label class="col-sm-3">Name</label>
+          <label class="col">{{viewApproveItem.name}}</label>
         </div>
+        <div class="row">
+          <label class="col-sm-3">Email</label>
+          <label class="col">{{viewApproveItem.email}}</label>
+        </div>
+        <div class="row">
+          <label class="col-sm-3">Contact No</label>
+          <label class="col">{{viewApproveItem.mobileNumber}}</label>
+        </div>
+        <div class="row">
+          <label class="col-sm-3">Age</label>
+          <label class="col">{{viewApproveItem.age}} Years</label>
+        </div>
+        <div class="row">
+          <label class="col-sm-3">Gender</label>
+          <label class="col">{{viewApproveItem.gender}} </label>
+        </div>
+        <div class="row">
+          <label class="col-sm-3">Experiance</label>
+          <label class="col">{{viewApproveItem.experience}} years</label>
+        </div>
+        <!-- <div class="row">
+          <label class="col">Qualification</label>
+          <label class="col">{{viewApproveItem.qualifiedIn}}</label>
+        </div> -->
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Decline</button>
-        <button type="button" class="btn btn-success">Approve</button>
+        <button type="button" class="btn btn-success" (click)="appApprove()">Approve</button>
       </div>
     </div>
   </div>

@@ -68,6 +68,8 @@ export class UserManagementComponent implements OnInit {
   practionerLength: any;
   companyLength: any;
 approveItem:any = [];
+approveId:any;
+viewApproveItem:any = []
   constructor(private router: Router, public mainService: MainService) { }
 
   ngOnInit() {
@@ -124,17 +126,72 @@ approveItem:any = [];
 
   }
 approveList(){
+  this.mainService.showSpinner();
   let url = 'admin/applicantList'
   this.mainService.getApi(url,1).subscribe((res:any)=>{
     console.log('This is Approval list',res.result);
     if(res.responseCode==200){
+      this.mainService.hideSpinner()
+      this.mainService.successToast(res.responseMessage)
       this.approveItem = res.result
       console.log('Len',this.approveItem.length);
     }
-  })
+    else{
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(res.responseMessage)
+    }
+  },(error)=>{
+    this.mainService.hideSpinner();
+    this.mainService.errorToast('something went wrong')
+  }
+  )
 }
 viewUserApproveInModal(id){
   $('#approveModal').modal('show')
+  this.approveId = id,
+  this.ViewApproveUser()
+}
+ViewApproveUser(){
+  this.mainService.showSpinner()
+  let url = `admin/viewApplicant/${this.approveId}`
+  this.mainService.getApi(url,1).subscribe((res:any)=>{
+    console.log('This is View of approve',res.result)
+    if(res.responseCode==200){
+      this.mainService.hideSpinner()
+      this.mainService.successToast(res.responseMessage)
+      this.viewApproveItem = res.result;
+    }
+    else{
+      this.mainService.hideSpinner()
+      this.mainService.errorToast(res.responseMessage)
+    }
+  },(error)=>{
+    this.mainService.hideSpinner();
+    this.mainService.errorToast('something went wrong')
+  })
+}
+appApprove(){
+  $('#approveModal').modal('hide')
+  let url = 'admin/applicantApproval'
+  let obj = {
+    _id: this.approveId
+  }
+  this.mainService.showSpinner();
+  this.mainService.postApi(url,obj,1).subscribe((res:any)=>{
+    console.log('This is AppApprove resPonse',res);
+    if(res.responseCode==200){
+      this.mainService.hideSpinner();
+      this.mainService.successToast(res.responseMessage);
+      this.approveList()
+    }
+    else{
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(res.responseMessage);
+    }
+  },(error)=>{
+    this.mainService.hideSpinner();
+    this.mainService.errorToast('something went wrong')
+  })
 }
 
   searchFormValidation() {
@@ -324,6 +381,7 @@ viewUserApproveInModal(id){
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/viewCustomer',data,1).subscribe((res)=>{
+      console.log('View Custome',res)
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.viewCustomer=res.result[0]

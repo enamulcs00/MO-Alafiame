@@ -24,8 +24,8 @@ margin-left: 2%;">
                     </label>
                         <input type="text" class="form-control" formControlName="subCategories">
                         <span class="text text-danger" *ngIf="addhomeForm.controls.subCategories.touched && addhomeForm.controls.subCategories.invalid && addhomeForm.controls.subCategories.errors.required">*Subcategory  is Required</span><br>
-                        
-                               
+
+
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@ margin-left: 2%;">
                     <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
                     [routerLink]="['/home-visit-service']">Back</button>
                     <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
-                        (click)="addservice()" [disabled]=addhomeForm.invalid>Save</button>
+                        (click)="addservice()">Save</button>
                 </div>
             </div>
         </form>
