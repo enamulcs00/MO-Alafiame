@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/provider/main.service';
-
+declare var $: any
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -32,7 +32,12 @@ export class HeaderComponent implements OnInit {
       this.showLogo = false;
     }
   }
-  logout(){
-    this.mainService.logout();
+  logOutModal() {
+    $('#logoutModal').modal('show')
+  }
+
+  logout() {
+    $('#logoutModal').modal('hide')
+    this.mainService.logout()
   }
 }

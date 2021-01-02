@@ -1811,32 +1811,33 @@
           <tr class="no_wrap_th text-center">
               <th scope="col" class="Sorting-img">S.No</th>
               <th scope="col" class="Sorting-img">Name</th>
-              <th scope="col" class="Sorting-img">D.O.B</th>
-              <th scope="col" class="Sorting-img">Email Address</th>
+              <th scope="col" class="Sorting-img">UserType</th>
+              <th scope="col" class="Sorting-img">Email-Id</th>
               <th scope="col" class="Sorting-img">Contact Number</th>
+              <th scope="col" class="Sorting-img">Status</th>
               <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
           </tr>
       </thead>
       <tbody>
 
-          <tr *ngFor="let item of customerData | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: customerLength}; let i = index"
+          <tr *ngFor="let item of approveItem | paginate: { itemsPerPage: itemPerPage, currentPage: currentPage, totalItems: approveItem.length}; let i = index"
               class="text-center">
               <td>
                   {{itemPerPage * (currentPage-1)+ i+1}}</td>
               <td class="content">
                   {{item?.name || '--'}}</td>
-              <td class="content">{{item?.dateOfBirth | date:'dd-MM-yyyy' || '--'}}
+              <td class="content">{{item?.userType || '--'}}
               </td>
               <td class="content">{{item?.email || '--'}}</td>
-              <td class="content">
-                  {{item?.mobileNumber || '--'}}</td>
+              <td class="content">{{item?.mobileNumber || '--'}}</td>
+              <td class="content">{{item?.status || '--'}}</td>
 
               <td class="justify-content-center d-flex">
                   <button class="btn btn-info ml-2 bt-margin" title="view"
-                      (click)="viewUser(item?._id)">
+                      (click)="viewUserApproveInModal(item?._id)">
                       <i class="fa fa-eye" aria-hidden="true"
                           style="color:white"></i></button>
-                  <button class="btn btn-info ml-2 bt-margin" title="edit"
+                  <!-- <button class="btn btn-info ml-2 bt-margin" title="edit"
                       (click)="editUser(item?._id)"><i class="fa fa-edit"
                           aria-hidden="true" style="color:white"></i></button>
                   <button class="btn btn-success ml-2 bt-margin"
@@ -1853,15 +1854,15 @@
                   <button class="btn btn-danger ml-2 bt-margin" title="delete"
                       (click)="deleteUserModal(item?._id)"><i
                           class="fa fa-trash" aria-hidden="true"
-                          style="color:white"></i></button>
+                          style="color:white"></i></button> -->
               </td>
           </tr>
-          <tr *ngIf="!customerData.length">
+          <tr *ngIf="!approveItem.length">
               <td class="table-no-record" colspan="6">No Record Found</td>
           </tr>
       </tbody>
   </table>
-  <div class="custom-pagination mt-2 text-align-end" *ngIf="customerLength>5">
+  <div class="custom-pagination mt-2 text-align-end" *ngIf="approveItem.length>5">
       <pagination-controls (pageChange)="pagination($event)"></pagination-controls>
   </div>
 </div>
@@ -2124,3 +2125,35 @@
         </form>
     </div>
 </div>
+<!--Approve Modal Start-->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">User Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <label class="col">KEY</label>
+          <label class="col">VALUE</label>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Decline</button>
+        <button type="button" class="btn btn-success">Approve</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Approve Modal End-->

@@ -67,7 +67,7 @@ export class UserManagementComponent implements OnInit {
   corporateLength: any;
   practionerLength: any;
   companyLength: any;
-
+approveItem:any = [];
   constructor(private router: Router, public mainService: MainService) { }
 
   ngOnInit() {
@@ -112,7 +112,7 @@ export class UserManagementComponent implements OnInit {
 
     }
     else if (this.currTab === 'Approve'){
-      this.approve();
+      this.approveList();
       this.Isapprove = true;
       this.practionerUserValue=true;
       this.practionerUserEditValue=true;
@@ -123,13 +123,19 @@ export class UserManagementComponent implements OnInit {
 
 
   }
-approve(){
+approveList(){
   let url = 'admin/applicantList'
   this.mainService.getApi(url,1).subscribe((res:any)=>{
-    console.log('This is Approval list',res);
+    console.log('This is Approval list',res.result);
+    if(res.responseCode==200){
+      this.approveItem = res.result
+      console.log('Len',this.approveItem.length);
+    }
   })
 }
-
+viewUserApproveInModal(id){
+  $('#approveModal').modal('show')
+}
 
   searchFormValidation() {
     this.searchForm = new FormGroup({
