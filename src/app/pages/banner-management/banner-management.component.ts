@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
-import { ApiUrls } from 'src/app/config/api-urls/api-urls';
+
 declare var $: any;
 @Component({
   selector: 'app-banner-management',
@@ -10,102 +10,81 @@ declare var $: any;
   styleUrls: ['./banner-management.component.css']
 })
 export class BannerManagementComponent implements OnInit {
-
-  searchForm: FormGroup;
+  addBannerForm:FormGroup;
+  EditBannerForm:FormGroup;
+  profile:any;
   itemPerPage: number = 5;
   currentPage :number=1;
-  total: any;
-  helplineId: any
-  faqList: any = [];
-  faqId: any;
   BannerList:any = [];
-
+  bannerId:any;
   constructor(private router: Router, public mainService: MainService) { }
 
   ngOnInit() {
-    this.searchFormValidation();
-    this.getFaqList()
-    this.GetbannerList()
-  }
-
-  searchFormValidation() {
-    this.searchForm = new FormGroup({
-      search: new FormControl('')
+    this.EditBannerForm = new FormGroup({
+      "title": new FormControl('', Validators.required),
     });
-  }
-
-  searchFormSubmit() {
-    if (this.searchForm.value.search) {
-      this.getFaqList()
-    }
-  }
-  searchFormReset() {
-    if (this.searchForm.value.search) {
-      this.searchForm.reset();
-      this.getFaqList()
-    }
+    this.GetbannerList()
+    this.addBannerForm = new FormGroup({
+      "title": new FormControl('', Validators.required),
+    });
   }
 
   pagination(event) {
     console.log(event)
     this.currentPage = event;
-    this.getFaqList()
+    this.GetbannerList()
   }
-
-  // ------- get helpline number list -------- //
-  getFaqList() {
-    const data = {
-      page: this.currentPage,
-      limit: this.itemPerPage
-    }
-    this.mainService.showSpinner();
-    this.mainService.postApi('faq/faqsList', data, 1).subscribe((res: any) => {
-      console.log('This is faq items:--->',res)
-      if (res.responseCode == 200) {
-        this.faqList = res.result.docs ? res.result.docs : '';
-        console.log("faqlist", this.faqList);
-        this.total = res.result.total;
-        this.mainService.hideSpinner();
-        this.mainService.successToast(res.responseMessage);
-      } else {
-        this.faqList = res.result ? res.result : ''
-        this.mainService.hideSpinner();
-        this.mainService.errorToast(res.responseMessage)
-      }
-    })
-  }
-
-  addFaq() {
-    this.router.navigate(['add-faq'])
-  }
-  viewUser() {
-    this.router.navigate(['view-faq'])
-  }
-
-
-  deleteFaqModal(item: any) {
-    this.faqId =item;
+  deleteBannerModal(id) {
+    this.bannerId =id;
     $('#delete').modal('show')
   }
-
-  deleteFaq() {
+  ViewBannerModal(id){
+    this.bannerId =id;
+    $('#ViewBanner').modal('show')
+    this.ViewBanner()
+  }
+  ViewBanner(){
     const data = {
-      faqId: this.faqId
+      bannerId: this.bannerId
     }
     this.mainService.showSpinner();
-    this.mainService.deleteApi('faq/faqs', data, 1).subscribe((res: any) => {
-      $('#delete').modal('hide')
+    this.mainService.getApi(`admin/deleteBanner/${this.bannerId}`, 1).subscribe((res: any) => {
+
       if (res.responseCode == 200) {
-        this.faqList = res.result;
-        this.getFaqList()
+        this.mainService.hideSpinner()
         this.mainService.successToast(res.responseMessage);
-        setTimeout(() => {
-          this.mainService.hideSpinner();
-        }, 1000);
+
       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
+    },
+    error=>{
+      this.mainService.hideSpinner()
+      this.mainService.errorToast(error.responseMessage);
+    })
+
+  }
+
+  deleteBanner() {
+    const data = {
+      bannerId: this.bannerId
+    }
+    this.mainService.showSpinner();
+    this.mainService.deleteApi('admin​/viewBanner', data, 1).subscribe((res: any) => {
+      $('#delete').modal('hide')
+      if (res.responseCode == 200) {
+        this.mainService.hideSpinner()
+        this.mainService.successToast(res.responseMessage);
+        this.GetbannerList()
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+    },
+    error=>{
+      this.mainService.hideSpinner()
+      this.mainService.errorToast(error.responseMessage);
     })
   }
 GetbannerList(){
@@ -121,6 +100,94 @@ GetbannerList(){
       this.mainService.hideSpinner();
       this.mainService.errorToast(res.responseMessage)
     }
+  }, error=>{
+this.mainService.hideSpinner();
+this.mainService.errorToast(error.responseMessage)
   })
 }
+EditBannerModal(id){
+  $('#EditBanner').modal('show')
+this.bannerId =id;
+}
+EditBanner(){
+  let url = 'admin/editBanner'
+
+  let data =
+    {
+      'bannerId': this.bannerId,
+      'title': this.EditBannerForm.value.title,
+      'image': this.profile,
+    }
+    this.mainService.showSpinner();
+    this.mainService.putApi(url, data, 1).subscribe((res: any) => {
+      console.log("EditBanner  response ==>", res)
+      if (res.responseCode == 200 && res.result) {
+
+        this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage)
+        $('#EditBanner').modal('hide');
+        this.GetbannerList()
+        this.EditBannerForm.reset()
+
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+      error => {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(error.responseMessage)
+      }
+    })
+
+
+}
+
+addModal(){
+  $('#addSub').modal('show')
+}
+addBanner(){
+  let url = 'admin/addBanner'
+
+  let data =
+    {
+
+      'title': this.addBannerForm.value.title,
+      'image': this.profile,
+    }
+    this.mainService.showSpinner();
+    this.mainService.postApi(url, data, 1).subscribe((res: any) => {
+      console.log("AddBanner  response ==>", res)
+      if (res.responseCode == 200 && res.result) {
+
+        this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage)
+        $('#addSub').modal('hide');
+        this.GetbannerList()
+        this.addBannerForm.reset()
+
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+      error => {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(error.responseMessage)
+      }
+    })
+
+
+    }
+handleInputChange(e) {
+  var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+
+  var reader = new FileReader();
+  reader.onload = this._handleReaderLoaded.bind(this);
+  reader.readAsDataURL(file);
+}
+_handleReaderLoaded(e) {
+  let reader = e.target;
+  this.profile = reader.result;
+  console.log("profile", this.profile)
+}
+
 }
