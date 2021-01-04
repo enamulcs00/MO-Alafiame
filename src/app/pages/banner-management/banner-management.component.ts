@@ -17,6 +17,9 @@ export class BannerManagementComponent implements OnInit {
   currentPage :number=1;
   BannerList:any = [];
   bannerId:any;
+  BannerEditId:any;
+  bannerFormValues:any = []
+  ViewbannerItems:any = [];
   constructor(private router: Router, public mainService: MainService) { }
 
   ngOnInit() {
@@ -24,6 +27,7 @@ export class BannerManagementComponent implements OnInit {
       "title": new FormControl('', Validators.required),
     });
     this.GetbannerList()
+
     this.addBannerForm = new FormGroup({
       "title": new FormControl('', Validators.required),
     });
@@ -34,10 +38,7 @@ export class BannerManagementComponent implements OnInit {
     this.currentPage = event;
     this.GetbannerList()
   }
-  deleteBannerModal(id) {
-    this.bannerId =id;
-    $('#delete').modal('show')
-  }
+
   ViewBannerModal(id){
     this.bannerId =id;
     $('#ViewBanner').modal('show')
@@ -48,9 +49,10 @@ export class BannerManagementComponent implements OnInit {
       bannerId: this.bannerId
     }
     this.mainService.showSpinner();
-    this.mainService.getApi(`admin/deleteBanner/${this.bannerId}`, 1).subscribe((res: any) => {
-
+    this.mainService.getApi(`admin/viewBanner/${this.bannerId}`, 1).subscribe((res: any) => {
+console.log('View Banner Details',res.result)
       if (res.responseCode == 200) {
+        this.ViewbannerItems = res.result;
         this.mainService.hideSpinner()
         this.mainService.successToast(res.responseMessage);
 
@@ -65,13 +67,19 @@ export class BannerManagementComponent implements OnInit {
     })
 
   }
+  deleteBannerModal(id) {
+    this.bannerId =id;
+    $('#delete').modal('show')
+    console.log('DeletId',id)
+  }
 
   deleteBanner() {
-    const data = {
+    let url = 'admin/deleteBanner'
+    let data = {
       bannerId: this.bannerId
     }
     this.mainService.showSpinner();
-    this.mainService.deleteApi('admin​/viewBanner', data, 1).subscribe((res: any) => {
+    this.mainService.deleteApi(url, data, 1).subscribe((res: any) => {
       $('#delete').modal('hide')
       if (res.responseCode == 200) {
         this.mainService.hideSpinner()
@@ -105,16 +113,42 @@ this.mainService.hideSpinner();
 this.mainService.errorToast(error.responseMessage)
   })
 }
+SetBannerItemInEditForm(){
+  this.mainService.showSpinner();
+  this.mainService.getApi(`admin/viewBanner/${this.BannerEditId}`, 1).subscribe((res: any) => {
+  console.log('View Banner Details',res.result)
+    if (res.responseCode == 200) {
+      this.bannerFormValues = res.result;
+      this.profile = this.bannerFormValues.image
+      this.EditBannerForm.patchValue({
+        'title': this.bannerFormValues.title
+      })
+      this.mainService.hideSpinner()
+      this.mainService.successToast(res.responseMessage);
+
+    } else {
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(res.responseMessage)
+    }
+  },
+  error=>{
+    this.mainService.hideSpinner()
+    this.mainService.errorToast(error.responseMessage);
+  })
+
+}
+
 EditBannerModal(id){
   $('#EditBanner').modal('show')
-this.bannerId =id;
+  this.BannerEditId =id;
+ this.SetBannerItemInEditForm()
 }
 EditBanner(){
   let url = 'admin/editBanner'
 
   let data =
     {
-      'bannerId': this.bannerId,
+      'bannerId': this.BannerEditId,
       'title': this.EditBannerForm.value.title,
       'image': this.profile,
     }
@@ -132,10 +166,12 @@ EditBanner(){
       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
+        $('#EditBanner').modal('hide');
       }
       error => {
         this.mainService.hideSpinner();
         this.mainService.errorToast(error.responseMessage)
+        $('#EditBanner').modal('hide');
       }
     })
 

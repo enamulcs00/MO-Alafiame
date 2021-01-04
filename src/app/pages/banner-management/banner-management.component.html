@@ -200,14 +200,14 @@
                                   <div class="row">
                                       <label class="col-md-4">Banner Title</label>
                                       <span class="col-md-1">:</span>
-                                      <input type="text" class="form-control col-md-5" disabled>
+                                      <input type="text" class="form-control col-md-5" [value]="ViewbannerItems.title" disabled>
                                   </div>
                                   <br>
                                   <div class="row">
                                       <label class="col-md-4">Banner image</label>
                                       <span class="col-md-1">:</span>
                                       <label class="form-control col-md-5" for="fileInput">
-                                          <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
+                                          <img  [src]="ViewbannerItems.image" alt=""/>
 
                                            </label>
                                   </div>

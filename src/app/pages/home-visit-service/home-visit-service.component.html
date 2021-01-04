@@ -142,13 +142,13 @@
                           <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
                               <div class="col">
                                   <div class="row">
-                                      <label class="col-md-4">Category name</label>
+                                      <label class="col-md-4">SubCategory name</label>
                                       <span class="col-md-1">:</span>
                                       <input type="text" class="form-control col-md-5" formControlName="categoryName">
                                       <span class="text text-danger" *ngIf="addSubForm.controls.categoryName.touched && addSubForm.controls.categoryName.invalid && addSubForm.controls.categoryName.errors.required">*Category Name is Required</span>
                                   </div>
                                   <div class="row">
-                                      <label class="col-md-4">Category image</label>
+                                      <label class="col-md-4">SubCategory image</label>
                                       <span class="col-md-1">:</span>
                                       <label class="form-control col-md-5" for="fileInput">
                                           <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
@@ -157,21 +157,19 @@
                                            </label>
                                   </div>
                                   <div class="row" >
-                                    <label class="col-md-4">Category</label>
+                                    <label class="col-md-4">Categories</label>
                                     <span  class="col-md-1">:</span>
-
-                                     <select class="form-control " placeholder="Enter Category"
+                                     <select class="form-control col-md-5"
                                             formControlName="category" (change)="selected($event)">
                                             <option *ngFor="let item of servicelists" value="{{item?._id}}"  > {{item.categoryName}}
                                             </option>
                                         </select>
                                       </div>
-
                               </div>
                           </div>
                           <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
                               <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
-                              data-dismiss="modal">Back</button>
+                              data-dismiss="modal">Close</button>
                               <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
                                   (click)="addSubService()" [disabled]=addSubForm.invalid>Save</button>
                           </div>
