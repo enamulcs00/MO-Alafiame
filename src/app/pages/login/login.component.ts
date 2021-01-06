@@ -37,11 +37,11 @@ export class LoginComponent implements OnInit {
       rememberMe: new FormControl(false)
     });
   }
- 
+
 
   // ---------  login form submit ------------- //
   login() {
-    
+
     let data = {
       'mobileNumber': this.loginForm.value.number,
       'password': this.loginForm.value.password
@@ -72,7 +72,11 @@ export class LoginComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },error=>{
+      this.mainService.hideSpinner()
+      this.mainService.errorToast(error.responseMessage);
+    }
+    )
   }
 
   // show and hide password and change eye

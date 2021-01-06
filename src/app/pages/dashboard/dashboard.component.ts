@@ -33,17 +33,19 @@ export class DashboardComponent implements OnInit {
 
     }
     this.mainService.postApi('admin/listUsers','', 1).subscribe((res:any)=>{
-      
+
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.totalUser=res.result.total
-        
-        
       }
-    },(error)=>{
+      else{
+        this.mainService.hideSpinner()
+        this.mainService.errorToast(res.responseMessage)
+      }
+    },(error:any)=>{
       this.mainService.hideSpinner();
-      this.mainService.errorToast('something went wrong')
-    })
+      this.mainService.errorToast(error.responseMessage);
+      })
   }
 
   // total corporate customer
@@ -51,18 +53,20 @@ export class DashboardComponent implements OnInit {
     this.mainService.showSpinner();
     let data ={}
     this.mainService.postApi('admin/corporateList','', 1).subscribe((res:any)=>{
-      
+
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.totalCorporate=res.result.total;
+        }
+        else{
+          this.mainService.hideSpinner()
+          this.mainService.errorToast(res.responseMessage)
+        }
 
-        
-        
-      }
-    },(error)=>{
+    },(error:any)=>{
       this.mainService.hideSpinner();
-      this.mainService.errorToast('something went wrong')
-    })
+      this.mainService.errorToast(error.responseMessage);
+      })
   }
 // total practioner
   getPractioner(){
@@ -71,17 +75,19 @@ export class DashboardComponent implements OnInit {
 
     }
     this.mainService.postApi('admin/practitionerList','', 1).subscribe((res:any)=>{
-      
+
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.totalPractioner=res.result.total
-        
-        
       }
-    },(error)=>{
+      else{
+        this.mainService.hideSpinner()
+        this.mainService.errorToast(res.responseMessage)
+      }
+    },(error:any)=>{
       this.mainService.hideSpinner();
-      this.mainService.errorToast('something went wrong')
-    })
+      this.mainService.errorToast(error.responseMessage);
+      })
   }
 
   // total service
@@ -91,17 +97,21 @@ export class DashboardComponent implements OnInit {
 
     }
     this.mainService.postApi('admin/serviceList','', 1).subscribe((res:any)=>{
-      
+
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.totalService=res.result.total
         console.log("f", this.totalUser);
-        
       }
-    },(error)=>{
+      else{
+        this.mainService.hideSpinner()
+        this.mainService.errorToast(res.responseMessage)
+      }
+
+    },(error:any)=>{
       this.mainService.hideSpinner();
-      this.mainService.errorToast('something went wrong')
-    })
+      this.mainService.errorToast(error.responseMessage);
+      })
   }
 
   // total products
@@ -111,21 +121,21 @@ export class DashboardComponent implements OnInit {
 
     }
     this.mainService.postApi('admin/productList','', 1).subscribe((res:any)=>{
-      
+
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.totalProduct=res.result.total
         console.log("f", this.totalUser);
-        
+
       }
-      else if(res.responseCode==404){
-        this.mainService.hideSpinner();
+      else{
+        this.mainService.hideSpinner()
         this.mainService.errorToast(res.responseMessage)
       }
-    },(error)=>{
+    },(error:any)=>{
       this.mainService.hideSpinner();
-      this.mainService.errorToast('something went wrong')
-    })
+      this.mainService.errorToast(error.responseMessage);
+      })
   }
 
   // get dashboard data
@@ -146,7 +156,11 @@ export class DashboardComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },(error:any)=>{
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(error.responseMessage);
+      }
+    )
   }
 
 }
