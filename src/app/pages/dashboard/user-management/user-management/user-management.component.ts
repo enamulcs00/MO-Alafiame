@@ -249,7 +249,7 @@ appApprove(){
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
       'number': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
       'DOB': new FormControl('', Validators.required),
-      //'image': new FormControl(''),
+      'image': new FormControl(''),
 
     });
     this.addPractionerForm= new FormGroup({
@@ -903,7 +903,12 @@ appApprove(){
     this.mainService.getApi('admin/viewPractitioner?practitionerId='+this.userId,1).subscribe((res)=>{
       if(res.responseCode==200){
         this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage)
         this.viewPractionerDataa=res.result
+      }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
       }
     },(error)=>{
       this.mainService.hideSpinner();
@@ -938,7 +943,7 @@ appApprove(){
           'email':this.practionerDataa.email,
           'number':this.practionerDataa.mobileNumber,
           'DOB':this.practionerDataa.dateOfBirth,
-          'image':this.imageUrl,
+
         })
         console.log("f", this.practionerData);
 

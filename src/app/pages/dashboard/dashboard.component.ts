@@ -101,7 +101,7 @@ export class DashboardComponent implements OnInit {
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.totalService=res.result.total
-        console.log("f", this.totalUser);
+
       }
       else{
         this.mainService.hideSpinner()
@@ -125,7 +125,7 @@ export class DashboardComponent implements OnInit {
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.totalProduct=res.result.total
-        console.log("f", this.totalUser);
+        
 
       }
       else{
