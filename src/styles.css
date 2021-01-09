@@ -2,6 +2,10 @@
 .custom-pagination /deep/ .ngx-pagination .current {
     background-color: #86559f;
 }
+.btn-theme{
+  background-color: #86559f;
+
+}
 .text-align-end {
     text-align: end !important;
 }
