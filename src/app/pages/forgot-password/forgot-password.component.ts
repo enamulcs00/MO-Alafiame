@@ -41,7 +41,7 @@ export class ForgotPasswordComponent implements OnInit {
     console.log("apireq",apireq);
     this.service.showSpinner();
 
-    this.service.postApi('admin/forgotPassword', apireq,  0).subscribe(success => {
+    this.service.postApi('admin/forgotPassword', apireq,  0).subscribe((success:any) => {
       console.log("success2",success);
       this.service.hideSpinner()
       localStorage.setItem('number', this.form.value.number)
