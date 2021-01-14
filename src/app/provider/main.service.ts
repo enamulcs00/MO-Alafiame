@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
@@ -31,6 +31,7 @@ export class MainService {
   baseURL = 'https://responsiveapp-api.mobiloitte.com/api/v1/';
 
   constructor(private router: Router, public httpClient: HttpClient, private toastrService: ToastrService, private spinnerService: NgxSpinnerService) { }
+
 
   // ---------------- get Api function -------------------- //
   getApi(endPointURL, isHeader): Observable<any> {

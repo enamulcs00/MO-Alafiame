@@ -14,6 +14,16 @@ export class SidebarComponent implements OnInit {
   profileImage: any;
   profileData: any;
   showLogo: boolean = false;
+  permission: any;
+  vendorPermission: any;
+  vendorManagement: boolean=false;
+  giftCardManagement: boolean=false;
+  serviceManagement: boolean=false;
+  notificationManagement: boolean=false;
+  transactionManagement: boolean=false;
+  dashboardManagement: boolean=false;
+  productManagement: boolean=false;
+  staticContentManagement: boolean=false;
   constructor(public mainService: MainService, private router: Router) {
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
@@ -36,6 +46,7 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
+   
     $('.btn-toggle,.close_panel').click(() => {
       $('body').toggleClass('toggle-wrapper');
     });
@@ -57,6 +68,33 @@ export class SidebarComponent implements OnInit {
       if (res.responseCode == 200) {
         this.profileData = res.result;
         this.mainService.hideSpinner();
+        this.vendorPermission=res.result.permissions
+        for (let i in this.vendorPermission){
+          if (i== 'vendorManagement') {
+           this.vendorManagement=true
+          }
+          else if (i== 'transactionManagement' ) {
+            this.transactionManagement=true
+            }
+          else if (i== 'dashboardManagement') {
+            this.dashboardManagement=true
+          }
+          else if (i== 'productManagement') {
+            this.productManagement=true
+          }
+          else if (i== 'serviceManagement') {
+            this.serviceManagement=true
+          }
+          else if (i== 'notificationManagement') {
+            this.notificationManagement=true
+          }
+          else if (i== 'giftCardManagement') {
+            this.giftCardManagement=true
+          }
+          else if (i== 'staticContentManagement') {
+            this.staticContentManagement=true
+          }
+         }
       } else {
         this.mainService.hideSpinner();
       }

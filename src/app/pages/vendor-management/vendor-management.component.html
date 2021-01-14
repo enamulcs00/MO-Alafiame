@@ -1,0 +1,152 @@
+<div class="wrapper">
+    <main class="middle-content">
+        <div class="page_title_block">
+            <h1 class="page_title">VENDOR MANAGEMENT</h1>
+            <hr style="background: black; opacity: 0.5;">
+
+        </div>
+
+        <div class="content-section">
+
+
+            <div class="outer-box">
+                <div class="global-table no-radius p0">
+                    <div class="tab-content1">
+                        <div class="tab-pane1">
+                            <div class="sec_head_new sec_head_new_after">
+                                <form [formGroup]="searchForm">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-4">
+                                            <div class="filter_search mb20 width100">
+                                                <div class="input-group filter_search_group">
+                                                    <input type="text" class="form-control overflow-text"
+                                                        formControlName="search" placeholder="Search by name"
+                                                        maxlength="60"><button (click)="searchValue()" style="width: 39px;
+                                                        background-color: #86559f;"><em
+                                                            class="fa fa-search"></em></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="date" formControlName="fromDate" class="form-control"
+                                                style="width: 60%;" [max]="mainService.getToday()">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="date" formControlName="toDate"
+                                                [min]="this.searchForm.controls['fromDate'].value"
+                                                (keypress)="mainService.BlockFuture()" class="form-control"
+                                                style="width: 60%; margin-left: -40%;">
+                                        </div>
+                                        <!-- <button type="button" (click)="addModal()" class="btn btn-theme" style="margin-left: 19%;height: 8%; width: 14%;">Add Vendor</button> -->
+                                        <button type="button" (click)="exportCSV()" class="btn btn-theme"
+                                            style="margin-left: -15%;height: 8%; width: 12%;">Export csv</button>
+                                        <button type="button" class="btn btn-theme Go_btn ml-2" style="margin-left: 1%;
+                                                    height: 8%;    width: 12%;" [routerLink]="['/add-vendor']">Add
+                                            Vendor
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" aria-describedby="user management list">
+                                <thead>
+                                    <tr class="no_wrap_th text-center">
+                                        <th scope="col" class="Sorting-img">S.No</th>
+                                        <th scope="col" class="Sorting-img">Name</th>
+                                        <th scope="col" class="Sorting-img">Email</th>
+                                        <th scope="col" class="Sorting-img">Created on</th>
+                                        <th scope="col" class="Sorting-img">Mobile</th>
+                                        <th scope="col" class="Sorting-img">Status</th>
+                                        <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                     <tr class="text-center" *ngFor="let items of vendorList | paginate : {itemsPerPage:limit, currentPage:page, totalItems:total}; let i=index">
+
+                                    <td class="content" >{{limit * (page-1)+ i+1}}</td>
+                                    <td class="content" >{{items?.firstName}} {{items?.lastName}}</td>
+                                    <td class="content" >{{items?.email}}</td>
+                                    <td class="content" >{{items?.createdAt | date :'short'}}</td>
+                                    <td class="content">{{items?.mobileNumber}}</td>
+                                    <td class="content">{{items?.status}}</td>
+                                    <td class="justify-content-center d-flex">
+                                        <button class="btn btn-info ml-2 bt-margin"  (click)="blockFunction(items?._id,items?.status)">{{items?.status}}</button>
+                                        <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-vendor',items?._id]">Edit</button>
+                                         <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-vendor',items?._id]">View</button>
+                                         <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(items?._id)"
+                                             >Delete</button>
+                                             </td>
+                                            </tr>
+                                       <tr *ngIf="vendorList==0">
+                                        <td class="table-no-record" colspan="9">No Record Found</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="custom-pagination mt-2 text-align-end" *ngIf="total>5">
+                                <pagination-controls (pageChange)="pagination($event)"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- delete product-management modal Start -->
+<div class="modal fade global-modal reset-modal" id="deleteModal">
+    <div class="modal-dialog max-WT-500">
+        <form class="change_password">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center modal-header-custm">
+                    <h5 class="modal-title d-inline-block">Delete</h5>
+                </div>
+                <div class="modal-inner-content">
+                    <div class="modal-body">
+                        <div class="text-center modal_flax_height d-flex align-items-center justify-content-center">
+                            <div class="w-100">
+                                <p>Are you sure you want to delete this vendor?</p>
+                                <div class="modal-btn-box">
+                                    <button type="submit" class="btn btn-theme" (click)="deleteUser()">Yes</button>
+                                    <button type="button" class="btn btn-danger btn-theme ml-2"
+                                        data-dismiss="modal">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- end delete product-management modal -->
+
+
+<!-- block user-management modal Start -->
+<div class="modal fade global-modal reset-modal" id="blockModal">
+    <div class="modal-dialog max-WT-500">
+        <form class="change_password">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center modal-header-custm">
+                    <h5 class="modal-title d-inline-block">{{status}}</h5>
+                </div>
+                <div class="modal-inner-content">
+                    <div class="modal-body">
+                        <div class="text-center modal_flax_height d-flex align-items-center justify-content-center">
+                            <div class="w-100">
+                                <p>Are you sure you want to {{status}} this vendor?</p>
+                                <div class="modal-btn-box">
+                                    <button type="submit" class="btn btn-theme" (click)="blockUser()">Yes</button>
+                                    <button type="button" class="btn btn-danger btn-theme ml-2"
+                                        data-dismiss="modal">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- end block  user-management modal -->

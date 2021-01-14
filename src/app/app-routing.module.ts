@@ -71,6 +71,10 @@ import { ProductCategoryComponent } from './pages/product-category/product-categ
 import { ViewProductCategoryComponent } from './pages/view-product-category/view-product-category.component';
 import { EditproductCategoryComponent } from './pages/editproduct-category/editproduct-category.component';
 import { AddproductCategoryComponent } from './pages/addproduct-category/addproduct-category.component';
+import { VendorManagementComponent } from './pages/vendor-management/vendor-management.component';
+import { ViewVendorComponent } from './pages/vendor-management/view-vendor/view-vendor.component';
+import { EditVendorComponent } from './pages/vendor-management/edit-vendor/edit-vendor.component';
+import { AddVendorComponent } from './pages/vendor-management/add-vendor/add-vendor.component';
 
 
 const routes: Routes = [
@@ -188,7 +192,13 @@ const routes: Routes = [
   { path: 'product-category', component: ProductCategoryComponent },
   { path: 'view-productcategory/:id', component: ViewProductCategoryComponent },
   { path: 'edit-productcategory/:id', component: EditproductCategoryComponent },
-  { path: 'add-productcategory', component: AddproductCategoryComponent }
+  { path: 'add-productcategory', component: AddproductCategoryComponent },
+
+  { path: 'vendor-management', component: VendorManagementComponent },
+  { path: 'view-vendor/:id', component: ViewVendorComponent },
+  { path: 'edit-vendor/:id', component: EditVendorComponent },
+  { path: 'add-vendor', component: AddVendorComponent }
+
 
 ];
 

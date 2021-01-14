@@ -92,6 +92,10 @@ import { ViewProductCategoryComponent } from './pages/view-product-category/view
 import { EditproductCategoryComponent } from './pages/editproduct-category/editproduct-category.component';
 import { AddproductCategoryComponent } from './pages/addproduct-category/addproduct-category.component';
 import { BannerManagementComponent } from './pages/banner-management/banner-management.component';
+import { VendorManagementComponent } from './pages/vendor-management/vendor-management.component';
+import { ViewVendorComponent } from './pages/vendor-management/view-vendor/view-vendor.component';
+import { EditVendorComponent } from './pages/vendor-management/edit-vendor/edit-vendor.component';
+import { AddVendorComponent } from './pages/vendor-management/add-vendor/add-vendor.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -175,7 +179,11 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     ViewProductCategoryComponent,
     EditproductCategoryComponent,
     AddproductCategoryComponent,
-    BannerManagementComponent
+    BannerManagementComponent,
+    VendorManagementComponent,
+    ViewVendorComponent,
+    EditVendorComponent,
+    AddVendorComponent
   ],
   imports: [
     BrowserModule,

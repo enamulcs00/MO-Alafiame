@@ -12,7 +12,7 @@
     <div class="sidebar-scroller">
         <div id="accordion" class="sidebar-menu">
 
-            <div class="menu-box toggle-menu" [ngClass]="currentUrl === '/dashboard' ? 'active' : ''"
+            <div class="menu-box toggle-menu" *ngIf="dashboardManagement" [ngClass]="currentUrl === '/dashboard' ? 'active' : ''"
                 style="border-top: 1px solid #1975a7;">
                 <div class="card-header clearfix" [routerLink]="['/dashboard']" id="headingThree" data-toggle="collapse"
                     data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -21,7 +21,7 @@
                             class="side_page_name head_color">DASHBOARD</span></a>
                 </div>
             </div>
-            <div class="menu-box toggle-menu" [ngClass]="currentUrl === '/user-management' ? 'active' : ''">
+            <div class="menu-box toggle-menu"  [ngClass]="currentUrl === '/user-management' ? 'active' : ''">
                 <div class="card-header clearfix" [routerLink]="['/user-management']" id="headingThree"
                     data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                     aria-controls="collapseThree">
@@ -30,8 +30,17 @@
                             class="side_page_name head_color">USER MANAGEMENT</span></a>
                 </div>
             </div>
+            <div class="menu-box toggle-menu" *ngIf="vendorManagement" [ngClass]="currentUrl === '/vendor-management' ? 'active' : ''">
+                <div class="card-header clearfix" [routerLink]="['/vendor-management']" id="headingThree"
+                    data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                    aria-controls="collapseThree">
+                    <a class="side_menu">
+                        <span class="side_menu_icon"><i class="fa fa-user" aria-hidden="true"></i></span><span
+                            class="side_page_name head_color">VENDOR MANAGEMENT</span></a>
+                </div>
+            </div>
 
-            <div class="menu-box toggle-menu" [ngClass]="currentUrl === '/banner-management' ? 'active' : ''">
+            <div class="menu-box toggle-menu"  [ngClass]="currentUrl === '/banner-management' ? 'active' : ''">
               <div class="card-header clearfix" [routerLink]="['/banner-management']" id="headingThree"
                   data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                   aria-controls="collapseThree">
@@ -41,7 +50,7 @@
               </div>
           </div>
 
-            <div class="menu-box toggle-menu" [ngClass]="currentUrl === '/product-management' ? 'active' : ''">
+            <div class="menu-box toggle-menu" *ngIf="productManagement" [ngClass]="currentUrl === '/product-management' ? 'active' : ''">
                 <div class="card-header clearfix" [routerLink]="['/product-management']" id="headingThree"
                     data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                     aria-controls="collapseThree">
@@ -51,7 +60,7 @@
                 </div>
             </div>
 
-            <div class="menu-box toggle-menu" [ngClass]="currentUrl === '/home-visit-service' ? 'active': ''">
+            <div class="menu-box toggle-menu" *ngIf="serviceManagement" [ngClass]="currentUrl === '/home-visit-service' ? 'active': ''">
                 <div class="card-header clearfix" [routerLink]="['/home-visit-service']" id="headingThree"
                     data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                     aria-controls="collapseThree">
@@ -61,7 +70,7 @@
                 </div>
             </div>
 
-            <div class="menu-box toggle-menu" [ngClass]="currentUrl === '/gift-card-management' ? 'active': ''">
+            <div class="menu-box toggle-menu" *ngIf="giftCardManagement" [ngClass]="currentUrl === '/gift-card-management' ? 'active': ''">
                 <div class="card-header clearfix" [routerLink]="['/gift-card-management']" id="headingThree"
                     data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                     aria-controls="collapseThree">
@@ -71,7 +80,7 @@
                 </div>
             </div>
 
-            <div class="menu-box toggle-menu" [ngClass]="currentUrl === '/notification-management' ? 'active': ''">
+            <div class="menu-box toggle-menu" *ngIf="notificationManagement" [ngClass]="currentUrl === '/notification-management' ? 'active': ''">
                 <div class="card-header clearfix" [routerLink]="['/notification-management']" id="headingThree"
                     data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                     aria-controls="collapseThree">
@@ -82,7 +91,7 @@
             </div>
 
 
-            <div class="menu-box toggle-menu" [ngClass]="currentUrl === '/static-content-management' ? 'active': ''">
+            <div class="menu-box toggle-menu" *ngIf="staticContentManagement" [ngClass]="currentUrl === '/static-content-management' ? 'active': ''">
                 <div class="card-header clearfix" [routerLink]="['/static-content-management']" id="headingThree"
                     data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                     aria-controls="collapseThree">
