@@ -24,6 +24,7 @@ export class SidebarComponent implements OnInit {
   dashboardManagement: boolean=false;
   productManagement: boolean=false;
   staticContentManagement: boolean=false;
+  permissions: any=[];
   constructor(public mainService: MainService, private router: Router) {
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
@@ -46,14 +47,13 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+    this.getProfile();
     $('.btn-toggle,.close_panel').click(() => {
       $('body').toggleClass('toggle-wrapper');
     });
     this.mainService.loginStatus.subscribe((res: boolean) => console.log("status", this.showSidebar = res))
     if (localStorage.getItem('token')) {
       this.showSidebar = true;
-      this.getProfile();
     }
     this.mainService.loginData.subscribe((res: any) => {
       if (res) { this.profileData = res }
@@ -69,7 +69,15 @@ export class SidebarComponent implements OnInit {
         this.profileData = res.result;
         this.mainService.hideSpinner();
         this.vendorPermission=res.result.permissions
+
+        console.log(this.vendorPermission)
         for (let i in this.vendorPermission){
+          if(this.vendorPermission[i]==true){
+            this.permissions.push(i)
+          }
+        }
+        console.log(this.permissions)
+        for (let i of this.permissions){
           if (i== 'vendorManagement') {
            this.vendorManagement=true
           }

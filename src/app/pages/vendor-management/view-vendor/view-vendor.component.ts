@@ -13,6 +13,7 @@ export class ViewVendorComponent implements OnInit {
   vendorPermission: any;
   permissionarr: any=[];
   transactinList: any;
+  permissions: any=[];
 
   constructor(private activatedRoute:ActivatedRoute,public mainservice:MainService, private router:Router) { }
 
@@ -32,14 +33,19 @@ export class ViewVendorComponent implements OnInit {
       this.vendorPermission=res.result.permissions
     
       for (let i in this.vendorPermission){
+        if(this.vendorPermission[i]==true){
+          this.permissions.push(i)
+        }
+      }
+      for(let i of this.permissions){
         if (i== 'vendorManagement') {
-         this.permissionarr.push('User Management')
+         this.permissionarr.push('Vendor Management')
         }
         else if (i== 'transactionManagement' ) {
           this.permissionarr.push('Transaction Management')
         }
         else if (i== 'dashboardManagement') {
-          this.permissionarr.push('Dashboard')
+          this.permissionarr.push('Dashboard Management')
         }
         else if (i== 'productManagement') {
           this.permissionarr.push('Product Management')
@@ -56,7 +62,8 @@ export class ViewVendorComponent implements OnInit {
         else if (i== 'staticContentManagement') {
           this.permissionarr.push('Static Content Management')
         }
-       }
+      }
+       
        console.log( this.permissionarr)
     }else{
       this.mainservice.hideSpinner()
