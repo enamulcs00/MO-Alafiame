@@ -32,7 +32,7 @@ export class MainService {
 
   constructor(private router: Router, public httpClient: HttpClient, private toastrService: ToastrService, private spinnerService: NgxSpinnerService) { }
 
-
+  vendorPermissions=new BehaviorSubject(``)
   // ---------------- get Api function -------------------- //
   getApi(endPointURL, isHeader): Observable<any> {
     var httpHeaders;
@@ -126,6 +126,7 @@ export class MainService {
 
   // logout
   public logout() {
+    localStorage.clear()
     localStorage.removeItem('token')
     this.loginData.next('');
     this.loginStatus.next(false)

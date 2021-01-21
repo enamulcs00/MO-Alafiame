@@ -15,7 +15,7 @@ export class SidebarComponent implements OnInit {
   profileData: any;
   showLogo: boolean = false;
   permission: any;
-  vendorPermission: any;
+  vendorPermission: any=[];
   vendorManagement: boolean=false;
   giftCardManagement: boolean=false;
   serviceManagement: boolean=false;
@@ -25,6 +25,7 @@ export class SidebarComponent implements OnInit {
   productManagement: boolean=false;
   staticContentManagement: boolean=false;
   permissions: any=[];
+  role: any;
   constructor(public mainService: MainService, private router: Router) {
     this.router.events.subscribe(e => {
       if (e instanceof NavigationEnd) {
@@ -47,18 +48,26 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getProfile();
+   
     $('.btn-toggle,.close_panel').click(() => {
       $('body').toggleClass('toggle-wrapper');
     });
     this.mainService.loginStatus.subscribe((res: boolean) => console.log("status", this.showSidebar = res))
     if (localStorage.getItem('token')) {
       this.showSidebar = true;
+      this.getProfile();
+      this.role=localStorage.getItem('userType')
+      console.log(this.role)
     }
     this.mainService.loginData.subscribe((res: any) => {
       if (res) { this.profileData = res }
+      this.getProfile();
+      this.role=localStorage.getItem('userType')
     })
+  
   }
+
+ 
 
   // get profile
   getProfile() {
@@ -66,16 +75,18 @@ export class SidebarComponent implements OnInit {
     this.mainService.getApi('user/getProfile', 1).subscribe((res: any) => {
       console.log("sidebar profile response ==>", res);
       if (res.responseCode == 200) {
+        this.permissions=[]
+        this.vendorPermission=[]
         this.profileData = res.result;
         this.mainService.hideSpinner();
         this.vendorPermission=res.result.permissions
-
         console.log(this.vendorPermission)
         for (let i in this.vendorPermission){
           if(this.vendorPermission[i]==true){
-            this.permissions.push(i)
+            this.permissions.push(i);
           }
         }
+      
         console.log(this.permissions)
         for (let i of this.permissions){
           if (i== 'vendorManagement') {
@@ -121,7 +132,7 @@ export class SidebarComponent implements OnInit {
   }
 
   logout() {
-    $('#logoutModal').modal('hide')
+        $('#logoutModal').modal('hide')
     this.mainService.logout()
   }
 

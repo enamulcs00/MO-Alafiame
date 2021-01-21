@@ -50,12 +50,16 @@ export class LoginComponent implements OnInit {
     this.mainService.postApi(ApiUrls.login, data, 0).subscribe((res: any) => {
       console.log("login response ==>", res)
       if (res.responseCode == 200) {
+        this.mainService.vendorPermissions.next(res.result.permissions)
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
         localStorage.setItem('token', res.result.token);
+        localStorage.setItem('userType',res.result.userType)
         this.mainService.loginStatus.next(true)
       this.router.navigate(['dashboard'])
-        //this.getProfile()
+        // this.getProfile()
+        this.mainService.loginData.next('res.result')
+
         console.log(this.loginForm.value.rememberMe)
         if (this.loginForm.value.rememberMe) {
           let remData = {
