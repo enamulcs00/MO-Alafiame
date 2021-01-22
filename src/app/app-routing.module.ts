@@ -1,3 +1,5 @@
+import { EditBannerComponent } from './pages/banner-management/edit-banner/edit-banner.component';
+import { ViewBannerComponent } from './pages/banner-management/view-banner/view-banner.component';
 import { AddBannerComponent } from './pages/banner-management/add-banner/add-banner.component';
 import { BannerManagementComponent } from './pages/banner-management/banner-management.component';
 import { NgModule } from '@angular/core';
@@ -163,6 +165,8 @@ const routes: Routes = [
   { path: 'add-user', component: AddUserComponent },
   { path: 'banner-management',component:BannerManagementComponent},
   {path: 'add-banner', component:AddBannerComponent},
+  {path: 'view-banner/:id',component:ViewBannerComponent},
+  {path:'edit-banner/:id',component:EditBannerComponent},
   // { path: 'corporate-customer-management', component: CorporateCustomerManagementComponent },
   { path: 'add-corporate-customer-management', component: AddCorporateCustomerComponent },
   { path: 'edit-corporate-customer-management', component: EditCorporateCustomerComponent },

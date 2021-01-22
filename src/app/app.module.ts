@@ -98,6 +98,8 @@ import { EditVendorComponent } from './pages/vendor-management/edit-vendor/edit-
 import { AddVendorComponent } from './pages/vendor-management/add-vendor/add-vendor.component';
 import { SocialMediaManagementComponent } from './pages/social-media-management/social-media-management.component';
 import { AddBannerComponent } from './pages/banner-management/add-banner/add-banner.component';
+import { EditBannerComponent } from './pages/banner-management/edit-banner/edit-banner.component';
+import { ViewBannerComponent } from './pages/banner-management/view-banner/view-banner.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -187,7 +189,9 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     EditVendorComponent,
     AddVendorComponent,
     SocialMediaManagementComponent,
-    AddBannerComponent
+    AddBannerComponent,
+    EditBannerComponent,
+    ViewBannerComponent
   ],
   imports: [
     BrowserModule,

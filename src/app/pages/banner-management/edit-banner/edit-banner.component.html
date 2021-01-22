@@ -1,10 +1,10 @@
 <div class="content-section">
   <div class="page_title_block" style="padding-left: 21%;padding-top: 7%;">
-      <h1 class="page_title">Add New Banner</h1>
+      <h1 class="page_title">Update Banner</h1>
   </div>
   <div class="order-view  max-WT-700  setting-page" style="margin-left: 33%;">
       <div class="  mb40">
-          <form [formGroup]="addBannerForm" #f="ngForm">
+          <form [formGroup]="EditBannerForm" #f="ngForm">
               <div class="add-store-block input-style mb20 mt20 ">
                   <div class="form-group row align-items-baseline view-label-align">
                       <label class="col-md-4 textalignright ">Banner Name
@@ -15,19 +15,19 @@
                                   (keypress)="mainService.AlphabetOnly($event)" maxlength="20">
                               <div class="text-danger">
                                   <span
-                                      *ngIf="addBannerForm.get('firstName').hasError('required') && (addBannerForm.get('firstName').dirty || addBannerForm.get('firstName').touched)">
+                                      *ngIf="EditBannerForm.get('firstName').hasError('required') && (EditBannerForm.get('firstName').dirty || EditBannerForm.get('firstName').touched)">
                                       *Please enter banner name.
                                   </span>
                                   <span
-                                      *ngIf="addBannerForm.get('firstName').hasError('pattern') && (addBannerForm.get('firstName').dirty || f.submitted)">
+                                      *ngIf="EditBannerForm.get('firstName').hasError('pattern') && (EditBannerForm.get('firstName').dirty || f.submitted)">
                                       *Name accept only alphabets.
                                   </span>
                                   <span
-                                      *ngIf="addBannerForm.get('firstName').hasError('minlength') && !(addBannerForm.get('firstName').hasError('pattern')) && (addBannerForm.get('firstName').dirty || f.submitted)">
+                                      *ngIf="EditBannerForm.get('firstName').hasError('minlength') && !(EditBannerForm.get('firstName').hasError('pattern')) && (EditBannerForm.get('firstName').dirty || f.submitted)">
                                       *Minimum length must be 2.
                                   </span>
                                   <span
-                                      *ngIf="addBannerForm.get('firstName').hasError('maxlength') && !(addBannerForm.get('firstName').hasError('pattern')) && (addBannerForm.get('firstName').dirty || f.submitted)">
+                                      *ngIf="EditBannerForm.get('firstName').hasError('maxlength') && !(EditBannerForm.get('firstName').hasError('pattern')) && (EditBannerForm.get('firstName').dirty || f.submitted)">
                                       *Maximum length should not more than 20.
                                   </span>
                               </div>
@@ -44,7 +44,7 @@
                                   maxlength="50">
                               <div class="text-danger">
                                   <span
-                                      *ngIf="addBannerForm.get('title').hasError('required') && (addBannerForm.get('title').dirty || addBannerForm.get('title').touched || f.submitted)">
+                                      *ngIf="EditBannerForm.get('title').hasError('required') && (EditBannerForm.get('title').dirty || EditBannerForm.get('title').touched || f.submitted)">
                                       *Please enter banner title.
                                   </span>
 
@@ -69,7 +69,7 @@
 
                             <div class="text-danger">
                                 <span
-                                    *ngIf="addBannerForm.get('bannerFile').hasError('required') && (addBannerForm.get('bannerFile').dirty || addBannerForm.get('bannerFile').touched || f.submitted)">
+                                    *ngIf="EditBannerForm.get('bannerFile').hasError('required') && (EditBannerForm.get('bannerFile').dirty || EditBannerForm.get('bannerFile').touched || f.submitted)">
                                     <!-- *Please choose banner. -->
                                 </span>
 
@@ -87,7 +87,7 @@
                         name="editor1" language="en" [config]="config"></ck-editor>
                           <div class="text-danger">
                               <span
-                                  *ngIf="addBannerForm.get('description').hasError('required') && (addBannerForm.get('description').dirty || addBannerForm.get('description').touched || f.submitted)">
+                                  *ngIf="EditBannerForm.get('description').hasError('required') && (EditBannerForm.get('description').dirty || EditBannerForm.get('description').touched || f.submitted)">
                                   *Please enter banner description.
                               </span>
 
@@ -99,28 +99,9 @@
 
               <div class="text-center mt40 mb40">
                   <!-- <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/banner-management">Back</button> -->
-                  <button class="btn btn-large  max-WT-150 btn-theme" [disabled]="!addBannerForm.valid" (click)="addNewBanner()">Submit</button>
+                  <button class="btn btn-large  max-WT-150 btn-theme" (click)="EditBanner()">Update</button>
               </div>
           </form>
       </div>
   </div>
 </div>
-
-<!-- <label class="form-control" for="fileInput">
-  <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
-  <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
-  <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="visibility:hidden;">
-   </label>
-   <ck-editor id="editornewData" formControlName="editorValue"
-           name="editor1" language="en" [config]="config"></ck-editor>
-   -->
-
-<!-- <div class="input-group">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile04">
-    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-  </div>
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
-  </div>
-</div> -->

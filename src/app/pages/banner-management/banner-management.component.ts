@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
 
 declare var $: any;
