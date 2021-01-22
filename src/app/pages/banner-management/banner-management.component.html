@@ -14,9 +14,9 @@
                                   <div class="row d-flex justify-content-end mb20">
                                       <div class="col-md-4">
                                           <div class="admin-btn justify-content-end ">
-                                              <button type="button" class="btn  btn-theme Go_btn"
-                                                  (click)="addModal()">Add
-                                              </button>
+                                              <a type="button" class="btn  btn-theme Go_btn"
+                                              routerLink="/add-banner">Add New Banner
+                                              </a>
                                           </div>
                                       </div>
                                   </div>
@@ -133,7 +133,7 @@
                               <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
                               data-dismiss="modal">Close</button>
                               <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
-                                  (click)="addBanner()" [disabled]=addBannerForm.invalid>Save</button>
+                                  (click)="addNewBanner()" [disabled]=addBannerForm.invalid>Save</button>
                           </div>
                   </form>
               </div>

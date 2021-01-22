@@ -181,7 +181,7 @@ EditBanner(){
 addModal(){
   $('#addSub').modal('show')
 }
-addBanner(){
+addNewBanner(){
   let url = 'admin/addBanner'
 
   let data =
