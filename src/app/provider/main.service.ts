@@ -127,9 +127,9 @@ export class MainService {
   // logout
   public logout() {
     localStorage.clear()
-    localStorage.removeItem('token')
-    this.loginData.next('');
-    this.loginStatus.next(false)
+    //localStorage.removeItem('token')
+   // this.loginData.next('');
+   // this.loginStatus.next(false)
     this.router.navigate(['login'])
   }
 

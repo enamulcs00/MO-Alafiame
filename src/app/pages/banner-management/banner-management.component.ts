@@ -92,7 +92,7 @@ console.log('View Banner Details',res.result)
     },
     error=>{
       this.mainService.hideSpinner()
-      this.mainService.errorToast(error.responseMessage);
+      this.mainService.errorToast('Something went wrong');
     })
   }
 GetbannerList(){
@@ -110,7 +110,7 @@ GetbannerList(){
     }
   }, error=>{
 this.mainService.hideSpinner();
-this.mainService.errorToast(error.responseMessage)
+this.mainService.errorToast('Something went wrong')
   })
 }
 SetBannerItemInEditForm(){
@@ -133,7 +133,7 @@ SetBannerItemInEditForm(){
   },
   error=>{
     this.mainService.hideSpinner()
-    this.mainService.errorToast(error.responseMessage);
+    this.mainService.errorToast('Something went wrong');
   })
 
 }

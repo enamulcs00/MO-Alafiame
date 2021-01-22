@@ -439,11 +439,13 @@ appApprove(){
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/editCustomer', data, 1).subscribe((res: any) => {
-      console.log("add helpline number list response ==>", res)
+      console.log("Customer Update Response response ==>", res)
       if (res.responseCode == 200) {
         this.mainService.hideSpinner()
         this.mainService.successToast(res.responseMessage);
         this.selectTab('Customer');
+        this.imageUrl = ''
+        this.editUserForm.reset()
         this.customerValue=true;
         this.customerUserEditValue=true;
       } else {
