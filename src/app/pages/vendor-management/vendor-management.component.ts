@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MainService } from 'src/app/provider/main.service';
+import { ngxCsv } from 'ngx-csv/ngx-csv';
 declare var $: any;
 
 @Component({
@@ -142,6 +143,27 @@ this.status="BLOCK"
   console.log('This event will display page number:->',event);
   this.page = event;
   this.getVendorList()
+}
+exportCSV(){
+  let dataArr = [];
+  dataArr.push({
+     sno: "S.No",
+     Name: "Name of Vendor",
+     Email: "Email-Id",
+     Contact:"Mobile Number",
+     Created_On:"Date Of Creation"
+ });
+ this.vendorList.forEach((element,ind) => {
+  dataArr.push({
+      sno:ind+1,
+      Name:element.firstName +''+element.lastName,
+      Email:element.email,
+      Contact:element.mobileNumber,
+      Created_On:String(element.createdAt).slice(0,10),
+  })
+})
+new ngxCsv(dataArr, 'Vendor_management');
+
 }
   }
 
