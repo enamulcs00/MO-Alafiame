@@ -8,9 +8,16 @@
           <div class="outer-box">
               <div class="global-table no-radius p0">
                   <div class="tab-content1">
-                      <!-- <div class="tab-pane1">
-
-                      </div> -->
+                       <div class="tab-pane1"> </div>
+                       <div class="row d-flex justify-content-end mb20">
+                        <div class="col-md-4">
+                            <div class="admin-btn justify-content-end ">
+                                <a type="button" class="btn  btn-theme Go_btn"
+                                routerLink="/add-section">Add new Section
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                       <div class="table-responsive" style="width: fit-content;">
                           <table class="table table-bordered table-sm" aria-describedby="section list">
                               <thead>
@@ -22,8 +29,8 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr class="text-center">
-                                      <td class="content"> Hii</td>
+                                  <tr class="text-center"*ngFor="let item of SectionList">
+                                      <td class="content"> {{item?.title||"N/A"}}</td>
                                       <!-- <td class="content"><img [src]="item?.image" alt="" style="width: 66px;">
                                       </td> -->
                                       <td class="justify-content-center" style="padding-top: 27px;padding-bottom: 24px;">

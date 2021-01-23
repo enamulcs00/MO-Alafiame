@@ -102,6 +102,7 @@ import { EditBannerComponent } from './pages/banner-management/edit-banner/edit-
 import { ViewBannerComponent } from './pages/banner-management/view-banner/view-banner.component';
 import { AddSubServiceComponent } from './pages/home-visit-service/add-sub-service/add-sub-service.component';
 import { HomeContentComponent } from './pages/dashboard/static-content-management/home-content/home-content.component';
+import { AddSectionComponent } from './pages/dashboard/static-content-management/add-section/add-section.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -196,6 +197,7 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     ViewBannerComponent,
     AddSubServiceComponent,
     HomeContentComponent,
+    AddSectionComponent,
 
   ],
   imports: [
