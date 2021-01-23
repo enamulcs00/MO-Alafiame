@@ -130,8 +130,8 @@
 
 
  <!-- Add sub category modal Start -->
- <div class="modal fade global-modal reset-modal" id="addSub">
-  <div class="modal-dialog max-WT-500">
+ <div class="modal fade global-modal bd-example-modal-lg reset-modal" id="addSub">
+  <div class="modal-dialog modal-lg">
       <div class="modal-content">
           <div class="modal-header d-block text-center modal-header-custm">
               <h5 class="modal-title d-inline-block">Add Sub Category</h5>
@@ -142,22 +142,26 @@
                           <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
                               <div class="col">
                                   <div class="row">
-                                      <label class="col-md-4">SubCategory name</label>
+                                      <label class="col-md-4">SubCategory Name</label>
                                       <span class="col-md-1">:</span>
                                       <input type="text" class="form-control col-md-5" formControlName="categoryName">
-                                      <span class="text text-danger" *ngIf="addSubForm.controls.categoryName.touched && addSubForm.controls.categoryName.invalid && addSubForm.controls.categoryName.errors.required">*Category Name is Required</span>
-                                  </div>
+                                      <span class="text text-danger" *ngIf="addSubForm.get('categoryName').touched && addSubForm.get('categoryName').invalid && addSubForm.get('categoryName').errors.required" style="position: relative;left:41%;">
+                                        *SubCategory is Required
+                                      </span>
+
+                                    </div>
+                                    <br>
                                   <div class="row">
-                                      <label class="col-md-4">SubCategory image</label>
+                                      <label class="col-md-4">SubCategory Image</label>
                                       <span class="col-md-1">:</span>
-                                      <label class="col-md-5" for="fileInput">
+                                      <label class="col-md-3" for="fileInput">
                                           <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
                                           <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
                                           <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="visibility:hidden;">
                                            </label>
                                   </div>
                                   <div class="row" >
-                                    <label class="col-md-4">Categories</label>
+                                    <label class="col-md-4">Choose Category</label>
                                     <span  class="col-md-1">:</span>
                                      <select class="form-control col-md-5"
                                             formControlName="category" (change)="selected($event)">

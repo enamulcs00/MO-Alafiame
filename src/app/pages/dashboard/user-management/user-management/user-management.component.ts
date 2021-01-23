@@ -298,12 +298,14 @@ appApprove(){
 
     }
     this.mainService.postApi('admin/serviceList','', 1).subscribe((res:any)=>{
-      console.log("This is ServilistResponse:", res);
+      console.log("This is ServilistResponseByPost:", res.result.docs);
+      this.mainService.hideSpinner();
       if(res.responseCode==200){
-        this.mainService.hideSpinner();
+this.mainService.successToast(res.responseMessage)
         this.serviceData=res.result.docs;
-
-
+      }
+      else{
+        this.mainService.errorToast(res.responseMessage)
       }
     },(error)=>{
       this.mainService.hideSpinner();

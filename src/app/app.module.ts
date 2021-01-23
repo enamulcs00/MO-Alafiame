@@ -100,6 +100,7 @@ import { SocialMediaManagementComponent } from './pages/social-media-management/
 import { AddBannerComponent } from './pages/banner-management/add-banner/add-banner.component';
 import { EditBannerComponent } from './pages/banner-management/edit-banner/edit-banner.component';
 import { ViewBannerComponent } from './pages/banner-management/view-banner/view-banner.component';
+import { AddSubServiceComponent } from './pages/home-visit-service/add-sub-service/add-sub-service.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -191,7 +192,8 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     SocialMediaManagementComponent,
     AddBannerComponent,
     EditBannerComponent,
-    ViewBannerComponent
+    ViewBannerComponent,
+    AddSubServiceComponent
   ],
   imports: [
     BrowserModule,

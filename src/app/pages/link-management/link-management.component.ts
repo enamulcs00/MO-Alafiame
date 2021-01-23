@@ -33,6 +33,7 @@ export class LinkManagementComponent implements OnInit {
     this.mainService.showSpinner();
     this.mainService.getApi('appSharing/appSharingData',1).subscribe((res: any) => {
       console.log('These are links Res',res)
+      this.mainService.hideSpinner();
       if (res.responseCode == 200 && res.result) {
         this.link = res.result;
         this.id= res.result._id;
@@ -53,7 +54,11 @@ export class LinkManagementComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },err=>{
+      this.mainService.hideSpinner()
+      this.mainService.errorToast('Something went wrong')
+    }
+    )
   }
   saveList() {
     const data = {

@@ -28,7 +28,7 @@ categoryLength:any;
 
   ngOnInit() {
     this.addSubForm = new FormGroup({
-      "categoryName": new FormControl('', Validators.required),
+      'categoryName': new FormControl('', Validators.required),
     });
     this.categoryLists();
     this.serviceList();

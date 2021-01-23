@@ -1,3 +1,4 @@
+import { AddSubServiceComponent } from './pages/home-visit-service/add-sub-service/add-sub-service.component';
 import { EditBannerComponent } from './pages/banner-management/edit-banner/edit-banner.component';
 import { ViewBannerComponent } from './pages/banner-management/view-banner/view-banner.component';
 import { AddBannerComponent } from './pages/banner-management/add-banner/add-banner.component';
@@ -194,6 +195,7 @@ const routes: Routes = [
   { path: 'add-home-visit', component: AddHomeVisitComponent },
   { path: 'edit-home-visit/:id', component: EditHomeVisitComponent },
   { path: 'view-home-visit/:id', component: ViewHomeVisitComponent },
+  {path: 'add-sub-service', component:AddSubServiceComponent},
   { path: 'link-management', component: LinkManagementComponent },
   { path: 'product-category', component: ProductCategoryComponent },
   { path: 'view-productcategory/:id', component: ViewProductCategoryComponent },
