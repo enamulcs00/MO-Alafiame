@@ -1,13 +1,13 @@
 <div class="content-section">
   <div class="page_title_block" style="padding-left: 21%;padding-top: 7%;">
-      <h1 class="page_title">Add service provider</h1>
+      <h1 class="page_title">Add Banner</h1>
   </div>
   <div class="order-view  max-WT-700  setting-page" style="margin-left: 33%;">
       <div class="  mb40">
           <form [formGroup]="addBannerForm" #f="ngForm">
               <div class="add-store-block input-style mb20 mt20 ">
                 <div class="form-group row align-items-baseline view-label-align">
-                  <label class="col-md-4 textalignright">Service Title
+                  <label class="col-md-4 textalignright">Banner Title
                       <span>:</span></label>
                   <div class="col-md-8 textaligncenter">
                       <div class="form-group ">
@@ -17,7 +17,7 @@
                           <div class="text-danger">
                               <span
                                   *ngIf="addBannerForm.get('title').hasError('required') && (addBannerForm.get('title').dirty || addBannerForm.get('title').touched || f.submitted)">
-                                  *Please enter service title.
+                                  *Please enter banner title.
                               </span>
 
                           </div>
@@ -25,41 +25,11 @@
                   </div>
               </div>
 
-                  <div class="form-group row align-items-baseline view-label-align">
-                      <label class="col-md-4 textalignright ">Service Type
-                          <span>:</span></label>
-                      <div class="col-md-8 textaligncenter">
-                          <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Enter banner name" formControlName="firstName"
-                                  (keypress)="mainService.AlphabetOnly($event)" maxlength="20">
-                              <div class="text-danger">
-                                  <span
-                                      *ngIf="addBannerForm.get('firstName').hasError('required') && (addBannerForm.get('firstName').dirty || addBannerForm.get('firstName').touched)">
-                                      *Please enter service type.
-                                  </span>
-                                  <span
-                                      *ngIf="addBannerForm.get('firstName').hasError('pattern') && (addBannerForm.get('firstName').dirty || f.submitted)">
-                                      *Name accept only alphabets.
-                                  </span>
-                                  <span
-                                      *ngIf="addBannerForm.get('firstName').hasError('minlength') && !(addBannerForm.get('firstName').hasError('pattern')) && (addBannerForm.get('firstName').dirty || f.submitted)">
-                                      *Minimum length must be 2.
-                                  </span>
-                                  <span
-                                      *ngIf="addBannerForm.get('firstName').hasError('maxlength') && !(addBannerForm.get('firstName').hasError('pattern')) && (addBannerForm.get('firstName').dirty || f.submitted)">
-                                      *Maximum length should not more than 20.
-                                  </span>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-
                   <div class="form-group row view-label-align">
                     <label class="col-md-4 textalignright">Upload image
                         <span>:</span></label>
-                    <div class="col-md-3.5 textaligncenter">
-                        <div class="form-group" style="position: relative;left: 16%;">
+                    <div class="col-md-4 textaligncenter">
+                        <div class="form-group">
                           <label for="fileInput"class="hoverable">
                             <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
                             <div class="hover-text">
@@ -72,11 +42,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group row align-items-baseline view-label-align">
+                  <label class="col-md-4 textalignright ">Description
+                      </label>
+              </div>
 
                 <div class="form-group row  view-label-align">
-                  <label class="col-md-4 textalignright">Description
-                      <span>:</span></label>
-                  <div class="col-md-8 textaligncenter">
+
+                  <div class="col-md-12 textaligncenter">
                       <div class="form-group ">
                         <ck-editor id="editornewData" formControlName="description"
                         name="editor1" language="en" [config]="config"></ck-editor>
@@ -93,7 +66,7 @@
               </div>
 
               <div class="text-center mt40 mb40">
-                  <!-- <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/banner-management">Back</button> -->
+                  <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/home-banner">Cancel</button>
                   <button class="btn btn-large  max-WT-150 btn-theme" [disabled]="!addBannerForm.valid" (click)="addNewBanner()">Submit</button>
               </div>
           </form>

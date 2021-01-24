@@ -1,3 +1,10 @@
+import { HomeBannerViewComponent } from './pages/dashboard/static-content-management/home-banner-view/home-banner-view.component';
+import { HomeBannerEditComponent } from './pages/dashboard/static-content-management/home-banner-edit/home-banner-edit.component';
+import { HomeBannerAddComponent } from './pages/dashboard/static-content-management/home-banner-add/home-banner-add.component';
+import { HomeBannerComponent } from './pages/dashboard/static-content-management/home-banner/home-banner.component';
+import { HomeSectionComponent } from './pages/dashboard/static-content-management/home-section/home-section.component';
+import { EditSectionComponent } from './pages/dashboard/static-content-management/edit-section/edit-section.component';
+import { ViewSectionComponent } from './pages/dashboard/static-content-management/view-section/view-section.component';
 import { AddSectionComponent } from './pages/dashboard/static-content-management/add-section/add-section.component';
 import { HomeContentComponent } from './pages/dashboard/static-content-management/home-content/home-content.component';
 import { AddSubServiceComponent } from './pages/home-visit-service/add-sub-service/add-sub-service.component';
@@ -121,15 +128,19 @@ const routes: Routes = [
   { path: 'add-notification', component: AddNotificationComponent },
   { path: 'view-notification/:id', component: ViewNotificationComponent},
 
-
   // static content management
-
-
   { path: 'static-content-management', component: StaticContentManagementComponent },
   { path: 'edit-static-content-management', component: EditStaticContentManagementComponent },
   // test center management
+  {path:'home-banner',component:HomeBannerComponent},
+  {path:'home-banner-add',component:HomeBannerAddComponent},
+  {path:'home-banner-edit/:id',component:HomeBannerEditComponent},
+  {path:'home-banner-view/:id',component:HomeBannerViewComponent},
+  {path:'home-section',component:HomeSectionComponent},
 {path: 'home-content',component:HomeContentComponent},
 {path:'add-section',component:AddSectionComponent},
+{path:'view-section/:id',component:ViewSectionComponent},
+{path: 'edit-section/:id',component:EditSectionComponent},
   { path: 'hospital-management', component: HospitalManagementComponent },
   { path: 'add-hospital', component: AddHospitalComponent },
   { path: 'edit-hospital', component: EditHospitalComponent },

@@ -103,6 +103,13 @@ import { ViewBannerComponent } from './pages/banner-management/view-banner/view-
 import { AddSubServiceComponent } from './pages/home-visit-service/add-sub-service/add-sub-service.component';
 import { HomeContentComponent } from './pages/dashboard/static-content-management/home-content/home-content.component';
 import { AddSectionComponent } from './pages/dashboard/static-content-management/add-section/add-section.component';
+import { ViewSectionComponent } from './pages/dashboard/static-content-management/view-section/view-section.component';
+import { EditSectionComponent } from './pages/dashboard/static-content-management/edit-section/edit-section.component';
+import { HomeSectionComponent } from './pages/dashboard/static-content-management/home-section/home-section.component';
+import { HomeBannerComponent } from './pages/dashboard/static-content-management/home-banner/home-banner.component';
+import { HomeBannerAddComponent } from './pages/dashboard/static-content-management/home-banner-add/home-banner-add.component';
+import { HomeBannerEditComponent } from './pages/dashboard/static-content-management/home-banner-edit/home-banner-edit.component';
+import { HomeBannerViewComponent } from './pages/dashboard/static-content-management/home-banner-view/home-banner-view.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -198,6 +205,13 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     AddSubServiceComponent,
     HomeContentComponent,
     AddSectionComponent,
+    ViewSectionComponent,
+    EditSectionComponent,
+    HomeSectionComponent,
+    HomeBannerComponent,
+    HomeBannerAddComponent,
+    HomeBannerEditComponent,
+    HomeBannerViewComponent,
 
   ],
   imports: [
