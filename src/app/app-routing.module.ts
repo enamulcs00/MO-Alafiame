@@ -1,3 +1,7 @@
+import { ViewLoginContentComponent } from './pages/dashboard/login-screen-content/view-login-content/view-login-content.component';
+import { EditLoginContentComponent } from './pages/dashboard/login-screen-content/edit-login-content/edit-login-content.component';
+import { AddLoginContentComponent } from './pages/dashboard/login-screen-content/add-login-content/add-login-content.component';
+import { LoginScreenContentComponent } from './pages/dashboard/login-screen-content/login-screen-content.component';
 import { HomeBannerViewComponent } from './pages/dashboard/static-content-management/home-banner-view/home-banner-view.component';
 import { HomeBannerEditComponent } from './pages/dashboard/static-content-management/home-banner-edit/home-banner-edit.component';
 import { HomeBannerAddComponent } from './pages/dashboard/static-content-management/home-banner-add/home-banner-add.component';
@@ -188,8 +192,8 @@ const routes: Routes = [
 
   { path: 'practitioner-management', component: PractitionerManagementComponent },
   { path: 'add-practitioner', component: AddPractitionerComponent },
-  { path: 'edit-practitioner', component: EditPractitionerComponent },
-  { path: 'view-practitioner', component: ViewPractitionerComponent },
+  { path: 'edit-practitioner/:id', component: EditPractitionerComponent },
+  { path: 'view-practitioner/:id', component: ViewPractitionerComponent },
 
   { path: 'view-companies', component: ViewCompaniesComponent },
   { path: 'view-companies-edit', component: ViewCompaniesEditComponent },
@@ -218,8 +222,11 @@ const routes: Routes = [
   { path: 'vendor-management', component: VendorManagementComponent },
   { path: 'view-vendor/:id', component: ViewVendorComponent },
   { path: 'edit-vendor/:id', component: EditVendorComponent },
-  { path: 'add-vendor', component: AddVendorComponent }
-
+  { path: 'add-vendor', component: AddVendorComponent },
+{path:'login-screen-content',component:LoginScreenContentComponent},
+{path:'add-login-content',component:AddLoginContentComponent},
+{path:'edit-login-content/:id',component:EditLoginContentComponent},
+{path:'view-login-content/:id',component:ViewLoginContentComponent},
 
 ];
 

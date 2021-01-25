@@ -2,11 +2,11 @@ import { MainService } from 'src/app/provider/main.service';
 import { Component, OnInit } from '@angular/core';
 declare var $:any
 @Component({
-  selector: 'app-practitioner-management',
-  templateUrl: './practitioner-management.component.html',
-  styleUrls: ['./practitioner-management.component.css']
+  selector: 'app-login-screen-content',
+  templateUrl: './login-screen-content.component.html',
+  styleUrls: ['./login-screen-content.component.css']
 })
-export class PractitionerManagementComponent implements OnInit {
+export class LoginScreenContentComponent implements OnInit {
 
   SectionList:any;
   currentPage: number = 1
@@ -19,7 +19,7 @@ export class PractitionerManagementComponent implements OnInit {
       this.getSectionList()
     }
   getSectionList(){
-    let url ='admin/listPractitionerScreen'
+    let url ='admin/listPractitionerLoginScreen'
   this.service.showSpinner()
   this.service.getApi(url,1).subscribe((res:any)=>{
   this.service.hideSpinner()
@@ -50,7 +50,7 @@ export class PractitionerManagementComponent implements OnInit {
   }
 
   deleteBanner() {
-    let url = 'admin/deletePractitionerScreen'
+    let url = 'admin/deletePractitionerLoginScreen'
     let data = {
       _id: this.itemId
     }

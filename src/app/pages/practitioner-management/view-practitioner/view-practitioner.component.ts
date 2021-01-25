@@ -8,35 +8,35 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./view-practitioner.component.css']
 })
 export class ViewPractitionerComponent implements OnInit {
-  userId: any;
-  viewData: any;
-
-  constructor(public mainService: MainService, public active:ActivatedRoute)
-   {
-     this.active.queryParams.subscribe((params)=>{
-       this.userId=params.value
-       console.log('hfhf', this.userId);
-       
-     })
-    }
+  profile = ''
+  BannerEditId:any;
+  bannerFormValues:any = []
+  constructor(public mainService: MainService, private activateRoute:ActivatedRoute) { }
 
   ngOnInit() {
-    this.viewPractioner();
+    this.activateRoute.params.subscribe((url:any)=>{
+      this.BannerEditId = url.id;
+    })
+    this.SetBannerItemInEditForm()
   }
-  // view practioner
-  viewPractioner(){
-    
+  SetBannerItemInEditForm(){
     this.mainService.showSpinner();
-    this.mainService.getApi('admin/viewPractitioner?userId='+this.userId,1).subscribe((res)=>{
-      if(res.responseCode==200){
-        this.mainService.hideSpinner();
-        this.viewData=res.result
+    this.mainService.getApi(`admin/viewPractitionerScreen/${this.BannerEditId}`, 1).subscribe((res: any) => {
+    console.log('View Banner Details',res.result)
+    this.mainService.hideSpinner();
+      if (res.responseCode == 200) {
+        this.bannerFormValues = res.result;
+        this.profile = this.bannerFormValues.image
+
+       } else {
+
+        this.mainService.errorToast(res.responseMessage)
       }
-    },(error)=>{
-      this.mainService.hideSpinner();
-      this.mainService.errorToast('something went wrong')
+    },
+    error=>{
+      this.mainService.hideSpinner()
+      this.mainService.errorToast('Something went wrong');
     })
 
   }
-
 }

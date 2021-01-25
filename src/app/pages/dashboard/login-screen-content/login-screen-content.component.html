@@ -1,7 +1,7 @@
 <div class="wrapper" style="overflow-x: hidden;">
   <main class="middle-content">
       <div class="page_title_block">
-          <h1 class="page_title">Practioner Management</h1>
+          <h1 class="page_title">Login Screen Content</h1>
           <hr style="width: 118%; margin-left: -9%; background-color: black;">
       </div>
       <div class="content-section" style="margin-top: -3%;">
@@ -13,7 +13,7 @@
                         <div class="col-md-4">
                             <div class="admin-btn justify-content-end ">
                                 <a type="button" class="btn  btn-theme Go_btn"
-                                routerLink="/add-practitioner">Add practioner
+                                routerLink="/add-login-content">Add new
                                 </a>&nbsp;&nbsp;
                                 <a type="button" class="btn  btn-theme Go_btn"
                                 routerLink="/home-section">Back
@@ -26,8 +26,9 @@
                               <thead>
                                   <tr class="no_wrap_th text-center">
                                     <th scope="col" class="Sorting-img">Sr No</th>
-                                      <th scope="col" class="Sorting-img">Practioner title</th>
-                                      <th scope="col" class="Sorting-img">Image</th>
+                                      <th scope="col" class="Sorting-img">Content title</th>
+                                      <th scope="col" class="Sorting-img">Banner image</th>
+                                      <th scope="col" class="Sorting-img">Side image</th>
                                       <th scope="col" class="Sorting-img">Description</th>
                                       <!-- <th scope="col" class="Sorting-img">Banner Image</th> -->
                                       <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
@@ -38,7 +39,9 @@
                                     <td>{{itemsPerPage*(this.currentPage-1)+i+1}}</td>
                                     <td class="content"> {{item?.title||"N/A"}}</td>
 
-                                      <td class="content"><img [src]="item?.image" alt="" style="width: 66px;">
+                                      <td class="content"><img [src]="item?.bannerImage" alt="" style="width: 66px;">
+                                      </td>
+                                      <td class="content"><img [src]="item?.sideImage" alt="" style="width: 66px;">
                                       </td>
                                       <td class="content"> {{item?.description}}</td>
                                       <td class="justify-content-center" style="padding-top: 27px;padding-bottom: 24px;">
@@ -81,13 +84,13 @@
       <form class="change_password">
           <div class="modal-content">
               <div class="modal-header d-block text-center modal-header-custm">
-                  <h5 class="modal-title d-inline-block">Delete practioner?</h5>
+                  <h5 class="modal-title d-inline-block">Delete content?</h5>
               </div>
               <div class="modal-inner-content">
                   <div class="modal-body">
                       <div class="text-center modal_flax_height d-flex align-items-center justify-content-center">
                           <div class="w-100">
-                              <p>Are you sure you want to delete this practioner?</p>
+                              <p>Are you sure you want to delete this login content?</p>
                               <div class="modal-btn-box">
                                   <button type="submit" class="btn btn-theme" (click)="deleteBanner()">Yes</button>
                                   <button type="button" class="btn btn-danger btn-theme ml-2"

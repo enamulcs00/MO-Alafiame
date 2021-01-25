@@ -110,6 +110,10 @@ import { HomeBannerComponent } from './pages/dashboard/static-content-management
 import { HomeBannerAddComponent } from './pages/dashboard/static-content-management/home-banner-add/home-banner-add.component';
 import { HomeBannerEditComponent } from './pages/dashboard/static-content-management/home-banner-edit/home-banner-edit.component';
 import { HomeBannerViewComponent } from './pages/dashboard/static-content-management/home-banner-view/home-banner-view.component';
+import { LoginScreenContentComponent } from './pages/dashboard/login-screen-content/login-screen-content.component';
+import { AddLoginContentComponent } from './pages/dashboard/login-screen-content/add-login-content/add-login-content.component';
+import { EditLoginContentComponent } from './pages/dashboard/login-screen-content/edit-login-content/edit-login-content.component';
+import { ViewLoginContentComponent } from './pages/dashboard/login-screen-content/view-login-content/view-login-content.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -212,6 +216,10 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     HomeBannerAddComponent,
     HomeBannerEditComponent,
     HomeBannerViewComponent,
+    LoginScreenContentComponent,
+    AddLoginContentComponent,
+    EditLoginContentComponent,
+    ViewLoginContentComponent,
 
   ],
   imports: [

@@ -7,7 +7,7 @@
           <form [formGroup]="addBannerForm" #f="ngForm">
               <div class="add-store-block input-style mb20 mt20 ">
                 <div class="form-group row align-items-baseline view-label-align">
-                  <label class="col-md-4 textalignright">Practioner Title
+                  <label class="col-md-4 textalignright">Content Title
                       <span>:</span></label>
                   <div class="col-md-8 textaligncenter">
                       <div class="form-group ">
@@ -17,7 +17,7 @@
                           <div class="text-danger">
                               <span
                                   *ngIf="addBannerForm.get('title').hasError('required') && (addBannerForm.get('title').dirty || addBannerForm.get('title').touched || f.submitted)">
-                                  *Please enter practioner title.
+                                  *Please enter title.
                               </span>
 
                           </div>
@@ -26,7 +26,7 @@
               </div>
 
                   <div class="form-group row view-label-align">
-                    <label class="col-md-4 textalignright">Upload image
+                    <label class="col-md-4 textalignright">Banner image
                         <span>:</span></label>
                     <div class="col-md-4 textaligncenter">
                         <div class="form-group">
@@ -42,6 +42,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group row view-label-align">
+                  <label class="col-md-4 textalignright">Side image
+                      <span>:</span></label>
+                  <div class="col-md-4 textaligncenter">
+                      <div class="form-group">
+                        <label for="sideImg"class="hoverable">
+                          <img  [src]="SideImage?SideImage:'assets/img/profile-img.jpg'" alt=""/>
+                          <div class="hover-text">
+                            <em class="fa fa-upload"></em>
+                          </div>
+
+                          <input type="file" id="sideImg"class="custom-file-input" name="imageUrl" formControlName="sideImage" accept="image/*" (change)="SideImageInput($event)">
+                           </label>
+
+                      </div>
+                  </div>
+              </div>
                 <div class="form-group row align-items-baseline view-label-align">
                   <label class="col-md-4 textalignright ">Description
                       </label>
@@ -66,7 +83,7 @@
               </div>
 
               <div class="text-center mt40 mb40">
-                  <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/practitioner-management">Cancel</button>
+                  <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/login-screen-content">Cancel</button>
                   <button class="btn btn-large  max-WT-150 btn-theme" [disabled]="!addBannerForm.valid" (click)="addNewBanner()">Submit</button>
               </div>
           </form>
