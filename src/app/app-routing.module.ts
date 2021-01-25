@@ -1,3 +1,15 @@
+import { ExploreProductViewComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-view/explore-product-view.component';
+import { ExploreProductEditComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-edit/explore-product-edit.component';
+import { ExploreProductAddComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-add/explore-product-add.component';
+import { ExploreProductComponent } from './pages/practitioner-management/explore-product-and-service/explore-product/explore-product.component';
+import { ExploreServiceViewComponent } from './pages/practitioner-management/explore-product-and-service/explore-service-view/explore-service-view.component';
+import { ExploreServiceEditComponent } from './pages/practitioner-management/explore-product-and-service/explore-service-edit/explore-service-edit.component';
+import { ExploreServiceAddComponent } from './pages/practitioner-management/explore-product-and-service/explore-service-add/explore-service-add.component';
+import { ExploreServiceComponent } from './pages/practitioner-management/explore-product-and-service/explore-service/explore-service.component';
+import { BookPractionerViewComponent } from './pages/practitioner-management/explore-product-and-service/book-practioner-view/book-practioner-view.component';
+import { BookPractionerEditComponent } from './pages/practitioner-management/explore-product-and-service/book-practioner-edit/book-practioner-edit.component';
+import { BookPractionerAddComponent } from './pages/practitioner-management/explore-product-and-service/book-practioner-add/book-practioner-add.component';
+import { BookPractionerListComponent } from './pages/practitioner-management/explore-product-and-service/book-practioner-list/book-practioner-list.component';
 import { ViewLoginContentComponent } from './pages/dashboard/login-screen-content/view-login-content/view-login-content.component';
 import { EditLoginContentComponent } from './pages/dashboard/login-screen-content/edit-login-content/edit-login-content.component';
 import { AddLoginContentComponent } from './pages/dashboard/login-screen-content/add-login-content/add-login-content.component';
@@ -227,6 +239,18 @@ const routes: Routes = [
 {path:'add-login-content',component:AddLoginContentComponent},
 {path:'edit-login-content/:id',component:EditLoginContentComponent},
 {path:'view-login-content/:id',component:ViewLoginContentComponent},
+{path:'book-practioner-list',component:BookPractionerListComponent},
+{path:'book-practioner-add',component:BookPractionerAddComponent},
+{path:'book-practioner-edit/:id',component:BookPractionerEditComponent},
+{path:'book-practioner-view/:id',component:BookPractionerViewComponent},
+{path:'explore-service',component:ExploreServiceComponent},
+{path:'explore-service-add',component:ExploreServiceAddComponent},
+{path:'explore-service-edit/:id',component:ExploreServiceEditComponent},
+{path:'explore-service-view/:id',component:ExploreServiceViewComponent},
+{path:'explore-product',component:ExploreProductComponent},
+{path:'explore-product-add',component:ExploreProductAddComponent},
+{path:'explore-product-edit/:id',component:ExploreProductEditComponent},
+{path:'explore-product-view/:id',component:ExploreProductViewComponent}
 
 ];
 
