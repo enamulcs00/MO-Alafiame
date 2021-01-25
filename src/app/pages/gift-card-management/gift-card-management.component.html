@@ -41,17 +41,18 @@
                                         </div>
                                         <div class="col-xl-2 col-lg-2 col-md-2">
                                             <div class="text-center admin-btn" style="margin-top: 10%;">
-                                                <button type="button" class="btn btn-theme Go_btn ml-2" (click)="searchGift()">Search</button>
-                                                    <button type="button" class="btn btn-theme Go_btn ml-2" style="margin-left:5% ;" (click)="reset()"
+                                                <button type="button" class="btn btn-theme Go_btn" (click)="searchGift()">Search</button>
+                                                    <button type="button" class="btn btn-theme Go_btn" (click)="reset()"
                                                    >Reset</button>
-                                            </div>
+                                                   <button type="button" class="btn btn-theme Go_btn"  [routerLink]="['/add-gift']">Add new</button>
+                                                  </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-2 col-lg-2 col-md-2">
-                                        <div class="text-center admin-btn" style="margin-top: 10%; position: relative;left: 493%;">
-                                                <button type="button" class="btn btn-theme Go_btn ml-2" style="margin-left:5% ;" [routerLink]="['/add-gift']">Add new</button>
+                                    <!-- <div class="col-xl-2 col-lg-2 col-md-2">
+                                        <div class="justify-content-end admin-btn" style="margin-top: 10%; position: relative;left: 637%;">
+                                                <button type="button" class="btn btn-theme Go_btn ml-2"  [routerLink]="['/add-gift']">Add new</button>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </form>
                             </div>
                         </div>

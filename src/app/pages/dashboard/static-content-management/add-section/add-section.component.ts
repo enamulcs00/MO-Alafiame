@@ -14,7 +14,7 @@ export class AddSectionComponent implements OnInit {
   profile = ''
   config = {
     uiColor: '#F0F3F4',
-    height: '50%',
+    height: '40%',
 
   };
   constructor(public mainService:MainService, private router:Router) { }

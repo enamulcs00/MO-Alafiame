@@ -7,7 +7,7 @@
           <form [formGroup]="EditBannerForm" #f="ngForm">
               <div class="add-store-block input-style mb20 mt20 ">
                 <div class="form-group row align-items-baseline view-label-align">
-                  <label class="col-md-4 textalignright">Section Title
+                  <label class="col-md-4 textalignright">Service Title
                       <span>:</span></label>
                   <div class="col-md-8 textaligncenter">
                       <div class="form-group ">
@@ -26,7 +26,7 @@
               </div>
 
                   <div class="form-group row align-items-baseline view-label-align">
-                      <label class="col-md-4 textalignright ">Section Type
+                      <label class="col-md-4 textalignright ">Service Type
                           <span>:</span></label>
                       <div class="col-md-8 textaligncenter">
                           <div class="form-group">
@@ -35,7 +35,7 @@
                               <div class="text-danger">
                                   <span
                                       *ngIf="EditBannerForm.get('firstName').hasError('required') && (EditBannerForm.get('firstName').dirty || EditBannerForm.get('firstName').touched)">
-                                      *Please enter section type.
+                                      *Please enter service type.
                                   </span>
                                   <span
                                       *ngIf="EditBannerForm.get('firstName').hasError('pattern') && (EditBannerForm.get('firstName').dirty || f.submitted)">
@@ -54,53 +54,31 @@
                       </div>
                   </div>
 
+                  <div class="form-group row align-items-baseline view-label-align">
+                    <label class="col-md-4 textalignright ">Description
+                        </label>
+                </div>
 
-                  <div class="form-group row view-label-align">
-                    <label class="col-md-4 textalignright">Upload image
-                        <span>:</span></label>
-                    <div class="col-md-3.5 textaligncenter">
-                        <div class="form-group" style="position: relative;left: 16%;">
-                          <label for="fileInput"class="hoverable">
-                            <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
-                            <div class="hover-text">
-                              <em class="fa fa-upload"></em>
-                            </div>
+                  <div class="form-group row  view-label-align">
 
-                            <input type="file" id="fileInput"class="custom-file-input" name="imageUrl" formControlName="bannerFile" accept="image/*" (change)="handleInputChange($event)">
-                             </label>
-
+                    <div class="col-md-12 textaligncenter">
+                        <div class="form-group ">
+                          <ck-editor id="editornewData" formControlName="description"
+                          name="editor1" language="en" [config]="config"></ck-editor>
                             <div class="text-danger">
                                 <span
-                                    *ngIf="EditBannerForm.get('bannerFile').hasError('required') && (EditBannerForm.get('bannerFile').dirty || EditBannerForm.get('bannerFile').touched || f.submitted)">
-                                    <!-- *Please choose banner. -->
+                                    *ngIf="EditBannerForm.get('description').hasError('required') && (EditBannerForm.get('description').dirty || EditBannerForm.get('description').touched || f.submitted)">
+                                    *Please enter service description.
                                 </span>
 
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group row  view-label-align">
-                  <label class="col-md-4 textalignright">Description
-                      <span>:</span></label>
-                  <div class="col-md-8 textaligncenter">
-                      <div class="form-group ">
-                        <ck-editor id="editornewData" formControlName="description"
-                        name="editor1" language="en" [config]="config"></ck-editor>
-                          <div class="text-danger">
-                              <span
-                                  *ngIf="EditBannerForm.get('description').hasError('required') && (EditBannerForm.get('description').dirty || EditBannerForm.get('description').touched || f.submitted)">
-                                  *Please enter description.
-                              </span>
-
-                          </div>
-                      </div>
-                  </div>
-              </div>
               </div>
 
               <div class="text-center mt40 mb40">
-                  <!-- <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/banner-management">Back</button> -->
+                  <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/home-content">Cancel</button>
                   <button class="btn btn-large  max-WT-150 btn-theme" (click)="EditBanner()">Update</button>
               </div>
           </form>

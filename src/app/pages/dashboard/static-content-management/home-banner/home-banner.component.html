@@ -51,13 +51,13 @@
                        aria-hidden="true" style="color:white"></i>
                       </button>
                        <button (click)="deleteBannerModal(item?._id)"
-                       class="btn btn-danger ml-2 bt-margin" title="View">
+                       class="btn btn-danger ml-2 bt-margin">
                        <i class="fa fa-trash-o" aria-hidden="true" style="color: white;" title="Delete"></i>
                       </button>
                       <label class="switch">
                         <input type="checkbox" (click)="sliderRound(item?._id)"
                             [checked]="item?.active == true">
-                        <span class="slider round" title="Active/Inactive"></span>
+                        <span class="slider round" [title]="(item?.active==true)?'Featured Unmark':'Mark as Featured'"></span>
                     </label>
                        </td>
                                   </tr>

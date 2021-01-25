@@ -8,40 +8,38 @@ margin-left: 2%;">
         <form [formGroup]="editGiftForm">
             <div class="order-view main-block-innner mb20 mt40 view-label-align" style="margin-left: 18%;">
                 <div class="row card-body" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
-                    <div class="col">
-                        <label>Title :</label><br><br>
-                        <label>Discount (in %) :</label><br><br>
-                        <label>Maximum amount :</label><br><br>
-                        <label>Expiry date : </label><br><br>
-                    </div>
-                    <div class="col" style=" margin-top: -1.5%;">
-                        <input type="text" class="form-control" formControlName="title">
-                        <span class="text text-danger" *ngIf="editGiftForm.get('title').hasError('required') && editGiftForm.get('title').touched">*Title is Required</span><br>
-                        <input type="text" class="form-control" formControlName="discount">
-                        <span class="text text-danger" *ngIf="editGiftForm.get('discount').hasError('required') && editGiftForm.get('discount').touched">*Discount is Required</span><br>
-                        <input type="text" class="form-control" formControlName="maxAmount">
-                        <span class="text text-danger" *ngIf="editGiftForm.get('maxAmount').hasError('required') && editGiftForm.get('maxAmount').touched">*Maximum amount is Required</span><br>
-                        <input type="date" class="form-control" formControlName="expiry">
-                        <span class="text text-danger" *ngIf="editGiftForm.get('expiry').hasError('required') && editGiftForm.get('expiry').touched">*Expiry date is Required</span><br>
-                        <div class="image-box">
-                            <img src="{{img || 'assets/img/profile-img.jpg'}}" id="sub-admin-image" alt="">
-                            <label class="upload-label">
-                                <input type="file" formControlName="image" name="image" style="position: relative;
-                                top: -61px;
-                                left: 28px;
-                                opacity: .01;"
-                                    accept="image/jpg,image/jpeg,image/png" id="image"
-                                    (change)="ValidateFileUpload($event)" maxlength="56">
-                                <em class="fa fa-camera" style="color: #86559f!important;
-                                font-size: 20px;
-                                position: relative;
-                                right: 230px;
-                                top: -57px;"></em>
-                            </label>
-                        </div>
-                        <span class="text text-danger" *ngIf="editGiftForm.get('image').hasError('required') && editGiftForm.get('image').touched">*Image is Required</span><br>
-                    </div>
+                  <div class="col">
+                    <label>Title :</label><br>
+                    <label>Discount (in %) :</label><br>
+                    <label>Maximum amount :</label><br><br>
+                    <label>Expiry date : </label><br>
                 </div>
+                <div class="col">
+                    <input type="text" class="form-control" formControlName="title" (keypress)="service.AlphabetOnly($event)">
+                    <span class="text text-danger" *ngIf="editGiftForm.get('title').hasError('required') && editGiftForm.get('title').touched">*Title is Required</span><br>
+                    <input type="text" class="form-control" formControlName="discount" (keypress)="service.NumOnly($event)" maxlength="2">
+                    <span class="text text-danger" *ngIf="editGiftForm.get('discount').hasError('required') && editGiftForm.get('discount').touched">*Discount is Required</span><br>
+                    <input type="text" class="form-control" formControlName="maxAmount" (keypress)="service.NumOnly($event)">
+                    <span class="text text-danger" *ngIf="editGiftForm.get('maxAmount').hasError('required') && editGiftForm.get('maxAmount').touched">*Maximum amount is Required</span><br>
+                    <input type="date" class="form-control" formControlName="expiry" [min]="service.getToday()">
+                    <span class="text text-danger" *ngIf="editGiftForm.get('expiry').hasError('required') && editGiftForm.get('expiry').touched">*Expiry date is Required</span><br>
+
+                </div>
+                <div class="col">
+                    <label for="fileInput">
+                        <img  [src]="img?img:'assets/img/profile-img.jpg'" alt=""/>
+                        <em class="fa fa-camera" style="color: #86559f!important;
+                        font-size: 20px;
+                        position: relative;
+                        right: 60px;
+                        top: 38px;
+                    "></em>
+                        <input type="file" id="fileInput" class="form-control" formControlName="image" name="imageUrl" accept="image/*" (change)="ValidateFileUpload($event)" style="visibility:hidden; position: relative;
+                        right: 108px;
+                        top: 33px;">
+                    </label>
+                </div>
+            </div>
 
                 <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
                     <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
