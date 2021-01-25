@@ -15,7 +15,7 @@ export class AddPractitionerComponent implements OnInit {
   config = {
     uiColor: '#F0F3F4',
     height: '40%',
-
+    enterMode :2
   };
   constructor(public mainService:MainService, private router:Router) { }
 

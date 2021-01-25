@@ -16,7 +16,7 @@
                                 routerLink="/add-login-content">Add new
                                 </a>&nbsp;&nbsp;
                                 <a type="button" class="btn  btn-theme Go_btn"
-                                routerLink="/home-section">Back
+                                routerLink="/static-content-management">Back
                                 </a>
                             </div>
                         </div>
@@ -45,10 +45,10 @@
                                       </td>
                                       <td class="content"> {{item?.description}}</td>
                                       <td class="justify-content-center" style="padding-top: 27px;padding-bottom: 24px;">
-                                        <button [routerLink]="['/view-practitioner',item?._id]"
+                                        <button [routerLink]="['/view-login-content',item?._id]"
                        class="btn btn-info ml-2 bt-margin" title="View"><i class="fa fa-eye" aria-hidden="true"
                        style="color:white"></i></button>
-                       <button [routerLink]="['/edit-practitioner',item?._id]"
+                       <button [routerLink]="['/edit-login-content',item?._id]"
                        class="btn btn-info ml-2 bt-margin">
                        <i class="fa fa-edit" title="Edit"
                        aria-hidden="true" style="color:white"></i>
