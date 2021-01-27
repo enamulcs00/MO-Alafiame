@@ -1,10 +1,9 @@
-.hoverable{
+ /* .hoverable{
   position: relative;
   display: block;
   cursor: pointer;
-
-}
-.hoverable:hover .hover-text{
+} */
+/* .hoverable:hover .hover-text{
   display: block;
 }
 
@@ -16,7 +15,19 @@
   left:  36%;
   transform: translate(-50%,-50%);
   z-index: 2;
-}
+}  */
 #fileInput{
   display: none;
+}
+.delete-image-button {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+}
+
+.carousel-control-next, .carousel-control-prev{
+  position: absolute;
+  top: 57% !important;
+  transform: translateY(-50%);
+  display: block !important;
 }

@@ -14,7 +14,6 @@ export class ExploreProductEditComponent implements OnInit {
   profile:any =[]
   BannerEditId:any;
   bannerFormValues:any = []
-
   config = {
     uiColor: '#F0F3F4',
     height: '40%',
@@ -117,5 +116,10 @@ export class ExploreProductEditComponent implements OnInit {
 
         }
     }
+  }
+  removeImage(indexTodelete:number){
+   this.profile.splice(indexTodelete, 1);
+    // this.profile = this.profile.filter((index) => index !== indexTodelete);
+     console.log('We deleted this',indexTodelete)
   }
 }
