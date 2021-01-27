@@ -18,6 +18,7 @@ bannerFormValues:any = []
 config = {
   uiColor: '#F0F3F4',
   height: '50%',
+  enterMode :2
 
 };
   constructor(private router: Router, public mainService: MainService, private activateRoute:ActivatedRoute) { }

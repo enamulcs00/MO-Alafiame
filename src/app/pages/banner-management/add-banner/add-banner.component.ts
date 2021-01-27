@@ -14,6 +14,7 @@ export class AddBannerComponent implements OnInit {
   config = {
     uiColor: '#F0F3F4',
     height: '50%',
+    enterMode :2
 
   };
   constructor(public mainService:MainService, private router:Router) { }

@@ -15,6 +15,7 @@ export class EditStaticContentManagementComponent implements OnInit {
   config = {
     uiColor: '#F0F3F4',
     height: '100%',
+    enterMode :2
 
   };
   form: FormGroup;

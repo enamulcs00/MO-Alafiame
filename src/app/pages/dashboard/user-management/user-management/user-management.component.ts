@@ -46,6 +46,7 @@ export class UserManagementComponent implements OnInit {
   file: any;
   imageType: any;
   imageUrl = '';
+  corporateImg = ''
   addUserForm: FormGroup;
   viewCorporate: any;
   editCorporateForm: FormGroup;
@@ -174,13 +175,14 @@ appApprove(){
   $('#approveModal').modal('hide')
   let url = 'admin/applicantApproval'
   let obj = {
-    _id: this.approveId
+    userId: this.approveId
   }
   this.mainService.showSpinner();
   this.mainService.postApi(url,obj,1).subscribe((res:any)=>{
+    this.mainService.hideSpinner();
     console.log('This is AppApprove resPonse',res);
     if(res.responseCode==200){
-      this.mainService.hideSpinner();
+
       this.mainService.successToast(res.responseMessage);
       this.approveList()
     }
@@ -388,6 +390,10 @@ this.mainService.successToast(res.responseMessage)
         this.mainService.hideSpinner();
         this.viewCustomer=res.result[0]
       }
+      else{
+        this.mainService.hideSpinner();
+      this.mainService.errorToast(res.responseMessage)
+      }
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -409,6 +415,7 @@ this.mainService.successToast(res.responseMessage)
     this.mainService.showSpinner();
     this.mainService.postApi('admin/editCustomer',data, 1).subscribe((res:any)=>{
       console.log('This is Edit User items',res);
+      this.mainService.hideSpinner();
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.customerData=res.result;
@@ -422,6 +429,11 @@ this.mainService.successToast(res.responseMessage)
         })
 
       }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -504,6 +516,7 @@ this.mainService.successToast(res.responseMessage)
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.imageUrl = e.target.result;
+        this.corporateImg = e.target.result;
       };
       reader.readAsDataURL(this.file[0]);
     }
@@ -573,6 +586,10 @@ this.mainService.successToast(res.responseMessage)
         this.mainService.hideSpinner();
         this.viewCorporate=res.result[0]
       }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -600,7 +617,7 @@ this.mainService.successToast(res.responseMessage)
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.corporateDataa=res.result;
-        this.imageUrl=res.result.profilePic;
+        this.corporateImg=res.result.profilePic;
         this.corpcompany = res.result.company;
         console.log('Company is: ',this.corpcompany)
         this.editCorporateForm.setValue({
@@ -609,12 +626,15 @@ this.mainService.successToast(res.responseMessage)
           'company':this.corpcompany,
           'number':this.corporateDataa.mobileNumber,
           'DOB':this.corporateDataa.dateOfBirth,
-          'image':this.imageUrl,
+          'image':this.corporateImg,
 
         })
         console.log("Patch vales in EditCorporate", this.editCorporateForm.value);
         console.log("f", this.practionerData);
-
+      }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
       }
     },(error)=>{
       this.mainService.hideSpinner();
@@ -629,7 +649,7 @@ this.mainService.successToast(res.responseMessage)
       'corporateId':this.userId,
       'name': this.editCorporateForm.value.firstName,
       'email': this.editCorporateForm.value.email,
-      'image': this.imageUrl,
+      'image': this.corporateImg,
       'mobileNumber':this.editCorporateForm.value.number,
       'dateOfBirth':this.editCorporateForm.value.DOB,
       'company':this.editCorporateForm.value.company,
@@ -785,6 +805,10 @@ this.mainService.successToast(res.responseMessage)
         this.mainService.hideSpinner();
         this.viewCompanyDataa=res.result
       }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -822,6 +846,10 @@ this.mainService.successToast(res.responseMessage)
         console.log("f", this.practionerData);
 
       }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -850,7 +878,11 @@ this.mainService.successToast(res.responseMessage)
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },(error)=>{
+      this.mainService.hideSpinner();
+      this.mainService.errorToast('something went wrong')
+    }
+    )
   }
 
 
@@ -942,16 +974,21 @@ this.mainService.successToast(res.responseMessage)
         this.mainService.hideSpinner();
         this.practionerDataa=res.result;
         this.imageUrl=res.result.profilePic
+
         this.editPractionerForm.patchValue({
           'firstName':this.practionerDataa.name,
           'email':this.practionerDataa.email,
           'number':this.practionerDataa.mobileNumber,
-          'DOB':this.practionerDataa.dateOfBirth,
+          'DOB':this.practionerDataa.dateOfBirth
 
         })
         console.log("f", this.practionerData);
-
       }
+      else{
+        this.mainService.hideSpinner()
+        this.mainService.errorToast(res.responseMessage)
+      }
+
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -980,7 +1017,11 @@ this.mainService.successToast(res.responseMessage)
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },err=>{
+      this.mainService.hideSpinner()
+        this.mainService.errorToast('Something went wrong')
+    }
+    )
   }
 
   // add practioner
@@ -1019,7 +1060,11 @@ this.mainService.successToast(res.responseMessage)
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },err=>{
+      this.mainService.hideSpinner()
+        this.mainService.errorToast('Something went wrong')
+    }
+    )
   }
 
 

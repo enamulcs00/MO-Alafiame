@@ -723,7 +723,7 @@
                                                 <form [formGroup]="editCorporateForm" #f="ngForm">
                                                     <div class="user-profile">
                                                         <div class="image-box">
-                                                            <img src="{{imageUrl || 'assets/img/profile-img.jpg'}}"
+                                                            <img src="{{corporateImg || 'assets/img/profile-img.jpg'}}"
                                                                 id="sub-admin-image" alt="">
                                                             <label class="upload-label">
                                                                 <input type="file"
@@ -2144,36 +2144,47 @@
       <div class="modal-body">
         <div class="row">
           <label class="col-sm-3">Name</label>
-          <label class="col">{{viewApproveItem.name}}</label>
+          <label class="col">{{viewApproveItem.name|| "N/A"}}</label>
+        </div>
+        <div class="row">
+          <label class="col-sm-3">User Type</label>
+          <label class="col">{{viewApproveItem?.userType|| "N/A"}}</label>
         </div>
         <div class="row">
           <label class="col-sm-3">Email</label>
-          <label class="col">{{viewApproveItem.email}}</label>
+          <label class="col">{{viewApproveItem.email|| "N/A"}}</label>
         </div>
         <div class="row">
           <label class="col-sm-3">Contact No</label>
-          <label class="col">{{viewApproveItem.mobileNumber}}</label>
+          <label class="col">{{viewApproveItem.mobileNumber|| "N/A"}}</label>
         </div>
         <div class="row">
           <label class="col-sm-3">Age</label>
-          <label class="col">{{viewApproveItem.age}} Years</label>
+          <label class="col">{{viewApproveItem.age|| "N/A"}} Years</label>
         </div>
         <div class="row">
           <label class="col-sm-3">Gender</label>
-          <label class="col">{{viewApproveItem.gender}} </label>
+          <label class="col">{{viewApproveItem.gender|| "N/A"}} </label>
         </div>
         <div class="row">
           <label class="col-sm-3">Experiance</label>
-          <label class="col">{{viewApproveItem.experience}} years</label>
+          <label class="col">{{viewApproveItem.experience|| "N/A"}} years</label>
         </div>
-        <!-- <div class="row">
-          <label class="col">Qualification</label>
-          <label class="col">{{viewApproveItem.qualifiedIn}}</label>
-        </div> -->
-
+        <div class="row">
+          <label class="col-sm-3">Language</label>
+          <label class="col">{{viewApproveItem?.language|| "N/A"}}</label>
+        </div>
+        <div class="row">
+          <label class="col-sm-3">Location</label>
+          <label class="col">{{viewApproveItem?.locationHome|| "N/A"}}</label>
+        </div>
+        <div class="row">
+<label class="col-sm-3">Cost</label>
+<label class="col">Rs-{{viewApproveItem?.costPerHour|| "N/A"}}/hour</label>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Decline</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-success" (click)="appApprove()">Approve</button>
       </div>
     </div>
