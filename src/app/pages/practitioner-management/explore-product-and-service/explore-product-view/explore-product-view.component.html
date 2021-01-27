@@ -24,7 +24,22 @@
                     <div class="col-md-8 textaligncenter">
                         <div class="form-group">
                           <label for="fileInput"class="hoverable">
-                            <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                              <div class="carousel-inner">
+                              <div class="carousel-item active" *ngFor="let photo of profile let i = index"
+                              [ngClass]="{'active': i == 0 }">
+                             <img  [src]="photo?photo:'assets/img/profile-img.jpg'" alt="" (click)="removeImage(i)"/>
+                              </div>
+                              </div>
+                              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </div>
 
 
                             <!-- <input type="file" id="fileInput"class="custom-file-input" name="imageUrl" formControlName="bannerFile" accept="image/*" (change)="handleInputChange($event)"> -->

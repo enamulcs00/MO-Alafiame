@@ -9,7 +9,7 @@ import { MainService } from 'src/app/provider/main.service';
 })
 export class ExploreProductViewComponent implements OnInit {
 
-  profile = ''
+  profile:any =[]
   BannerEditId:any;
   bannerFormValues:any = []
   constructor(public mainService: MainService, private activateRoute:ActivatedRoute) { }
@@ -39,5 +39,8 @@ export class ExploreProductViewComponent implements OnInit {
       this.mainService.errorToast('Something went wrong');
     })
 
+  }
+  removeImage(i){
+    this.profile.splice(i, 1);
   }
 }

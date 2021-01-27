@@ -27,8 +27,8 @@
                                   <tr class="no_wrap_th text-center">
                                     <th scope="col" class="Sorting-img">Sr No</th>
                                       <th scope="col" class="Sorting-img">Product title</th>
-                                      <th scope="col" class="Sorting-img">Image</th>
                                       <th scope="col" class="Sorting-img">Description</th>
+                                      <th scope="col" class="Sorting-img">Updated at</th>
                                       <!-- <th scope="col" class="Sorting-img">Banner Image</th> -->
                                       <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
                                   </tr>
@@ -38,9 +38,10 @@
                                     <td>{{itemsPerPage*(this.currentPage-1)+i+1}}</td>
                                     <td class="content"> {{item?.title||"N/A"}}</td>
 
-                                      <td class="content"><img [src]="item?.image" alt="" style="width: 66px;">
-                                      </td>
+                                      <!-- <td class="content"><img [src]="item?.image" alt="" style="width: 66px;">
+                                      </td> -->
                                       <td class="content"> {{item?.description}}</td>
+                                      <td class="content">{{item?.updatedAt|date}}</td>
                                       <td class="justify-content-center" style="padding-top: 27px;padding-bottom: 24px;">
                                         <button [routerLink]="['/explore-product-view',item?._id]"
                        class="btn btn-info ml-2 bt-margin" title="View"><i class="fa fa-eye" aria-hidden="true"

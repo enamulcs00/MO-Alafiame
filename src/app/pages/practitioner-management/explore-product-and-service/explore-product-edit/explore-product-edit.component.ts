@@ -11,7 +11,7 @@ import { MainService } from 'src/app/provider/main.service';
 export class ExploreProductEditComponent implements OnInit {
 
   EditBannerForm: FormGroup
-  profile:any
+  profile:any =[]
   BannerEditId:any;
   bannerFormValues:any = []
 
@@ -46,9 +46,7 @@ export class ExploreProductEditComponent implements OnInit {
           "_id": this.BannerEditId,
           "title": this.EditBannerForm.value.title,
           "description":this.EditBannerForm.value.description,
-          "image": [
-            this.profile
-          ]
+          "image":  this.profile
 
         }
         this.mainService.showSpinner();
@@ -85,11 +83,13 @@ export class ExploreProductEditComponent implements OnInit {
         if (res.responseCode == 200) {
           this.bannerFormValues = res.result;
           this.profile = this.bannerFormValues.image
+
           this.EditBannerForm.patchValue({
             'title': this.bannerFormValues.title,
 
             'description': this.bannerFormValues.description
           });
+
          } else {
 
           this.mainService.errorToast(res.responseMessage)
@@ -102,14 +102,20 @@ export class ExploreProductEditComponent implements OnInit {
 
     }
     selectMediaFile(event) {
-      const file = event.target.files && event.target.files[0];
-      if (file) {
-      var reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-      this.profile = reader.result
-      console.log(this.profile)
-      }
-      }
-      }
+      if (event.target.files && event.target.files[0]) {
+        var filesAmount = event.target.files.length;
+        for (let i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = (event:any) => {
+                  console.log(event.target.result);
+                   this.profile.push(event.target.result);
+                   console.log('urls==>',this.profile)
+                }
+
+                reader.readAsDataURL(event.target.files[i]);
+
+        }
+    }
+  }
 }

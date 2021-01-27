@@ -1,13 +1,13 @@
 <div class="content-section">
   <div class="page_title_block" style="padding-left: 21%;padding-top: 7%;">
-      <h1 class="page_title">Add practioner</h1>
+      <h1 class="page_title">Add product</h1>
   </div>
   <div class="order-view  max-WT-700  setting-page" style="margin-left: 33%;">
       <div class="  mb40">
           <form [formGroup]="addBannerForm" #f="ngForm">
               <div class="add-store-block input-style mb20 mt20 ">
                 <div class="form-group row align-items-baseline view-label-align">
-                  <label class="col-md-4 textalignright">Practioner Title
+                  <label class="col-md-4 textalignright">Product Title
                       <span>:</span></label>
                   <div class="col-md-8 textaligncenter">
                       <div class="form-group ">
@@ -17,7 +17,7 @@
                           <div class="text-danger">
                               <span
                                   *ngIf="addBannerForm.get('title').hasError('required') && (addBannerForm.get('title').dirty || addBannerForm.get('title').touched || f.submitted)">
-                                  *Please enter practioner title.
+                                  *Please enter title.
                               </span>
 
                           </div>
