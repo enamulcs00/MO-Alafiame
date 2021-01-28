@@ -109,7 +109,7 @@ export class ExploreProductEditComponent implements OnInit {
                 reader.onload = (event:any) => {
                   console.log(event.target.result);
                    this.profile.push(event.target.result);
-                   console.log('urls==>',this.profile)
+
                 }
 
                 reader.readAsDataURL(event.target.files[i]);

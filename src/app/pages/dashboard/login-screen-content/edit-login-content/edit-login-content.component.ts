@@ -19,7 +19,8 @@ export class EditLoginContentComponent implements OnInit {
   config = {
     uiColor: '#F0F3F4',
     height: '40%',
-    enterMode :2
+    enterMode :2,
+    fillEmptyBlocks : false
   };
     constructor(private router: Router, public mainService: MainService, private activateRoute:ActivatedRoute) { }
 

@@ -81,7 +81,11 @@ export class EditStaticContentManagementComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },err=>{
+      this.mainService.hideSpinner();
+        this.mainService.errorToast('Something went wrong')
+    }
+    )
   }
 
 }

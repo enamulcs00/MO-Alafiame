@@ -79,7 +79,7 @@
 
               <div class="text-center mt40 mb40">
                   <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/home-content">Cancel</button>
-                  <button class="btn btn-large  max-WT-150 btn-theme" [disabled]="!addBannerForm.valid" (click)="addNewBanner()">Submit</button>
+                  <button class="btn btn-large  max-WT-150 btn-theme" [disabled]="addBannerForm.invalid" (click)="addNewBanner()">Submit</button>
               </div>
           </form>
       </div>

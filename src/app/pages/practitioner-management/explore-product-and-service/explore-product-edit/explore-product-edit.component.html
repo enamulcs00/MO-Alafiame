@@ -36,7 +36,7 @@
                               [ngClass]="{'active': i == 0 }">
 
                              <img  [src]="photo?photo:'assets/img/profile-img.jpg'" alt="Empty"/>
-                             <i class="fa fa-times delete-image-button"(click)="removeImage(i)" aria-hidden="true"></i>
+                             <i class="fa fa-times delete-image-button bg-light text-danger" (click)="removeImage(i)" aria-hidden="true"></i>
                               </div>
                               </div>
                               <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

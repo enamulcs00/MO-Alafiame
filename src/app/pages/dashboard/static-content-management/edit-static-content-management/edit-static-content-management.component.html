@@ -15,8 +15,8 @@
                                             <div class="form-group row ">
                                                 <div class="col-md-12">
                                                     <div class="form-group row align-items-center">
-                                                        <label class="col-md-6"> Title <span>:</span></label>
-                                                        <div class="col-md-6">
+                                                        <label class="col-md-2"> Title <span>:</span></label>
+                                                        <div class="col-md-10">
                                                             <input type="text" class="form-control" maxlength="100"
                                                                 formControlName="Title">
                                                             <div *ngIf="form.get('Title').invalid && (form.get('Title').dirty || form.get('Title').touched)"
@@ -29,8 +29,8 @@
                                                         </div>
 
                                                     </div>
-                                                 
-                                                   
+
+
                                                     <ck-editor id="editornewData" formControlName="editorValue"
                                                         name="editor1" language="en" [config]="config"></ck-editor>
                                                     <div *ngIf="form.get('editorValue').invalid && (form.get('editorValue').dirty || form.get('editorValue').touched)"
@@ -43,7 +43,7 @@
                                                             routerLink="/static-content-management">Back</button>
                                                         <button class="btn btn-large  max-WT-150 btn-theme"
                                                             (click)="Update()" [disabled]="form.invalid">Update</button>
-                                                        
+
                                                     </div>
                                                 </div>
                                             </div>

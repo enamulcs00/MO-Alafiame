@@ -25,7 +25,7 @@ export class AddSectionComponent implements OnInit {
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       "title": new FormControl('', Validators.required),
       "description":new FormControl('', Validators.required),
-      "bannerFile": new FormControl('',Validators.required)
+      //"bannerFile": new FormControl('',Validators.required)
     });
   }
   addNewBanner(){
@@ -36,7 +36,7 @@ export class AddSectionComponent implements OnInit {
         'type': this.addBannerForm.value.firstName,
         'title': this.addBannerForm.value.title,
         'description': this.addBannerForm.value.description,
-        'image': this.profile,
+       // 'image': this.profile,
       }
       this.mainService.showSpinner();
       this.mainService.postApi(url, data, 1).subscribe((res: any) => {
@@ -59,16 +59,16 @@ export class AddSectionComponent implements OnInit {
         }
       })
  }
- handleInputChange(e) {
-  var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+//  handleInputChange(e) {
+//   var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
 
-  var reader = new FileReader();
-  reader.onload = this._handleReaderLoaded.bind(this);
-  reader.readAsDataURL(file);
-}
-_handleReaderLoaded(e) {
-  let reader = e.target;
-  this.profile = reader.result;
-  console.log("profile", this.profile)
-}
+//   var reader = new FileReader();
+//   reader.onload = this._handleReaderLoaded.bind(this);
+//   reader.readAsDataURL(file);
+// }
+// _handleReaderLoaded(e) {
+//   let reader = e.target;
+//   this.profile = reader.result;
+//   console.log("profile", this.profile)
+// }
 }

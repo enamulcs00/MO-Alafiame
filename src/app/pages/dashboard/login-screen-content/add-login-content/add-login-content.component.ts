@@ -16,7 +16,10 @@ SideImage = ''
   config = {
     uiColor: '#F0F3F4',
     height: '40%',
-    enterMode :2
+    enterMode :2,
+    fillEmptyBlocks : false,
+    tabSpaces :0
+
   };
   constructor(public mainService:MainService, private router:Router) { }
 

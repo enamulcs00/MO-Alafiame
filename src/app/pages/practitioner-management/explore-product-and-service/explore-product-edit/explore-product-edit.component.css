@@ -22,6 +22,7 @@
 .delete-image-button {
   position: absolute;
   right: 0;
+  font-size: large;
   z-index: 10;
 }
 

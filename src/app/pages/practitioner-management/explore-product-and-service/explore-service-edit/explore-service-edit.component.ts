@@ -39,7 +39,7 @@ export class ExploreServiceEditComponent implements OnInit {
 
 
     EditBanner(){
-      let url = 'admin/editPractitionerScreen'
+      let url = 'admin/editHomeScreenOurService'
 
       let data =
         {
@@ -88,7 +88,7 @@ export class ExploreServiceEditComponent implements OnInit {
     }
     SetBannerItemInEditForm(){
       this.mainService.showSpinner();
-      this.mainService.getApi(`admin/viewPractitionerScreen/${this.BannerEditId}`, 1).subscribe((res: any) => {
+      this.mainService.getApi(`admin/viewHomeScreenOurService/${this.BannerEditId}`, 1).subscribe((res: any) => {
       console.log('View Banner Details',res.result)
       this.mainService.hideSpinner();
         if (res.responseCode == 200) {
