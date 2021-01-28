@@ -29,7 +29,7 @@
                                   <tr class="no_wrap_th text-center">
                                       <th scope="col" class="Sorting-img"> S.No.</th>
                                       <th scope="col" class="Sorting-img">Banner Name</th>
-                                      <!-- <th scope="col" class="Sorting-img">Banner Image</th> -->
+                                      <th scope="col" class="Sorting-img">Banner Image</th>
                                       <th scope="col" class="action_td_btn3 Sorting-img">Actions</th>
                                   </tr>
                               </thead>
@@ -40,8 +40,8 @@
                                       <td class="text-center">{{itemPerPage * (currentPage-1)+ i+1}}</td>
 
                                       <td class="content"> {{item?.name}}</td>
-                                      <!-- <td class="content"><img [src]="item?.image" alt="" style="width: 66px;">
-                                      </td> -->
+                                      <td class="content"><img [src]="item?.image" alt="" style="width: 66px;">
+                                      </td>
                                       <td class="justify-content-center d-flex" style="padding-top: 27px;padding-bottom: 24px;">
                                         <button [routerLink]="['/view-banner',item?._id]"
                                                    class="btn btn-info ml-2 bt-margin" title="View">

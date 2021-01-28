@@ -32,7 +32,7 @@ this.SetBannerItemInEditForm()
     this.EditBannerForm = new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       "title": new FormControl('', Validators.required),
-      "description":new FormControl('', Validators.required),
+      //"description":new FormControl('', Validators.required),
       "bannerFile": new FormControl('',Validators.required)
     });
   }
@@ -45,7 +45,7 @@ this.SetBannerItemInEditForm()
       {
         'bannerId': this.BannerEditId,
         'name': this.EditBannerForm.value.firstName,
-        'description':this.EditBannerForm.value.description,
+       // 'description':this.EditBannerForm.value.description,
         'title': this.EditBannerForm.value.title,
         'image': this.profile,
       }

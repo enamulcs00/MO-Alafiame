@@ -1114,34 +1114,34 @@
                                 <div class="col">
                                     <h5>Add Corporate Company</h5>
                                     <form [formGroup]="companyForm">
-                                    <div class="row" style=" margin-left: 4%;margin-top: 2%;" >
+                                    <div class="row" style="margin-top: 2%;" >
                                         <div class="col-md-2">
                                         <label>Name :</label>
                                      </div>
 
                                         <div class="col-md-10">
-                                            <input type="text" formControlName="firstName" placeholder="Enter Company " class="form-control" style="width: 30%; margin-left: 16.5%">
+                                            <input type="text" formControlName="firstName" placeholder="Enter Company " class="form-control" style="width: 30%;">
                                         </div>
                                     </div>
 
-                                    <div class="row" style=" margin-left: 4%;margin-top: 2%;">
+                                    <div class="row" style="margin-top: 2%;">
                                         <div class="col-md-2">
                                         <label>User limit :</label>
                                     </div>
 
                                     <div class="col-md-10">
-                                        <select class="form-control" formControlName="limit"  style="width: 30%; margin-left: 16.5%;">
+                                        <select class="form-control" formControlName="limit"  style="width: 30%;">
                                             <option value="">Select</option>
                                             <option *ngFor="let UserLimit of companyData">{{UserLimit.userLimit}}</option>
                                             </select>
                                     </div>
                                     </div>
-                                    <div class="row" style=" margin-left: 4%; margin-top: 2%;">
+                                    <div class="row" style="margin-top: 2%;">
                                         <div class="col-md-2">
                                         <label>Services : </label>
                                     </div>
                                     <div class="col-md-10">
-                                        <select class="form-control" formControlName="service" style="width: 30%; margin-left: 16.5%;">
+                                        <select class="form-control" formControlName="service" style="width: 30%;">
                                             <option value="">Select</option>
                                             <option *ngFor="let item of companyData">{{item?.service}}</option>
 
@@ -1178,7 +1178,7 @@
 
                                                 <td class="content">{{item?.userLimit}}</td>
                                                 <td class="content">{{item?.createdAt | date:'dd-MM-yyyy'}}</td>
-                                                <td class="content">{{item?.companyCode || ''}}</td>
+                                                <td class="content">{{item?.companyCode || 'N/A'}}</td>
                                                 <td class="justify-content-center d-flex">
                                                     <button class="btn btn-info ml-2 bt-margin" title="view"
                                                         (click)="viewcorporateCompany(item?._id)">
