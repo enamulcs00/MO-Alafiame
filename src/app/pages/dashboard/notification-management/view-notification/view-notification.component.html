@@ -1,3 +1,71 @@
+<div class="content-section">
+  <div class="page_title_block" style="padding-left: 21%;padding-top: 7%;">
+      <h1 class="page_title"> Notification Management>Notification View</h1>
+      <hr style="background: black; opacity: 0.5;">
+  </div>
+  <div class="order-view  max-WT-700  setting-page" style="margin-left: 33%;">
+      <div class="  mb40">
+          <form>
+              <div class="add-store-block input-style mb20 mt20 ">
+                  <div class="form-group row align-items-baseline view-label-align">
+                      <label class="col-md-4 textalignright ">Title
+                          <span>:</span></label>
+                      <div class="col-md-8 textaligncenter">
+                          <div class="form-group">
+
+                              <label>{{notificationData?.title||"N/A"}}</label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group row align-items-baseline view-label-align">
+                    <label class="col-md-4 textalignright ">Shared With
+                        <span>:</span></label>
+                    <div class="col-md-8 textaligncenter">
+                        <div class="form-group">
+
+                            <label>{{notificationData.sharedWith||"N/A"}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row align-items-baseline view-label-align">
+                  <label class="col-md-4 textalignright ">Broadcasted On
+                      <span>:</span></label>
+                  <div class="col-md-8 textaligncenter">
+                      <div class="form-group">
+
+                          <label>{{notificationData.createdAt | date }}</label>
+                      </div>
+                  </div>
+              </div>
+                <div class="form-group row  view-label-align">
+                  <label class="col-md-4 textalignright">Description
+                      <span>:</span></label>
+                  <div class="col-md-8 textaligncenter">
+                      <div class="form-group ">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    readonly>{{notificationData.description||"N/A"}}</textarea>
+                      </div>
+                  </div>
+              </div>
+              </div>
+
+              <div class="text-center mt40 mb40">
+                  <!-- <button class="btn btn-large  max-WT-150 btn-theme" (click)="GoForEdit()">Edit</button> -->
+                  <button class="btn btn-large  max-WT-150 btn-theme"routerLink="/notification-management">Close</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!--
 <div class="wrapper">
     <main class="middle-content">
         <div class="page_title_block">
@@ -9,9 +77,12 @@
             <div class="col" style="margin-left: 20%;margin-top: 5%;">
                 <div class="row"><label>Title :</label> <p >{{notificationData.title}}</p></div><br>
                 <div class="row"> <label>Broadcasted On :</label><p>{{notificationData.createdAt | date}}</p></div><br>
-                <div class="row"> <label>Description :</label><p style="width: 30%">{{notificationData.description}}</p></div><br>
+                <div class="row"> <label>Description :</label><textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                  readonly>{{notificationData.description||"N/A"}}</textarea>
+
+                </div><br>
                 <div class="row"> <label>Shared With :</label> <p>{{notificationData.sharedWith}} </p></div><br>
             </div>
-            
+
             <button type="button" class="btn btn-theme" style="margin-left: 37%;margin-top: 5%; width: 12%;" routerLink="/notification-management">Back</button>
-        </div>
+        </div> -->

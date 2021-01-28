@@ -7,7 +7,45 @@
         </div>
         <form [formGroup]="addNotificationForm">
             <div class="order-view main-block-innner mb20 mt40 view-label-align" style="margin-left: 10%;width: 70%;">
-                <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+              <div class="form-group row align-items-baseline view-label-align">
+                <label class="col-md-3 textalignright ">Title
+                    <span>:</span></label>
+                <div class="col-md-9 textaligncenter">
+                    <div class="form-group">
+                      <input type="text" class="form-control" formControlName="title">
+                      <span class="text text-danger" *ngIf="addNotificationForm.get('title').hasError('required') && addNotificationForm.get('title').touched">*Title is Required</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-baseline view-label-align">
+              <label class="col-md-3 textalignright ">Description
+                  <span>:</span></label>
+              <div class="col-md-9 textaligncenter">
+                  <div class="form-group">
+                    <textarea type="text" class="form-control" formControlName="description"></textarea>
+                        <span class="text text-danger" *ngIf="addNotificationForm.get('description').hasError('required') && addNotificationForm.get('description').touched">*Discount is Required</span>
+                  </div>
+              </div>
+          </div>
+
+          <div class="form-group row align-items-baseline view-label-align">
+            <label class="col-md-3 textalignright ">Shared with
+                <span>:</span></label>
+            <div class="col-md-9 textaligncenter">
+                <div class="form-group">
+                  <select class="form-control" formControlName="sharedWith"> <span class="caret"></span>
+                    <option  value="">Select</option>
+                    <option  value="ALL_USERS">All users</option>
+                    <option  value="ALL_CONSULTANTS">All consultants</option>
+                    <option  value="ALL_END_USERS">All end-users</option>
+                </select>
+                <span class="text text-danger" *ngIf="addNotificationForm.get('sharedWith').hasError('required') && addNotificationForm.get('sharedWith').touched">*Maximum amount is Required</span>
+                </div>
+            </div>
+        </div>
+
+                <!-- <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
                     <div class="col">
                         <label>Title :</label><br><br>
                         <label>Description :</label><br><br>
@@ -26,7 +64,7 @@
                         </select>
                         <span class="text text-danger" *ngIf="addNotificationForm.get('sharedWith').hasError('required') && addNotificationForm.get('sharedWith').touched">*Maximum amount is Required</span><br>
                     </div>
-                </div>
+                </div> -->
                 <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
                     <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
                         [routerLink]="['/notification-management']">Cancel</button>

@@ -16,7 +16,7 @@ export class EditGiftComponent implements OnInit {
   file: any;
   imageType: any;
 
-  constructor(private service:MainService, private activatedroute:ActivatedRoute,private router:Router) { }
+  constructor(public service:MainService, private activatedroute:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
 this.activatedroute.params.subscribe((res:any)=>{
@@ -37,7 +37,7 @@ this.activatedroute.params.subscribe((res:any)=>{
       if(res.responseCode==200){
         this.img= res.result.docs[0].giftImage
         this.editGiftForm.patchValue({
-          'title':res.result.docs[0].title, 
+          'title':res.result.docs[0].title,
           'discount':res.result.docs[0].discount,
           'maxAmount':res.result.docs[0].maxAmount,
           'expiry':res.result.docs[0].expiryDate.split('T')[0],
@@ -61,7 +61,7 @@ this.activatedroute.params.subscribe((res:any)=>{
       'image': new FormControl(''),
     })
   }
- 
+
   // ValidateFileUpload(e) {
   //   var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
   //   var reader = new FileReader();
@@ -84,7 +84,7 @@ this.activatedroute.params.subscribe((res:any)=>{
       reader.readAsDataURL(this.file[0]);
     }
   }
-  
+
   editGift(){
     let data={
       'title':this.editGiftForm.value.title,
@@ -103,11 +103,11 @@ this.activatedroute.params.subscribe((res:any)=>{
     }else{
       this.service.hideSpinner()
       this.service.errorToast(res.responseMessage)
-    } 
+    }
    }, (error) => {
       this.service.hideSpinner()
   })
 }
-  
-  
+
+
 }
