@@ -1116,32 +1116,35 @@
                                     <form [formGroup]="companyForm">
                                     <div class="row" style="margin-top: 2%;" >
                                         <div class="col-md-2">
-                                        <label>Name :</label>
+                                        <label>Name</label>
+                                        <span style="position: absolute;left: 60%;">:</span>
                                      </div>
 
-                                        <div class="col-md-10">
-                                            <input type="text" formControlName="firstName" placeholder="Enter Company " class="form-control" style="width: 30%;">
+                                        <div class="col-md-4">
+                                            <input type="text" formControlName="firstName" placeholder="Enter Company " class="form-control" style="position: absolute;right: 4%;">
                                         </div>
                                     </div>
 
                                     <div class="row" style="margin-top: 2%;">
                                         <div class="col-md-2">
-                                        <label>User limit :</label>
+                                        <label>Limit</label>
+                                        <span style="position: absolute;left: 60%;">:</span>
                                     </div>
 
-                                    <div class="col-md-10">
-                                        <select class="form-control" formControlName="limit"  style="width: 30%;">
-                                            <option value="">Select</option>
+                                    <div class="col-md-4">
+                                        <select class="form-control" formControlName="limit" style="position: absolute;right: 4%;">
+                                            <option value="">User limit</option>
                                             <option *ngFor="let UserLimit of companyData">{{UserLimit.userLimit}}</option>
                                             </select>
                                     </div>
                                     </div>
                                     <div class="row" style="margin-top: 2%;">
                                         <div class="col-md-2">
-                                        <label>Services : </label>
+                                        <label>Services</label>
+                                        <span style="position: absolute;left: 60%;">:</span>
                                     </div>
-                                    <div class="col-md-10">
-                                        <select class="form-control" formControlName="service" style="width: 30%;">
+                                    <div class="col-md-4">
+                                        <select class="form-control" formControlName="service" style="position: absolute;right: 4%;">
                                             <option value="">Select</option>
                                             <option *ngFor="let item of companyData">{{item?.service}}</option>
 

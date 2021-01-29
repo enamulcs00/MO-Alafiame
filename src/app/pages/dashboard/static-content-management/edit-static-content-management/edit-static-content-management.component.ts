@@ -28,6 +28,9 @@ export class EditStaticContentManagementComponent implements OnInit {
     this.activatedroute.params.subscribe((res) => {
       this.userId = res.id;
       this.type = res.type
+      if(res.type=='T&C'){
+        this.type = encodeURIComponent('T&C')
+      }
       console.log('userId', this.userId, this.type, res);
 
     });

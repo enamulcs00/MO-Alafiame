@@ -16,7 +16,7 @@
                   <input type="text" class="form-control" formControlName="question" maxlength="512"
                     (keypress)="mainService.preventSpace($event)" style="width: 72%;margin-top: -6%;margin-left: 16%;">
                   <div *ngIf="form.get('question').hasError('required') && form.get('question').dirty"
-                    class="text-danger">
+                    class="text-danger" style="padding-left: 15%;">
                     *Question is required.
                   </div>
                 </div>
@@ -26,8 +26,8 @@
                   <div class="col-md-10">
                   <textarea class="form-control" formControlName="answer" name="" id="" cols="30" rows="5"
                     (keypress)="mainService.preventSpace($event)" style="margin-top: -5%;margin-left: 16%;width: 72%;"></textarea>
-                  <div *ngIf="form.get('answer').hasError('required') && form.get('answer').dirty" class="text-danger">
-                    *Message is required.
+                  <div *ngIf="form.get('answer').hasError('required') && form.get('answer').dirty" class="text-danger" style="padding-left: 15%;">
+                    *Answer is required.
                   </div>
 
                 </div>

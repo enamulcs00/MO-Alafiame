@@ -24,8 +24,9 @@ export class ViewTermsComponent implements OnInit {
     this.activatedroute.params.subscribe((res:any)=>{
       console.log('Activated res',res);
       this.type=res.type
-
-      console.log('This is type',this.type)
+      if(res.type=='T&C'){
+        this.type = encodeURIComponent('T&C')
+      }
     })
     this.getStaticData()
   }
