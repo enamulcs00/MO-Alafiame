@@ -143,16 +143,16 @@ new ngxCsv(dataArr, 'Service_management');
         this.categoryList = res.result.docs
 
         this.mainService.hideSpinner();
-        this.mainService.successToast(res.responseMessage)
+//        this.mainService.successToast(res.responseMessage)
 
 
       } else {
         this.mainService.hideSpinner();
-        this.mainService.errorToast(res.responseMessage)
+     //   this.mainService.errorToast(res.responseMessage)
       }
       error => {
         this.mainService.hideSpinner();
-        this.mainService.errorToast(error.responseMessage)
+       // this.mainService.errorToast(error.responseMessage)
       }
     })
   }
@@ -226,10 +226,6 @@ console.log('This is serve id',id.target.value);
   this.currentPage = event;
   this.categoryLists();
   this.serviceList();
-}
-
-getsubcat(){
-
 }
 
 }

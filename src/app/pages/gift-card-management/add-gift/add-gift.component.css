@@ -1,0 +1,8 @@
+.hide{
+  display: none;
+}
+
+.onHover:hover + .hide {
+  display: block;
+
+}

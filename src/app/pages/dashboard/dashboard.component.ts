@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
       }
     },(error:any)=>{
       this.mainService.hideSpinner();
-      this.mainService.errorToast(error.responseMessage);
+      this.mainService.errorToast('Something went wrong');
       })
   }
 
@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
 
     },(error:any)=>{
       this.mainService.hideSpinner();
-      this.mainService.errorToast(error.responseMessage);
+      this.mainService.errorToast('Something went wrong');
       })
   }
 // total practioner
@@ -86,7 +86,7 @@ export class DashboardComponent implements OnInit {
       }
     },(error:any)=>{
       this.mainService.hideSpinner();
-      this.mainService.errorToast(error.responseMessage);
+      this.mainService.errorToast('Something went wrong');
       })
   }
 
@@ -110,7 +110,7 @@ export class DashboardComponent implements OnInit {
 
     },(error:any)=>{
       this.mainService.hideSpinner();
-      this.mainService.errorToast(error.responseMessage);
+      this.mainService.errorToast('Something went wrong');
       })
   }
 
@@ -125,7 +125,7 @@ export class DashboardComponent implements OnInit {
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.totalProduct=res.result.total
-        
+
 
       }
       else{
@@ -134,7 +134,7 @@ export class DashboardComponent implements OnInit {
       }
     },(error:any)=>{
       this.mainService.hideSpinner();
-      this.mainService.errorToast(error.responseMessage);
+      this.mainService.errorToast('Something went wrong');
       })
   }
 
@@ -158,7 +158,7 @@ export class DashboardComponent implements OnInit {
       }
     },(error:any)=>{
       this.mainService.hideSpinner();
-      this.mainService.errorToast(error.responseMessage);
+      this.mainService.errorToast('Something went wrong');
       }
     )
   }

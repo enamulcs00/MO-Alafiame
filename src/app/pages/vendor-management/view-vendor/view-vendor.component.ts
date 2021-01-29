@@ -12,7 +12,7 @@ export class ViewVendorComponent implements OnInit {
   venderDetail: any;
   vendorPermission: any;
   permissionarr: any=[];
-  transactinList: any;
+  transactinList: any =[];
   permissions: any=[];
 
   constructor(private activatedRoute:ActivatedRoute,public mainservice:MainService, private router:Router) { }
@@ -31,7 +31,7 @@ export class ViewVendorComponent implements OnInit {
       this.mainservice.hideSpinner()
       this.venderDetail=res.result
       this.vendorPermission=res.result.permissions
-    
+
       for (let i in this.vendorPermission){
         if(this.vendorPermission[i]==true){
           this.permissions.push(i)
@@ -63,7 +63,7 @@ export class ViewVendorComponent implements OnInit {
           this.permissionarr.push('Static Content Management')
         }
       }
-       
+
        console.log( this.permissionarr)
     }else{
       this.mainservice.hideSpinner()
@@ -85,10 +85,12 @@ getVendorTransaction(){
       this.mainservice.hideSpinner()
       this.transactinList=res.result
     }else{
+      this.transactinList = []
       this.mainservice.hideSpinner()
 this.mainservice.errorToast(res.responseMessage)
     }
   },(err)=>{
+    this.transactinList = []
     this.mainservice.hideSpinner()
 this.mainservice.errorToast(err.responseMessage)
   })

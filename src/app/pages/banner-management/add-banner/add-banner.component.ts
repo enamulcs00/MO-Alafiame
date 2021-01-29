@@ -34,7 +34,7 @@ export class AddBannerComponent implements OnInit {
       {
         'name': this.addBannerForm.value.firstName,
         'title': this.addBannerForm.value.title,
-        'description': this.addBannerForm.value.description,
+       // 'description': this.addBannerForm.value.description,
         'image': this.profile,
       }
       this.mainService.showSpinner();

@@ -16,10 +16,10 @@ margin-left: 2%;">
                       <span class="text text-danger" *ngIf="editGiftForm.get('title').hasError('required') && editGiftForm.get('title').touched">*Title is Required</span>
                     </div>
                 </div>
-                <div class="col" style="position: absolute;left: 75%;">
+                <div class="col" style="position: absolute;left: 70%;">
                   <label for="fileInput">
-                      <img  [src]="img?img:'assets/img/profile-img.jpg'" alt=""/>
-                      <em class="fa fa-camera" style="color: #86559f!important;
+                      <img  [src]="img?img:'assets/img/profile-img.jpg'" alt="" class="onHover"/>
+                      <em class="fa fa-camera hide"title="Change Image" style="color: #86559f!important;
                       font-size: 20px;
                       position: relative;
                       right: 60px;
