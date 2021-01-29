@@ -222,6 +222,15 @@
                 </div>
             </div>
 
+            <div class="menu-box toggle-menu" *ngIf="role=='ADMIN'" [ngClass]="currentUrl === '/referral-management' ? 'active': ''">
+              <div class="card-header clearfix" [routerLink]="['/referral-management']" id="headingThree" data-toggle="collapse"
+                  data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <a class="side_menu">
+                      <span class="side_menu_icon"><i class="fa fa-user-plus" aria-hidden="true"></i></span><span
+                          class="side_page_name head_color">REFERRAL MANAGEMENT</span></a>
+              </div>
+          </div>
+
             <div class="menu-box toggle-menu" *ngIf="role=='ADMIN'" [ngClass]="currentUrl === '/faq' ? 'active': ''">
                 <div class="card-header clearfix" [routerLink]="['/faq']" id="headingThree" data-toggle="collapse"
                     data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">

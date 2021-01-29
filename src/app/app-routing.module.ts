@@ -1,3 +1,5 @@
+import { RefferalViewComponent } from './pages/refferal/refferal-view/refferal-view.component';
+import { RefferalManagementComponent } from './pages/refferal/refferal-management/refferal-management.component';
 import { ExploreProductViewComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-view/explore-product-view.component';
 import { ExploreProductEditComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-edit/explore-product-edit.component';
 import { ExploreProductAddComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-add/explore-product-add.component';
@@ -250,7 +252,9 @@ const routes: Routes = [
 {path:'explore-product',component:ExploreProductComponent},
 {path:'explore-product-add',component:ExploreProductAddComponent},
 {path:'explore-product-edit/:id',component:ExploreProductEditComponent},
-{path:'explore-product-view/:id',component:ExploreProductViewComponent}
+{path:'explore-product-view/:id',component:ExploreProductViewComponent},
+{path:'referral-management',component:RefferalManagementComponent},
+{path:'referral-view/:id',component:RefferalViewComponent}
 
 ];
 

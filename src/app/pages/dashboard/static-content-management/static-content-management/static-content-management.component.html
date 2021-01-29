@@ -37,7 +37,9 @@
                                                 </div>
                                             </td>
                                         </tr>
-
+                                        <tr *ngIf="result==0">
+                                          <td class="table-no-record" colspan="9">No Record Found</td>
+                                      </tr>
                                     </tbody>
                                 </table>
                             </div>

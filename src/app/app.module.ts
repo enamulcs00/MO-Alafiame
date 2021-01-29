@@ -126,6 +126,8 @@ import { ExploreProductComponent } from './pages/practitioner-management/explore
 import { ExploreProductAddComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-add/explore-product-add.component';
 import { ExploreProductEditComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-edit/explore-product-edit.component';
 import { ExploreProductViewComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-view/explore-product-view.component';
+import { RefferalManagementComponent } from './pages/refferal/refferal-management/refferal-management.component';
+import { RefferalViewComponent } from './pages/refferal/refferal-view/refferal-view.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -244,6 +246,8 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     ExploreProductAddComponent,
     ExploreProductEditComponent,
     ExploreProductViewComponent,
+    RefferalManagementComponent,
+    RefferalViewComponent,
 
   ],
   imports: [
