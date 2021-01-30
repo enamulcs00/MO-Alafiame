@@ -14,7 +14,30 @@
                           <div class="sec_head_new sec_head_new_after">
                               <form [formGroup]="searchForm">
                                   <div class="row">
-                                      <div class="col-xl-4 col-lg-4 col-md-4">
+                                    <div class="col-md-3" style="margin-top: -2%;">
+                                      <label>Fromdate:</label>
+                                      <input type="date" class="form-control"
+                                      [max]="mainService.getToday()" formControlName="fromDate" >
+                                  </div>
+                                  <div class="col-md-3" style="margin-top: -2%;">
+                                      <label>Todate:</label>
+                                      <input type="date" class="form-control"  formControlName="toDate"
+                                      [min]="this.searchForm.controls['fromDate'].value"
+                                              (keypress)="mainService.BlockFuture()"
+                                      >
+                                  </div>
+                                  <div class="col-xl-2 col-lg-2 col-md-2">
+                                      <div class="text-center admin-btn" style="margin-top: 10%;">
+                                          <button type="button" class="btn btn-theme Go_btn" (click)="searchValue()">Search</button>
+                                              <button type="button" class="btn btn-theme Go_btn" (click)="reset()"
+                                             >Reset</button>
+                                             <button type="button" (click)="exportCSV()" class="btn btn-theme"
+                                          style="height: 8%; width: 12%;">Export csv</button>
+                                             <button type="button" class="btn btn-theme Go_btn" title="Point Settings">Setting</button>
+                                            </div>
+                                  </div>
+
+                                      <!-- <div class="col-xl-4 col-lg-4 col-md-4">
                                           <div class="filter_search mb20 width100">
                                               <div class="input-group filter_search_group">
                                                   <input type="text" class="form-control overflow-text"
@@ -24,8 +47,8 @@
                                                           class="fa fa-search"></em></button>
                                               </div>
                                           </div>
-                                      </div>
-                                      <div class="col-md-3">
+                                      </div> -->
+                                      <!-- <div class="col-md-3">
                                           <input type="date" formControlName="fromDate" class="form-control"
                                               style="width: 60%;" [max]="mainService.getToday()">
                                       </div>
@@ -34,11 +57,7 @@
                                               [min]="this.searchForm.controls['fromDate'].value"
                                               (keypress)="mainService.BlockFuture()" class="form-control"
                                               style="width: 60%; margin-left: -40%;">
-                                      </div>
-                                      <!-- <button type="button" (click)="addModal()" class="btn btn-theme" style="margin-left: 19%;height: 8%; width: 14%;">Add Vendor</button> -->
-                                      <button type="button" (click)="exportCSV()" class="btn btn-theme"
-                                          style="margin-left: -15%;height: 8%; width: 12%;">Export csv</button>
-
+                                      </div> -->
                                   </div>
                               </form>
                           </div>
@@ -50,7 +69,7 @@
                                       <th scope="col" class="Sorting-img">S.No</th>
                                       <th scope="col" class="Sorting-img">Referral ID</th>
                                       <th scope="col" class="Sorting-img">Refferar Name</th>
-                                      <th scope="col" class="Sorting-img">Raferre Name</th>
+                                      <th scope="col" class="Sorting-img">Raferee Name</th>
                                       <th scope="col" class="Sorting-img">Referrar Earned Point</th>
                                       <th scope="col" class="Sorting-img">Date & Time</th>
                                       <th scope="col" class="Sorting-img">Status</th>
@@ -72,7 +91,7 @@
                                   <td class="content">{{items?.referralStatus}}</td>
                                   <td class="justify-content-center d-flex">
 
-                                       <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-referral',items?._id]"><i class="fa fa-eye" aria-hidden="true"
+                                       <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/referral-view',items?._id]"><i class="fa fa-eye" aria-hidden="true"
                                         style="color:white" title="View"></i></button>
                                        <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(items?._id)">
                                         <i class="fa fa-trash-o" aria-hidden="true" style="color: white;" title="Delete"></i>

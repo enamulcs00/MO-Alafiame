@@ -15,13 +15,13 @@ export class RefferalManagementComponent implements OnInit {
   vendorList: any=[];
   limit:any=5;
   total:any;
-  vendorId: any;
+  refid: any;
   status: string;
   constructor(public mainService: MainService) { }
 
   ngOnInit() {
     this.searchForm = new FormGroup({
-      search: new FormControl(''),
+
       fromDate: new FormControl(''),
       toDate: new FormControl('')
     });
@@ -48,17 +48,32 @@ getVendorList(){
       this.mainService.errorToast(err.message)
     })
   }
+  reset(){
+    this.searchForm.reset()
+    this.getVendorList()
+  }
+  // searchGift() {
+
+  //   let formData = {
+  //     "page":this.page,
+  //     "limit": this.limit,
+  //     "search": this.searchForm.value.search,
+  //     "fromDate":Math.round(new Date(this.searchForm.value.startdate).getTime()),
+  //     "toDate": Math.round(new Date(this.searchForm.value.enddate).getTime()),
+  //   }
+
+
 
   searchValue(){
     let formdata ={
-      'search':this.searchForm.controls.search.value,
-      'fromDate':Date.parse(this.searchForm.controls.fromDate.value),
-      'toDate':Date.parse(this.searchForm.controls.toDate.value),
+
+      'fromDate':this.searchForm.value.fromDate,
+      'toDate':this.searchForm.value.toDate,
       'page': this.page,
       'limit': this.limit
     }
-    this.mainService.postApi('api/v1/admin/vendorList', formdata,1).subscribe(res => {
-      if (res['responseCode'] == 200) {
+    this.mainService.postApi('api/v1/admin/referralList', formdata,1).subscribe((res:any) => {
+      if (res.responseCode == 200) {
         this.vendorList=res.result.docs
         this.total=res.result.total
        console.log(res)
@@ -68,13 +83,13 @@ getVendorList(){
       }
     },(err)=>{
       this.vendorList=[]
-      this.mainService.errorToast(err.message)
+      this.mainService.errorToast('Something went wrong')
     })
   }
 
   deleteFunction(id) {
-    this.vendorId  = id
-    console.log('delete modal', this.vendorId)
+    this.refid  = id
+    console.log('delete modal', this.refid)
    $('#deleteModal').modal({ backdrop: 'static', keyboard: false })
  }
 
@@ -82,10 +97,10 @@ getVendorList(){
   {
     this.mainService.showSpinner()
     let object = {
-      'vendorId': this.vendorId
+      'referralId': this.refid
     }
 
-    this.mainService.postApi('admin/deleteVendor',object,1).subscribe(res => {
+    this.mainService.postApi('admin/deleteReferral',object,1).subscribe(res => {
       console.log('delete id=========>', res)
       if (res.responseCode == 200) {
         this.getVendorList()
@@ -100,7 +115,7 @@ getVendorList(){
       }
     }, error => {
       this.mainService.hideSpinner()
-      this.mainService.errorToast(error.responseMessage)
+      this.mainService.errorToast('Something went wrong')
     })
   }
 
@@ -113,18 +128,23 @@ exportCSV(){
   let dataArr = [];
   dataArr.push({
      sno: "S.No",
-     Name: "Name of Vendor",
-     Email: "Email-Id",
-     Contact:"Mobile Number",
+     Referral_ID: "Referal ID",
+     Referrar: "Referrar Name",
+     Referree:"Referre Name",
+
+     EarnedPoint:"Referrar Earned Point",
+     Status:"Referral Status",
      Created_On:"Date Of Creation"
  });
  this.vendorList.forEach((element,ind) => {
   dataArr.push({
       sno:ind+1,
-      Name:element.firstName +''+element.lastName,
-      Email:element.email,
-      Contact:element.mobileNumber,
-      Created_On:String(element.createdAt).slice(0,10),
+      Referral_ID:element.referralCode,
+      Referrar:element.userId.name,
+      Referree:element.refereeName,
+      EarnedPoint:element.referrerEarnedPoint,
+      Status:element.referralStatus,
+      Created_On:String(element.createdAt).slice(0,16),
   })
 })
 new ngxCsv(dataArr, 'Referral_management');

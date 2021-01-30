@@ -1,1 +1,87 @@
-<p>refferal-view works!</p>
+<div class="content-section">
+  <div class="page_title_block" style="padding-left: 21%;padding-top: 7%;">
+      <h1 class="page_title">View Referral</h1>
+  </div>
+  <div class="order-view  max-WT-700  setting-page" style="margin-left: 33%;">
+      <div class="  mb40">
+          <form>
+              <div class="add-store-block input-style mb20 mt20 ">
+                  <div class="form-group row align-items-baseline view-label-align">
+                      <label class="col-md-4 textalignright ">Referral Id
+                          <span>:</span></label>
+                      <div class="col-md-8 textaligncenter">
+                          <div class="form-group">
+
+                              <label>{{bannerFormValues?.referralCode||"N/A"}}</label>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group row align-items-baseline view-label-align">
+                      <label class="col-md-4 textalignright">Referee Name
+                          <span>:</span></label>
+                      <div class="col-md-8 textaligncenter">
+                          <div class="form-group ">
+                            <label>{{bannerFormValues?.refereeName||"N/A"}}</label>
+
+
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group row align-items-baseline view-label-align">
+                    <label class="col-md-4 textalignright">Referar name
+                        <span>:</span></label>
+                    <div class="col-md-8 textaligncenter">
+                        <div class="form-group ">
+                          <label>{{bannerFormValues?.userId?.name||"N/A"}}</label>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row align-items-baseline view-label-align">
+                  <label class="col-md-4 textalignright">EarnedPoint
+                      <span>:</span></label>
+                  <div class="col-md-8 textaligncenter">
+                      <div class="form-group ">
+                        <label>{{bannerFormValues?.referrerEarnedPoint||"N/A"}}</label>
+
+
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group row align-items-baseline view-label-align">
+                <label class="col-md-4 textalignright">Created On
+                    <span>:</span></label>
+                <div class="col-md-8 textaligncenter">
+                    <div class="form-group ">
+                      <label>{{bannerFormValues?.createdAt | date :'medium'||"N/A"}}</label>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row align-items-baseline view-label-align">
+              <label class="col-md-4 textalignright">Status
+                  <span>:</span></label>
+              <div class="col-md-8 textaligncenter">
+                  <div class="form-group ">
+                    <label>{{bannerFormValues?.referralStatus||"N/A"}}</label>
+
+
+                  </div>
+              </div>
+          </div>
+
+
+
+
+              </div>
+
+              <div class="text-center mt40 mb40">
+                  <!-- <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/banner-management">Back</button> -->
+                  <button class="btn btn-large  max-WT-150 btn-theme"routerLink="/referral-management">Close</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
