@@ -12,9 +12,11 @@ import { ApiUrls } from 'src/app/config/api-urls/api-urls';
 export class EditStaticContentManagementComponent implements OnInit {
   userId: any;
   result: any;
+  profile = ''
+  expertImage= ''
   config = {
     uiColor: '#F0F3F4',
-    height: '100%',
+    height: '50%',
     enterMode :2
 
   };
@@ -36,7 +38,9 @@ export class EditStaticContentManagementComponent implements OnInit {
     });
     this.form = new FormGroup({
       "editorValue": new FormControl('', ([Validators.required])),
-      "Title": new FormControl('', ([Validators.required, Validators.minLength(3), Validators.pattern(/^[^\s][A-Za-z&\s]*$/)]))
+      "Title": new FormControl('', ([Validators.required, Validators.minLength(3), Validators.pattern(/^[^\s][A-Za-z&\s]*$/)])),
+      "ExDescription": new FormControl('', ([Validators.required])),
+      "ExTitle": new FormControl('', ([Validators.required, Validators.minLength(3), Validators.pattern(/^[^\s][A-Za-z&\s]*$/)]))
     });
     this.viewStaticData()
   }
@@ -50,8 +54,11 @@ export class EditStaticContentManagementComponent implements OnInit {
         setTimeout(() => {
           this.form.patchValue({
             Title: this.result.title,
-            editorValue: this.result.description
+            ExTitle:this.result.ourExperties.experTitle,
+            editorValue: this.result.description,
+            ExDescription:this.result.ourExperties.expertDescription
           });
+          this.profile = this.result.image
           this.mainService.hideSpinner();
         }, 1000);
 
@@ -67,9 +74,14 @@ export class EditStaticContentManagementComponent implements OnInit {
   Update() {
     console.log('UserId',this.userId);
     const description = this.form.value.editorValue
+    const expDesc = this.form.value.ExDescription
     let data = {
       '_id': this.userId,
       "title": this.form.value.Title,
+      "image": this.profile,
+      "expertImage": this.expertImage,
+      "experTitle": this.form.value.ExTitle,
+      "expertDescription": expDesc.slice(3, (expDesc.length - 5)),
       "description": description.slice(3, (description.length - 5))
     }
     console.log('data', data)
@@ -78,7 +90,7 @@ export class EditStaticContentManagementComponent implements OnInit {
       console.log("edit static content management response ==>", res)
       if (res.responseCode == 200) {
         this.mainService.successToast(res.responseMessage);
-        this.router.navigate(['/static-content-management'])
+       this.router.navigate(['/static-content-management'])
       } else {
 
         this.mainService.hideSpinner();
@@ -90,5 +102,30 @@ export class EditStaticContentManagementComponent implements OnInit {
     }
     )
   }
+  handleInputChange(e) {
 
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+
+    var reader = new FileReader();
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+      this.profile = reader.result;
+  }
+  //For Side Image Upload
+
+  SideImageInput(e) {
+
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+
+    var reader = new FileReader();
+    reader.onload = this._SideImageLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  _SideImageLoaded(e) {
+    let reader = e.target;
+      this.expertImage = reader.result;
+  }
 }

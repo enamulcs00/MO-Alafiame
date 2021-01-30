@@ -23,24 +23,16 @@
                           </div>
                       </div>
                   </div>
-                  <!-- <div class="form-group row align-items-baseline view-label-align">
-                      <label class="col-md-4 textalignright">Subcategories
+                  <div class="form-group row align-items-baseline view-label-align">
+                      <label class="col-md-4 textalignright">Mark as Featured
                           <span>:</span></label>
                       <div class="col-md-8 textaligncenter">
                           <div class="form-group ">
-                              <input type="text" class="form-control" placeholder="Enter subcategory"
-                                  formControlName="subCategories" (keypress)="mainService.preventSpace($event)"
-                                  maxlength="50">
-                              <div class="text-danger">
-                                  <span
-                                      *ngIf="addhomeForm.get('subCategories').hasError('required') && (addhomeForm.get('subCategories').dirty || addhomeForm.get('subCategories').touched || f.submitted)">
-                                      *Please enter subCategory.
-                                  </span>
+                              <input type="checkbox" [(ngModel)]="theCheckbox"  data-md-icheck (change)="toggleVisibility($event)">
 
-                              </div>
                           </div>
                       </div>
-                  </div> -->
+                  </div>
 
                   <div class="form-group row view-label-align">
                     <label class="col-md-4 textalignright">Category image

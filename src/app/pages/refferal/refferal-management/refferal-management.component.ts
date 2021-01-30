@@ -44,8 +44,8 @@ getVendorList(){
       } else {
         this.mainService.errorToast(res.message)
       }
-    },(err)=>{
-      this.mainService.errorToast(err.message)
+    },err=>{
+      this.mainService.errorToast('Something went wrong')
     })
   }
   reset(){
@@ -72,11 +72,12 @@ getVendorList(){
       'page': this.page,
       'limit': this.limit
     }
-    this.mainService.postApi('api/v1/admin/referralList', formdata,1).subscribe((res:any) => {
+    this.mainService.postApi('admin/referralList', formdata,1).subscribe((res:any) => {
       if (res.responseCode == 200) {
         this.vendorList=res.result.docs
         this.total=res.result.total
        console.log(res)
+       this.mainService.successToast(res.responseMessage)
       } else {
         this.vendorList=[]
         this.mainService.errorToast(res.responseMessage)
@@ -94,13 +95,15 @@ getVendorList(){
  }
 
   deleteUser()
+
   {
+    let url = 'admin/deleteReferral'
     this.mainService.showSpinner()
     let object = {
       'referralId': this.refid
     }
 
-    this.mainService.postApi('admin/deleteReferral',object,1).subscribe(res => {
+    this.mainService.deleteApi(url,object,1).subscribe(res => {
       console.log('delete id=========>', res)
       if (res.responseCode == 200) {
         this.getVendorList()
@@ -144,7 +147,7 @@ exportCSV(){
       Referree:element.refereeName,
       EarnedPoint:element.referrerEarnedPoint,
       Status:element.referralStatus,
-      Created_On:String(element.createdAt).slice(0,16),
+      Created_On:String(element.createdAt).slice(0,18),
   })
 })
 new ngxCsv(dataArr, 'Referral_management');

@@ -5,7 +5,7 @@
 .order-view {
   width: 100%;
   /* max-width: 75%; */
-  max-width: 65%;
+  max-width: 80%;
   margin: 0 auto;
 }
 .mt75{
@@ -17,3 +17,27 @@
 .padding15{
   padding: 15px;
 }
+
+.hoverable{
+  position: relative;
+  display: block;
+  cursor: pointer;
+
+}
+.hoverable:hover .hover-text{
+  display: block;
+}
+
+.hoverable .hover-text{
+  font-size: 50px;
+  position: absolute;
+  display: none;
+  top: 47%;
+  left:  26%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+}
+#fileInput{
+  display: none;
+}
+

@@ -227,5 +227,27 @@ console.log('This is serve id',id.target.value);
   this.categoryLists();
   this.serviceList();
 }
+sliderRound(id){
+  this.ServiceId = id
+  let url = 'admin/markUnmarkService'
+  let obj = {
+    _id:this.ServiceId
+  }
+  this.mainService.showSpinner();
+  this.mainService.postApi(url, obj, 1).subscribe((res: any) => {
+    this.mainService.hideSpinner()
+    if (res.responseCode == 200) {
 
+      this.mainService.successToast(res.responseMessage);
+      this.serviceList();
+    } else {
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(res.responseMessage)
+    }
+  },
+  error=>{
+    this.mainService.hideSpinner()
+    this.mainService.errorToast('Something went wrong');
+  })
+}
 }

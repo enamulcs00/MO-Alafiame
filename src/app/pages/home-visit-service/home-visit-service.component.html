@@ -80,6 +80,11 @@
                                                 <i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i>
 
                                             </button>
+                                            <label class="switch">
+                                              <input type="checkbox" (click)="sliderRound(item?._id)"
+                                                  [checked]="item?.markAs == true">
+                                              <span class="slider round" [title]="(item?.active==true)?'Featured Unmark':'Mark as Featured'"></span>
+                                          </label>
                                             </td>
 
 

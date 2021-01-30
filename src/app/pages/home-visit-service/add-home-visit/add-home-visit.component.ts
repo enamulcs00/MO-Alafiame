@@ -13,6 +13,8 @@ export class AddHomeVisitComponent implements OnInit {
   profile: any;
   user: any;
 
+marked = false;
+  theCheckbox = false;
   constructor(private actRoute:ActivatedRoute,private route:Router,public mainService: MainService) {
     this.addhomeForm = new FormGroup({
       "categoryName": new FormControl('', Validators.required),
@@ -35,13 +37,17 @@ export class AddHomeVisitComponent implements OnInit {
     this.profile = reader.result;
     console.log("profile", this.profile)
   }
+  toggleVisibility(e){
+    this.marked= e.target.checked;
+  }
+
   addservice()
   {
 
     let data =
     {
       'categoryName': this.addhomeForm.value.categoryName,
-
+       'markAs': this.marked,
       'categoryImage': this.profile,
 
     }
@@ -65,5 +71,7 @@ export class AddHomeVisitComponent implements OnInit {
 
 
   }
-
+  markas(event){
+console.log('Event',event)
+  }
 }

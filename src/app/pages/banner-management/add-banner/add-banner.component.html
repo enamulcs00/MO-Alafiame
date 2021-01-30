@@ -67,13 +67,6 @@
                             <input type="file" id="fileInput"class="custom-file-input" name="imageUrl" formControlName="bannerFile" accept="image/*" (change)="handleInputChange($event)">
                              </label>
 
-                            <div class="text-danger">
-                                <span
-                                    *ngIf="addBannerForm.get('bannerFile').hasError('required') && (addBannerForm.get('bannerFile').dirty || addBannerForm.get('bannerFile').touched || f.submitted)">
-                                    <!-- *Please choose banner. -->
-                                </span>
-
-                            </div>
                         </div>
                     </div>
                 </div>
