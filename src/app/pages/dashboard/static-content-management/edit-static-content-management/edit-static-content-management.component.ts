@@ -12,8 +12,10 @@ import { ApiUrls } from 'src/app/config/api-urls/api-urls';
 export class EditStaticContentManagementComponent implements OnInit {
   userId: any;
   result: any;
+  expTitle:any
+  ExpertDescprition:any
   profile = ''
-  expertImage= ''
+  expertImage=''
   config = {
     uiColor: '#F0F3F4',
     height: '50%',
@@ -23,12 +25,16 @@ export class EditStaticContentManagementComponent implements OnInit {
   form: FormGroup;
   editorValue;
   type: any;
-
+  aboutusId:any= '5fd9dccdb25f087daad4d82d'
+IsAbout:boolean = false
   constructor(private activatedroute: ActivatedRoute, private router: Router, public mainService: MainService) { }
 
   ngOnInit() {
     this.activatedroute.params.subscribe((res) => {
       this.userId = res.id;
+      if(res.id==this.aboutusId){
+        this.IsAbout= true
+      }
       this.type = res.type
       if(res.type=='T&C'){
         this.type = encodeURIComponent('T&C')
@@ -39,8 +45,8 @@ export class EditStaticContentManagementComponent implements OnInit {
     this.form = new FormGroup({
       "editorValue": new FormControl('', ([Validators.required])),
       "Title": new FormControl('', ([Validators.required, Validators.minLength(3), Validators.pattern(/^[^\s][A-Za-z&\s]*$/)])),
-      "ExDescription": new FormControl('', ([Validators.required])),
-      "ExTitle": new FormControl('', ([Validators.required, Validators.minLength(3), Validators.pattern(/^[^\s][A-Za-z&\s]*$/)]))
+      "ExDescription": new FormControl(''),
+      "ExTitle": new FormControl('')
     });
     this.viewStaticData()
   }
@@ -51,18 +57,14 @@ export class EditStaticContentManagementComponent implements OnInit {
       console.log("get static content management list response ==>", res)
       if (res.responseCode == 200) {
         this.result = res.result;
-        setTimeout(() => {
           this.form.patchValue({
             Title: this.result.title,
-            ExTitle:this.result.ourExperties.experTitle,
             editorValue: this.result.description,
-            ExDescription:this.result.ourExperties.expertDescription
           });
           this.profile = this.result.image
-          this.mainService.hideSpinner();
-        }, 1000);
 
-        this.mainService.successToast(res.responseMessage);
+          this.mainService.hideSpinner();
+         this.mainService.successToast(res.responseMessage);
       } else {
 
         this.mainService.hideSpinner();
@@ -128,4 +130,17 @@ export class EditStaticContentManagementComponent implements OnInit {
     let reader = e.target;
       this.expertImage = reader.result;
   }
+  selected(id){
+    this.expTitle = id.target.value
+
+    console.log('This is serve id',id);
+      }
+
+      selecteddesc(id){
+
+        this.ExpertDescprition = id.target.value
+        console.log('This is serve id',id.target.value);
+          }
+
+
 }
