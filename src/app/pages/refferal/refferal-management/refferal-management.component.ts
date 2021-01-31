@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ngxCsv } from 'ngx-csv';
 import { MainService } from 'src/app/provider/main.service';
 declare var $:any
@@ -9,7 +9,7 @@ declare var $:any
   styleUrls: ['./refferal-management.component.css']
 })
 export class RefferalManagementComponent implements OnInit {
-
+  pointSettingForm: FormGroup
   searchForm: FormGroup;
   page:any=1
   vendorList: any=[];
@@ -20,8 +20,11 @@ export class RefferalManagementComponent implements OnInit {
   constructor(public mainService: MainService) { }
 
   ngOnInit() {
+    this.pointSettingForm = new FormGroup({
+      refPoint: new FormControl('',Validators.required),
+     // refValue: new FormControl('',Validators.required),
+    })
     this.searchForm = new FormGroup({
-
       fromDate: new FormControl(''),
       toDate: new FormControl('')
     });
@@ -35,14 +38,14 @@ getVendorList(){
     }
     this.mainService.postApi('admin/referralList', formdata,1).subscribe((res:any) => {
       console.log('Refferal',res)
-      if (res['responseCode'] == 200) {
+      if (res.responseCode == 200) {
         this.vendorList=res.result.docs
         console.log(this.vendorList)
         console.log(res['result']['docs'])
         this.total=res.result.total
        console.log(res)
       } else {
-        this.mainService.errorToast(res.message)
+        this.mainService.errorToast(res.responseMessage)
       }
     },err=>{
       this.mainService.errorToast('Something went wrong')
@@ -52,15 +55,7 @@ getVendorList(){
     this.searchForm.reset()
     this.getVendorList()
   }
-  // searchGift() {
 
-  //   let formData = {
-  //     "page":this.page,
-  //     "limit": this.limit,
-  //     "search": this.searchForm.value.search,
-  //     "fromDate":Math.round(new Date(this.searchForm.value.startdate).getTime()),
-  //     "toDate": Math.round(new Date(this.searchForm.value.enddate).getTime()),
-  //   }
 
 
 
@@ -103,7 +98,7 @@ getVendorList(){
       'referralId': this.refid
     }
 
-    this.mainService.deleteApi(url,object,1).subscribe(res => {
+    this.mainService.deleteApi(url,object,1).subscribe((res:any) => {
       console.log('delete id=========>', res)
       if (res.responseCode == 200) {
         this.getVendorList()
@@ -114,7 +109,8 @@ getVendorList(){
       } else {
         $('#deleteModal').modal('hide');
         this.mainService.hideSpinner()
-        this.mainService.errorToast(res.responseMessage)
+        this.getVendorList()
+        this.mainService.successToast(res.responseMessage)
       }
     }, error => {
       this.mainService.hideSpinner()
@@ -153,4 +149,39 @@ exportCSV(){
 new ngxCsv(dataArr, 'Referral_management');
 
 }
+openRefModal(){
+  $('#setRefferal').modal('show')
+}
+
+setPoint(){
+  let data =
+  {
+    loyalityValue: this.pointSettingForm.value.refPoint
+  }
+  this.mainService.showSpinner();
+  this.mainService.postApi('admin/referralSettings', data, 1).subscribe((res: any) => {
+    console.log("Loyalityvalue response ==>", res)
+    if (res.responseCode == 200 && res.result) {
+
+    this.pointSettingForm.reset();
+    this.getVendorList()
+      this.mainService.hideSpinner();
+      this.mainService.successToast(res.responseMessage)
+      $('#setRefferal').modal('hide');
+
+    } else {
+      this.mainService.hideSpinner();
+      //this.mainService.errorToast(res.responseMessage)
+      this.mainService.successToast(res.responseMessage)
+      $('#setRefferal').modal('hide');
+      this.getVendorList()
+      this.pointSettingForm.reset();
+    }
+    error => {
+      this.mainService.hideSpinner();
+      this.mainService.errorToast('Something went wrong')
+    }
+  })
+
+ }
 }

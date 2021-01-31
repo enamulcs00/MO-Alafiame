@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
       }
     },error=>{
       this.mainService.hideSpinner()
-      this.mainService.errorToast(error.responseMessage);
+      this.mainService.errorToast('Something went wrong');
     }
     )
   }

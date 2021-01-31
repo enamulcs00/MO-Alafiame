@@ -33,31 +33,11 @@
                                              >Reset</button>
                                              <button type="button" (click)="exportCSV()" class="btn btn-theme"
                                           style="height: 8%; width: 12%;">Export csv</button>
-                                             <button type="button" class="btn btn-theme Go_btn" title="Point Settings">Setting</button>
+                                             <button type="button" class="btn btn-theme Go_btn" title="Point Settings"(click)="openRefModal()" >Setting</button>
                                             </div>
                                   </div>
 
-                                      <!-- <div class="col-xl-4 col-lg-4 col-md-4">
-                                          <div class="filter_search mb20 width100">
-                                              <div class="input-group filter_search_group">
-                                                  <input type="text" class="form-control overflow-text"
-                                                      formControlName="search" placeholder="Search by name"
-                                                      maxlength="60"><button (click)="searchValue()" style="width: 39px;
-                                                      background-color: #86559f;"><em
-                                                          class="fa fa-search"></em></button>
-                                              </div>
-                                          </div>
-                                      </div> -->
-                                      <!-- <div class="col-md-3">
-                                          <input type="date" formControlName="fromDate" class="form-control"
-                                              style="width: 60%;" [max]="mainService.getToday()">
-                                      </div>
-                                      <div class="col-md-3">
-                                          <input type="date" formControlName="toDate"
-                                              [min]="this.searchForm.controls['fromDate'].value"
-                                              (keypress)="mainService.BlockFuture()" class="form-control"
-                                              style="width: 60%; margin-left: -40%;">
-                                      </div> -->
+
                                   </div>
                               </form>
                           </div>
@@ -141,6 +121,93 @@
   </div>
 </div>
 <!-- end delete product-management modal -->
+<div class="modal fade global-modal  bd-example-modal-lg reset-modal" id="setRefferal">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header d-block text-center modal-header-custm">
+              <h5 class="modal-title d-inline-block">Referral Point Setting</h5>
+          </div>
+          <div class="modal-inner-content">
+              <div class="modal-body">
+                <form [formGroup]="pointSettingForm" #f="ngForm">
+                  <div class="add-store-block input-style mb20 mt20 ">
+                      <div class="form-group row align-items-baseline view-label-align">
+                          <label class="col-md-4 textalignright ">Set value
+                              <span>:</span></label>
+                          <div class="col-md-8 textaligncenter">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" (keypress)="mainService.preventSpace($event)" placeholder="Enter loyality point" formControlName="refPoint"
+                                       maxlength="20">
+                                  <div class="text-danger">
+                                      <span
+                                          *ngIf="pointSettingForm.get('refPoint').hasError('required') && (pointSettingForm.get('refPoint').dirty || pointSettingForm.get('refPoint').touched)">
+                                          *Please enter loyality value.
+                                      </span>
 
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- <div class="form-group row align-items-baseline view-label-align">
+                          <label class="col-md-4 textalignright">Set value
+                              <span>:</span></label>
+                          <div class="col-md-8 textaligncenter">
+                              <div class="form-group ">
+                                  <input type="text" class="form-control" placeholder="Enter value"
+                                      formControlName="refValue" (keypress)="mainService.preventSpace($event)"
+                                      maxlength="20">
+                                      <div class="text-danger">
+                                        <span
+                                            *ngIf="pointSettingForm.get('refValue').hasError('refValue') && (pointSettingForm.get('refValue').dirty || pointSettingForm.get('refValue').touched)">
+                                            *Please enter value.
+                                        </span>
+
+                                    </div>
+                              </div>
+                          </div>
+                      </div> -->
+                  </div>
+                  <div class="text-center">
+                      <button class="btn btn-theme" data-dismiss="modal">Cancel</button><br><br>
+                      <button class="btn btn-theme" (click)="setPoint()" [disabled]="pointSettingForm.invalid">Submit</button>
+                  </div>
+              </form>
+
+                  <!-- <form [formGroup]="pointSettingForm">
+                          <div class="row">
+                              <div class="col">
+                                  <div class="row">
+                                      <label class="col-md-4">Set point</label>
+                                      <span class="col-md-1">:</span>
+                                      <input type="text" class="form-control col-md-5" formControlName="refPoint">
+                                      <span class="text text-danger" *ngIf="pointSettingForm.get('refPoint').touched && pointSettingForm.get('refPoint').invalid && pointSettingForm.get('refPoint').errors.required">
+                                        *Point is Required
+                                      </span>
+
+                                    </div>
+                                       <br>
+                                    <div class="row">
+                                      <label class="col-md-4">Set value</label>
+                                      <span class="col-md-1">:</span>
+                                      <input type="text" class="form-control col-md-5" formControlName="refValue">
+                                      <span class="text text-danger" *ngIf="pointSettingForm.get('refValue').touched && pointSettingForm.get('refValue').invalid && pointSettingForm.get('refValue').errors.required">
+                                        *Value is Required
+                                      </span>
+                                    </div>
+                              </div>
+                          </div>
+                          <br>
+                          <div class="row text-center">
+                              <button type="button" class="btn btn-theme"
+                              data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-theme"
+                                  (click)="setPoint()" [disabled]=pointSettingForm.invalid>Save</button>
+                          </div>
+                  </form> -->
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
 
 
