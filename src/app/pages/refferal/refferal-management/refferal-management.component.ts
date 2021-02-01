@@ -17,9 +17,11 @@ export class RefferalManagementComponent implements OnInit {
   total:any;
   refid: any;
   status: string;
+  viewrefValue:any;
   constructor(public mainService: MainService) { }
 
   ngOnInit() {
+    this.viewCurrentValue()
     this.pointSettingForm = new FormGroup({
       refPoint: new FormControl('',Validators.required),
      // refValue: new FormControl('',Validators.required),
@@ -149,6 +151,10 @@ exportCSV(){
 new ngxCsv(dataArr, 'Referral_management');
 
 }
+openRefViewModal(){
+  $('#viewPoint').modal('show')
+}
+
 openRefModal(){
   $('#setRefferal').modal('show')
 }
@@ -179,6 +185,25 @@ setPoint(){
     }
     error => {
       this.mainService.hideSpinner();
+      this.mainService.errorToast('Something went wrong')
+    }
+  })
+
+ }
+ viewCurrentValue(){
+   let url = 'admin/viewReferralSetting'
+
+   this.mainService.getApi(url, 1).subscribe((res: any) => {
+    console.log("Loyalityvalue view response ==>", res)
+    if (res.responseCode == 200 && res.result) {
+this.viewrefValue = res.result
+    } else {
+
+      this.mainService.errorToast(res.responseMessage)
+
+    }
+    error => {
+
       this.mainService.errorToast('Something went wrong')
     }
   })

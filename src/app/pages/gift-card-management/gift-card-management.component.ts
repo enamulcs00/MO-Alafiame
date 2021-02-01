@@ -154,8 +154,6 @@ this.gifiId = id
         this.service.hideSpinner();
         this.service.successToast(res.responseMessage)
         this.userList=res.result.docs;
-
-
       }
       else{
         this.service.hideSpinner();

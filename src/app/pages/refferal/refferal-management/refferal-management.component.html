@@ -5,8 +5,7 @@
           <hr style="background: black; opacity: 0.5;">
 
       </div>
-
-      <div class="content-section">
+ <div class="content-section">
           <div class="outer-box">
               <div class="global-table no-radius p0">
                   <div class="tab-content1">
@@ -14,12 +13,12 @@
                           <div class="sec_head_new sec_head_new_after">
                               <form [formGroup]="searchForm">
                                   <div class="row">
-                                    <div class="col-md-3" style="margin-top: -2%;">
+                                    <div class="col-md-2.5" style="margin-top: -2%;">
                                       <label>Fromdate:</label>
                                       <input type="date" class="form-control"
                                       [max]="mainService.getToday()" formControlName="fromDate" >
-                                  </div>
-                                  <div class="col-md-3" style="margin-top: -2%;">
+                                  </div>&nbsp;&nbsp;
+                                  <div class="col-md-2.5" style="margin-top: -2%;">
                                       <label>Todate:</label>
                                       <input type="date" class="form-control"  formControlName="toDate"
                                       [min]="this.searchForm.controls['fromDate'].value"
@@ -34,6 +33,7 @@
                                              <button type="button" (click)="exportCSV()" class="btn btn-theme"
                                           style="height: 8%; width: 12%;">Export csv</button>
                                              <button type="button" class="btn btn-theme Go_btn" title="Point Settings"(click)="openRefModal()" >Setting</button>
+                                             <button type="button" class="btn btn-theme Go_btn" title=" View current value"(click)="openRefViewModal()" >View</button>
                                             </div>
                                   </div>
 
@@ -179,5 +179,36 @@
       </div>
   </div>
   </div>
+<!-- view-refferal -->
+<div class="modal fade global-modal  bd-example-modal-lg reset-modal" id="viewPoint">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header d-block text-center modal-header-custm">
+              <h5 class="modal-title d-inline-block">View Loyality value</h5>
+          </div>
+          <div class="modal-inner-content">
+              <div class="modal-body">
+                <form>
+                  <div class="add-store-block input-style mb20 mt20 ">
+                      <div class="form-group row align-items-baseline view-label-align">
+                          <label class="col-md-4 textalignright">Current value</label>
+                          <div class="col-md-8 textaligncenter">
+                              <div class="form-group ">&nbsp;&nbsp;
+                                <label>{{viewrefValue}}</label>
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="text-center">
+                      <button class="btn btn-theme" data-dismiss="modal">Cancel</button>
+
+                  </div>
+              </form>
 
 
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
