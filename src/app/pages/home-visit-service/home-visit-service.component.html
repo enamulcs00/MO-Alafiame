@@ -135,8 +135,8 @@
 
 
  <!-- Add sub category modal Start -->
- <div class="modal fade global-modal bd-example-modal-lg reset-modal" id="addSub">
-  <div class="modal-dialog modal-lg">
+ <div class="modal fade  bd-example-modal-lg reset-modal"role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="addSub">
+  <div class="modal-dialog modal-lg" style="width: 43%;">
       <div class="modal-content">
           <div class="modal-header d-block text-center modal-header-custm">
               <h5 class="modal-title d-inline-block">Add Sub Category</h5>
@@ -144,29 +144,32 @@
           <div class="modal-inner-content">
               <div class="modal-body">
                   <form [formGroup]="addSubForm">
-                          <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+                          <div class="row">
                               <div class="col">
                                   <div class="row">
-                                      <label class="col-md-4">SubCategory Name</label>
+                                      <label class="col-md-3">Subcategory Name</label>
                                       <span class="col-md-1">:</span>
                                       <input type="text" class="form-control col-md-5" formControlName="categoryName">
                                       <span class="text text-danger" *ngIf="addSubForm.get('categoryName').touched && addSubForm.get('categoryName').invalid && addSubForm.get('categoryName').errors.required" style="position: relative;left:41%;">
-                                        *SubCategory is Required
+                                        *SubCategory name is required
                                       </span>
 
                                     </div>
-                                    <br>
+
                                   <div class="row">
-                                      <label class="col-md-4">SubCategory Image</label>
+                                      <label class="col-md-3">Subcategory Image</label>
                                       <span class="col-md-1">:</span>
-                                      <label class="col-md-3" for="fileInput">
+                                      <label class="col-md-4" for="fileInput" class="hoverable">
                                           <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
-                                          <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
-                                          <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="visibility:hidden;">
+                                          <div class="hover-text">
+                                            <em class="fa fa-camera"></em>
+                                          </div>
+
+                                          <input type="file" id="fileInput"class="custom-file-input" name="imageUrl" accept="image/*" (change)="handleInputChange($event)">
                                            </label>
                                   </div>
                                   <div class="row" >
-                                    <label class="col-md-4">Choose Category</label>
+                                    <label class="col-md-3">Choose Category</label>
                                     <span  class="col-md-1">:</span>
                                      <select class="form-control col-md-5"
                                              (change)="selected($event)">
@@ -176,10 +179,10 @@
                                       </div>
                               </div>
                           </div>
-                          <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
-                              <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                          <div class="row " style="position: relative;left: 30%;">
+                              <button type="button" class="btn btn-theme"
                               data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                              <button type="button" class="btn btn-theme"
                                   (click)="addSubService()" [disabled]=addSubForm.invalid>Save</button>
                           </div>
                   </form>
