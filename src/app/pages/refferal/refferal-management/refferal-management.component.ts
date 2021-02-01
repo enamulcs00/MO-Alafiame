@@ -167,7 +167,7 @@ setPoint(){
   this.mainService.showSpinner();
   this.mainService.postApi('admin/referralSettings', data, 1).subscribe((res: any) => {
     console.log("Loyalityvalue response ==>", res)
-    if (res.responseCode == 200 && res.result) {
+    if (res.responseCode == 200) {
 
     this.pointSettingForm.reset();
     this.getVendorList()
@@ -196,7 +196,7 @@ this.viewCurrentValue()
 
    this.mainService.getApi(url, 1).subscribe((res: any) => {
     console.log("Loyalityvalue view response ==>", res)
-    if (res.responseCode == 200 && res.result) {
+    if (res.responseCode == 200) {
 this.viewrefValue = res.result
 
     } else {
