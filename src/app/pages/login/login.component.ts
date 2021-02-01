@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
     this.mainService.showSpinner()
     this.mainService.postApi(ApiUrls.login, data, 0).subscribe((res: any) => {
       console.log("login response ==>", res)
+      this.mainService.hideSpinner()
       if (res.responseCode == 200) {
         this.mainService.vendorPermissions.next(res.result.permissions)
         this.mainService.hideSpinner();
