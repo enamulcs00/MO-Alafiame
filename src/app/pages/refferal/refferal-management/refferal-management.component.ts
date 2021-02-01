@@ -174,8 +174,9 @@ setPoint(){
       this.mainService.hideSpinner();
       this.mainService.successToast(res.responseMessage)
       $('#setRefferal').modal('hide');
-
+this.viewCurrentValue()
     } else {
+      this.viewCurrentValue()
       this.mainService.hideSpinner();
       //this.mainService.errorToast(res.responseMessage)
       this.mainService.successToast(res.responseMessage)
@@ -197,6 +198,7 @@ setPoint(){
     console.log("Loyalityvalue view response ==>", res)
     if (res.responseCode == 200 && res.result) {
 this.viewrefValue = res.result
+
     } else {
 
       this.mainService.errorToast(res.responseMessage)

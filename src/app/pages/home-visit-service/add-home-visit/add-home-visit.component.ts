@@ -16,13 +16,14 @@ export class AddHomeVisitComponent implements OnInit {
 marked = false;
   theCheckbox = false;
   constructor(private actRoute:ActivatedRoute,private route:Router,public mainService: MainService) {
-    this.addhomeForm = new FormGroup({
-      "categoryName": new FormControl('', Validators.required),
-     // "subCategories": new FormControl('', Validators.required)
-    });
+
    }
 
   ngOnInit() {
+    this.addhomeForm = new FormGroup({
+      "categoryName": new FormControl('', Validators.required),
+
+    });
 
   }
   handleInputChange(e) {

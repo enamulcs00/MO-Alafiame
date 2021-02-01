@@ -33,7 +33,7 @@
                                              <button type="button" (click)="exportCSV()" class="btn btn-theme"
                                           style="height: 8%; width: 12%;">Export csv</button>
                                              <button type="button" class="btn btn-theme Go_btn" title="Point Settings"(click)="openRefModal()" >Setting</button>
-                                             <button type="button" class="btn btn-theme Go_btn" title=" View current value"(click)="openRefViewModal()" >View</button>
+                                             <button type="button" class="btn btn-theme Go_btn" title=" View Current Setting"(click)="openRefViewModal()" >View</button>
                                             </div>
                                   </div>
 
@@ -136,7 +136,7 @@
                               <span>:</span></label>
                           <div class="col-md-8 textaligncenter">
                               <div class="form-group">
-                                  <input type="text" class="form-control" (keypress)="mainService.preventSpace($event)" placeholder="Enter loyality point" formControlName="refPoint"
+                                  <input type="text" class="form-control" (keypress)="mainService.NumOnly($event)" placeholder="Enter loyality point" formControlName="refPoint"
                                        maxlength="20">
                                   <div class="text-danger">
                                       <span

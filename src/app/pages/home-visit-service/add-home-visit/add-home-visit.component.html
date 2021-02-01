@@ -4,9 +4,9 @@
   </div>
   <div class="order-view  max-WT-700  setting-page" style="margin-left: 33%;">
       <div class="  mb40">
-          <form [formGroup]="addhomeForm" #f="ngForm">
+          <form [formGroup]="addhomeForm">
               <div class="add-store-block input-style mb20 mt20 ">
-                  <div class="form-group row align-items-baseline view-label-align">
+                  <div class="row align-items-baseline view-label-align">
                       <label class="col-md-4 textalignright ">Category name
                           <span>:</span></label>
                       <div class="col-md-8 textaligncenter">
@@ -27,7 +27,7 @@
                       <label class="col-md-4 textalignright">Mark as Featured
                           <span>:</span></label>
                       <div class="col-md-8 textaligncenter">
-                          <div class="form-group ">
+                          <div>
                               <input type="checkbox" [(ngModel)]="theCheckbox"  data-md-icheck (change)="toggleVisibility($event)">
 
                           </div>
@@ -44,7 +44,6 @@
                             <div class="hover-text">
                               <em class="fa fa-upload"></em>
                             </div>
-
                             <input type="file" id="fileInput"class="custom-file-input" name="imageUrl"  accept="image/*" (change)="handleInputChange($event)">
                              </label>
                         </div>
