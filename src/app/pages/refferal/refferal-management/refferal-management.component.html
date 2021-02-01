@@ -167,43 +167,13 @@
                           </div>
                       </div> -->
                   </div>
-                  <div class="text-center">
-                      <button class="btn btn-theme" data-dismiss="modal">Cancel</button><br><br>
+                  <div class="row pl-5">
+                      <button class="btn btn-theme" data-dismiss="modal">Cancel</button>
                       <button class="btn btn-theme" (click)="setPoint()" [disabled]="pointSettingForm.invalid">Submit</button>
                   </div>
               </form>
 
-                  <!-- <form [formGroup]="pointSettingForm">
-                          <div class="row">
-                              <div class="col">
-                                  <div class="row">
-                                      <label class="col-md-4">Set point</label>
-                                      <span class="col-md-1">:</span>
-                                      <input type="text" class="form-control col-md-5" formControlName="refPoint">
-                                      <span class="text text-danger" *ngIf="pointSettingForm.get('refPoint').touched && pointSettingForm.get('refPoint').invalid && pointSettingForm.get('refPoint').errors.required">
-                                        *Point is Required
-                                      </span>
 
-                                    </div>
-                                       <br>
-                                    <div class="row">
-                                      <label class="col-md-4">Set value</label>
-                                      <span class="col-md-1">:</span>
-                                      <input type="text" class="form-control col-md-5" formControlName="refValue">
-                                      <span class="text text-danger" *ngIf="pointSettingForm.get('refValue').touched && pointSettingForm.get('refValue').invalid && pointSettingForm.get('refValue').errors.required">
-                                        *Value is Required
-                                      </span>
-                                    </div>
-                              </div>
-                          </div>
-                          <br>
-                          <div class="row text-center">
-                              <button type="button" class="btn btn-theme"
-                              data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-theme"
-                                  (click)="setPoint()" [disabled]=pointSettingForm.invalid>Save</button>
-                          </div>
-                  </form> -->
               </div>
           </div>
       </div>
