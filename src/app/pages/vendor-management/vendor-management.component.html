@@ -16,7 +16,7 @@
                             <div class="sec_head_new sec_head_new_after">
                                 <form [formGroup]="searchForm">
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-4 col-md-4">
+                                        <div class="col-xl-3 col-lg-4 col-md-3">
                                             <div class="filter_search mb20 width100">
                                                 <div class="input-group filter_search_group">
                                                     <input type="text" class="form-control overflow-text"
@@ -27,21 +27,27 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <input type="date" formControlName="fromDate" class="form-control"
-                                                style="width: 60%;" [max]="mainService.getToday()">
+                                                [max]="mainService.getToday()">
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <input type="date" formControlName="toDate"
                                                 [min]="this.searchForm.controls['fromDate'].value"
                                                 (keypress)="mainService.BlockFuture()" class="form-control"
-                                                style="width: 60%; margin-left: -40%;">
+                                                >
                                         </div>
                                         <!-- <button type="button" (click)="addModal()" class="btn btn-theme" style="margin-left: 19%;height: 8%; width: 14%;">Add Vendor</button> -->
+                                        <button type="button" class="btn btn-theme Go_btn" style="height: 8%;"
+                                                    (click)="searchValue()">Search</button>
+                                        <button type="button" class="btn btn-theme Go_btn"(click)="reset()" style="
+                                                    height: 8%;">Reset
+                    
+                                        </button>
                                         <button type="button" (click)="exportCSV()" class="btn btn-theme"
-                                            style="margin-left: -15%;height: 8%; width: 12%;">Export csv</button>
-                                        <button type="button" class="btn btn-theme Go_btn ml-2" style="margin-left: 1%;
-                                                    height: 8%;    width: 12%;" [routerLink]="['/add-vendor']">Add
+                                            style="height: 8%;">Export csv</button>
+                                        <button type="button" class="btn btn-theme Go_btn" style="
+                                                    height: 8%;" [routerLink]="['/add-vendor']">Add
                                             Vendor
                                         </button>
                                     </div>

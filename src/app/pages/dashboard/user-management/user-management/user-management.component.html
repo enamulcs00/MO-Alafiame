@@ -305,7 +305,7 @@
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="EditCustomerNumber"
                                                                     (keypress)="mainService.NumOnly($event)"
-                                                                    maxlength="10">
+                                                                    maxlength="18" minlength="8" >
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="editUserForm.get('EditCustomerNumber').hasError('required') && (editUserForm.get('EditCustomerNumber').dirty || editUserForm.get('EditCustomerNumber').touched)">
@@ -313,6 +313,10 @@
                                                                     </span>
                                                                     <span
                                                                         *ngIf="editUserForm.get('EditCustomerNumber').hasError('pattern')">
+                                                                        *Please enter valid number.
+                                                                    </span>
+                                                                    <span
+                                                                        *ngIf="editUserForm.get('EditCustomerNumber').hasError('minlength') ||editUserForm.get('EditCustomerNumber').hasError('maxlength') ">
                                                                         *Please enter valid number.
                                                                     </span>
                                                                 </div>
@@ -440,7 +444,7 @@
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="Customernumber"
                                                                     (keypress)="mainService.NumOnly($event)"
-                                                                    maxlength="10">
+                                                                    maxlength="18">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="addUserForm.get('Customernumber').hasError('required') && (addUserForm.get('Customernumber').dirty || addUserForm.get('Customernumber').touched)">
@@ -448,6 +452,10 @@
                                                                     </span>
                                                                     <span
                                                                         *ngIf="addUserForm.get('Customernumber').hasError('pattern')">
+                                                                        *Please enter valid number.
+                                                                    </span>
+                                                                    <span
+                                                                        *ngIf="addUserForm.get('Customernumber').hasError('minlength')||addUserForm.get('Customernumber').hasError('maxlength')">
                                                                         *Please enter valid number.
                                                                     </span>
                                                                 </div>
@@ -796,7 +804,7 @@
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
                                                                     (keypress)="mainService.NumOnly($event)"
-                                                                    maxlength="15">
+                                                                    maxlength="18" minlength="8">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="editCorporateForm.get('number').hasError('required') && (editCorporateForm.get('number').dirty || editCorporateForm.get('number').touched)">
@@ -804,6 +812,10 @@
                                                                     </span>
                                                                     <span
                                                                         *ngIf="editCorporateForm.get('number').hasError('pattern')">
+                                                                        *Please enter valid number.
+                                                                    </span>
+                                                                    <span
+                                                                        *ngIf="editCorporateForm.get('number').hasError('maxlength')||editCorporateForm.get('number').hasError('minlength')">
                                                                         *Please enter valid number.
                                                                     </span>
                                                                 </div>
@@ -956,7 +968,7 @@
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
                                                                     (keypress)="mainService.NumOnly($event)"
-                                                                    maxlength="10" minlength="10">
+                                                                    maxlength="18" minlength="8">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="addCorporateForm.get('number').hasError('required') && (addCorporateForm.get('number').dirty || addCorporateForm.get('number').touched)">
@@ -964,6 +976,10 @@
                                                                     </span>
                                                                     <span
                                                                         *ngIf="addCorporateForm.get('number').hasError('pattern')">
+                                                                        *Please enter valid number.
+                                                                    </span>
+                                                                    <span
+                                                                        *ngIf="addCorporateForm.get('number').hasError('minlength')||addCorporateForm.get('number').hasError('maxlength')">
                                                                         *Please enter valid number.
                                                                     </span>
                                                                 </div>
@@ -1595,7 +1611,7 @@
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
                                                                     (keypress)="mainService.NumOnly($event)"
-                                                                    maxlength="15">
+                                                                    maxlength="18" minlength="8">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="editPractionerForm.get('number').hasError('required') && (editPractionerForm.get('number').dirty || editPractionerForm.get('number').touched)">
@@ -1603,6 +1619,10 @@
                                                                     </span>
                                                                     <span
                                                                         *ngIf="editPractionerForm.get('number').hasError('pattern')">
+                                                                        *Please enter valid number.
+                                                                    </span>
+                                                                    <span
+                                                                        *ngIf="editPractionerForm.get('number').hasError('maxlength')||editPractionerForm.get('number').hasError('minlength')">
                                                                         *Please enter valid number.
                                                                     </span>
                                                                 </div>
@@ -1731,7 +1751,7 @@
                                                                 <input type="tel" class="form-control"
                                                                     placeholder="Mobile Number" formControlName="number"
                                                                     (keypress)="mainService.NumOnly($event)"
-                                                                    maxlength="15">
+                                                                    maxlength="18" minlength="8">
                                                                 <div class="text-danger">
                                                                     <span
                                                                         *ngIf="addPractionerForm.get('number').hasError('required') && (addPractionerForm.get('number').dirty || addPractionerForm.get('number').touched)">
@@ -1739,6 +1759,10 @@
                                                                     </span>
                                                                     <span
                                                                         *ngIf="addPractionerForm.get('number').hasError('pattern')">
+                                                                        *Please enter valid number.
+                                                                    </span>
+                                                                    <span
+                                                                        *ngIf="addPractionerForm.get('number').hasError('maxlength')||addPractionerForm.get('number').hasError('minlength')">
                                                                         *Please enter valid number.
                                                                     </span>
                                                                 </div>

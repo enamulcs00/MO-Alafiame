@@ -33,7 +33,7 @@ getVendorList(){
       'page': this.page,
       'limit': this.limit
     }
-    this.mainService.postApi('admin/vendorList', formdata,1).subscribe(res => {
+    this.mainService.postApi('admin/vendorList', formdata,1).subscribe((res:any) => {
       if (res['responseCode'] == 200) {
         this.vendorList=res.result.docs
         console.log(this.vendorList)
@@ -41,13 +41,16 @@ getVendorList(){
         this.total=res.result.total
        console.log(res)
       } else {
-        this.mainService.errorToast(res.message)
+        this.mainService.errorToast(res.responseMessage)
       }
     },(err)=>{
-      this.mainService.errorToast(err.message)
+      this.mainService.errorToast(err.responseMessage)
     })
   }
-
+  reset(){
+    this.searchForm.reset()
+    this.getVendorList()
+  }
   searchValue(){
     let formdata ={
       'search':this.searchForm.controls.search.value,
@@ -56,18 +59,18 @@ getVendorList(){
       'page': this.page,
       'limit': this.limit
     }
-    this.mainService.postApi('api/v1/admin/vendorList', formdata,1).subscribe(res => {
+    this.mainService.postApi('admin/vendorList', formdata,1).subscribe((res:any) => {
       if (res['responseCode'] == 200) {
         this.vendorList=res.result.docs
         this.total=res.result.total
        console.log(res)
       } else {
         this.vendorList=[]
-        this.mainService.errorToast(res.message)
+        this.mainService.errorToast(res.responseMessage)
       }
     },(err)=>{
       this.vendorList=[]
-      this.mainService.errorToast(err.message)
+      this.mainService.errorToast('Something went wrong')
     })
   }
 
