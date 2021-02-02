@@ -32,6 +32,7 @@ export class EditVendorComponent implements OnInit {
       'staticContentManagement':new FormControl(''),
       'vendorManagement':new FormControl(''),
       'transactionManagement':new FormControl(''),
+      'referralmanagement':new FormControl('')
 
     });
   }
@@ -54,6 +55,7 @@ this.mainservice.getApi(`admin/viewVendor/${this.Id}`,1).subscribe((res:any)=>{
       'notificationManagement':res.result.permissions.notificationManagement,
       'staticContentManagement':res.result.permissions.staticContentManagement,
       'transactionManagement':res.result.permissions.transactionManagement,
+      'referralmanagement':res.result.permissions.referralManagement
     })
   }else{
     this.mainservice.hideSpinner()
@@ -81,6 +83,7 @@ this.mainservice.getApi(`admin/viewVendor/${this.Id}`,1).subscribe((res:any)=>{
       'notificationManagement':this.addVendorForm.value.notificationManagement,
       'staticContentManagement':this.addVendorForm.value.staticContentManagement,
       'transactionManagement':this.addVendorForm.value.transactionManagement,
+      'referralManagement': this.addVendorForm.value.referralmanagement
     }
     this.mainservice.postApi('admin/editVendor',data,1).subscribe((res:any)=>{
       if (res.responseCode == 200){

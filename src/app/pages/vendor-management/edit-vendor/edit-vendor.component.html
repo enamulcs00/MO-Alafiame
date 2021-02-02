@@ -235,11 +235,27 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row mb-1" style="padding-left: 10%;">
+                            <div class="col-md-9">
+                                <p>
+                                    Referral Management
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check form-check-flat">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox"
+                                            formControlName='referralmanagement'>
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="text-center mt40 mb40">
                     <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/vendor-management">Back</button>
-                    <button class="btn btn-large  max-WT-150 btn-theme" [disabled]="!addVendorForm.valid" (click)="editVendor()">Edit</button>
+                    <button class="btn btn-large  max-WT-150 btn-theme" (click)="editVendor()">Edit</button>
                 </div>
             </form>
         </div>

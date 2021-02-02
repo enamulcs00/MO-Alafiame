@@ -27,6 +27,8 @@ export class ViewVendorComponent implements OnInit {
   getVender(){
     this.mainservice.showSpinner()
   this.mainservice.getApi(`admin/viewVendor/${this.Id}`,1).subscribe((res:any)=>{
+console.log('View vendor',res)
+
     if (res.responseCode == 200){
       this.mainservice.hideSpinner()
       this.venderDetail=res.result
@@ -61,6 +63,9 @@ export class ViewVendorComponent implements OnInit {
         }
         else if (i== 'staticContentManagement') {
           this.permissionarr.push('Static Content Management')
+        }
+        else if (i== 'referralManagement') {
+          this.permissionarr.push('Referral Management')
         }
       }
 

@@ -28,6 +28,7 @@ export class AddVendorComponent implements OnInit {
       'staticContentManagement':new FormControl(''),
       'vendorManagement':new FormControl(''),
       'transactionManagement':new FormControl(''),
+      'referralmanagement':new FormControl('')
     });
   }
 
@@ -45,6 +46,7 @@ export class AddVendorComponent implements OnInit {
     'notificationManagement':this.addVendorForm.value.notificationManagement,
     'staticContentManagement':this.addVendorForm.value.staticContentManagement,
     'transactionManagement':this.addVendorForm.value.transactionManagement,
+    'referralManagement': this.addVendorForm.value.referralmanagement 
   }
   this.mainservice.postApi('admin/addVendor',data,1).subscribe((res:any)=>{
     if (res.responseCode == 200){
