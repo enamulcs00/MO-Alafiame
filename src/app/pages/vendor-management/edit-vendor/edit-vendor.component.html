@@ -62,13 +62,16 @@
                             <div class="form-group ">
                                 <input type="tel" class="form-control" placeholder="Mobile Number"
                                     formControlName="Customernumber" (keypress)="mainservice.NumOnly($event)"
-                                    maxlength="10">
+                                    maxlength="18" minlength="8">
                                 <div class="text-danger">
                                     <span
                                         *ngIf="addVendorForm.get('Customernumber').hasError('required') && (addVendorForm.get('Customernumber').dirty || addVendorForm.get('Customernumber').touched)">
                                         *Please enter your number.
                                     </span>
                                     <span *ngIf="addVendorForm.get('Customernumber').hasError('pattern')">
+                                        *Please enter valid number.
+                                    </span>
+                                    <span *ngIf="addVendorForm.get('Customernumber').hasError('maxlength')||addVendorForm.get('Customernumber').hasError('minlength')">
                                         *Please enter valid number.
                                     </span>
                                 </div>

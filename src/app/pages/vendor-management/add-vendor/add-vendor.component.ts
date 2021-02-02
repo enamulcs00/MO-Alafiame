@@ -18,7 +18,7 @@ export class AddVendorComponent implements OnInit {
     this.addVendorForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
-      'Customernumber': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
+      'Customernumber': new FormControl('', [Validators.required,Validators.pattern(/^[^0][0-9]*$/),Validators.maxLength(18),Validators.minLength(8)]),
       'password':new FormControl('', [Validators.required,Validators.pattern(/^(?=^.{8,16}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-])(?!.*\s).*$/)]),
       'dashboardManagement':new FormControl(''),
       'productManagement':new FormControl(''),
