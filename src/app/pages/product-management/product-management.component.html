@@ -194,37 +194,46 @@
 <!-- end block  user-management modal -->
 <!--Add categogy Modal-->
 <div class="modal fade global-modal reset-modal" id="addSub">
-  <div class="modal-dialog max-WT-500">
+  <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header d-block text-center modal-header-custm">
-              <h5 class="modal-title d-inline-block">Add Category</h5>
+          <div class="modal-header">
+              <h5 class="modal-title">Add Category</h5>
           </div>
           <div class="modal-inner-content">
               <div class="modal-body">
                   <form [formGroup]="addSubForm">
-                          <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+                          <div class="row">
                               <div class="col">
                                   <div class="row">
-                                      <label class="col-md-4">Category name</label>
+                                      <label class="col-md-2">Name</label>
                                       <span class="col-md-1">:</span>
-                                      <input type="text" class="form-control col-md-5" formControlName="categoryName">
-                                      <span class="text text-danger" *ngIf="addSubForm.controls.categoryName.touched && addSubForm.controls.categoryName.invalid && addSubForm.controls.categoryName.errors.required">*Category Name is Required</span>
-                                  </div>
+                                      <div class=" col-md-8">
+                                        <input type="text" class="form-control" formControlName="categoryName">
+                                        <div class="text-danger">
+                                          <span class="text text-danger" *ngIf="addSubForm.controls.categoryName.touched && addSubForm.controls.categoryName.invalid && addSubForm.controls.categoryName.errors.required">*Category Name is Required</span>
+  
+                                        </div>
+                                      </div>
+                                      
+                                  </div><br>
                                   <div class="row">
-                                      <label class="col-md-4">Category image</label>
-                                      <span class="col-md-1">:</span>
-                                      <label class="col-md-4" for="fileInput">
+                                      <label class="col-md-2">Image</label>
+                                      <span class="col-md-2">:</span>
+                                      <label class="col-md-4" for="fileInput" class="hoverable">
                                           <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
-                                          <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
-                                          <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="visibility:hidden;">
+                                          <div class="hover-text">
+                                            <em class="fa fa-camera"></em>
+                                          </div>
+                                          
+                                          <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" class="custom-file-input">
                                            </label>
                                   </div>
                               </div>
                           </div>
-                          <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
-                              <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                          <div class="row" style="padding-left: 20%; margin-top: 5%;">
+                              <button type="button" class="btn btn-theme" style="width: 12%;"
                               data-dismiss="modal">Back</button>
-                              <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                              <button type="button" class="btn btn-theme" style="width: 12%;"
                                   (click)="addProductCategory()" [disabled]=addSubForm.invalid>Save</button>
                           </div>
                   </form>

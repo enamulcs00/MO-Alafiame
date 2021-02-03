@@ -40,11 +40,35 @@
                                         <tr *ngIf="result==0">
                                           <td class="table-no-record" colspan="9">No Record Found</td>
                                       </tr>
+                                      <tr>
+                                        <td>Home Content</td>
+                                        <td></td>
+                                        <td>
+                                          <button class="btn btn-large btn-theme"
+                                          style="color: black;" type="button" [routerLink]="['/home-section']">View</button>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>Practioner Content</td>
+                                        <td></td>
+                                        <td>
+                                          <button class="btn btn-large btn-theme"
+                                          style="color: black;" type="button" [routerLink]="['/practitioner-management']">View</button>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>Login Screen Content</td>
+                                        <td></td>
+                                        <td>
+                                          <button class="btn btn-large btn-theme"
+                                          style="color: black;" type="button" [routerLink]="['/login-screen-content']">View</button>
+                                        </td>
+                                      </tr>
                                     </tbody>
                                 </table>
                             </div>
 
-                            <div class="input-group mt-1" style="width: 91%">
+                            <!-- <div class="input-group mt-1" style="width: 91%">
                               <div class="input-group-prepend">
                                 <span class="input-group-text bg-white">Home Content</span>
                               </div>
@@ -70,7 +94,7 @@
                               <div class="input-group-append">
                                 <button class="btn btn-theme" type="button" id="button-addon2"[routerLink]="['/login-screen-content']">View</button>
                               </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

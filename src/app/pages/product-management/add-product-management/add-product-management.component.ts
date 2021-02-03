@@ -117,7 +117,7 @@ export class AddProductManagementComponent implements OnInit {
           this.categoryList= res.result.docs;
           this.total = res.result.total;
           this.mainService.hideSpinner();
-          this.mainService.successToast(res.responseMessage)
+         // this.mainService.successToast(res.responseMessage)
            } else {
           this.mainService.hideSpinner();
           this.mainService.errorToast(res.responseMessage)
