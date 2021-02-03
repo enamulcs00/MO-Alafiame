@@ -97,7 +97,6 @@ export class HomeBannerEditComponent implements OnInit {
           this.profile = this.bannerFormValues.image
           this.EditBannerForm.patchValue({
             'title': this.bannerFormValues.title,
-
             'description': this.bannerFormValues.description
           });
          } else {

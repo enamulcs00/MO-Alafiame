@@ -111,10 +111,9 @@ export class ExploreProductEditComponent implements OnInit {
                    this.profile.push(event.target.result);
 
                 }
-
                 reader.readAsDataURL(event.target.files[i]);
-
         }
+        console.log('Profiel size',this.profile.length)
     }
   }
   removeImage(indexTodelete:number){

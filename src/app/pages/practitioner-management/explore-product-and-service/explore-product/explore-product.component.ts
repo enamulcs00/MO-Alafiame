@@ -32,6 +32,7 @@ export class ExploreProductComponent implements OnInit {
   }
   else{
     this.service.errorToast(res.responseMessage);
+    this.totalItems=0
   }
   },err=>{
     this.service.hideSpinner()
