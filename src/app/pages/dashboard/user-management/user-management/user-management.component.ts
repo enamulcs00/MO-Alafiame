@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
+import { ExportToCsv } from 'export-to-csv';
 declare var $: any;
 
 @Component({
@@ -1082,59 +1083,143 @@ this.mainService.successToast(res.responseMessage)
 
   //=============================== practioner all end ========================//
   // ================================ export csv start ================================//
+Exportcorporate(){
+  this.mainService.showSpinner()
+    setTimeout( r => {
+      this.mainService.hideSpinner()
+    },3000)
+    let Arr = [];
+    this.practionerData.forEach((element,ind) => {
+      let obj ={}
+      obj = {
+      Index:ind+1,
+      Name:element.name,
+      DOB:String(element.dateOfBirth).slice(0,10),
+      Email:element.email,
+      Contact:element.mobileNumber,
+      Company:element.company
+      };
+      Arr.push(obj)
+          });
+          const options = { 
+            fieldSeparator:' ',
+            quoteStrings:'',
+            decimalSeparator:'',
+            showLabels:true, 
+            showTitle:true,
+            title: 'Corporate-management',
+            useTextFile:false,
+            useBom:true,
+            useKeysAsHeaders:true,
+          };
+          const csvExporter = new ExportToCsv(options);
+          csvExporter.generateCsv(Arr);
+}
+
+ExportCSV(){
+  this.mainService.showSpinner()
+    setTimeout( r => {
+      this.mainService.hideSpinner()
+    },3000)
+    let Arr = [];
+    this.practionerData.forEach((element,ind) => {
+      let obj ={}
+      obj = {
+      Index:ind+1,
+      Name:element.name,
+      DOB:String(element.dateOfBirth).slice(0,10),
+      Email:element.email,
+      Contact:element.mobileNumber,
+      
+      };
+      Arr.push(obj)
+          });
+          const options = { 
+            fieldSeparator:' ',
+            quoteStrings:'',
+            decimalSeparator:'',
+            showLabels:true, 
+            showTitle:true,
+            title: 'Practioner-management',
+            useTextFile:false,
+            useBom:true,
+            useKeysAsHeaders:true,
+          };
+          const csvExporter = new ExportToCsv(options);
+          csvExporter.generateCsv(Arr);
+}
+
+
   exportCSV() {
+    this.mainService.showSpinner()
+    setTimeout( r => {
+      this.mainService.hideSpinner()
+    },3000)
+
     if(this.currTab=='Customer'){
       let dataArr = [];
-     dataArr.push({
-        sno: "S.No.",
-        Name: "Name",
-        DOB: "D.O.B",
-        Email:"Email",
-        Contact:"Contact Number"
+       this.customerData.forEach((element,ind) => {
+      let obj ={}
+obj = {
+Index:ind+1,
+Name:element.name,
+DOB:String(element.dateOfBirth).slice(0,10),
+Email:element.email,
+Contact:element.mobileNumber
+}
+dataArr.push(obj)
+        
     });
-
-    this.customerData.forEach((element,ind) => {
-        dataArr.push({
-            sno:ind+1,
-            Name:element.name?element.name:'--',
-            DOB:element.dateOfBirth?element.dateOfBirth:'--',
-            Email:element.email?element.email:'--',
-            Contact:element.mobileNumber?element.mobileNumber:'--',
-        })
-    })
-    new ngxCsv(dataArr, 'Customer_management');
+    const options = { 
+      fieldSeparator:' ',
+      quoteStrings:'',
+      decimalSeparator:'',
+      showLabels:true, 
+      showTitle:true,
+      title: 'Customer-management',
+      useTextFile:false,
+      useBom:true,
+      useKeysAsHeaders:true,
+    };
+    const csvExporter = new ExportToCsv(options);
+    csvExporter.generateCsv(dataArr);
     }
     else if(this.currTab=='Corporate'){
       let dataArr = [];
-     dataArr.push({
-        sno: "S.No.",
-        Name: "Name",
-        DOB: "D.O.B",
-        Email:"Email",
-        Contact:"Contact Number",
-        Company:"Company Name",
-    });
-
     this.practionerData.forEach((element,ind) => {
-        dataArr.push({
-            sno:ind+1,
-            Name:element.name?element.name:'--',
-            DOB:element.dateOfBirth?element.dateOfBirth:'--',
-            Email:element.email?element.email:'--',
-            Contact:element.mobileNumber?element.mobileNumber:'--',
-            Company:element.company?element.company:'--',
-        })
-    })
-    new ngxCsv(dataArr, 'Corporate Customer_management');
+      let obj ={}
+      obj = {
+      Index:ind+1,
+      Name:element.name,
+      DOB:String(element.dateOfBirth).slice(0,10),
+      Email:element.email,
+      Contact:element.mobileNumber,
+      Company:element.company
+      }
+      dataArr.push(obj)
+          });
+          const options = { 
+            fieldSeparator:' ',
+            quoteStrings:'',
+            decimalSeparator:'',
+            showLabels:true, 
+            showTitle:true,
+            title: 'Corporate-management',
+            useTextFile:false,
+            useBom:true,
+            useKeysAsHeaders:true,
+          };
+          const csvExporter = new ExportToCsv(options);
+          csvExporter.generateCsv(dataArr);
     }
     else if(this.currTab=='Practioner'){
         let dataArr = [];
        dataArr.push({
-          sno: "S.No.",
-          Name: "Name",
-          DOB: "D.O.B",
-          Email:"Email",
-          Contact:"Contact Number"
+          sno: '',
+          Name: '',
+          DOB: '',
+          Email:'',
+          Contact:''
       });
 
       this.customerData.forEach((element,ind) => {
