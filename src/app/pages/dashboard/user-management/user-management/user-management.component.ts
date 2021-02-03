@@ -1148,7 +1148,41 @@ ExportCSV(){
           const csvExporter = new ExportToCsv(options);
           csvExporter.generateCsv(Arr);
 }
-
+exportCompanyCSV(){
+  this.mainService.showSpinner()
+    setTimeout( r => {
+      this.mainService.hideSpinner()
+    },3000)
+    let Arr = [];
+    this.practionerData.forEach((element,ind) => {
+      let obj ={}
+      obj = {
+      Index:ind+1,
+      Name:element.name,
+      CreatedOn:String(element.createdAt).slice(0,10),
+      UserLimit:element.userLimit,
+      Service:element.service,
+      CompanyCode:element.companyCode
+    
+            
+      
+      };
+      Arr.push(obj)
+          });
+          const options = { 
+            fieldSeparator:' ',
+            quoteStrings:'',
+            decimalSeparator:'',
+            showLabels:true, 
+            showTitle:true,
+            title: 'Company-management',
+            useTextFile:false,
+            useBom:true,
+            useKeysAsHeaders:true,
+          };
+          const csvExporter = new ExportToCsv(options);
+          csvExporter.generateCsv(Arr);
+}
 
   exportCSV() {
     this.mainService.showSpinner()
@@ -1236,30 +1270,30 @@ dataArr.push(obj)
 }
 
   // export company csv
-  exportCompanyCSV(){
-    let dataArr = [];
-     dataArr.push({
-        sno: "S.No.",
-        Name: "Name",
-        UserLimit: "UserLimit",
-        Service: "Service",
-        CompanyCode:"CompanyCode",
-        AddedOn:"AddedOn",
-    });
+  // exportCompanyCSV(){
+  //   let dataArr = [];
+  //    dataArr.push({
+  //       sno: "S.No.",
+  //       Name: "Name",
+  //       UserLimit: "UserLimit",
+  //       Service: "Service",
+  //       CompanyCode:"CompanyCode",
+  //       AddedOn:"AddedOn",
+  //   });
 
-    this.companyData.forEach((element,ind) => {
-        dataArr.push({
-            sno:ind+1,
-            Name:element.name?element.name:'--',
-            UserLimit:element.userLimit?element.userLimit:'--',
-            Service:element.service?element.service:'--',
-            CompanyCode:element.companyCode?element.companyCode:'--',
-            AddedOn:element.createdAt?element.createdAt.slice(0, 10):'--',
-        })
-    })
-    new ngxCsv(dataArr, 'Corporate Company_Management');
+  //   this.companyData.forEach((element,ind) => {
+  //       dataArr.push({
+  //           sno:ind+1,
+  //           Name:element.name?element.name:'--',
+  //           UserLimit:element.userLimit?element.userLimit:'--',
+  //           Service:element.service?element.service:'--',
+  //           CompanyCode:element.companyCode?element.companyCode:'--',
+  //           AddedOn:element.createdAt?element.createdAt.slice(0, 10):'--',
+  //       })
+  //   })
+  //   new ngxCsv(dataArr, 'Corporate Company_Management');
 
-  }
+  // }
   // ================================ export csv end ================================//
 
   //==========================serach========================================//
