@@ -46,8 +46,8 @@
                                 <div class="tab-pane1">
                                     <div class="sec_head_new sec_head_new_after">
                                         <form [formGroup]="searchForm">
-                                            <div class="row">
-                                                <div class="col-md-2">
+                                            <div class="row     align-items-center">
+                                                <div class="col-md-3 pr-0">
                                                     <div class="filter_search mb20 width100">
                                                         <div class="input-group filter_search_group">
                                                             <input type="text" class="form-control overflow-text"
@@ -61,26 +61,23 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <input type="date" formControlName="fromDate" class="form-control"
-                                                        style="width: 60%;" [max]="mainService.getToday()">
+                                                <div class="col-md-2 pr-0">
+                                                    <input type="date" formControlName="fromDate" class="form-control mb20"
+                                                        [max]="mainService.getToday()">
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2 pr-0">
                                                     <input type="date" formControlName="toDate"
                                                         [min]="this.searchForm.controls['fromDate'].value"
-                                                        (keypress)="mainService.BlockFuture()" class="form-control"
-                                                        style="width: 60%; margin-left: -40%;">
+                                                        (keypress)="mainService.BlockFuture()" class="form-control mb20"
+                                                        >
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="text-center admin-btn">
-                                                        <button type="button" class="btn  btn-theme Go_btn" style="margin-left: -36%;
-                                                                min-width: 50px;" (click)="search()">Go</button>
-                                                        <button type="button" class="btn  btn-theme ml-2 Go_btn"
-                                                            style="min-width: 60px;" (click)="reset()">Reset</button>
-                                                        <button type="button" class="btn btn-theme"
-                                                            style="margin-left: 25%;" (click)="exportCSV()">Export
+                                                <div class="col-md-5">
+                                                    <div class="text-center admin-btn mb20">
+                                                        <button type="button" class="btn  btn-theme Go_btn"  (click)="search()">Go</button>
+                                                        <button type="button" class="btn  btn-theme  " (click)="reset()">Reset</button>
+                                                        <button type="button" class="btn btn-theme" (click)="exportCSV()">Export
                                                             csv</button>
-                                                        <button type="button" class="btn btn-theme Go_btn ml-2"
+                                                        <button type="button" class="btn btn-theme  "
                                                             (click)="addUser()">Add new
                                                         </button>
                                                     </div>
@@ -153,15 +150,16 @@
                             </div>
                             <!-- customer view start -->
                             <div *ngIf="customerUserValue==false">
-                                <div class="page_title_block">
-                                    <h1 class="page_title">View Customer</h1>
-                                </div>
+                                
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+                                        <div class="page_title_block pl-0 pt-0">
+                                            <h1 class="page_title">View Customer</h1>
+                                        </div>
                                         <div class="mb40">
 
-                                            <div class="add-store-block input-style view-label-align"  style="margin-left: 25%;">
-                                                <div class="form-group row align-items-baseline" style="margin-left: -50%;margin-bottom: 5%;">
+                                            <div class="add-store-block input-style view-label-align" >
+                                                <div class="form-group row align-items-baseline" >
                                                     <div class="col-md-12" style="text-align: center">
                                                         <img alt=""
                                                             src="{{viewCustomer?.profilePic || 'assets/img/profile-img.jpg' }}"
@@ -212,7 +210,7 @@
                                             </div>
                                             <div class="text-center mt40 mb40">
 
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150 btn-secondary"
                                                     (click)="changeValue()">Back</button>
                                             </div>
                                         </div>
@@ -222,11 +220,12 @@
                             <!-- customer view end -->
                             <!-- customer edit start -->
                             <div *ngIf="customerUserEditValue==false">
-                                <div class="page_title_block">
-                                    <h1 class="page_title">Edit Customer</h1>
-                                </div>
+                               
                                <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+                                        <div class="page_title_block pl-0 pt-0">
+                                            <h1 class="page_title">Edit Customer</h1>
+                                        </div>
                                         <div class="  mb40">
                                             <div class="add-store-block input-style mb20 mt20 ">
                                                 <form [formGroup]="editUserForm" #f="ngForm">
@@ -240,7 +239,7 @@
                                                                     (change)="ValidateFileUpload($event)"
                                                                     >
 
-                                        <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
+                                        <em class="fa fa-camera"></em>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -348,9 +347,9 @@
                                                 </form>
                                             </div>
                                             <div class="text-center mt40 mb40">
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150 btn-secondary"
                                                     (click)="changeValue()">Back</button>
-                                                    <button class="btn btn-large  max-WT-150 btn-theme"
+                                                    <button class="btn btn-large ml-2  max-WT-150 btn-primary"
                                                     [disabled]="!editUserForm.valid"
                                                     (click)="UpdateUser()">Save</button>
                                             </div>
@@ -361,12 +360,13 @@
                             <!-- customer edit end -->
                             <!-- customer add start -->
                             <div *ngIf="customerUserAddValue==false">
-                                <div class="page_title_block">
-                                    <h1 class="page_title">Add Customer</h1>
-                                </div>
+                            
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
-                                        <div class="  mb40">
+                                        <div class="page_title_block pl-0 pt-0">
+                                            <h1 class="page_title">Add Customer</h1>
+                                        </div>
+                                        <div class="mb40">
                                             <div class="add-store-block input-style mb20 mt20 ">
                                                 <form [formGroup]="addUserForm" #f="ngForm">
                                                     <div class="user-profile">
@@ -379,7 +379,7 @@
                                                                     (change)="ValidateFileUpload($event)"
                                                                     maxlength="56">
                                                                 <em class="fa fa-camera"
-                                                                    style="color: #86559f!important;font-size: 12px"></em>
+                                                                    ></em>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -512,9 +512,9 @@
                                                 </form>
                                             </div>
                                             <div class="text-center mt40 mb40">
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150 btn-secondary"
                                                     (click)="changeValue()">Back</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150 btn-primary ml-2"
                                                     [disabled]="!addUserForm.valid"
                                                     (click)="addUserDetail()">Add</button>
 
@@ -533,8 +533,8 @@
                                 <div class="tab-pane1">
                                     <div class="sec_head_new sec_head_new_after">
                                         <form [formGroup]="searchForm">
-                                            <div class="row">
-                                                <div class="col-md-2">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3 pr-0">
                                                     <div class="filter_search mb20 width100">
                                                         <div class="input-group filter_search_group">
                                                             <input type="text" class="form-control overflow-text"
@@ -548,40 +548,32 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <input type="date" formControlName="fromDate" class="form-control"
-                                                        style="width: 60%;" [max]="mainService.getToday()">
+                                                <div class="col-md-2 pr-0">
+                                                    <input type="date" formControlName="fromDate" class="form-control mb20" [max]="mainService.getToday()">
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2 pr-0">
                                                     <input type="date" formControlName="toDate"
                                                         [min]="this.searchForm.controls['fromDate'].value"
-                                                        class="form-control" style="width: 60%; margin-left: -40%;">
+                                                        class="form-control mb20" >
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="text-center admin-btn">
-                                                        <button type="button" class="btn  btn-theme Go_btn" style="margin-left: -36%;
-                                                        min-width: 50px;" (click)="search()">Go</button>
-                                                        <button type="button" class="btn  btn-theme ml-2 Go_btn"
-                                                            style="min-width: 60px;" (click)="reset()">Reset</button>
-                                                        <button type="button" class="btn btn-theme"
-                                                            style="margin-right: 15%;" (click)="Exportcorporate()">Export
+                                                <div class="col-md-5">
+                                                    <div class="text-center admin-btn mb20">
+                                                        <button type="button" class="btn  btn-theme Go_btn"  (click)="search()">Go</button>
+                                                        <button type="button" class="btn  btn-theme  " (click)="reset()">Reset</button>
+                                                        <button type="button" class="btn btn-theme"(click)="exportCSV()">Export
                                                             csv</button>
-                                                        <button type="button" class="btn btn-theme"
-                                                            style="margin-right: 15%; min-width:45%"
-                                                            (click)="viewCompany()">View Companies
-                                                        </button>
+                                                       
 
                                                     </div>
                                                 </div>
-
                                             </div>
-                                            <div class="row"
-                                                style="display: flex; justify-content: flex-end; margin-left: 10%">
-                                                <div class="col-md-2">
-                                                    <button type="button" class="btn btn-theme Go_btn ml-2"
+                                            <div class="text-right">
+                                                <button type="button" class="btn btn-theme"
+                                                (click)="viewCompany()">View Companies
+                                            </button>
+                                                    <button type="button" class="btn btn-theme ml-2"
                                                         (click)="addCorporate()">Add new
                                                     </button>
-                                                </div>
                                             </div>
 
                                         </form>
@@ -652,15 +644,16 @@
                             </div>
                             <!-- corporate view start -->
                             <div *ngIf="corporateUserValue==false">
-                                <div class="page_title_block">
-                                    <h1 class="page_title">View Corporate</h1>
-                                </div>
+                             
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+                                        <div class="page_title_block pl-0 pt-0">
+                                            <h1 class="page_title">View Corporate</h1>
+                                        </div>
                                         <div class="mb40">
 
-                                            <div class="add-store-block input-style view-label-align"  style="margin-left: 25%;">
-                                                <div class="form-group row align-items-baseline"  style="margin-left: -50%;margin-bottom: 5%;">
+                                            <div class="add-store-block input-style view-label-align"  >
+                                                <div class="form-group row align-items-baseline"  >
                                                     <div class="col-md-12" style="text-align: center">
                                                         <img alt=""
                                                             src="{{viewCorporate?.profilePic || 'assets/img/profile-img.jpg' }}"
@@ -711,7 +704,7 @@
                                             </div>
                                             <div class="text-center mt40 mb40">
 
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150  btn-secondary"
                                                     (click)="changeCorporateValue()">Back</button>
                                             </div>
                                         </div>
@@ -721,11 +714,12 @@
                             <!-- corporate view end -->
                             <!-- corporate edit start -->
                             <div *ngIf="corporateUserEditValue==false">
-                                <div class="page_title_block">
-                                    <h1 class="page_title">Edit Corporate</h1>
-                                </div>
+                               
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+                                        <div class="page_title_block pl-0 pt-0">
+                                            <h1 class="page_title">Edit Corporate</h1>
+                                        </div>
                                         <div class="  mb40">
                                             <div class="add-store-block input-style mb20 mt20 ">
                                                 <form [formGroup]="editCorporateForm" #f="ngForm">
@@ -738,8 +732,7 @@
                                                                     accept="image/jpg,image/jpeg,image/png" id="image"
                                                                     (change)="ValidateFileUpload($event)"
                                                                     maxlength="56">
-                                                                <em class="fa fa-camera"
-                                                                    style="color: #86559f!important;font-size: 12px"></em>
+                                                                <em class="fa fa-camera"></em>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -870,9 +863,9 @@
                                                 </form>
                                             </div>
                                             <div class="text-center mt40 mb40">
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150 btn-secondary"
                                                     (click)="changeCorporateValue()">Back</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150 btn-primary ml-2"
                                                     [disabled] = "editCorporateForm.invalid"
                                                     (click)="UpdateCorporate()">Save</button>
 
@@ -885,11 +878,12 @@
 
                             <!-- corporate add start -->
                             <div *ngIf="corporateUserAddValue==false">
-                                <div class="page_title_block">
-                                    <h1 class="page_title">Add Corporate</h1>
-                                </div>
+                                
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+                                        <div class="page_title_block pt-0 pl-0">
+                                            <h1 class="page_title">Add Corporate</h1>
+                                        </div>
                                         <div class="  mb40">
                                             <div class="add-store-block input-style mb20 mt20 ">
                                                 <form [formGroup]="addCorporateForm" #f="ngForm">
@@ -902,8 +896,7 @@
                                                                     accept="image/jpg,image/jpeg,image/png" id="image"
                                                                     (change)="ValidateFileUpload($event)"
                                                                     maxlength="56">
-                                                                <em class="fa fa-camera"
-                                                                    style="color: #86559f!important;font-size: 12px"></em>
+                                                                <em class="fa fa-camera"></em>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -1058,9 +1051,9 @@
                                                 </form>
                                             </div>
                                             <div class="text-center mt40 mb40">
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150 btn-secondary"
                                                     (click)="changeCorporateValue()">Back</button>
-                                  <button class="btn btn-large  max-WT-150 btn-theme"[disabled]="addCorporateForm.invalid" (click)="addCorporateDetail()">Add</button>
+                                  <button class="btn btn-large  max-WT-150 btn-primary ml-2"[disabled]="addCorporateForm.invalid" (click)="addCorporateDetail()">Add</button>
 
                                             </div>
                                         </div>
@@ -1074,7 +1067,7 @@
                                     <div class="sec_head_new sec_head_new_after">
                                         <form [formGroup]="searchForm">
                                             <div class="row">
-                                                <div class="col-md-2">
+                                                <div class="col-md-3 pr-0">
                                                     <div class="filter_search mb20 width100">
                                                         <div class="input-group filter_search_group">
                                                             <input type="text" class="form-control overflow-text"
@@ -1088,40 +1081,33 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <input type="date" formControlName="fromDate" class="form-control"
-                                                        style="width: 60%;" [max]="mainService.getToday()">
+                                                <div class="col-md-2 pr-0">
+                                                    <input type="date" formControlName="fromDate" class="form-control mb20" [max]="mainService.getToday()">
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2 pr-0">
                                                     <input type="date" formControlName="toDate"
                                                         [min]="this.searchForm.controls['fromDate'].value"
-                                                        class="form-control" style="width: 60%; margin-left: -40%;">
+                                                        class="form-control mb20">
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="text-center admin-btn">
-                                                        <button type="button" class="btn  btn-theme Go_btn" style="margin-left: -36%;
-                                        min-width: 50px;" (click)="searchCompany()">Go</button>
-                                                        <button type="button" class="btn  btn-theme ml-2 Go_btn"
-                                                            style="min-width: 60px;" (click)="resetCompany()">Reset</button>
-                                                        <button type="button" class="btn btn-theme"
-                                                            style="margin-right: 15%;" (click)="exportCompanyCSV()">Export
+                                                <div class="col-md-5">
+                                                    <div class="text-center admin-btn  mb20">
+                                                        <button type="button" class="btn  btn-theme Go_btn"  (click)="searchCompany()">Go</button>
+                                                        <button type="button" class="btn  btn-theme "(click)="resetCompany()">Reset</button>
+                                                        <button type="button" class="btn btn-theme" (click)="exportCompanyCSV()">Export
                                                             csv</button>
-                                                        <button type="button" class="btn btn-theme"
-                                                            style="margin-right: 15%; min-width:45%"
-                                                            (click)="viewCompany()">View Companies
-                                                        </button>
+                                                        
 
                                                     </div>
                                                 </div>
 
                                             </div>
-                                            <div class="row"
-                                                style="display: flex; justify-content: flex-end; margin-left: 10%">
-                                                <div class="col-md-2">
-                                                    <button type="button" class="btn btn-theme Go_btn ml-2"
+                                            <div class="text-right">
+                                                <button type="button" class="btn btn-theme"
+                                                            (click)="viewCompany()">View Companies
+                                                        </button>
+                                                    <button type="button" class="btn btn-theme  ml-2"
                                                         (click)="addCorporate()">Add new
                                                     </button>
-                                                </div>
                                             </div>
 
                                         </form>
@@ -1230,16 +1216,17 @@
 
                             <!-- company view start -->
                             <div *ngIf="companyUserValue==false">
-                                    <div class="page_title_block">
-                                        <h1 class="page_title">View Company</h1>
-                                    </div>
+                                 
                                     <div class="content-section">
                                         <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+                                            <div class="page_title_block pl-0 pt-0">
+                                                <h1 class="page_title">View Company</h1>
+                                            </div>
                                             <div class="mb40">
 
-                                                <div class="add-store-block input-style view-label-align" style="margin-left: 25%">
+                                                <div class="add-store-block input-style view-label-align" >
 
-                                                    <div class="form-group row align-items-baseline"  style="margin-left: -50%;margin-bottom: 5%;">
+                                                    <div class="form-group row align-items-baseline"  >
                                                         <label class="col-md-4 textalignright ">Name <span>:</span></label>
                                                         <div class="col-md-8 textaligncenter">
                                                             <div class="form-group">
@@ -1273,7 +1260,7 @@
                                                 </div>
                                                 <div class="text-center mt40 mb40">
 
-                                                    <button class="btn btn-large  max-WT-150 btn-theme"
+                                                    <button class="btn btn-large  max-WT-150  btn-secondary"
                                                         (click)="changeCompanyValue()">Back</button>
                                                 </div>
                                             </div>
@@ -1283,13 +1270,14 @@
                             <!-- company view end -->
                              <!-- company edit start -->
                             <div *ngIf="companyUserEditValue==false">
-                                <div class="page_title_block">
-                                    <h1 class="page_title">Edit Company</h1>
-                                </div>
+                             
                                     <form [formGroup]="editCompanyForm">
                                      <div class="col" style="margin-top: 10%">
                                     <div class="content-section">
                                         <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+                                            <div class="page_title_block pl-0 pt-0">
+                                                <h1 class="page_title">Edit Company</h1>
+                                            </div>
                                             <div class="mb40">
 
                                                 <div class="add-store-block input-style view-label-align">
@@ -1333,9 +1321,9 @@
 
                                                 </div>
                                                 <div class="text-center mt40 mb40">
-                                        <button type="button" class="btn btn-theme"
+                                        <button type="button" class="btn btn-secondary"
                                          [disabled]="!editCompanyForm.valid" (click)="UpdateCompany()">Submit</button>
-                                        <button type="button" class="btn btn-theme"
+                                        <button type="button" class="btn btn-primary ml-2"
                                           (click)="changeCompanyValue()">Cancel</button>
 
                                                 </div>
@@ -1356,8 +1344,8 @@
                                 <div class="tab-pane1">
                                     <div class="sec_head_new sec_head_new_after">
                                         <form [formGroup]="searchForm">
-                                            <div class="row">
-                                                <div class="col-md-2">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-3 pr-0">
                                                     <div class="filter_search mb20 width100">
                                                         <div class="input-group filter_search_group">
                                                             <input type="text" class="form-control overflow-text"
@@ -1371,25 +1359,21 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <input type="date" formControlName="fromDate" class="form-control"
-                                                        style="width: 60%;" [max]="mainService.getToday()">
+                                                <div class="col-md-2 pr-0">
+                                                    <input type="date" formControlName="fromDate" class="form-control mb20" [max]="mainService.getToday()">
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2 pr-0">
                                                     <input type="date" formControlName="toDate"
                                                         [min]="this.searchForm.controls['fromDate'].value"
-                                                        class="form-control" style="width: 60%; margin-left: -40%;">
+                                                        class="form-control mb20" >
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="text-center admin-btn">
-                                                        <button type="button" class="btn  btn-theme Go_btn" style="margin-left: -36%;
-                                                        min-width: 50px;" (click)="search()">Go</button>
-                                                        <button type="button" class="btn  btn-theme ml-2 Go_btn"
-                                                            style="min-width: 50px;" (click)="reset()">Reset</button>
-                                                        <button type="button" class="btn btn-theme"
-                                                            style="margin-left: 25%;" (click)="ExportCSV()">Export
+                                                <div class="col-md-5">
+                                                    <div class="text-center admin-btn mb20">
+                                                        <button type="button" class="btn  btn-theme Go_btn"  (click)="search()">Go</button>
+                                                        <button type="button" class="btn  btn-theme " (click)="reset()">Reset</button>
+                                                        <button type="button" class="btn btn-theme" (click)="exportCSV()">Export
                                                             csv</button>
-                                                        <button type="button" class="btn btn-theme Go_btn ml-2"
+                                                        <button type="button" class="btn btn-theme "
                                                             (click)="addPractioner()">Add new
                                                         </button>
                                                     </div>
@@ -1459,15 +1443,16 @@
                             </div>
                             <!-- practioner view start -->
                             <div *ngIf="practionerUserValue==false">
-                                <div class="page_title_block">
-                                    <h1 class="page_title">View Practioner</h1>
-                                </div>
+                             
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+                                        <div class="page_title_block pl-0 pt-0">
+                                            <h1 class="page_title">View Practioner</h1>
+                                        </div>
                                         <div class="mb40">
 
-                                            <div class="add-store-block input-style view-label-align" style="margin-left: 25%;">
-                                                <div class="form-group row align-items-baseline" style="margin-left: -46%;margin-bottom: 5%;">
+                                            <div class="add-store-block input-style view-label-align">
+                                                <div class="form-group row align-items-baseline" >
                                                     <div class="col-md-12" style="text-align: center"  >
                                                         <img alt=""
                                                             src="{{viewPractionerDataa?.profilePic || 'assets/img/profile-img.jpg' }}"
@@ -1518,7 +1503,7 @@
                                             </div>
                                             <div class="text-center mt40 mb40">
 
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150 btn-secondary"
                                                     (click)="changePractionerValue()">Back</button>
                                             </div>
                                         </div>
@@ -1528,11 +1513,12 @@
                             <!-- practioner view end -->
                             <!-- practioner edit start -->
                             <div *ngIf="practionerUserEditValue==false">
-                                <div class="page_title_block">
-                                    <h1 class="page_title">Edit Practioner</h1>
-                                </div>
+                              
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+                                        <div class="page_title_block pt-0 pl-0">
+                                            <h1 class="page_title">Edit Practioner</h1>
+                                        </div>
                                         <div class="  mb40">
                                             <div class="add-store-block input-style mb20 mt20 ">
                                                 <form [formGroup]="editPractionerForm" #f="ngForm">
@@ -1545,8 +1531,7 @@
                                                                     accept="image/jpg,image/jpeg,image/png" id="image"
                                                                     (change)="ValidateFileUpload($event)"
                                                                     maxlength="56">
-                                                                <em class="fa fa-camera"
-                                                                    style="color: #86559f!important;font-size: 12px"></em>
+                                                                <em class="fa fa-camera"></em>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -1654,9 +1639,9 @@
                                                 </form>
                                             </div>
                                             <div class="text-center mt40 mb40">
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150 btn-secondary"
                                                     (click)="changePractionerValue()">Back</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150 btn-primary ml-2"
                                                     [disabled]="!editPractionerForm.valid"
                                                     (click)="UpdatePractioner()">Save</button>
 
@@ -1668,11 +1653,12 @@
                             <!-- practioner edit end -->
                             <!-- practioner add start -->
                             <div *ngIf="practionerUserAddValue==false">
-                                <div class="page_title_block">
-                                    <h1 class="page_title">Add Practioner</h1>
-                                </div>
+                            
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+                                        <div class="page_title_block pl-0 pt-0">
+                                            <h1 class="page_title">Add Practioner</h1>
+                                        </div>
                                         <div class="  mb40">
                                             <div class="add-store-block input-style mb20 mt20 ">
                                                 <form [formGroup]="addPractionerForm" #f="ngForm">
@@ -1685,8 +1671,7 @@
                                                                     accept="image/jpg,image/jpeg,image/png" id="image"
                                                                     (change)="ValidateFileUpload($event)"
                                                                     maxlength="56">
-                                                                <em class="fa fa-camera"
-                                                                    style="color: #86559f!important;font-size: 12px"></em>
+                                                                <em class="fa fa-camera"></em>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -1817,9 +1802,9 @@
                                                 </form>
                                             </div>
                                             <div class="text-center mt40 mb40">
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150  btn-secondary"
                                                 (click)="changeValue()">Back</button>
-                                                <button class="btn btn-large  max-WT-150 btn-theme"
+                                                <button class="btn btn-large  max-WT-150 btn-primary ml-2"
                                                     [disabled]="!addPractionerForm.valid"
                                                     (click)="addPractionerDetail()">Add</button>
 
@@ -1922,8 +1907,8 @@
                                 </p>
                                 <p *ngIf="this.currTab=='Corporate'">Are you sure you want to delete this corporate?</p>
                                 <div class="modal-btn-box">
-                                    <button type="submit" class="btn btn-theme" (click)="deleteUser()">Yes</button>
-                                    <button type="button" class="btn btn-danger btn-theme ml-2"
+                                    <button type="submit" class="btn btn-primary" (click)="deleteUser()">Yes</button>
+                                    <button type="button" class="btn btn-secondary ml-2"
                                         data-dismiss="modal">No</button>
                                 </div>
                             </div>
@@ -1951,8 +1936,8 @@
                                     <p >Are you sure you want to delete this company?</p>
 
                                     <div class="modal-btn-box">
-                                        <button type="submit" class="btn btn-theme" (click)="DeleteUser()">Yes</button>
-                                        <button type="button" class="btn btn-danger btn-theme ml-2"
+                                        <button type="submit" class="btn btn-primary" (click)="DeleteUser()">Yes</button>
+                                        <button type="button" class="btn btn-secondary ml-2"
                                             data-dismiss="modal">No</button>
                                     </div>
                                 </div>
@@ -1981,8 +1966,8 @@
                                 <p *ngIf="userIds.length == 1">Are you sure you want to delete this user?</p>
                                 <p *ngIf="userIds.length > 1">Are you sure you want to delete these users?</p>
                                 <div class="modal-btn-box">
-                                    <button type="submit" class="btn btn-theme">Yes</button>
-                                    <button type="button" class="btn btn-danger btn-theme ml-2"
+                                    <button type="submit" class="btn btn-primary">Yes</button>
+                                    <button type="button" class="btn btn-secondary ml-2"
                                         data-dismiss="modal">No</button>
                                 </div>
                             </div>
@@ -2021,8 +2006,8 @@
                                 <p *ngIf="this.status=='BLOCK' && this.currTab=='Practioner'">Are you sure you want to
                                     block this practioner?</p>
                                 <div class="modal-btn-box">
-                                    <button type="submit" class="btn btn-theme" (click)="blockUser()">Yes</button>
-                                    <button type="button" class="btn btn-danger btn-theme ml-2"
+                                    <button type="submit" class="btn btn-primary" (click)="blockUser()">Yes</button>
+                                    <button type="button" class="btn btn-secondary ml-2"
                                         data-dismiss="modal">No</button>
                                 </div>
                             </div>
@@ -2053,8 +2038,8 @@
                                         block this company?</p>
 
                                     <div class="modal-btn-box">
-                                        <button type="submit" class="btn btn-theme" (click)="BlockUser()">Yes</button>
-                                        <button type="button" class="btn btn-danger btn-theme ml-2"
+                                        <button type="submit" class="btn btn-primary" (click)="BlockUser()">Yes</button>
+                                        <button type="button" class="btn btn-secondary  ml-2"
                                             data-dismiss="modal">No</button>
                                     </div>
                                 </div>
@@ -2082,7 +2067,7 @@
                                 <p>Are you sure you want to Log Out?</p>
                                 <div class="modal-btn-box">
                                     <button type="submit" class="btn btn-theme" (click)="deleteUser()">Yes</button>
-                                    <button type="button" class="btn btn-danger btn-theme ml-2"
+                                    <button type="button" class="btn btn-secondary btn-theme ml-2"
                                         data-dismiss="modal">No</button>
                                 </div>
                             </div>
@@ -2112,7 +2097,7 @@
                                 <p *ngIf="this.currTab=='Corporate'">Are you sure you want to delete this corporate?</p>
                                 <div class="modal-btn-box">
                                     <button type="submit" class="btn btn-theme" (click)="deleteUser()">Yes</button>
-                                    <button type="button" class="btn btn-danger btn-theme ml-2"
+                                    <button type="button" class="btn btn-secondary btn-theme ml-2"
                                         data-dismiss="modal">No</button>
                                 </div>
                             </div>
@@ -2141,7 +2126,7 @@
                                 <p *ngIf="this.currTab=='Corporate'">Are you sure you want to delete this corporate?</p>
                                 <div class="modal-btn-box">
                                     <button type="submit" class="btn btn-theme" (click)="deleteUser()">Yes</button>
-                                    <button type="button" class="btn btn-danger btn-theme ml-2"
+                                    <button type="button" class="btn btn-secondary btn-theme ml-2"
                                         data-dismiss="modal">No</button>
                                 </div>
                             </div>
@@ -2170,49 +2155,49 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <label class="col-sm-3">Name</label>
-          <label class="col">{{viewApproveItem.name|| "N/A"}}</label>
+          <label class="col-md-4 label-heding ">Name</label>
+          <label class="col-md-8">{{viewApproveItem.name|| "N/A"}}</label>
         </div>
         <div class="row">
-          <label class="col-sm-3">User Type</label>
-          <label class="col">{{viewApproveItem?.userType|| "N/A"}}</label>
+          <label class="col-md-4 label-heding ">User Type</label>
+          <label class="col-md-8">{{viewApproveItem?.userType|| "N/A"}}</label>
         </div>
         <div class="row">
-          <label class="col-sm-3">Email</label>
-          <label class="col">{{viewApproveItem.email|| "N/A"}}</label>
+          <label class="col-md-4 label-heding ">Email</label>
+          <label class="col-md-8">{{viewApproveItem.email|| "N/A"}}</label>
         </div>
         <div class="row">
-          <label class="col-sm-3">Contact No</label>
-          <label class="col">{{viewApproveItem.mobileNumber|| "N/A"}}</label>
+          <label class="col-md-4 label-heding ">Contact No</label>
+          <label class="col-md-8">{{viewApproveItem.mobileNumber|| "N/A"}}</label>
         </div>
         <div class="row">
-          <label class="col-sm-3">Age</label>
-          <label class="col">{{viewApproveItem.age|| "N/A"}} Years</label>
+          <label class="col-md-4 label-heding ">Age</label>
+          <label class="col-md-8">{{viewApproveItem.age|| "N/A"}} Years</label>
         </div>
         <div class="row">
-          <label class="col-sm-3">Gender</label>
-          <label class="col">{{viewApproveItem.gender|| "N/A"}} </label>
+          <label class="col-md-4 label-heding ">Gender</label>
+          <label class="col-md-8">{{viewApproveItem.gender|| "N/A"}} </label>
         </div>
         <div class="row">
-          <label class="col-sm-3">Experiance</label>
-          <label class="col">{{viewApproveItem.experience|| "N/A"}} years</label>
+          <label class="col-md-4 label-heding ">Experiance</label>
+          <label class="col-md-8">{{viewApproveItem.experience|| "N/A"}} years</label>
         </div>
         <div class="row">
-          <label class="col-sm-3">Language</label>
-          <label class="col">{{viewApproveItem?.language|| "N/A"}}</label>
+          <label class="col-md-4 label-heding ">Language</label>
+          <label class="col-md-8">{{viewApproveItem?.language|| "N/A"}}</label>
         </div>
         <div class="row">
-          <label class="col-sm-3">Location</label>
-          <label class="col">{{viewApproveItem?.locationHome|| "N/A"}}</label>
+          <label class="col-md-4 label-heding ">Location</label>
+          <label class="col-md-8">{{viewApproveItem?.locationHome|| "N/A"}}</label>
         </div>
         <div class="row">
-<label class="col-sm-3">Cost</label>
+<label class="col-md-4 label-heding ">Cost</label>
 <label class="col">Rs-{{viewApproveItem?.costPerHour|| "N/A"}}/hour</label>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" (click)="appApprove()">Approve</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="appApprove()">Approve</button>
       </div>
     </div>
   </div>

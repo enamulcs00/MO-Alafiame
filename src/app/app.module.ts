@@ -49,7 +49,7 @@ import { ErrorInterceptor } from './provider/interceptor/error-interceptor/error
 import { AuthGuard } from './guard/auth.guard';
 import { ViewTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-test-center/view-test-center.component';
 import { ViewPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-patient-management-test-center/view-patient-management-test-center.component';
-import { ViewPlasmaDonatedPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-plasma-donated-patient-management-test-center/view-plasma-donated-patient-management-test-center.component';
+// import { ViewPlasmaDonatedPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-plasma-donated-patient-management-test-center/view-plasma-donated-patient-management-test-center.component';
 import { ViewPatientManagementHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-patient-management-hospital/view-patient-management-hospital.component';
 import { ViewPlasmaDonatedPatientManagementHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-plasma-donated-patient-management-hospital/view-plasma-donated-patient-management-hospital.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
@@ -171,7 +171,7 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     ViewHospitalComponent,
     ViewTestCenterComponent,
     ViewPatientManagementTestCenterComponent,
-    ViewPlasmaDonatedPatientManagementTestCenterComponent,
+    // ViewPlasmaDonatedPatientManagementTestCenterComponent,
     ViewPatientManagementHospitalComponent,
     ViewPlasmaDonatedPatientManagementHospitalComponent,
     AddUserComponent,
