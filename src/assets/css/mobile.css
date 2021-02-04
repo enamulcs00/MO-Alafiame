@@ -13,7 +13,7 @@
 @media(min-width:1025px) {
     .toggle-wrapper aside,
     .toggle-wrapper .logo-box {
-        width: 45px;
+        width: 60px;
         transition: 0.5s;
     }
     .toggle-wrapper .side_page_name {

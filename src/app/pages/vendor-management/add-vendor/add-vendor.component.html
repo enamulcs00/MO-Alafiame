@@ -1,6 +1,8 @@
 <div class="content-section">
     <div class="page_title_block" style="padding-left: 21%;padding-top: 8%;">
         <h1 class="page_title">Add Vendor</h1>
+        <hr style="background: black; opacity: 0.5;">
+
     </div>
     <div class="order-view  max-WT-700  setting-page" style="margin-left: 33%;margin-top: 3%;">
         <div class="  mb40">
@@ -258,8 +260,8 @@
                     </div>
                 </div>
                 <div class="text-center mt40 mb40">
-                    <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/vendor-management">Back</button>
-                    <button class="btn btn-large  max-WT-150 btn-theme" [disabled]="!addVendorForm.valid" (click)="addVendor()">Add</button>
+                    <button class="btn btn-large  max-WT-150 btn-secondary" routerLink="/vendor-management">Back</button>
+                    <button class="btn btn-large  max-WT-150 btn-primary ml-2" [disabled]="!addVendorForm.valid" (click)="addVendor()">Add</button>
                 </div>
             </form>
         </div>

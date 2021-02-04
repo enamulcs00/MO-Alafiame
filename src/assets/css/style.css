@@ -6499,25 +6499,27 @@ select.form-control {
 button.btn.btn-secondary {
     background-color: #fff;
     border: 1px solid #83B63C;
-    color: #83B63C;
+    color: #83B63C !important;;
     min-width: 100px;
     border-radius: 50px;
+    font-size: 18px;
 }
 button.btn.btn-secondary:hover {
     background-color: #83B63C;
-    color: #fff;
+    color: #fff !important;
     border: 1px solid #83B63C;
 }
 button.btn.btn-primary{
     background-color: #83B63C;
     border: 1px solid #83B63C;
-    color: #fff;
+    color: #fff !important;
     min-width: 100px;
     border-radius: 50px;
+    font-size: 18px;
 }
 button.btn.btn-primary:hover {
     background-color: #fff;
-    color: #83B63C;
+    color: #83B63C !important;
     border: 1px solid #83B63C;
 }
 .text-dark {
@@ -6572,4 +6574,17 @@ li.dashbord-box:hover {
 }
 .Go_btn {
     min-width: 80px;
+}
+label.upload-label em {
+    font-size: 14px;
+    color: #83b63c;
+}
+.label-heding {
+    font-weight: 700;
+}
+button.btn.btn_search_group {
+    border: 1px solid #ccc;
+    background: #fff;
+    border-left: none;
+    padding-left: 0;
 }
