@@ -92,7 +92,7 @@ getVendorTransaction(){
     }else{
       this.transactinList = []
       this.mainservice.hideSpinner()
-this.mainservice.errorToast(res.responseMessage)
+this.mainservice.errorToast('No Transaction Found')
     }
   },(err)=>{
     this.transactinList = []

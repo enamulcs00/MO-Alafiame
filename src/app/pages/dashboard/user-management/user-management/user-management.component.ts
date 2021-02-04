@@ -14,6 +14,7 @@ declare var $: any;
 export class UserManagementComponent implements OnInit {
   searchForm: FormGroup;
   Isapprove:boolean = false;
+  
   userDataList: any = [];
   itemPerPage = 5;
   currentPage = 1;
@@ -182,14 +183,14 @@ appApprove(){
   this.mainService.postApi(url,obj,1).subscribe((res:any)=>{
     this.mainService.hideSpinner();
     console.log('This is AppApprove resPonse',res);
-    if(res.responseCode==200){
+    if(res.response_code==200){
 
-      this.mainService.successToast(res.responseMessage);
+      this.mainService.successToast(res.response_message);
       this.approveList()
     }
     else{
       this.mainService.hideSpinner();
-      this.mainService.errorToast(res.responseMessage);
+      this.mainService.errorToast(res.response_message);
     }
   },(error)=>{
     this.mainService.hideSpinner();
@@ -731,6 +732,9 @@ this.mainService.successToast(res.responseMessage)
     this.corporateUserAddValue=true;
     this.corporateValue=false;
     this.viewCompanyValue=false;
+
+    
+
   }
   // add company api
   addCompany(){

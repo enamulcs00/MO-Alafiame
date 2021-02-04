@@ -12,7 +12,7 @@
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <h4 class="mt20">Question</h4>
+                                            <h4 class="mt20">Question :</h4>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -25,9 +25,15 @@
                             </div>
                             <div class="form-group row align-items-baseline">
                                 <div class="col-md-12">
-                                    <h4 class="mt20">Answer</h4>
+                                    <h4 class="mt20">Answer :</h4>
                                     <p id="wordLimit"> {{faqList?.answer}} </p>
-                                    <p class="mt30">{{(faqList?.createdAt | date : 'd/M/y') || '--'}}</p>
+                                   
+                                </div>
+                            </div>
+                            <div class="form-group row align-items-baseline">
+                                <div class="col-md-12">
+                                    <h4 class="mt20">Created on :</h4>
+                                   <p class="mt30">{{(faqList?.createdAt | date : 'd/M/y') || '--'}}</p>
                                 </div>
                             </div>
                         </form>

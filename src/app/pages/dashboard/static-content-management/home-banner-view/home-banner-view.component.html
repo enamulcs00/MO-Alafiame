@@ -38,10 +38,11 @@
                 <div class="form-group row  view-label-align">
                   <label class="col-md-4 textalignright">Description
                       <span>:</span></label>
-                  <div class="col-md-8 textaligncenter">
+                  <div class="col-md-8 textaligncenter" style="height: 260px; overflow: auto;">
                       <div class="form-group ">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                    readonly>{{bannerFormValues?.description||"N/A"}}</textarea>
+                        <p class="form-group"
+                     [innerHtml]="bannerFormValues?.description?bannerFormValues?.description:'n/a'">
+                      </p>
                       </div>
                   </div>
               </div>
