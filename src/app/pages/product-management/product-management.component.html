@@ -16,23 +16,28 @@
                             <div class="sec_head_new sec_head_new_after">
 
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-4 col-md-4">
+                                        <div class=" col-md-4">
                                             <div class="filter_search mb20 width100">
                                                 <div class="input-group filter_search_group">
                                                     <input type="text" class="form-control overflow-text"
                                                     [(ngModel)]="search"  placeholder="Search by name"
-                                                        maxlength="60" ><button (click)="searchValue()" style="width: 39px;
-                                                        background-color: #86559f;"><em class="fa fa-search"></em></button>
+                                                        maxlength="60" >
+                                                        <div class="input-group-append">
+                                                            <button (click)="searchValue()" class="btn btn_search_group">
+                                                                <img src="assets/img/icon-search.png" alt="Search"></button>
+                                                        </div>
+                                                     
 
                                                 </div>
                                             </div>
                                         </div>
-            <button type="button" (click)="addModal()" class="btn btn-theme" style="margin-left: 19%;height: 8%; width: 14%;">Add Category</button>
-            <button type="button" (click)="exportCSV()" class="btn btn-theme" style="margin-left: 1%;height: 8%; width: 12%;">Export csv</button>
-            <button type="button" class="btn btn-theme Go_btn ml-2" style="margin-left: 1%;
-                                                    height: 8%;    width: 12%;" [routerLink]="['/add-product-management']"
-                                                   >Add new
-                                                    </button>
+                                       <div class="col-md-8">
+                                        <div class="text-center admin-btn mb20">
+                                            <button type="button" (click)="addModal()" class="btn btn-theme" >Add Category</button>
+                                            <button type="button" (click)="exportCSV()" class="btn btn-theme" >Export csv</button>
+                                            <button type="button" class="btn btn-theme Go_btn ml-2"  [routerLink]="['/add-product-management']" >Add new </button>
+                                        </div>
+                                       </div>
                                             </div>
                             </div>
                         </div>
@@ -58,7 +63,7 @@
                                     <td class="content">{{items?.type}}</td>
                                     <td class="justify-content-center d-flex">
 
-                                        <button class="btn btn-info ml-2 bt-margin"  (click)="blockFunction(items?._id,items?.status)">{{items?.status}}</button>
+                                        <button class="btn btn-success ml-2 bt-margin"  (click)="blockFunction(items?._id,items?.status)">{{items?.status}}</button>
                                         <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-product-management',items?._id]">Edit</button>
                                          <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-product-management',items?._id]">View</button>
                                          <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(items?._id)"

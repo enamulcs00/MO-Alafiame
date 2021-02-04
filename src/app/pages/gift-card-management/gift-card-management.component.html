@@ -14,34 +14,34 @@
                             <div class="sec_head_new sec_head_new_after">
                                 <form [formGroup]="searchForm">
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-4 col-md-4">
+                                        <div class=" col-md-3">
                                             <div class="filter_search mb20 width100">
-                                                <div class="input-group filter_search_group" style="margin-top: 3.5%;">
+                                                <div class="input-group filter_search_group">
                                                     <input type="text" class="form-control overflow-text"
                                                         formControlName="search"
                                                         placeholder="Search by name"
-                                                        maxlength="60"> <button (click)="searchGift()" style="width: 39px;
-                                                        background-color: #86559f;"><i
-                                                        class="fa fa-search"></i></button>
+                                                        maxlength="60">
+                                                        <div class="input-group-append">   <button  class="btn btn_search_group" (click)="searchGift()" >
+                                                            <img src="assets/img/icon-search.png" alt="Search">
+                                                    </button></div>
+                                                      
 
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2" style="margin-top: -2%;">
-                                            <label>Fromdate:</label>
+                                        <div class="col-md-2">
                                             <input type="date" class="form-control"
                                             [max]="service.getToday()" formControlName="startdate" >
                                         </div>
-                                        <div class="col-md-2" style="margin-top: -2%;">
-                                            <label>Todate:</label>
+                                        <div class="col-md-2">
                                             <input type="date" class="form-control"  formControlName="enddate" >
                                         </div>
                                         <div class="col-xl-2 col-lg-2 col-md-2">
-                                            <div class="text-center admin-btn" style="margin-top: 10%;">
-                                                <button type="button" class="btn btn-theme Go_btn" (click)="searchGift()">Search</button>
-                                                    <button type="button" class="btn btn-theme Go_btn" (click)="reset()"
+                                            <div class="text-center admin-btn" >
+                                                <button type="button" class="btn btn-theme " (click)="searchGift()">Search</button>
+                                                    <button type="button" class="btn btn-theme " (click)="reset()"
                                                    >Reset</button>
-                                                   <button type="button" class="btn btn-theme Go_btn"  [routerLink]="['/add-gift']">Add new</button>
+                                                   <button type="button" class="btn btn-theme "  [routerLink]="['/add-gift']">Add new</button>
                                                   </div>
                                         </div>
                                     </div>

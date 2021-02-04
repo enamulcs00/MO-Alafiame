@@ -14,20 +14,23 @@
                             <div class="sec_head_new sec_head_new_after">
 
                                 <div class="row">
-                                    <div class="col-xl-4 col-lg-4 col-md-4">
+                                    <div class=" col-md-4">
                                         <div class="filter_search mb20 width100">
                                             <div class="input-group filter_search_group">
                                                 <input type="text" class="form-control overflow-text"
                                                     [(ngModel)]="search" placeholder="Search by name"
-                                                    maxlength="60"><button (click)="searchValue()" style="width: 39px;
-                                                        background-color: #86559f;"><i
-                                                        class="fa fa-search"></i></button>
+                                                    maxlength="60">
+                                                  <div class="input-group-append">
+                                                    <button class="btn btn_search_group" (click)="searchValue()" >
+                                                        <img src="assets/img/icon-search.png" alt="Search">
+                                                    </button>
+                                                  </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div>
-                                        <div class="text-center admin-btn" style="margin-left: 66%;">
+                                    <div class="col-md-8">
+                                        <div class="text-center admin-btn mb20" >
                     <button type="button" class="btn btn-theme Go_btn ml-2" (click)="openAdd()">Add Subservice</button>
                     <button type="button" class="btn btn-theme Go_btn ml-2" (click)="exportCSV()">Export CSV</button>
                                             <button type="button" class="btn btn-theme Go_btn ml-2"
