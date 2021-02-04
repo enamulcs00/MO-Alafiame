@@ -80,25 +80,25 @@ categoryLength:any;
 
    }
 
-  exportCSV(){
+   exportCSV() {
     let dataArr = [];
     dataArr.push({
-       sno: "S.No",
-       Name: "Category Name",
-       Image: "Category Image",
-       Subcategory:"Subcategories",
-       Update:"Updated On"
-   });
-   this.servicelists.forEach((element,ind) => {
-    dataArr.push({
-        sno:ind+1,
-        Name:element.categoryId.categoryName,
-        Charges:element.subCategoryImage,
-        Use:element.subCategoryName,
-        Type:element.updatedAt,
+      sno: "S.No",
+      Name: "Category Name",
+      ImageURL: "Category Image",
+      Update: "Updated On"
+    });
+    this.servicelists.forEach((element, ind) => {
+      // console.log(element.subcategoryData[0].subCategoryName)
+      console.log(element.subcategoryData)
+      dataArr.push({
+        sno: ind + 1,
+        Name: element.categoryName ? element.categoryName : '--',
+        ImageURL: element.categoryImage ? element.categoryImage : '--',
+        Update: element.updatedAt ? element.updatedAt.split("T")[0] : '--',
+      })
     })
-})
-new ngxCsv(dataArr, 'Service_management');
+    new ngxCsv(dataArr, 'Service_management');
 
   }
 

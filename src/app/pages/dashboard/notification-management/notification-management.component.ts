@@ -30,25 +30,25 @@ export class NotificationManagementComponent implements OnInit {
     return new Date().toISOString().split('T')[0]
   }
 
-  exportCSV(){
+  exportCSV() {
     let dataArr = [];
     dataArr.push({
-       sno: 'S.No',
-       title: 'Title',
-       Desc: 'Description',
-       castDate:'Brod cast date'
+      sno: 'S.No',
+      title: 'Title',
+      Description: 'Description',
+      BroadcastDate: 'Brod cast date'
 
-   });
-   this.notificationList.forEach((element,ind) => {
-    dataArr.push({
-        sno:ind+1,
-        title:element.title,
-        Desc:element.description,
-        castDate:element.updatedAt
+    });
+    this.notificationList.forEach((element, ind) => {
+      dataArr.push({
+        sno: ind + 1,
+        title: element.title ? element.title : '--',
+        Description: element.description ? element.description : '--',
+        BroadcastDate: element.updatedAt ? element.updatedAt.split("T")[0] : '--',
+      })
 
     })
-})
-new ngxCsv(dataArr, 'Notification_management');
+    new ngxCsv(dataArr, 'Notification_management');
 
   }
 notificationFormValidation() {

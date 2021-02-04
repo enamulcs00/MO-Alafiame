@@ -107,27 +107,29 @@ let data =
       }
     })
     }
-    exportCSV(){
+    exportCSV() {
+      {
       let dataArr = [];
       dataArr.push({
-         sno: "S.No",
-         Name: "Name of product",
-         Charge: "Charges",
-         Use:"Used For",
-         Type:"Service Type"
-     });
-     this.productlists.forEach((element,ind) => {
+      sno: "S.No",
+      Name: "Name of product",
+      Charge: "Charges",
+      Use: "Used For",
+      Type: "Service Type"
+      });
+      
+      this.productlists.forEach((element, ind) => {
       dataArr.push({
-          sno:ind+1,
-          Name:element.productName,
-          Charges:element.price,
-          Use:element.UsedFor,
-          Type:element.type,
+      sno: ind + 1,
+      Name: element.productName ? element.productName : '--',
+      Charges: element.price ? element.price : '--',
+      Use: element.usedFor ? element.usedFor : '--',
+      Type: element.type ? element.type : '--',
       })
-  })
-  new ngxCsv(dataArr, 'Product_management');
-
-    }
+      })
+      new ngxCsv(dataArr, 'Product_management');
+      }
+      }
 
   productList()
   {

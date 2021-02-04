@@ -40,7 +40,7 @@
 
                                       <td class="content"><img [src]="item?.image" alt="" style="width: 66px;">
                                       </td>
-                                      <td class="content"> {{item?.description}}</td>
+                                      <td class="content" [innerHtml]=item.description></td>
                                       <td class="justify-content-center" style="padding-top: 27px;padding-bottom: 24px;">
                                         <button [routerLink]="['/view-practitioner',item?._id]"
                        class="btn btn-info ml-2 bt-margin" title="View"><i class="fa fa-eye" aria-hidden="true"

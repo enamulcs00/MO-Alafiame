@@ -125,30 +125,30 @@ getVendorList(){
   this.page = event;
   this.getVendorList()
 }
-exportCSV(){
+exportCSV() {
   let dataArr = [];
   dataArr.push({
-     sno: "S.No",
-     Referral_ID: "Referal ID",
-     Referrar: "Referrar Name",
-     Referree:"Referre Name",
+    sno: "S.No",
+    Referral_ID: "Referal ID",
+    Referrar: "Referrar Name",
+    Referree: "Referre Name",
 
-     EarnedPoint:"Referrar Earned Point",
-     Status:"Referral Status",
-     Created_On:"Date Of Creation"
- });
- this.vendorList.forEach((element,ind) => {
-  dataArr.push({
-      sno:ind+1,
-      Referral_ID:element.referralCode,
-      Referrar:element.userId.name,
-      Referree:element.refereeName,
-      EarnedPoint:element.referrerEarnedPoint,
-      Status:element.referralStatus,
-      Created_On:String(element.createdAt).slice(0,18),
+    EarnedPoint: "Referrar Earned Point",
+    Status: "Referral Status",
+    Created_On: "Date Of Creation"
+  });
+  this.vendorList.forEach((element, ind) => {
+    dataArr.push({
+      sno: ind + 1,
+      Referral_ID: element.referralCode ? element.referralCode : '---',
+      Referrar: element.userId.name ? element.userId.name : '---',
+      Referree: element.refereeName ? element.refereeName : '---',
+      EarnedPoint: element.referrerEarnedPoint ? element.referrerEarnedPoint : '---',
+      Status: element.referralStatus ? element.referralStatus : '---',
+      Created_On: element.createdAt ? element.createdAt.split('T')[0] : '---',
+    })
   })
-})
-new ngxCsv(dataArr, 'Referral_management');
+  new ngxCsv(dataArr, 'Referral_management');
 
 }
 openRefViewModal(){
