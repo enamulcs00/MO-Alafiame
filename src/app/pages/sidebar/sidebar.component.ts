@@ -139,8 +139,7 @@ export class SidebarComponent implements OnInit {
   }
 
   logout() {
-    this.permissions=[]
-    this.vendorPermission=[]
+    
     $('#logoutModal').modal('hide')
     this.mainService.logout()
   }

@@ -9,7 +9,6 @@ import { MainService } from 'src/app/provider/main.service';
 })
 export class HomeBannerViewComponent implements OnInit {
 
-
   profile = ''
   BannerEditId:any;
   bannerFormValues:any = []

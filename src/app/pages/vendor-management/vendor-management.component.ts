@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MainService } from 'src/app/provider/main.service';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
+import { ExportToCsv } from 'export-to-csv';
 declare var $: any;
 
 @Component({
@@ -147,25 +148,39 @@ this.status="BLOCK"
   this.page = event;
   this.getVendorList()
 }
+
 exportCSV(){
   let dataArr = [];
-  dataArr.push({
-     sno: "S.No",
-     Name: "Name of Vendor",
-     Email: "Email-Id",
-     Contact:"Mobile Number",
-     Created_On:"Date Of Creation"
- });
+  this.mainService.showSpinner()
+    setTimeout( r => {
+      this.mainService.hideSpinner()
+    },3000)
+
  this.vendorList.forEach((element,ind) => {
-  dataArr.push({
-      sno:ind+1,
-      Name:element.firstName +''+element.lastName,
+  
+  let obj ={}
+      obj = {
+      Index:ind+1,
+      Name:element.firstName,
+      CreatedOn:String(element.createdAt).slice(0,10),
       Email:element.email,
       Contact:element.mobileNumber,
-      Created_On:String(element.createdAt).slice(0,10),
-  })
-})
-new ngxCsv(dataArr, 'Vendor_management');
+      };
+      dataArr.push(obj)
+});
+const options = { 
+  fieldSeparator:' ',
+  quoteStrings:'',
+  decimalSeparator:'',
+  showLabels:true, 
+  showTitle:true,
+  title: 'Vendor-management',
+  useTextFile:false,
+  useBom:true,
+  useKeysAsHeaders:true,
+};
+const csvExporter = new ExportToCsv(options);
+csvExporter.generateCsv(dataArr);
 
 }
   }

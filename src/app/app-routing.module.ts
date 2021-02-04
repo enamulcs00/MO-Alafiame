@@ -121,7 +121,7 @@ const routes: Routes = [
   { path: 'faq', component: FaqComponent },
   { path: 'add-faq', component: AddFaqComponent },
   { path: 'edit-faq/:id', component: EditFaqComponent },
-  { path: 'view-faq', component: ViewFaqComponent },
+  { path: 'view-faq/:id', component: ViewFaqComponent },
   // helpline number
 
   { path: 'helpline-number', component: HelplineNumberComponent },

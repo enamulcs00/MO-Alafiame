@@ -15,7 +15,7 @@ export class ViewFaqComponent implements OnInit {
   constructor(public mainService: MainService, private activatedroute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.activatedroute.queryParams.subscribe((res) => {
+    this.activatedroute.params.subscribe((res) => {
       this.userId = res.id;
     })
     this.getFaqList()
@@ -23,8 +23,10 @@ export class ViewFaqComponent implements OnInit {
 
 // get faq by id
   getFaqList() {
+    //let url = `admin/viewFaq/${this.userId}`
     this.mainService.showSpinner();
-    this.mainService.getApi(ApiUrls.viewFaq + this.userId, 1).subscribe((res: any) => {
+    this.mainService.getApi(`admin/viewFaq/${this.userId}`, 1).subscribe((res: any) => {
+      console.log('View faq',res)
       if (res.responseCode == 200) {
         this.faqList = res.result;
         this.mainService.hideSpinner();
@@ -33,6 +35,10 @@ export class ViewFaqComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },err=>{
+      this.mainService.hideSpinner()
+      this.mainService.errorToast('Something went wrong')
+    }
+    )
   }
 }

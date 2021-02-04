@@ -1164,8 +1164,6 @@ exportCompanyCSV(){
       Service:element.service,
       CompanyCode:element.companyCode
     
-            
-      
       };
       Arr.push(obj)
           });

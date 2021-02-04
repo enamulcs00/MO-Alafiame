@@ -42,7 +42,12 @@
                                             
                                             <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-faq',item?._id]"><i
                                                     class="fa fa-edit" aria-hidden="true"
-                                                    style="color:white"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    style="color:white"></i></button>
+
+                                                    <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-faq',item?._id]"><i
+                                                        class="fa fa-eye" aria-hidden="true"
+                                                        style="color:white"></i></button>
+
                                             <button class="btn btn-danger ml-2 bt-margin" title="delete"
                                                 (click)="deleteFaqModal(item?._id)"><i class="fa fa-trash" aria-hidden="true"
                                                     style="color:white"></i></button>

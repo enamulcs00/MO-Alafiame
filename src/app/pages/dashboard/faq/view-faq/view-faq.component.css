@@ -1,3 +1,6 @@
+#wordLimit{
+  word-break: break-all;
+}
 .max-WT{
   max-width: 75%;
 }
