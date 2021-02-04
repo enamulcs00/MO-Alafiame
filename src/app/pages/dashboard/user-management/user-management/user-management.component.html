@@ -46,8 +46,8 @@
                                 <div class="tab-pane1">
                                     <div class="sec_head_new sec_head_new_after">
                                         <form [formGroup]="searchForm">
-                                            <div class="row">
-                                                <div class="col-md-2">
+                                            <div class="row     align-items-center">
+                                                <div class="col-md-3 pr-0">
                                                     <div class="filter_search mb20 width100">
                                                         <div class="input-group filter_search_group">
                                                             <input type="text" class="form-control overflow-text"
@@ -61,26 +61,23 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <input type="date" formControlName="fromDate" class="form-control"
-                                                        style="width: 60%;" [max]="mainService.getToday()">
+                                                <div class="col-md-2 pr-0">
+                                                    <input type="date" formControlName="fromDate" class="form-control mb20"
+                                                        [max]="mainService.getToday()">
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2 pr-0">
                                                     <input type="date" formControlName="toDate"
                                                         [min]="this.searchForm.controls['fromDate'].value"
-                                                        (keypress)="mainService.BlockFuture()" class="form-control"
-                                                        style="width: 60%; margin-left: -40%;">
+                                                        (keypress)="mainService.BlockFuture()" class="form-control mb20"
+                                                        >
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="text-center admin-btn">
-                                                        <button type="button" class="btn  btn-theme Go_btn" style="margin-left: -36%;
-                                                                min-width: 50px;" (click)="search()">Go</button>
-                                                        <button type="button" class="btn  btn-theme ml-2 Go_btn"
-                                                            style="min-width: 60px;" (click)="reset()">Reset</button>
-                                                        <button type="button" class="btn btn-theme"
-                                                            style="margin-left: 25%;" (click)="exportCSV()">Export
+                                                <div class="col-md-5">
+                                                    <div class="text-center admin-btn mb20">
+                                                        <button type="button" class="btn  btn-theme Go_btn"  (click)="search()">Go</button>
+                                                        <button type="button" class="btn  btn-theme  " (click)="reset()">Reset</button>
+                                                        <button type="button" class="btn btn-theme" (click)="exportCSV()">Export
                                                             csv</button>
-                                                        <button type="button" class="btn btn-theme Go_btn ml-2"
+                                                        <button type="button" class="btn btn-theme  "
                                                             (click)="addUser()">Add new
                                                         </button>
                                                     </div>
@@ -2054,7 +2051,7 @@
 
                                     <div class="modal-btn-box">
                                         <button type="submit" class="btn btn-theme" (click)="BlockUser()">Yes</button>
-                                        <button type="button" class="btn btn-danger btn-theme ml-2"
+                                        <button type="button" class="btn btn-secondary  ml-2"
                                             data-dismiss="modal">No</button>
                                     </div>
                                 </div>
@@ -2082,7 +2079,7 @@
                                 <p>Are you sure you want to Log Out?</p>
                                 <div class="modal-btn-box">
                                     <button type="submit" class="btn btn-theme" (click)="deleteUser()">Yes</button>
-                                    <button type="button" class="btn btn-danger btn-theme ml-2"
+                                    <button type="button" class="btn btn-secondary btn-theme ml-2"
                                         data-dismiss="modal">No</button>
                                 </div>
                             </div>
@@ -2112,7 +2109,7 @@
                                 <p *ngIf="this.currTab=='Corporate'">Are you sure you want to delete this corporate?</p>
                                 <div class="modal-btn-box">
                                     <button type="submit" class="btn btn-theme" (click)="deleteUser()">Yes</button>
-                                    <button type="button" class="btn btn-danger btn-theme ml-2"
+                                    <button type="button" class="btn btn-secondary btn-theme ml-2"
                                         data-dismiss="modal">No</button>
                                 </div>
                             </div>
@@ -2141,7 +2138,7 @@
                                 <p *ngIf="this.currTab=='Corporate'">Are you sure you want to delete this corporate?</p>
                                 <div class="modal-btn-box">
                                     <button type="submit" class="btn btn-theme" (click)="deleteUser()">Yes</button>
-                                    <button type="button" class="btn btn-danger btn-theme ml-2"
+                                    <button type="button" class="btn btn-secondary btn-theme ml-2"
                                         data-dismiss="modal">No</button>
                                 </div>
                             </div>
