@@ -6077,7 +6077,7 @@ label.common-label {
 .btn-theme:hover{
     border: 1px solid #83b63c;
     background-color: #fff;
-    color: #83b63c;
+    color: #83b63c !important;
 }
 .head_flt_select {
     margin-right: 10px;

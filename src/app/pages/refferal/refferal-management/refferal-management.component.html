@@ -13,27 +13,24 @@
                           <div class="sec_head_new sec_head_new_after">
                               <form [formGroup]="searchForm">
                                   <div class="row">
-                                    <div class="col-md-2.5" style="margin-top: -2%;">
-                                      <label>Fromdate:</label>
+                                    <div class="col-md-2" >
                                       <input type="date" class="form-control"
                                       [max]="mainService.getToday()" formControlName="fromDate" >
                                   </div>&nbsp;&nbsp;
-                                  <div class="col-md-2.5" style="margin-top: -2%;">
-                                      <label>Todate:</label>
+                                  <div class="col-md-2" >
                                       <input type="date" class="form-control"  formControlName="toDate"
                                       [min]="this.searchForm.controls['fromDate'].value"
                                               (keypress)="mainService.BlockFuture()"
                                       >
                                   </div>
                                   <div class="col-xl-2 col-lg-2 col-md-2">
-                                      <div class="text-center admin-btn" style="margin-top: 10%;">
-                                          <button type="button" class="btn btn-theme Go_btn" (click)="searchValue()">Search</button>
-                                              <button type="button" class="btn btn-theme Go_btn" (click)="reset()"
+                                      <div class="text-center admin-btn">
+                                          <button type="button" class="btn btn-theme " (click)="searchValue()">Search</button>
+                                              <button type="button" class="btn btn-theme " (click)="reset()"
                                              >Reset</button>
-                                             <button type="button" (click)="exportCSV()" class="btn btn-theme"
-                                          style="height: 8%; width: 12%;">Export csv</button>
-                                             <button type="button" class="btn btn-theme Go_btn" title="Point Settings"(click)="openRefModal()" >Loyality Point Setting</button>
-                                             <button type="button" class="btn btn-theme Go_btn" title=" View Current Setting"(click)="openRefViewModal()" >View Current Loyality Value</button>
+                                             <button type="button" (click)="exportCSV()" class="btn btn-theme">Export csv</button>
+                                             <button type="button" class="btn btn-theme " title="Point Settings"(click)="openRefModal()" >Setting</button>
+                                             <button type="button" class="btn btn-theme " title=" View Current Setting"(click)="openRefViewModal()" >View</button>
                                             </div>
                                   </div>
 
