@@ -16,12 +16,7 @@ export class EditStaticContentManagementComponent implements OnInit {
   ExpertDescprition:any
   profile = ''
   expertImage=''
-  config = {
-    uiColor: '#F0F3F4',
-    height: '50%',
-    enterMode :2
-
-  };
+  config:any
   form: FormGroup;
   editorValue;
   type: any;
@@ -52,6 +47,13 @@ IsAbout:boolean = false
       "ExTitle": new FormControl('')
     });
     this.viewStaticData()
+    this.config = {
+      uiColor: '#F0F3F4',
+      height: '50%',
+      allowedContent: true,
+    autoParagraph: false,
+    enterMode: 2 // CKEDITOR.ENTER_BR
+    };
   }
 
   viewStaticData() {

@@ -63,7 +63,7 @@
 
                     <div class="col-md-12 textaligncenter">
                         <div class="form-group ">
-                          <ck-editor id="editornewData" formControlName="description"
+                          <ck-editor id="editornewData" formControlName="description" debounce="1000" debounceTime="1000"
                           name="editor1" language="en" [config]="config"></ck-editor>
                             <div class="text-danger">
                                 <span

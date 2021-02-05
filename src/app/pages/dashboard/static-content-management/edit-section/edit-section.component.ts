@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { debounceTime } from 'rxjs/operators';
 import { MainService } from 'src/app/provider/main.service';
 
 @Component({
@@ -15,12 +16,7 @@ export class EditSectionComponent implements OnInit {
   BannerEditId:any;
   bannerFormValues:any = []
 
-  config = {
-    uiColor: '#F0F3F4',
-    height: '50%',
-    enterMode :2
-
-  };
+  config:any
     constructor(private router: Router, public mainService: MainService, private activateRoute:ActivatedRoute) { }
 
     ngOnInit() {
@@ -36,6 +32,13 @@ export class EditSectionComponent implements OnInit {
         "description":new FormControl('', Validators.required),
         "bannerFile": new FormControl('',Validators.required)
       });
+      this.config = {
+        uiColor: '#F0F3F4',
+        height: '50%',
+        allowedContent: true,
+      autoParagraph: false,
+      enterMode: 2 // CKEDITOR.ENTER_BR
+      };
     }
 
 
@@ -96,9 +99,10 @@ export class EditSectionComponent implements OnInit {
           this.bannerFormValues = res.result;
           this.profile = this.bannerFormValues.image
           this.EditBannerForm.patchValue({
+            'description': this.bannerFormValues.description,
             'title': this.bannerFormValues.title,
             'firstName': this.bannerFormValues.type,
-            'description': this.bannerFormValues.description
+
           });
          } else {
 
