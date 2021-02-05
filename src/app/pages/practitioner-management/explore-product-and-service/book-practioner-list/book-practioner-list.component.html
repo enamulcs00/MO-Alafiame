@@ -54,11 +54,11 @@
                        class="btn btn-danger ml-2 bt-margin">
                        <i class="fa fa-trash-o" aria-hidden="true" style="color: white;" title="Delete"></i>
                       </button>
-                      <!-- <label class="switch">
+                      <label class="switch">
                         <input type="checkbox" (click)="sliderRound(item?._id)"
                             [checked]="item?.active == true">
-                        <span class="slider round" [title]="(item?.active==true)?'Featured Unmark':'Mark as Featured'"></span>
-                    </label> -->
+                        <span class="slider round" [title]="(item?.active==true)?'Deactivate':'Activate'"></span>
+                    </label>
                        </td>
                                   </tr>
                                  <tr *ngIf="totalItems == 0">

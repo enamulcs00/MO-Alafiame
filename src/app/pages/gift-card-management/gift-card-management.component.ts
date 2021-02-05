@@ -18,6 +18,7 @@ export class GiftCardManagementComponent implements OnInit {
   result: any;
   userList:any;
   itemId:any;
+
   constructor(public service: MainService) { }
 
   ngOnInit() {
@@ -195,4 +196,5 @@ this.gifiId = id
           this.service.errorToast('Something went wrong');
         })
       }
+
 }

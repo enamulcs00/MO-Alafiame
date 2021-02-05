@@ -22,13 +22,15 @@ ServiceId:any;
 categoryList: any=[];
 categoryLength:any;
   categoryId: string;
-
+  marked = false;
+  theCheckbox = false;
 
   constructor(private router: Router,public mainService: MainService) { }
 
   ngOnInit() {
     this.addSubForm = new FormGroup({
       'categoryName': new FormControl('', Validators.required),
+      'categoryId': new FormControl('',Validators.required)
     });
     this.categoryLists();
     this.serviceList();
@@ -56,6 +58,7 @@ categoryLength:any;
        'categoryId':this.ServiceId,
       'subCategoryName': this.addSubForm.value.categoryName,
       'subCategoryImage': this.profile,
+      'markAs': this.marked,
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/addService', data, 1).subscribe((res: any) => {
@@ -249,5 +252,8 @@ sliderRound(id){
     this.mainService.hideSpinner()
     this.mainService.errorToast('Something went wrong');
   })
+}
+toggleVisibility(e){
+  this.marked= e.target.checked;
 }
 }

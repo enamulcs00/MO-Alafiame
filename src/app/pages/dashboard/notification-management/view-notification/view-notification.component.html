@@ -1,9 +1,12 @@
+<div class="wrapper">
+    <main class="middle-content">
+<div class="page_title_block" >
+    <h1 class="page_title"> Notification Management>Notification View</h1>
+    <hr style="background: black; opacity: 0.5;">
+</div>
 <div class="content-section">
-  <div class="page_title_block" style="padding-left: 21%;padding-top: 7%;">
-      <h1 class="page_title"> Notification Management>Notification View</h1>
-      <hr style="background: black; opacity: 0.5;">
-  </div>
-  <div class="order-view  max-WT-700  setting-page" style="margin-left: 33%;">
+
+  <div class="order-view  max-WT-700  setting-page" >
       <div class="  mb40">
           <form>
               <div class="add-store-block input-style mb20 mt20 ">
@@ -13,7 +16,7 @@
                       <div class="col-md-8 textaligncenter">
                           <div class="form-group">
 
-                              <label>{{notificationData?.title||"N/A"}}</label>
+                              <label style="font-weight: 400;">{{notificationData?.title||"N/A"}}</label>
                           </div>
                       </div>
                   </div>
@@ -23,7 +26,7 @@
                     <div class="col-md-8 textaligncenter">
                         <div class="form-group">
 
-                            <label>{{notificationData.sharedWith||"N/A"}}</label>
+                            <label style="font-weight: 400;">{{notificationData.sharedWith||"N/A"}}</label>
                         </div>
                     </div>
                 </div>
@@ -33,7 +36,7 @@
                   <div class="col-md-8 textaligncenter">
                       <div class="form-group">
 
-                          <label>{{notificationData.createdAt | date }}</label>
+                          <label style="font-weight: 400;">{{notificationData.createdAt | date }}</label>
                       </div>
                   </div>
               </div>
@@ -51,12 +54,15 @@
 
               <div class="text-center mt40 mb40">
                   <!-- <button class="btn btn-large  max-WT-150 btn-theme" (click)="GoForEdit()">Edit</button> -->
-                  <button class="btn btn-large  max-WT-150 btn-theme"routerLink="/notification-management">Close</button>
+                  <button class="btn btn-large  max-WT-150 btn-secondary"routerLink="/notification-management">Close</button>
               </div>
           </form>
       </div>
   </div>
 </div>
+</main>
+</div>
+
 
 
 

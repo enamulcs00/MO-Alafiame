@@ -32,7 +32,7 @@
                           <span>:</span></label>
                       <div class="col-md-8 textaligncenter">
                           <div>
-                              <input type="checkbox" [(ngModel)]="theCheckbox"  data-md-icheck (change)="toggleVisibility($event)">
+                              <input type="checkbox" [(ngModel)]="theCheckbox" [ngModelOptions]="{standalone: true}" data-md-icheck (change)="toggleVisibility($event)">
 
                           </div>
                       </div>

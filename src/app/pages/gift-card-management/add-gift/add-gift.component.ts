@@ -11,7 +11,8 @@ export class AddGiftComponent implements OnInit {
   addGiftForm: FormGroup;
   file: any = [];
   profile: any;
-
+  marked = false;
+  theCheckbox = false;
   constructor(public service:MainService,private router:Router) {
 
   }
@@ -45,7 +46,8 @@ export class AddGiftComponent implements OnInit {
       'discount': this.addGiftForm.value.discount,
       'maxAmount': this.addGiftForm.value.maxAmount,
       'expiryDate':Math.round(new Date(this.addGiftForm.value.expiry).getTime()),
-      'giftImage' :this.profile
+      'giftImage' :this.profile,
+      'active':this.marked,
     }
     console.log(data)
     this.service.postApi('admin/addGift',data,1).subscribe((res:any)=>{
@@ -61,5 +63,8 @@ export class AddGiftComponent implements OnInit {
     }, (error) => {
       this.service.hideSpinner()
     })
+  }
+  toggleVisibility(e){
+    this.marked= e.target.checked;
   }
 }

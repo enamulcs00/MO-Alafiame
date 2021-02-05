@@ -110,26 +110,40 @@ let data =
     exportCSV() {
       {
       let dataArr = [];
-      dataArr.push({
-      sno: "S.No",
-      Name: "Name of product",
-      Charge: "Charges",
-      Use: "Used For",
-      Type: "Service Type"
-      });
-      
       this.productlists.forEach((element, ind) => {
       dataArr.push({
-      sno: ind + 1,
-      Name: element.productName ? element.productName : '--',
-      Charges: element.price ? element.price : '--',
-      Use: element.usedFor ? element.usedFor : '--',
-      Type: element.type ? element.type : '--',
+      'sno': ind + 1,
+      'Name': element.productName ? element.productName : '--',
+      'Charges': element.price ? element.price : '--',
+      'Use': element.usedFor ? element.usedFor : '--',
+      'Type': element.type ? element.type : '--',
       })
       })
-      new ngxCsv(dataArr, 'Product_management');
+      this.mainService.exportAsExcelFile(dataArr, 'Product_management');
       }
       }
+
+
+      // exportAsXLXS() {
+      //   let dataArr = [];
+      //   this.disputeList.forEach((element, ind) => {
+      //     dataArr.push({
+      //       'Trade ID': element.tradeId ? element.tradeId : 'N/A',
+      //       'Dispute ID': element.disputeId ? element.disputeId : 'N/A',
+      //       'Trade Date': element.creationTime ? this.datePipe.transform(element.creationTime) : 'N/A',
+      //       'Dispute Date': element.disputeTime ? this.datePipe.transform(element.disputeTime) : 'N/A',
+      //       'Dispute Status': element.disputeStatus ? element.disputeStatus : 'N/A',
+      //       'Trade Amount': element.tradeAmount ? element.tradeAmount : 'N/A',
+      //       'Staff Incharge': element.staffIncharge ? element.staffIncharge : 'N/A'
+
+      //     })
+      //   })
+      //   this.service.exportAsExcelFile(dataArr, 'Dispute Management List')
+      //  }
+
+
+
+
 
   productList()
   {

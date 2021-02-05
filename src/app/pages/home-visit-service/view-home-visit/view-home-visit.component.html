@@ -27,17 +27,40 @@
                             </div>
                         </div>
                     </div>
-
+                    <!-- <div class="row mt-3">
+                      <h3>Subcategories</h3>
+                      <div class="col-md-12 mt-3">
+                          <div class="row mb-4" style="padding-left: 5%;" *ngFor="let data of subCategoryView">
+                              <div class="col-md-">
+                                  <label>
+                                    {{data.subCategoryName}}
+                                  </label>
+                              </div>
+                              <div class="col-md-1">
+                                <label>
+                                  :
+                                </label>
+                            </div>
+                              <div class="col-md-3">
+                                <img src="{{data.subCategoryImage}}" alt="" style="max-width: 100%;width: 100%;height: 40px;" class="zoom">
+                             </div>
+                              <div class="col-md-3">
+                                  <h3 class="card-description">
+                                    <input type="radio" name="gender" [checked]="data.markAs" (change)="valuechanged(data._id)">
+                                  </h3>
+                              </div>
+                          </div>
+                      </div>
+                    </div> -->
                     <div class="text-center mt40 mb40">
-                        <button type="button" class="btn btn-large  max-WT-150 btn-secondary" 
+                        <button type="button" class="btn btn-large  max-WT-150 btn-secondary"
                         [routerLink]="['/home-visit-service']">Back</button>
                     </div>
                 </div>
             </div>
+
         </div>
-        <!-- <h3>SubCategories<button type="button" class="btn btn-theme Go_btn ml-2"
-      style="float:right" (click)=openAdd()>Add
-    </button></h3>
+        <h3>SubCategories</h3>
         <div class="card">
             <div class="table-responsive">
                 <table class="table table-bordered" aria-describedby="user management list">
@@ -60,6 +83,11 @@
                                 <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(item?._id)">
                                     <i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i>
                                 </button>
+                                <label class="switch">
+                                  <input type="checkbox" (click)="sliderRound(item?._id)"
+                                      [checked]="item?.markAs == true">
+                                  <span class="slider round" [title]="(item?.markAs==true)?'Deactivate':'Activate'"></span>
+                              </label>
                                 </td>
                         </tr>
                         <tr *ngIf="!subcategorList.length">
@@ -69,7 +97,7 @@
                 </table>
 
             </div>
-        </div> -->
+        </div>
         </div>
         <!-- delete gift-card-management modal Start -->
 <div class="modal fade global-modal reset-modal" id="deleteModal">
@@ -158,6 +186,16 @@
                                             <input type="text" class="form-control col-md-5" formControlName="categoryName">
                                             <span class="text text-danger" *ngIf="editSubForm.controls.categoryName.touched && editSubForm.controls.categoryName.invalid && editSubForm.controls.categoryName.errors.required">*Category Name is Required</span>
                                         </div>
+                                        <div class="row">
+                                          <label class="col-md-4">Mark as Featured
+                                              <span>:</span></label>
+                                          <div class="col-md-8 textaligncenter">
+                                              <div>
+                                                  <input type="checkbox" [(ngModel)]="theCheckbox" [ngModelOptions]="{standalone: true}" data-md-icheck (change)="toggleVisibility($event)">
+
+                                              </div>
+                                          </div>
+                                      </div>
                                         <div class="row">
                                             <label class="col-md-4">Category image</label>
                                             <span class="col-md-1">:</span>

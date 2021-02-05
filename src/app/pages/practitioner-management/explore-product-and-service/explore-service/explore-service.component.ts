@@ -71,4 +71,27 @@ export class ExploreServiceComponent implements OnInit {
       this.service.errorToast('Something went wrong');
     })
   }
+  sliderRound(id){
+    this.itemId = id
+    let url = 'admin/activeDeactivePageHomeScreenOurService'
+    let obj = {
+      _id:this.itemId
+    }
+    this.service.showSpinner();
+    this.service.postApi(url, obj, 1).subscribe((res: any) => {
+      this.service.hideSpinner()
+      if (res.responseCode == 200) {
+
+        this.service.successToast(res.responseMessage);
+        this.getSectionList()
+      } else {
+        this.service.hideSpinner();
+        this.service.errorToast(res.responseMessage)
+      }
+    },
+    error=>{
+      this.service.hideSpinner()
+      this.service.errorToast('Something went wrong');
+    })
+  }
 }

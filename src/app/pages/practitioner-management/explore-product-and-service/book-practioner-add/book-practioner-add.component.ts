@@ -9,7 +9,8 @@ import { MainService } from 'src/app/provider/main.service';
   styleUrls: ['./book-practioner-add.component.css']
 })
 export class BookPractionerAddComponent implements OnInit {
-
+  marked = false;
+  theCheckbox = false;
   addBannerForm:FormGroup;
   profile = ''
   config = {
@@ -36,6 +37,7 @@ export class BookPractionerAddComponent implements OnInit {
         'title': this.addBannerForm.value.title,
         'description': this.addBannerForm.value.description,
         'image': this.profile,
+        'active':this.marked,
       }
       this.mainService.showSpinner();
       this.mainService.postApi(url, data, 1).subscribe((res: any) => {
@@ -69,5 +71,8 @@ _handleReaderLoaded(e) {
   let reader = e.target;
   this.profile = reader.result;
   console.log("profile", this.profile)
+}
+toggleVisibility(e){
+  this.marked= e.target.checked;
 }
 }

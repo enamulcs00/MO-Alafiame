@@ -74,53 +74,29 @@
                         </div>
                     </div>
 
-                    <div class="form-group row align-items-baseline view-label-align">
-                        <label class="col-md-5 textalignright ">Expiry date
-                            <span>:</span></label>
-                        <div class="col-md-7 textaligncenter">
-                            <div class="form-group">
-                                <input type="date" class="form-control" formControlName="expiry"
-                                    [min]="service.getToday()">
-                                <span class="text text-danger"
-                                    *ngIf="addGiftForm.get('expiry').hasError('required') && addGiftForm.get('expiry').touched">*Expiry
-                                    date is Required</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- <div class="col">
-                            <label>Title :</label><br><br>
-                            <label>Discount (in %) :</label><br>
-                            <label>Maximum amount :</label><br>
-                            <label>Expiry date : </label><br>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" formControlName="title" (keypress)="service.AlphabetOnly($event)">
-                            <span class="text text-danger" *ngIf="addGiftForm.get('title').hasError('required') && addGiftForm.get('title').touched">*Title is Required</span><br>
-                            <input type="text" class="form-control" formControlName="discount" (keypress)="service.NumOnly($event)" maxlength="2">
-                            <span class="text text-danger" *ngIf="addGiftForm.get('discount').hasError('required') && addGiftForm.get('discount').touched">*Discount is Required</span><br>
-                            <input type="text" class="form-control" formControlName="maxAmount" (keypress)="service.NumOnly($event)">
-                            <span class="text text-danger" *ngIf="addGiftForm.get('maxAmount').hasError('required') && addGiftForm.get('maxAmount').touched">*Maximum amount is Required</span><br>
-                            <input type="date" class="form-control" formControlName="expiry" [min]="service.getToday()">
-                            <span class="text text-danger" *ngIf="addGiftForm.get('expiry').hasError('required') && addGiftForm.get('expiry').touched">*Expiry date is Required</span><br>
-    
-                        </div> -->
-                        <!-- <div class="col">
-                            <label for="fileInput">
-                                <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
-                                <em class="fa fa-camera" style="color: #86559f!important;
-                                font-size: 20px;
-                                position: relative;
-                                right: 60px;
-                                top: 38px;
-                            "></em>
-                                <input type="file" id="fileInput" class="form-control" formControlName="image" name="imageUrl" accept="image/*" (change)="convertimg($event)" style="visibility:hidden; position: relative;
-                                right: 108px;
-                                top: 33px;">
-                            </label>
-                        </div> -->
-                    </div>
+        <div class="form-group row align-items-baseline view-label-align">
+          <label class="col-md-5 textalignright ">Expiry date
+              <span>:</span></label>
+          <div class="col-md-7 textaligncenter">
+              <div class="form-group">
+                <input type="date" class="form-control" formControlName="expiry" [min]="service.getToday()">
+                <span class="text text-danger" *ngIf="addGiftForm.get('expiry').hasError('required') && addGiftForm.get('expiry').touched">*Expiry date is Required</span>
+              </div>
+          </div>
+      </div>
+      <div class="form-group row align-items-baseline view-label-align">
+        <label class="col-md-5 textalignright">Activate
+            <span>:</span></label>
+        <div class="col-md-7 textaligncenter">
+            <div>
+                <input type="checkbox" [(ngModel)]="theCheckbox" [ngModelOptions]="{standalone: true}" data-md-icheck (change)="toggleVisibility($event)">
 
+            </div>
+        </div>
+    </div>
+              <div class="row">
+
+                </div>
 
                     <div class="text-center mt40 mb40">
 
