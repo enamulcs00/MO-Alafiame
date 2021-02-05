@@ -2,16 +2,15 @@
     <main class="middle-content">
         <div class="page_title_block">
             <h1 class="page_title">Static Content Management / Edit</h1>
-            <hr>
+            <hr style="background: black; opacity: 0.5;">
         </div>
         <div class="content-section">
-            <div class="outer-box">
-                <div class="global-table no-radius p0">
-                    <div class="tab-content1">
+            <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+                <div class="  mb40">
+                    <div class="add-store-block input-style mb20 mt20 ">
                         <form [formGroup]="form">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class=" order-view main-block-innner mb20 view-label-align">
                                         <div class="add-store-block input-style">
                                             <div class="form-group row ">
                                                 <div class="col-md-12">
@@ -129,9 +128,9 @@
 
                                                 </div>
                                                     <div class="text-center mt75 mb40">
-                                                        <button class="btn btn-large  max-WT-150 btn-theme"
+                                                        <button class="btn btn-large  max-WT-150 btn-secondary"
                                                             routerLink="/static-content-management">Back</button>
-                                                        <button class="btn btn-large  max-WT-150 btn-theme"
+                                                        <button class="btn btn-large  max-WT-150 btn-primary ml-2"
                                                             (click)="Update()" [disabled]="form.invalid">Update</button>
 
                                                     </div>
@@ -140,7 +139,6 @@
 
 
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         </form>

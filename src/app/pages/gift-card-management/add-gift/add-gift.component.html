@@ -1,61 +1,83 @@
-<div class="wrapper" style="width: 80%;
-margin-left: 2%;">
+<div class="wrapper">
     <main class="middle-content">
         <div class="page_title_block">
             <h1 class="page_title"> Add New Giftcard</h1>
-            <hr style="background: black; opacity: 0.5;width: 135%;">
+            <hr style="background: black; opacity: 0.5;">
         </div>
-        <form [formGroup]="addGiftForm">
-            <div class="order-view main-block-innner mb20 mt40 view-label-align" style="margin-left: 10%;">
-              <div class="form-group row align-items-baseline view-label-align">
-                <label class="col-md-3 textalignright ">Title
-                    <span>:</span></label>
-                <div class="col-md-6 textaligncenter">
-                    <div class="form-group">
-                      <input type="text" class="form-control" formControlName="title" (keypress)="service.AlphabetOnly($event)">
-                      <span class="text text-danger" *ngIf="addGiftForm.get('title').hasError('required') && addGiftForm.get('title').touched">*Title is Required</span>
+        <div class="content-section">
+           
+                <div class="order-view  max-WT-700 mrgn-0-auto setting-page" >
+                    <div class="  mb40">
+                        <div class="add-store-block input-style mb20 mt20 ">
+                    <form [formGroup]="addGiftForm">
+
+                        <div class="form-group row  view-label-align">
+                            <label class="col-md-5 textalignright ">Add Image
+                                <span>:</span></label>
+                            <div class="col-md-7 textaligncenter">
+                                <div class="col" >
+                                    <label for="fileInput">
+                                        <img [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" class="onHover" />
+                                        <em class="fa fa-camera hide" title="Upload Image" style="color: #000!important;
+                                  font-size: 20px;
+                                  position: relative;
+                                  right: 60px;
+                                  top: 38px;
+                              "></em>
+                                        <input type="file" id="fileInput" class="form-control" formControlName="image"
+                                            name="imageUrl" accept="image/*" (change)="convertimg($event)"
+                                            style="visibility:hidden">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="form-group row align-items-baseline view-label-align">
+                        <label class="col-md-5 textalignright ">Title
+                            <span>:</span></label>
+                        <div class="col-md-7 textaligncenter">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="title"
+                                    (keypress)="service.AlphabetOnly($event)">
+                                <span class="text text-danger"
+                                    *ngIf="addGiftForm.get('title').hasError('required') && addGiftForm.get('title').touched">*Title
+                                    is Required</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col" style="position: absolute;left: 70%;">
-                  <label for="fileInput">
-                      <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" class="onHover"/>
-                      <em class="fa fa-camera hide" title="Upload Image" style="color: #86559f!important;
-                      font-size: 20px;
-                      position: relative;
-                      right: 60px;
-                      top: 38px;
-                  "></em>
-                      <input type="file" id="fileInput" class="form-control" formControlName="image" name="imageUrl" accept="image/*" (change)="convertimg($event)" style="visibility:hidden">
-                  </label>
-              </div>
-            </div>
 
-            <div class="form-group row align-items-baseline view-label-align">
-              <label class="col-md-3 textalignright ">Discount (in %)
-                  <span>:</span></label>
-              <div class="col-md-6 textaligncenter">
-                  <div class="form-group">
-                    <input type="text" class="form-control" formControlName="discount" (keypress)="service.NumOnly($event)" maxlength="2">
-                    <span class="text text-danger" *ngIf="addGiftForm.get('discount').hasError('required') && addGiftForm.get('discount').touched">*Discount is Required</span>
-                  </div>
-              </div>
-          </div>
+                    <div class="form-group row align-items-baseline view-label-align">
+                        <label class="col-md-5 textalignright ">Discount (in %)
+                            <span>:</span></label>
+                        <div class="col-md-7 textaligncenter">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="discount"
+                                    (keypress)="service.NumOnly($event)" maxlength="2">
+                                <span class="text text-danger"
+                                    *ngIf="addGiftForm.get('discount').hasError('required') && addGiftForm.get('discount').touched">*Discount
+                                    is Required</span>
+                            </div>
+                        </div>
+                    </div>
 
-          <div class="form-group row align-items-baseline view-label-align">
-            <label class="col-md-3 textalignright ">Maximum amount
-                <span>:</span></label>
-            <div class="col-md-6 textaligncenter">
-                <div class="form-group">
-                  <input type="text" class="form-control" formControlName="maxAmount" (keypress)="service.NumOnly($event)">
-                  <span class="text text-danger" *ngIf="addGiftForm.get('maxAmount').hasError('required') && addGiftForm.get('maxAmount').touched">*Maximum amount is Required</span>
-                </div>
-            </div>
-        </div>
+                    <div class="form-group row align-items-baseline view-label-align">
+                        <label class="col-md-5 textalignright ">Maximum amount
+                            <span>:</span></label>
+                        <div class="col-md-7 textaligncenter">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="maxAmount"
+                                    (keypress)="service.NumOnly($event)">
+                                <span class="text text-danger"
+                                    *ngIf="addGiftForm.get('maxAmount').hasError('required') && addGiftForm.get('maxAmount').touched">*Maximum
+                                    amount is Required</span>
+                            </div>
+                        </div>
+                    </div>
 
         <div class="form-group row align-items-baseline view-label-align">
-          <label class="col-md-3 textalignright ">Expiry date
+          <label class="col-md-5 textalignright ">Expiry date
               <span>:</span></label>
-          <div class="col-md-6 textaligncenter">
+          <div class="col-md-7 textaligncenter">
               <div class="form-group">
                 <input type="date" class="form-control" formControlName="expiry" [min]="service.getToday()">
                 <span class="text text-danger" *ngIf="addGiftForm.get('expiry').hasError('required') && addGiftForm.get('expiry').touched">*Expiry date is Required</span>
@@ -63,9 +85,9 @@ margin-left: 2%;">
           </div>
       </div>
       <div class="form-group row align-items-baseline view-label-align">
-        <label class="col-md-3 textalignright">Activate
+        <label class="col-md-5 textalignright">Activate
             <span>:</span></label>
-        <div class="col-md-8 textaligncenter">
+        <div class="col-md-7 textaligncenter">
             <div>
                 <input type="checkbox" [(ngModel)]="theCheckbox" [ngModelOptions]="{standalone: true}" data-md-icheck (change)="toggleVisibility($event)">
 
@@ -76,13 +98,21 @@ margin-left: 2%;">
 
                 </div>
 
-                <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
-                    <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
-                        [routerLink]="['/gift-card-management']">Back</button>
-                    <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;" [disabled]=addGiftForm.invalid
-                        (click)="addGift()">Save </button>
+                    <div class="text-center mt40 mb40">
+
+                            <button type="button" class="btn btn-large  max-WT-150 btn-secondary"
+                            [routerLink]="['/gift-card-management']">Back</button>
+                        <button type="button" class="btn btn-large  max-WT-150 btn-primary ml-2" 
+                            [disabled]=addGiftForm.invalid (click)="addGift()">Save </button>
+
+                    </div>
+
+                   
+                </form>
                 </div>
             </div>
-        </form>
+        </div>
+        </div>
+
     </main>
 </div>

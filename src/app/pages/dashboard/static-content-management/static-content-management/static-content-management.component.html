@@ -1,10 +1,10 @@
-<div class="wrapper" style="overflow-x: hidden;">
+<div class="wrapper" >
     <main class="middle-content">
         <div class="page_title_block">
             <h1 class="page_title">Home Content Management</h1>
-            <hr style="width: 118%; margin-left: -9%; background-color: black;">
+            <hr style="background: black; opacity: 0.5;">
         </div>
-        <div class="content-section" style="margin-top: -3%;">
+        <div class="content-section" >
             <div class="outer-box">
                 <div class="global-table no-radius p0">
                     <div class="tab-content1">
@@ -26,14 +26,12 @@
                                             <td class="content" [innerHtml]=item.description></td>
                                             <td class="justify-content-center d-flex">
                                                 <div>
-                                                    <button class="btn btn-large  max-WT-150 btn-theme"
-                                                        style="margin-left: -12%; color: black;"
-                                                        routerLink="/view_terms/{{item.type}}">View</button>
+                                                    <button class="btn btn-info ml-2 bt-margin"
+                                                        routerLink="/view_terms/{{item.type}}"> <em class="fa fa-eye" aria-hidden="true" ></em></button>
                                                 </div>
                                                 <div>
-                                                    <button class="btn btn-large  max-WT-150 btn-theme"
-                                                        style="margin-left: 39%; color: black;"
-                                                        routerLink="/edit-static-content-management/{{item.type}}/{{item._id}}">Edit</button>
+                                                    <button class="btn btn-info ml-2 bt-margin"
+                                                        routerLink="/edit-static-content-management/{{item.type}}/{{item._id}}"><em class="fa fa-edit" aria-hidden="true"></em></button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -43,25 +41,25 @@
                                       <tr>
                                         <td>Home Content</td>
                                         <td></td>
-                                        <td>
-                                          <button class="btn btn-large btn-theme"
-                                          style="color: black;" type="button" [routerLink]="['/home-section']">View</button>
+                                        <td class="justify-content-center d-flex">
+                                          <button class="btn btn-info ml-2 bt-margin"
+                                          type="button" [routerLink]="['/home-section']"><em class="fa fa-eye" aria-hidden="true" ></em></button>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>Practioner Content</td>
                                         <td></td>
-                                        <td>
-                                          <button class="btn btn-large btn-theme"
-                                          style="color: black;" type="button" [routerLink]="['/practitioner-management']">View</button>
+                                        <td class="justify-content-center d-flex">
+                                          <button class="btn btn-info ml-2 bt-margin"
+                                          type="button" [routerLink]="['/practitioner-management']"><em class="fa fa-eye" aria-hidden="true" ></em></button>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>Login Screen Content</td>
                                         <td></td>
-                                        <td>
-                                          <button class="btn btn-large btn-theme"
-                                          style="color: black;" type="button" [routerLink]="['/login-screen-content']">View</button>
+                                        <td class="justify-content-center d-flex">
+                                          <button class="btn btn-info ml-2 bt-margin"
+                                          type="button" [routerLink]="['/login-screen-content']"><em class="fa fa-eye" aria-hidden="true" ></em></button>
                                         </td>
                                       </tr>
                                     </tbody>

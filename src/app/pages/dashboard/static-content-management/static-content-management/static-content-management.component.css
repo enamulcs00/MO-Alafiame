@@ -17,3 +17,7 @@ td p {
   white-space: nowrap;
   overflow: hidden;
 }
+
+.global-table td:first-child {
+  width: 160px!important;
+}
