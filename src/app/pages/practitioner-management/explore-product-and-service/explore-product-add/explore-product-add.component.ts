@@ -17,6 +17,8 @@ export class ExploreProductAddComponent implements OnInit {
     height: '40%',
     enterMode :2
   };
+  marked = false;
+  theCheckbox = false;
   constructor(public mainService:MainService, private router:Router) { }
 
   ngOnInit() {
@@ -32,11 +34,14 @@ export class ExploreProductAddComponent implements OnInit {
 
     let data =
       {
+
         "title": this.addBannerForm.value.title,
         "description": this.addBannerForm.value.description,
+        'active':this.marked,
         "image": [
           this.base64image
         ]
+
       }
       this.mainService.showSpinner();
       this.mainService.postApi(url, data, 1).subscribe((res: any) => {
@@ -84,5 +89,7 @@ selectMediaFile(event) {
   }
   }
   }
-
+  toggleVisibility(e){
+    this.marked= e.target.checked;
+  }
 }
