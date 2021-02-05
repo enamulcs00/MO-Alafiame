@@ -27,51 +27,40 @@
                             </div>
                         </div>
                     </div>
-
+                    <!-- <div class="row mt-3">
+                      <h3>Subcategories</h3>
+                      <div class="col-md-12 mt-3">
+                          <div class="row mb-4" style="padding-left: 5%;" *ngFor="let data of subCategoryView">
+                              <div class="col-md-">
+                                  <label>
+                                    {{data.subCategoryName}}
+                                  </label>
+                              </div>
+                              <div class="col-md-1">
+                                <label>
+                                  :
+                                </label>
+                            </div>
+                              <div class="col-md-3">
+                                <img src="{{data.subCategoryImage}}" alt="" style="max-width: 100%;width: 100%;height: 40px;" class="zoom">
+                             </div>
+                              <div class="col-md-3">
+                                  <h3 class="card-description">
+                                    <input type="radio" name="gender" [checked]="data.markAs" (change)="valuechanged(data._id)">
+                                  </h3>
+                              </div>
+                          </div>
+                      </div>
+                    </div> -->
                     <div class="text-center mt40 mb40">
-                        <button type="button" class="btn btn-large  max-WT-150 btn-secondary" 
+                        <button type="button" class="btn btn-large  max-WT-150 btn-secondary"
                         [routerLink]="['/home-visit-service']">Back</button>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <div class="col">
-                    <label>{{user?.categoryName}}</label><br><br>
-                    <label><img [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" /></label><br><br>
-                </div>
-                <div class="row mt-3">
-                  <h3>Subcategories</h3>
-                  <div class="col-md-12 mt-3">
-                      <div class="row mb-4" style="padding-left: 5%;" *ngFor="let data of subCategoryView">
-                          <div class="col-md-6">
-                              <label>
-                                {{data.subCategoryName}}
-                              </label>
-                          </div>
-                          <div class="col-md-3">
-                            <img src="{{data.subCategoryImage}}" alt="" style="max-width: 100%;width: 100%;height: 40px;" class="zoom">
-                         </div>
-                          <div class="col-md-3">
-                              <h3 class="card-description">
-                                <input type="radio" name="gender" [checked]="data.markAs" (change)="valuechanged(data._id)">
-                              </h3>
-                          </div>
-                      </div>
-                  </div>
-                </div>
-
             </div>
 
-            <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
-                <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
-                [routerLink]="['/home-visit-service']">Back</button>
-
-=======
->>>>>>> 68cae92a1e8bcd2ea911d7feb43601ee4456a6a5
-            </div>
         </div>
-        <!-- <h3>SubCategories<button type="button" class="btn btn-theme Go_btn ml-2"
-      style="float:right" (click)=openAdd()>Add
-    </button></h3>
+        <h3>SubCategories</h3>
         <div class="card">
             <div class="table-responsive">
                 <table class="table table-bordered" aria-describedby="user management list">
@@ -94,6 +83,11 @@
                                 <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(item?._id)">
                                     <i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i>
                                 </button>
+                                <label class="switch">
+                                  <input type="checkbox" (click)="sliderRound(item?._id)"
+                                      [checked]="item?.markAs == true">
+                                  <span class="slider round" [title]="(item?.markAs==true)?'Deactivate':'Activate'"></span>
+                              </label>
                                 </td>
                         </tr>
                         <tr *ngIf="!subcategorList.length">
@@ -103,7 +97,7 @@
                 </table>
 
             </div>
-        </div> -->
+        </div>
         </div>
         <!-- delete gift-card-management modal Start -->
 <div class="modal fade global-modal reset-modal" id="deleteModal">

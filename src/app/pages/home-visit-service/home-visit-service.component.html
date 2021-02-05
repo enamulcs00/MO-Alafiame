@@ -159,50 +159,46 @@
                     <div class="form-group row  view-label-align">
                         <label class="col-md-4 textalignright">Subcategory Image
                             <span>:</span></label>
-                               <div class="col-md-4">
-                                <label  for="fileInput" class="hoverable">
-                                  <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
-                                  <div class="hover-text">
-                                    <em class="fa fa-camera"></em>
-                                  </div>
-                                  </label>
-                               </div>
-                                  </div>
+                                <label class="col-md-4" for="fileInput" class="hoverable">
+                                    <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
+                                    <div class="hover-text">
+                                      <em class="fa fa-camera"></em>
 
-                                  <div class="form-group row  view-label-align">
-                                    <label class="col-md-4 textalignright">Activate
-                                        <span>:</span></label>
-                                        <div class="col-md-8">
-                                          <div>
-                                              <input type="checkbox" [(ngModel)]="theCheckbox" [ngModelOptions]="{standalone: true}" data-md-icheck (change)="toggleVisibility($event)">
+                                    </div>
+                                    <input type="file" id="fileInput"class="custom-file-input" name="imageUrl" accept="image/*" (change)="handleInputChange($event)">
+                                    </label>
+                    </div>
 
-                                          </div>
-                                      </div>
-                                              </div>
+                    <div class="form-group row  view-label-align">
+                      <label class="col-md-4 textalignright">Activate
+                          <span>:</span></label>
+                          <div class="col-md-8">
+                            <div>
+                                <input type="checkbox" [(ngModel)]="theCheckbox" [ngModelOptions]="{standalone: true}" data-md-icheck (change)="toggleVisibility($event)">
 
-                                              <div class="form-group row  view-label-align">
-                                                <label class="col-md-4 textalignright">Choose Category
-                                                    <span>:</span></label>
-                                                    <div class="col-md-8">
-                                                      <select class="form-control "
-                                                      (change)="selected($event)">
-                                                     <option *ngFor="let item of servicelists" value="{{item?._id}}"  > {{item.categoryName}}
-                                                     </option>
-                                                 </select>
-                                                  </div>
-                                                          </div>
+                            </div>
+                        </div>
+                            </div>
 
+                            <div class="form-group row  view-label-align">
+                              <label class="col-md-4 textalignright">Choose Category
+                                  <span>:</span></label>
+                                  <div class="col-md-8 textaligncenter">
+                                    <div class="form-group ">
+                                        <select class="form-control "
+                                                     (change)="selected($event)">
+                                                    <option *ngFor="let item of servicelists" value="{{item?._id}}"  > {{item.categoryName}}
+                                                    </option>
+                                                </select>
 
-
-
-
-
-
-                          <div class=" text-center mt-3 mb-3" >
+                                    </div>
+                                </div>
+                                    </div>
+                          <div class=" text-center" >
                               <button type="button" class="btn btn-secondary"
                               data-dismiss="modal">Close</button>
                               <button type="button" class="btn btn-primary ml-2"
-                                  (click)="addSubService()" [disabled]=addSubForm.invalid>Save</button>
+                                  (click)="addSubService()">Save</button>
                           </div>
                   </form>
               </div>

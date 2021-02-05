@@ -195,6 +195,29 @@ valuechanged(categoryId){
     })
 
   }
+  sliderRound(id){
+    this.serviceId = id
+    let url = 'admin/markUnmarkService'
+    let obj = {
+      serviceId:this.serviceId
+    }
+    this.mainService.showSpinner();
+    this.mainService.postApi(url, obj, 1).subscribe((res: any) => {
+      this.mainService.hideSpinner()
+      if (res.responseCode == 200) {
+
+        this.mainService.successToast(res.responseMessage);
+
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+    },
+    error=>{
+      this.mainService.hideSpinner()
+      this.mainService.errorToast('Something went wrong');
+    })
+  }
 }
 
 

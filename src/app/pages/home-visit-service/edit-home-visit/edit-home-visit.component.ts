@@ -12,12 +12,11 @@ export class EditHomeVisitComponent implements OnInit {
   profile: any;
   user: any;
   categoryId: any;
-  marked = false;
-  theCheckbox = false;
+
   constructor(private actRoute:ActivatedRoute,private route:Router,public mainService: MainService) {
     this.edithomeForm = new FormGroup({
       "categoryName": new FormControl('', Validators.required),
-      // "subCategories": new FormControl('', Validators.required)
+
     });
    }
   ngOnInit() {
@@ -46,7 +45,6 @@ export class EditHomeVisitComponent implements OnInit {
      if (res && res.responseCode == 200 && res.result) {
       this.user = res.result;
       this.profile= this.user.categoryImage;
-      //this.subcategorList = (res.serviceData)?res.serviceData:null;
        this.edithomeForm.patchValue({
          'categoryName':this.user.categoryName
        })
@@ -65,7 +63,6 @@ export class EditHomeVisitComponent implements OnInit {
 
   }
 
-
 EditServiceCtegory(){
   let endpoint = 'admin/editCategory'
 let data =
@@ -73,7 +70,7 @@ let data =
       'categoryId':this.categoryId,
       'categoryName': this.edithomeForm.value.categoryName,
       'categoryImage': this.profile,
-      'markAs': this.marked,
+
      }
    this.mainService.showSpinner()
     this.mainService.putApi(endpoint,data,1).subscribe((res:any)=>{
@@ -95,7 +92,5 @@ let data =
     })
 }
 
-toggleVisibility(e){
-  this.marked= e.target.checked;
-}
+
 }
