@@ -20,6 +20,26 @@
                     <label>{{user?.categoryName}}</label><br><br>
                     <label><img [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" /></label><br><br>
                 </div>
+                <div class="row mt-3">
+                  <h3>Subcategories</h3>
+                  <div class="col-md-12 mt-3">
+                      <div class="row mb-4" style="padding-left: 5%;" *ngFor="let data of subCategoryView">
+                          <div class="col-md-6">
+                              <label>
+                                {{data.subCategoryName}}
+                              </label>
+                          </div>
+                          <div class="col-md-3">
+                            <img src="{{data.subCategoryImage}}" alt="" style="max-width: 100%;width: 100%;height: 40px;" class="zoom">
+                         </div>
+                          <div class="col-md-3">
+                              <h3 class="card-description">
+                                <input type="radio" name="gender" [checked]="data.markAs" (change)="valuechanged(data._id)">
+                              </h3>
+                          </div>
+                      </div>
+                  </div>
+                </div>
 
             </div>
 

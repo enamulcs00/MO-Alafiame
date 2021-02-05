@@ -10,7 +10,8 @@ import { MainService } from 'src/app/provider/main.service';
 })
 export class ExploreServiceAddComponent implements OnInit {
 
-
+  marked = false;
+  theCheckbox = false;
   addBannerForm:FormGroup;
   profile = ''
   config = {
@@ -36,6 +37,7 @@ export class ExploreServiceAddComponent implements OnInit {
 
         'title': this.addBannerForm.value.title,
         'description': this.addBannerForm.value.description,
+        'active':this.marked,
         'image': this.profile,
       }
       this.mainService.showSpinner();
@@ -70,5 +72,8 @@ _handleReaderLoaded(e) {
   let reader = e.target;
   this.profile = reader.result;
   console.log("profile", this.profile)
+}
+toggleVisibility(e){
+  this.marked= e.target.checked;
 }
 }

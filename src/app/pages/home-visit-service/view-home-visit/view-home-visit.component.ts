@@ -18,6 +18,7 @@ export class ViewHomeVisitComponent implements OnInit {
   editSubForm: FormGroup;
   serviceId: any;
   servicedata: any;
+  subCategoryView: any;
   constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) { }
   ngOnInit() {
     this.activate.paramMap.subscribe(params => {
@@ -37,6 +38,7 @@ export class ViewHomeVisitComponent implements OnInit {
     this.mainService.getApi('admin/viewCategory?categoryId='+this.categoryId,1).subscribe((res: any) => {
      if (res && res.responseCode == 200 && res.result) {
         this.user = res.result;
+        this.subCategoryView=res.serviceData
         this.id=this.user._id;
        this.profile= this.user.categoryImage;
        this.subcategorList = (res.serviceData)?res.serviceData:null;
@@ -51,7 +53,7 @@ export class ViewHomeVisitComponent implements OnInit {
         this.mainService.errorToast(error.responseMessage)
       }
     })
-    
+
   }
   deleteFunction(id) {
     this.categoryId  = id
@@ -68,7 +70,7 @@ export class ViewHomeVisitComponent implements OnInit {
        this.mainService.hideSpinner()
        $('#deleteModal').modal('hide');
        this.mainService.successToast(res.responseMessage)
-      
+
      } else {
        this.mainService.hideSpinner()
        this.mainService.errorToast(res.responseMessage)
@@ -105,7 +107,7 @@ export class ViewHomeVisitComponent implements OnInit {
  }
 
  addSubService(){
-  let data = 
+  let data =
   {
     'categoryId':this.categoryId,
     'subCategoryName': this.addSubForm.value.categoryName,
@@ -133,7 +135,7 @@ export class ViewHomeVisitComponent implements OnInit {
  }
 
  editSubService(){
-  let data = 
+  let data =
   {
     'serviceId':this.serviceId,
     'subCategoryName': this.editSubForm.value.categoryName,
@@ -161,7 +163,7 @@ export class ViewHomeVisitComponent implements OnInit {
 
  handleInputChange(e) {
   var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-  
+
   var reader = new FileReader();
   reader.onload = this._handleReaderLoaded.bind(this);
   reader.readAsDataURL(file);
@@ -171,4 +173,28 @@ _handleReaderLoaded(e) {
   this.profile = reader.result;
   console.log("profile", this.profile)
 }
+
+valuechanged(categoryId){
+    let url = 'admin/markUnmarkService'
+    let obj = {
+      serviceId:categoryId
+    }
+    this.mainService.showSpinner();
+    this.mainService.postApi(url, obj, 1).subscribe((res: any) => {
+      this.mainService.hideSpinner()
+      if (res.responseCode == 200) {
+        this.mainService.successToast(res.responseMessage);
+      } else {
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+    },
+    error=>{
+      this.mainService.hideSpinner()
+      this.mainService.errorToast('Something went wrong');
+    })
+
+  }
 }
+
+

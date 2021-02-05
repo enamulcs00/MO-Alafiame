@@ -65,7 +65,7 @@
                                         <td class="content">
                                             <select class="form-control" size="2" style="border:0px; outline:0px;">
                                                 <option value="{{data?.subCategoryName}}" *ngFor="let data of item?.subcategoryData" class="form-control" style="border: none;">
-                                                    {{data?.subCategoryName}}
+                                                    {{data?.subCategoryName}} <input type="checkbox">
                                                 </option>
                                             </select>
                                             </td>
@@ -83,11 +83,7 @@
                                                 <i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i>
 
                                             </button>
-                                            <label class="switch">
-                                              <input type="checkbox" (click)="sliderRound(item?._id)"
-                                                  [checked]="item?.markAs == true">
-                                              <span class="slider round" [title]="(item?.active==true)?'Featured Unmark':'Mark as Featured'"></span>
-                                          </label>
+
                                             </td>
 
 
@@ -171,6 +167,16 @@
                                           <input type="file" id="fileInput"class="custom-file-input" name="imageUrl" accept="image/*" (change)="handleInputChange($event)">
                                            </label>
                                   </div>
+                                  <div class="row">
+                                    <label class="col-md-3">Activate</label>
+                                        <span class="col-md-1">:</span>
+                                    <div class="col-md-8">
+                                        <div>
+                                            <input type="checkbox" [(ngModel)]="theCheckbox" [ngModelOptions]="{standalone: true}" data-md-icheck (change)="toggleVisibility($event)">
+
+                                        </div>
+                                    </div>
+                                </div>
                                   <div class="row" >
                                     <label class="col-md-3">Choose Category</label>
                                     <span  class="col-md-1">:</span>
