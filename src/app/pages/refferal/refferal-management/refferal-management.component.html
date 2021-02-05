@@ -13,17 +13,17 @@
                           <div class="sec_head_new sec_head_new_after">
                               <form [formGroup]="searchForm">
                                   <div class="row">
-                                    <div class="col-md-2" >
+                                    <div class="col-md-2 pr-0" >
                                       <input type="date" class="form-control"
                                       [max]="mainService.getToday()" formControlName="fromDate" >
-                                  </div>&nbsp;&nbsp;
-                                  <div class="col-md-2" >
+                                  </div>
+                                  <div class="col-md-2 pr-0" >
                                       <input type="date" class="form-control"  formControlName="toDate"
                                       [min]="this.searchForm.controls['fromDate'].value"
                                               (keypress)="mainService.BlockFuture()"
                                       >
                                   </div>
-                                  <div class="col-xl-2 col-lg-2 col-md-2">
+                                  <div class=" col-md-8">
                                       <div class="text-center admin-btn">
                                           <button type="button" class="btn btn-theme " (click)="searchValue()">Search</button>
                                               <button type="button" class="btn btn-theme " (click)="reset()"
@@ -105,8 +105,8 @@
                           <div class="w-100">
                               <p>Are you sure you want to delete this refferal?</p>
                               <div class="modal-btn-box">
-                                  <button type="submit" class="btn btn-theme" (click)="deleteUser()">Yes</button>
-                                  <button type="button" class="btn btn-danger btn-theme ml-2"
+                                  <button type="submit" class="btn btn-primary" (click)="deleteUser()">Yes</button>
+                                  <button type="button" class="btn btn-secondary ml-2"
                                       data-dismiss="modal">No</button>
                               </div>
                           </div>
@@ -165,8 +165,8 @@
                       </div> -->
                   </div>
                   <div class="row pl-5">
-                      <button class="btn btn-theme" data-dismiss="modal">Cancel</button>
-                      <button class="btn btn-theme" (click)="setPoint()" [disabled]="pointSettingForm.invalid">Submit</button>
+                      <button class=" btn btn-secondary " data-dismiss="modal">Cancel</button>
+                      <button class="btn btn-primary ml-2" (click)="setPoint()" [disabled]="pointSettingForm.invalid">Submit</button>
                   </div>
               </form>
 
@@ -178,7 +178,7 @@
   </div>
 <!-- view-refferal -->
 <div class="modal fade global-modal  bd-example-modal-lg reset-modal" id="viewPoint">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg" style="    width: 300px !important;">
       <div class="modal-content">
           <div class="modal-header d-block text-center modal-header-custm">
               <h5 class="modal-title d-inline-block">View Loyality value</h5>
@@ -188,9 +188,9 @@
                 <form>
                   <div class="add-store-block input-style mb20 mt20 ">
                       <div class="form-group row align-items-baseline view-label-align">
-                          <label class="col-md-4 textalignright">Current value</label>
-                          <div class="col-md-8 textaligncenter">
-                              <div class="form-group ">&nbsp;&nbsp;
+                          <label class="col-md-6 textalignright">Current value</label>
+                          <div class="col-md-6 textaligncenter">
+                              <div class="form-group ">
                                 <label>{{viewrefValue}}</label>
 
                               </div>
@@ -198,7 +198,7 @@
                       </div>
                   </div>
                   <div class="text-center">
-                      <button class="btn btn-theme" data-dismiss="modal">Cancel</button>
+                      <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 
                   </div>
               </form>

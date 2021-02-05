@@ -2,42 +2,45 @@
   <main class="middle-content">
     <div class="page_title_block">
       <h1 class="page_title">ADD FAQs</h1>
-      <hr style="width: 118%; margin-left: -9%; background-color: black;">
+      <hr style="background: black; opacity: 0.5;">
     </div>
     <div class="content-section">
       <div class="order-view max-WT setting-page">
         <div class="mb40">
           <div class="add-store-block input-style mb20 ">
             <form [formGroup]="form">
-              <div class="form-group row align-items-baseline">
 
-                  <label class="col-md-2 col-form-label" id="fontSize">Question:</label>
-                  <div class="col-md-10">
-                  <input type="text" class="form-control" formControlName="question" maxlength="512"
-                    (keypress)="mainService.preventSpace($event)" style="width: 72%;margin-top: -6%;margin-left: 16%;">
-                  <div class="text-danger">
-                    <span *ngIf="form.get('question').hasError('required') && form.get('question').dirty || form.get('question').touched" style="padding-left: 15%;">
-                    *Question is required.
-                    </span>
+              <div class="form-group row align-items-baseline view-label-align">
+                <label class="col-md-3 textalignright ">Question
+                    <span>:</span></label>
+                <div class="col-md-7 textaligncenter">
+                    <div class="form-group">
+                      <input type="text" class="form-control" formControlName="question" maxlength="512"
+                      (keypress)="mainService.preventSpace($event)" >
+                      <span *ngIf="form.get('question').hasError('required') && form.get('question').dirty || form.get('question').touched" style="padding-left: 15%;">
+                        *Question is required.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row  view-label-align">
+              <label class="col-md-3 textalignright ">Answer
+                  <span>:</span></label>
+              <div class="col-md-7 textaligncenter">
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="answer" name="" id="" cols="30" rows="5"
+                    (keypress)="mainService.preventSpace($event)" ></textarea>
+                    <div *ngIf="form.get('answer').hasError('required') && form.get('answer').dirty || form.get('answer').touched" class="text-danger" style="padding-left: 15%;">
+                      *Answer is required.
+                    </div>
                   </div>
-                </div>
               </div>
-              <div class="form-group row align-items-baseline">
-                <label class="col-md-2 col-form-label" id="fontSize">Answer:</label>
-                  <div class="col-md-10">
-                  <textarea class="form-control" formControlName="answer" name="" id="" cols="30" rows="5"
-                    (keypress)="mainService.preventSpace($event)" style="margin-top: -5%;margin-left: 16%;width: 72%;"></textarea>
-                  <div *ngIf="form.get('answer').hasError('required') && form.get('answer').dirty || form.get('answer').touched" class="text-danger" style="padding-left: 15%;">
-                    *Answer is required.
-                  </div>
+          </div>
+                <div class="text-center mt40 mb40">
+                <button class="btn btn-large  max-WT-150 btn-secondary"  [routerLink]="['/faq']">Back</button>
+                <button class="btn btn-large  max-WT-150 btn-primary ml-2" (click)="addFaq()"[disabled]="form.invalid">Save</button>
                 </div>
-              </div>
-              <div class="container" style="padding-left: 240px;">
-                <div class="form-group row">
-                <button class="btn btn-md btn-theme"  [routerLink]="['/faq']">Back</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-md btn-theme" (click)="addFaq()"[disabled]="form.invalid">Save</button>
-                </div>
-              </div>
 
             </form>
           </div>
