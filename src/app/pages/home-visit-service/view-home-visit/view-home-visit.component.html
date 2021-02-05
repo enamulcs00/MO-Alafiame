@@ -187,6 +187,16 @@
                                             <span class="text text-danger" *ngIf="editSubForm.controls.categoryName.touched && editSubForm.controls.categoryName.invalid && editSubForm.controls.categoryName.errors.required">*Category Name is Required</span>
                                         </div>
                                         <div class="row">
+                                          <label class="col-md-4">Mark as Featured
+                                              <span>:</span></label>
+                                          <div class="col-md-8 textaligncenter">
+                                              <div>
+                                                  <input type="checkbox" [(ngModel)]="theCheckbox" [ngModelOptions]="{standalone: true}" data-md-icheck (change)="toggleVisibility($event)">
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                        <div class="row">
                                             <label class="col-md-4">Category image</label>
                                             <span class="col-md-1">:</span>
                                             <label class="form-control col-md-5" for="fileInput">

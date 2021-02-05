@@ -19,6 +19,8 @@ export class ViewHomeVisitComponent implements OnInit {
   serviceId: any;
   servicedata: any;
   subCategoryView: any;
+  marked = false;
+  theCheckbox = false;
   constructor(private activate:ActivatedRoute,private route:Router,public mainService: MainService) { }
   ngOnInit() {
     this.activate.paramMap.subscribe(params => {
@@ -63,9 +65,10 @@ export class ViewHomeVisitComponent implements OnInit {
  {
    this.mainService.showSpinner()
    let object = {
-     'serviceId ': this.id
+     'serviceId': this.categoryId
    }
-   this.mainService.postApi('admin/deleteService',object,1).subscribe(res => {
+   this.mainService.postApi('admin/deleteService',object,1).subscribe((res:any) => {
+     console.log('Deletid',res)
     if (res.responseCode == 200) {
        this.mainService.hideSpinner()
        $('#deleteModal').modal('hide');
@@ -92,6 +95,7 @@ export class ViewHomeVisitComponent implements OnInit {
       this.mainService.hideSpinner();
       this.mainService.successToast(res.responseMessage)
       this.profile=res.result.subCategoryImage
+      this.theCheckbox = res.result.markAs
       this.editSubForm.patchValue({
         "categoryName":res.result.subCategoryName
        })
@@ -140,6 +144,7 @@ export class ViewHomeVisitComponent implements OnInit {
     'serviceId':this.serviceId,
     'subCategoryName': this.editSubForm.value.categoryName,
     'subCategoryImage': this.profile,
+    'markAs': this.marked,
   }
   this.mainService.showSpinner();
   this.mainService.postApi('admin/addService', data, 1).subscribe((res: any) => {
@@ -217,6 +222,9 @@ valuechanged(categoryId){
       this.mainService.hideSpinner()
       this.mainService.errorToast('Something went wrong');
     })
+  }
+  toggleVisibility(e){
+    this.marked= e.target.checked;
   }
 }
 
