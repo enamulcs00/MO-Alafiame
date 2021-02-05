@@ -96,11 +96,7 @@ li {
     font-family: 'Uni Sans Heavy CAPS'!important;
 }
 
-.modal-footer .btn,
-.calendar-action .btn,
-.font_uni_sans_italic {
-    font-family: Uni Sans Heavy Italic CAPS;
-}
+
 
 .btn.btn-navy-blue {
     background: #1e8ea8;
@@ -1943,8 +1939,7 @@ label.error {
 .global-modal .modal-title {
     color: #6c757d;
     font-weight: 400;
-    font-size: 30px;
-    font-family: 'Uni Sans Thin CAPS';
+    font-size: 20px;
     width: 100%;
 }
 
@@ -4880,14 +4875,6 @@ fieldset.global-fieldset {
     text-decoration: none;
 }
 
-.fa.fa-eye {
-    color: #2693ff;
-}
-
-.fa.fa-ban,
-.fa.fa-trash {
-    color: #ee6b7b;
-}
 
 .order-summary-block {
     border: 1px solid #ccc;
@@ -5697,7 +5684,7 @@ input.form-control:focus {
     height: 100px;
     margin: 0 auto 20px;
     position: relative;
-    border: 1px solid gray;
+    border: 1px solid #000000;
     border-radius: 100px;
 }
 .user-profile .image-box img {
@@ -6407,9 +6394,8 @@ a.side_menu {
 
 
 .content-section {
-    padding: 25px 20px 20px 20px;
+    padding: 20px 30px;
     min-height: calc(100vh - 220px);
-    /*margin-bottom: 15px;*/
 }
 
 label {
@@ -6587,4 +6573,13 @@ button.btn.btn_search_group {
     background: #fff;
     border-left: none;
     padding-left: 0;
+}
+img.user-profile-img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 1px solid black!important;
+}
+h3.card-description {
+    font-size: 18px;
 }

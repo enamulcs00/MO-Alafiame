@@ -7,15 +7,33 @@
         </div>
 
         <div class="content-section">
-        <div class="order-view  max-WT-700 mrgn-0-auto setting-page" style="width: 400px;
-        left: 146px;
-        bottom: 13px;">
-            <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
-                <div class="col">
-                    <label>Category Name :</label><br><br>
-                    <label>Category Image :</label><br><br>
+        <div class="order-view  max-WT-700 mrgn-0-auto setting-page" >
+            <div class="mb40">
+                <div class="add-store-block input-style view-label-align">
+                    <div class="form-group row align-items-baseline">
+                        <label class="col-md-4 textalignright ">Category Name <span>:</span></label>
+                        <div class="col-md-8 textaligncenter">
+                            <div class="form-group">
+                                <p style="padding: 0px 5px!important;">
+                                    {{user?.categoryName}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row ">
+                        <label class="col-md-4 textalignright ">Category Image <span>:</span></label>
+                        <div class="col-md-8 textaligncenter">
+                            <div class="form-group">
+                                <img [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="text-center mt40 mb40">
+                        <button type="button" class="btn btn-large  max-WT-150 btn-secondary" 
+                        [routerLink]="['/home-visit-service']">Back</button>
+                    </div>
                 </div>
+<<<<<<< HEAD
                 <div class="col">
                     <label>{{user?.categoryName}}</label><br><br>
                     <label><img [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" /></label><br><br>
@@ -47,6 +65,8 @@
                 <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
                 [routerLink]="['/home-visit-service']">Back</button>
 
+=======
+>>>>>>> 68cae92a1e8bcd2ea911d7feb43601ee4456a6a5
             </div>
         </div>
         <!-- <h3>SubCategories<button type="button" class="btn btn-theme Go_btn ml-2"

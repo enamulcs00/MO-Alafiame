@@ -77,11 +77,14 @@
                                                         <button type="button" class="btn  btn-theme " (click)="reset()">Reset</button>
                                                         <button type="button" class="btn btn-theme" (click)="exportCSV()">Export
                                                             csv</button>
-                                                        <button type="button" class="btn btn-theme  "
-                                                            (click)="addUser()">Add new
-                                                        </button>
+                                                      
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="button" class="btn btn-theme  "
+                                                (click)="addUser()">Add new
+                                            </button>
                                             </div>
                                         </form>
                                     </div>
@@ -116,26 +119,26 @@
                                                 <td class="justify-content-center d-flex">
                                                     <button class="btn btn-info ml-2 bt-margin" title="view"
                                                         (click)="viewUser(item?._id)">
-                                                        <i class="fa fa-eye" aria-hidden="true"
-                                                            style="color:white"></i></button>
+                                                        <em class="fa fa-eye" aria-hidden="true"
+                                                            ></em></button>
                                                     <button class="btn btn-info ml-2 bt-margin" title="edit"
-                                                        (click)="editUser(item?._id)"><i class="fa fa-edit"
-                                                            aria-hidden="true" style="color:white"></i></button>
+                                                        (click)="editUser(item?._id)"><em class="fa fa-edit"
+                                                            aria-hidden="true" ></em></button>
                                                     <button class="btn btn-success ml-2 bt-margin"
                                                         *ngIf="item?.status == 'ACTIVE'"
-                                                        (click)="BlockModal(item?._id, 'BLOCK')" title="deactivate"><i
+                                                        (click)="BlockModal(item?._id, 'BLOCK')" title="deactivate"><em
                                                             class="fa fa-ban"
-                                                            style="color:white;background-color: green"
-                                                            aria-hidden="true"></i></button>
+                                                           
+                                                            aria-hidden="true"></em></button>
                                                     <button class="btn btn-danger ml-2 bt-margin"
                                                         *ngIf="item?.status == 'BLOCK'"
-                                                        (click)="BlockModal(item?._id, 'ACTIVE')" title="activate"><i
-                                                            class="fa fa-ban" style="color:white;background-color: red"
-                                                            aria-hidden="true"></i></button>
+                                                        (click)="BlockModal(item?._id, 'ACTIVE')" title="activate"><em
+                                                            class="fa fa-ban" 
+                                                            aria-hidden="true"></em></button>
                                                     <button class="btn btn-danger ml-2 bt-margin" title="delete"
-                                                        (click)="deleteUserModal(item?._id)"><i
+                                                        (click)="deleteUserModal(item?._id)"><em
                                                             class="fa fa-trash" aria-hidden="true"
-                                                            style="color:white"></i></button>
+                                                            ></em></button>
                                                 </td>
                                             </tr>
                                             <tr *ngIf="!customerData.length">
@@ -161,9 +164,7 @@
                                             <div class="add-store-block input-style view-label-align" >
                                                 <div class="form-group row align-items-baseline" >
                                                     <div class="col-md-12" style="text-align: center">
-                                                        <img alt=""
-                                                            src="{{viewCustomer?.profilePic || 'assets/img/profile-img.jpg' }}"
-                                                            style="height: 100px;width: 100px; border-radius: 50%; border: 1px solid black!important;">
+                                                        <img alt="" class="user-profile-img" src="{{viewCustomer?.profilePic || 'assets/img/profile-img.jpg' }}" >
                                                     </div>
                                                 </div>
                                                 <div class="form-group row align-items-baseline">
@@ -610,26 +611,26 @@
                                                 <td class="justify-content-center d-flex">
                                                     <button class="btn btn-info ml-2 bt-margin" title="view"
                                                         (click)="viewcorporate(item?._id)">
-                                                        <i class="fa fa-eye" aria-hidden="true"
-                                                            style="color:white"></i></button>
+                                                        <em class="fa fa-eye" aria-hidden="true"
+                                                           ></em></button>
                                                     <button class="btn btn-info ml-2 bt-margin" title="edit"
-                                                        (click)="editCorporate(item?._id)"><i class="fa fa-edit"
-                                                            aria-hidden="true" style="color:white"></i></button>
+                                                        (click)="editCorporate(item?._id)"><em class="fa fa-edit"
+                                                            aria-hidden="true"></em></button>
                                                     <button class="btn btn-success ml-2 bt-margin"
                                                         *ngIf="item?.status == 'ACTIVE'"
-                                                        (click)="BlockModal(item?._id, 'BLOCK')" title="deactivate"><i
+                                                        (click)="BlockModal(item?._id, 'BLOCK')" title="deactivate"><em
                                                             class="fa fa-ban"
-                                                            style="color:white;background-color: green"
-                                                            aria-hidden="true"></i></button>
+                                                           
+                                                            aria-hidden="true"></em></button>
                                                     <button class="btn btn-danger ml-2 bt-margin"
                                                         *ngIf="item?.status == 'BLOCK'"
-                                                        (click)="BlockModal(item?._id, 'ACTIVE')" title="activate"><i
-                                                            class="fa fa-ban" style="color:white;background-color: red"
-                                                            aria-hidden="true"></i></button>
+                                                        (click)="BlockModal(item?._id, 'ACTIVE')" title="activate"><em
+                                                            class="fa fa-ban" 
+                                                            aria-hidden="true"></em></button>
                                                     <button class="btn btn-danger ml-2 bt-margin" title="delete"
-                                                        (click)="deleteUserModal(item?._id)"><i
+                                                        (click)="deleteUserModal(item?._id)"><em
                                                             class="fa fa-trash" aria-hidden="true"
-                                                            style="color:white"></i></button>
+                                                           ></em></button>
                                                 </td>
                                             </tr>
                                             <tr *ngIf="!corporateData.length">
@@ -655,9 +656,7 @@
                                             <div class="add-store-block input-style view-label-align"  >
                                                 <div class="form-group row align-items-baseline"  >
                                                     <div class="col-md-12" style="text-align: center">
-                                                        <img alt=""
-                                                            src="{{viewCorporate?.profilePic || 'assets/img/profile-img.jpg' }}"
-                                                            style="height: 100px;width: 100px; border-radius: 50%; border: 1px solid black!important;">
+                                                        <img alt="" class="user-profile-img" src="{{viewCorporate?.profilePic || 'assets/img/profile-img.jpg' }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row align-items-baseline">
@@ -1321,9 +1320,9 @@
 
                                                 </div>
                                                 <div class="text-center mt40 mb40">
-                                        <button type="button" class="btn btn-secondary"
+                                        <button type="button" class="btn btn-secondary btn-large  max-WT-150"
                                          [disabled]="!editCompanyForm.valid" (click)="UpdateCompany()">Submit</button>
-                                        <button type="button" class="btn btn-primary ml-2"
+                                        <button type="button" class="btn btn-primary ml-2 btn-large  max-WT-150"
                                           (click)="changeCompanyValue()">Cancel</button>
 
                                                 </div>
@@ -1373,11 +1372,14 @@
                                                         <button type="button" class="btn  btn-theme " (click)="reset()">Reset</button>
                                                         <button type="button" class="btn btn-theme" (click)="exportCSV()">Export
                                                             csv</button>
-                                                        <button type="button" class="btn btn-theme "
-                                                            (click)="addPractioner()">Add new
-                                                        </button>
+                                                    
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="button" class="btn btn-theme "
+                                                (click)="addPractioner()">Add new
+                                            </button>
                                             </div>
                                         </form>
                                     </div>
@@ -1409,26 +1411,22 @@
                                                 <td class="justify-content-center d-flex">
                                                     <button class="btn btn-info ml-2 bt-margin" title="view"
                                                         (click)="viewPractioner(item?._id)">
-                                                        <i class="fa fa-eye" aria-hidden="true"
-                                                            style="color:white"></i></button>
+                                                        <em class="fa fa-eye" aria-hidden="true" ></em></button>
                                                     <button class="btn btn-info ml-2 bt-margin" title="edit"
-                                                        (click)="editPractioner(item?._id)"><i class="fa fa-edit"
-                                                            aria-hidden="true" style="color:white"></i></button>
+                                                        (click)="editPractioner(item?._id)"><em class="fa fa-edit" aria-hidden="true"></em></button>
                                                     <button class="btn btn-success ml-2 bt-margin"
                                                         *ngIf="item?.status == 'ACTIVE'"
-                                                        (click)="BlockModal(item?._id, 'BLOCK')" title="deactivate"><i
+                                                        (click)="BlockModal(item?._id, 'BLOCK')" title="deactivate"><em
                                                             class="fa fa-ban"
-                                                            style="color:white;background-color: green"
-                                                            aria-hidden="true"></i></button>
+                                                           
+                                                            aria-hidden="true"></em></button>
                                                     <button class="btn btn-danger ml-2 bt-margin"
                                                         *ngIf="item?.status == 'BLOCK'"
-                                                        (click)="BlockModal(item?._id, 'ACTIVE')" title="activate"><i
-                                                            class="fa fa-ban" style="color:white;background-color: red"
-                                                            aria-hidden="true"></i></button>
+                                                        (click)="BlockModal(item?._id, 'ACTIVE')" title="activate"><em
+                                                            class="fa fa-ban"
+                                                            aria-hidden="true"></em></button>
                                                     <button class="btn btn-danger ml-2 bt-margin" title="delete"
-                                                        (click)="deleteUserModal(item?._id)"><i
-                                                            class="fa fa-trash" aria-hidden="true"
-                                                            style="color:white"></i></button>
+                                                        (click)="deleteUserModal(item?._id)"><em class="fa fa-trash" aria-hidden="true" ></em></button>
                                                 </td>
                                             </tr>
                                             <tr *ngIf="!practionerData.length">
@@ -1454,9 +1452,7 @@
                                             <div class="add-store-block input-style view-label-align">
                                                 <div class="form-group row align-items-baseline" >
                                                     <div class="col-md-12" style="text-align: center"  >
-                                                        <img alt=""
-                                                            src="{{viewPractionerDataa?.profilePic || 'assets/img/profile-img.jpg' }}"
-                                                            style="height: 100px;width: 100px; border-radius: 50%; border: 1px solid black!important;">
+                                                        <img alt="" class="user-profile-img" src="{{viewPractionerDataa?.profilePic || 'assets/img/profile-img.jpg' }}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row align-items-baseline">
@@ -1847,8 +1843,7 @@
               <td class="justify-content-center d-flex">
                   <button class="btn btn-info ml-2 bt-margin" title="view"
                       (click)="viewUserApproveInModal(item?._id)">
-                      <i class="fa fa-eye" aria-hidden="true"
-                          style="color:white"></i></button>
+                      <em class="fa fa-eye" aria-hidden="true"></em></button>
                   <!-- <button class="btn btn-info ml-2 bt-margin" title="edit"
                       (click)="editUser(item?._id)"><i class="fa fa-edit"
                           aria-hidden="true" style="color:white"></i></button>

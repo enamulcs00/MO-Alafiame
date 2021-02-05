@@ -80,10 +80,14 @@
                                     <td class="content">{{items?.status}}</td>
                                     <td class="justify-content-center d-flex">
                                         <button class="btn btn-success ml-2 bt-margin"  (click)="blockFunction(items?._id,items?.status)">{{items?.status}}</button>
-                                        <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-vendor',items?._id]">Edit</button>
-                                         <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-vendor',items?._id]">View</button>
+                                        <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/edit-vendor',items?._id]"><em class="fa fa-edit"
+                                            aria-hidden="true"></em></button>
+                                         <button class="btn btn-info ml-2 bt-margin" [routerLink]="['/view-vendor',items?._id]">  <em class="fa fa-eye" aria-hidden="true"
+                                            ></em></button>
                                          <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(items?._id)"
-                                             >Delete</button>
+                                             ><em
+                                             class="fa fa-trash" aria-hidden="true"
+                                            ></em></button>
                                              </td>
                                             </tr>
                                        <tr *ngIf="vendorList==0">
