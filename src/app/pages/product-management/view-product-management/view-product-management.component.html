@@ -11,50 +11,63 @@
         <div class="content-section">
             
            
-            <div class="order-view  max-WT-700 mrgn-0-auto setting-page" style="margin-left: 13%;margin-right: 19%;">
-             <div style="margin-left: 37%;">
-            <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
-              </div>
-            <div class="row" style=" margin-left: 18%; ">
-                <div class="col">
-                    <div class="row mt-5">
-                        <label class="col-md-4">Name of product</label>
-                        <span class="col-md-1">:</span>
-                        <label  class="col-md-6">{{user?.productName}}</label>
-                    </div>
-                    <div class="row mt-2">
-                        <label class="col-md-4">Price</label>
-                        <span class="col-md-1">:</span>
-                        <label  class="col-md-6">{{user?.price}}</label>
-                    </div>
-                    <div class="row mt-2">
-                        <label class="col-md-4">Used for</label>
-                        <span class="col-md-1">:</span>
-                        <label  class="col-md-6">{{user?.usedFor}}</label>
-                    </div>
-                    <div class="row mt-2">
-                        <label class="col-md-4">Type</label>
-                        <span class="col-md-1">:</span>
-                        <label  class="col-md-6">{{user?.type}}</label>
-                    </div>
-                    <!-- <label>Name of product :</label><br><br>
-                    <label>Price :</label><br><br>
-                    <label>Used for :</label><br><br>
-                    <label>Type : </label><br><br> -->
-                </div>
-                <!-- <div class="col">
-                    <label>{{user?.productName}}</label><br><br>
-                    <label>{{user?.price}}</label><br><br>
-                    <label>{{user?.usedFor}}</label><br><br>
-                    <label>{{user?.type}}</label><br><br>
-                </div> -->
-                
-            </div>
+            <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
 
-            <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
-                <button type="button" class="btn btn-theme" style="margin-left: 20%; width: 12%;"
-                [routerLink]="['/product-management']">Back</button>
-                
-            </div>
+                <div class="mb40">
+                    <div class="add-store-block input-style view-label-align">
+                        <div class="form-group row align-items-baseline" >
+                            <div class="col-md-12" style="text-align: center"  >
+                                <img  class="user-profile-img" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row align-items-baseline">
+                            <label class="col-md-4 textalignright ">Name of product <span>:</span></label>
+                            <div class="col-md-8 textaligncenter">
+                                <div class="form-group">
+                                    <p style="padding: 0px 5px!important;">
+                                        {{user?.productName}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row align-items-baseline">
+                            <label class="col-md-4 textalignright ">Price <span>:</span></label>
+                            <div class="col-md-8 textaligncenter">
+                                <div class="form-group">
+                                    <p style="padding: 0px 5px!important;">
+                                        {{user?.price}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row align-items-baseline">
+                            <label class="col-md-4 textalignright ">Used for <span>:</span></label>
+                            <div class="col-md-8 textaligncenter">
+                                <div class="form-group">
+                                    <p style="padding: 0px 5px!important;">
+                                        {{user?.usedFor}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row align-items-baseline">
+                            <label class="col-md-4 textalignright ">Type <span>:</span></label>
+                            <div class="col-md-8 textaligncenter">
+                                <div class="form-group">
+                                    <p style="padding: 0px 5px!important;">
+                                        {{user?.type}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt40 mb40">
+                            <button type="button" class="btn btn-large  max-WT-150 btn-secondary" 
+                            [routerLink]="['/product-management']">Back</button>
+                        </div>
+
+
+                    </div>
+                </div>
         </div>
         </div>
