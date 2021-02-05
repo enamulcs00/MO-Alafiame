@@ -24,7 +24,7 @@
                                                         <div class="input-group-append">   <button  class="btn btn_search_group" (click)="searchGift()" >
                                                             <img src="assets/img/icon-search.png" alt="Search">
                                                     </button></div>
-                                                      
+
 
                                                 </div>
                                             </div>
@@ -80,6 +80,11 @@
                                     <button class="btn btn-danger ml-2 bt-margin" (click)="openModal(item._id)"><i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i></button>
 
                                     <button class="btn btn-info ml-2 bt-margin" (click)="openRefModal(item._id)"><i class="fa fa-paper-plane" aria-hidden="true" title="send gift to user"></i></button>
+                                    <label class="switch">
+                                      <input type="checkbox" (click)="sliderRound(item?._id)"
+                                          [checked]="item?.active == true">
+                                      <span class="slider round" [title]="(item?.active==true)?'Deactivate':'Activate'"></span>
+                                  </label>
                                   </td>
                                 </tr>
                               </tbody>

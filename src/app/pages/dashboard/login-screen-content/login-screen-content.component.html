@@ -21,7 +21,7 @@
                             </div>
                         </div>
                     </div>
-                      <div class="table-responsive" style="width: fit-content;">
+                      <div class="table-responsive">
                           <table class="table table-bordered table-sm" aria-describedby="section list">
                               <thead>
                                   <tr class="no_wrap_th text-center">
@@ -43,7 +43,7 @@
                                       </td>
                                       <td class="content"><img [src]="item?.sideImage" alt="" style="width: 66px;">
                                       </td>
-                                      <td class="content"> {{item?.description}}</td>
+                                      <td class="content" [innerHTML]="item?.description"></td>
                                       <td class="justify-content-center" style="padding-top: 27px;padding-bottom: 24px;">
                                         <button [routerLink]="['/view-login-content',item?._id]"
                        class="btn btn-info ml-2 bt-margin" title="View"><i class="fa fa-eye" aria-hidden="true"

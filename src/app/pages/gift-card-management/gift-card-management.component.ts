@@ -16,7 +16,8 @@ export class GiftCardManagementComponent implements OnInit {
   userId:any;
   userDataList:any= [];
   result: any;
-  userList:any
+  userList:any;
+  itemId:any;
   constructor(public service: MainService) { }
 
   ngOnInit() {
@@ -45,9 +46,10 @@ export class GiftCardManagementComponent implements OnInit {
       "limit": this.itemPerPage
     }
     this.service.postApi('admin/giftList', formData, 1).subscribe((res: any) => {
+      console.log('Giftlist',res)
       if(res.responseCode==200){
         this.service.hideSpinner()
-        this.service.successToast(res.responseMessage)
+       // this.service.successToast(res.responseMessage)
         this.userDataList =res.result.docs
         this.total=res.result.total
       }else{
@@ -56,6 +58,7 @@ export class GiftCardManagementComponent implements OnInit {
       }
      }, (error) => {
         this.service.hideSpinner()
+        this.service.errorToast('Something went wrong')
     })
   }
   reset(){
@@ -168,5 +171,28 @@ this.gifiId = id
   selected(id){
     this.userId= id.target.value
     console.log('This is serve id',id.target.value);
+      }
+      sliderRound(id){
+        this.itemId = id
+        let url = 'admin/activeDeactiveGift'
+        let obj = {
+          _id:this.itemId
+        }
+        this.service.showSpinner();
+        this.service.postApi(url, obj, 1).subscribe((res: any) => {
+          this.service.hideSpinner()
+          if (res.responseCode == 200) {
+
+            this.service.successToast(res.responseMessage);
+            this.giftList()
+          } else {
+            this.service.hideSpinner();
+            this.service.errorToast(res.responseMessage)
+          }
+        },
+        error=>{
+          this.service.hideSpinner()
+          this.service.errorToast('Something went wrong');
+        })
       }
 }
