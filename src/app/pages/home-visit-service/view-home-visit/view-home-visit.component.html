@@ -72,9 +72,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-center" *ngFor="let item of subcategorList ; let i = index"
+                        <tr class="text-center" *ngFor="let item of subcategorList | paginate : {itemsPerPage:limit, currentPage:page, totalItems:total}; let i = index"
                             >
-                            <td class="content">{{i+1}}</td>
+                            <td class="content">{{limit * (page-1)+ i+1}}</td>
                             <td class="content">{{item?.subCategoryName}}</td>
                             <td class="justify-content-center d-flex" style="padding-top: 27px;padding-bottom: 24px;">
                           <button (click)="editFunction(item?._id)"
@@ -83,6 +83,9 @@
                                 <button class="btn btn-danger ml-2 bt-margin" (click)="deleteFunction(item?._id)">
                                     <i class="fa fa-trash-o" aria-hidden="true" style="color: white;"></i>
                                 </button>
+                                <button class="btn btn-info ml-2 bt-margin" (click)="ViewFunction(item?._id)">
+                                  <i class="fa fa-eye" aria-hidden="true" style="color: white;"></i>
+                              </button>
                                 <label class="switch">
                                   <input type="checkbox" (click)="sliderRound(item?._id)"
                                       [checked]="item?.markAs == true">
@@ -95,7 +98,9 @@
                         </tr>
                     </tbody>
                 </table>
-
+                <div class="custom-pagination mt-2 text-align-end" *ngIf="total>5">
+                <pagination-controls (pageChange)="pagination($event)"></pagination-controls>
+          </div>
             </div>
         </div>
         </div>
@@ -183,7 +188,7 @@
                                         <div class="row">
                                             <label class="col-md-4">Category name</label>
                                             <span class="col-md-1">:</span>
-                                            <input type="text" class="form-control col-md-5" formControlName="categoryName">
+                                            <input type="text" class="col-md-5" formControlName="categoryName">
                                             <span class="text text-danger" *ngIf="editSubForm.controls.categoryName.touched && editSubForm.controls.categoryName.invalid && editSubForm.controls.categoryName.errors.required">*Category Name is Required</span>
                                         </div>
                                         <div class="row">
@@ -219,3 +224,42 @@
             </div>
         </div>
         </div>
+         <!-- view-sub -->
+         <div class="modal fade global-modal reset-modal" id="viewSub">
+          <div class="modal-dialog max-WT-500">
+              <div class="modal-content">
+                  <div class="modal-header d-block text-center modal-header-custm">
+                      <h5 class="modal-title d-inline-block">View Sub Category</h5>
+                  </div>
+                  <div class="modal-inner-content">
+                      <div class="modal-body">
+                          <form [formGroup]="editSubForm">
+                                  <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+                                      <div class="col">
+                                          <div class="row">
+                                              <label class="col-md-4">Category name</label>
+                                              <span class="col-md-1">:</span>
+                                              <p>{{name}}</p>
+                                          </div>
+
+                                          <div class="row">
+                                              <label class="col-md-4">Category image</label>
+                                              <span class="col-md-1">:</span>
+                                              <label class="col-md-5" for="fileInput">
+                                                  <img  [src]="Viewprofile?Viewprofile:'assets/img/profile-img.jpg'" alt=""/>
+
+                                                   </label>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
+                                      <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
+                                      data-dismiss="modal">Close</button>
+
+                                  </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>

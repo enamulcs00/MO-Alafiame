@@ -39,6 +39,9 @@ IsAbout:boolean = false
       if(res.type=='T&C'){
         this.type = encodeURIComponent('T&C')
       }
+      else{
+        this.type = res.type
+      }
       console.log('userId', this.userId, this.type, res);
 
     });

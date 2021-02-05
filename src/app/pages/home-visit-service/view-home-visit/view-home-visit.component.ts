@@ -12,12 +12,18 @@ export class ViewHomeVisitComponent implements OnInit {
   categoryId: string;
   user: any;
   profile: any;
+  Viewprofile:any;
+  page:any=1
+
+  limit:any=5;
+  total:any;
   id: any;
   subcategorList: any=[];
   addSubForm: FormGroup;
   editSubForm: FormGroup;
   serviceId: any;
   servicedata: any;
+  name:any
   subCategoryView: any;
   marked = false;
   theCheckbox = false;
@@ -34,6 +40,12 @@ export class ViewHomeVisitComponent implements OnInit {
     });
     this.viewCategory();
   }
+  pagination(event) {
+    console.log('This event will display page number:->',event);
+    this.page = event;
+    this.viewCategory();
+  }
+
   viewCategory()
   {
     this.mainService.showSpinner();
@@ -44,6 +56,7 @@ export class ViewHomeVisitComponent implements OnInit {
         this.id=this.user._id;
        this.profile= this.user.categoryImage;
        this.subcategorList = (res.serviceData)?res.serviceData:null;
+       this.total=this.subcategorList.length
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
        } else {
@@ -73,7 +86,7 @@ export class ViewHomeVisitComponent implements OnInit {
        this.mainService.hideSpinner()
        $('#deleteModal').modal('hide');
        this.mainService.successToast(res.responseMessage)
-
+       this.viewCategory()
      } else {
        this.mainService.hideSpinner()
        this.mainService.errorToast(res.responseMessage)
@@ -126,6 +139,29 @@ export class ViewHomeVisitComponent implements OnInit {
       this.mainService.successToast(res.responseMessage)
       $('#addSub').modal('hide');
 
+    } else {
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(res.responseMessage)
+    }
+    error => {
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(error.responseMessage)
+    }
+  })
+
+ }
+
+ ViewFunction(id){
+   let url =`admin/viewService?serviceId=${id}`
+
+   $('#viewSub').modal('show')
+  this.mainService.showSpinner();
+  this.mainService.getApi(url, 1).subscribe((res: any) => {
+    if (res.responseCode == 200 && res.result) {
+      this.mainService.hideSpinner();
+      this.mainService.successToast(res.responseMessage)
+      this.Viewprofile=res.result.subCategoryImage
+    this.name = res.result.subCategoryName
     } else {
       this.mainService.hideSpinner();
       this.mainService.errorToast(res.responseMessage)
