@@ -1,0 +1,80 @@
+<div class="wrapper" >
+  <main class="middle-content">
+      <div class="page_title_block">
+          <h1 class="page_title">View Giftcard</h1>
+          <hr style="background: black; opacity: 0.5;">
+      </div>
+      <div class="content-section">
+          <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+          <div class="  mb40">
+              <div class="add-store-block input-style mb20 mt20 ">
+                  <form>
+                      <div class="form-group row  view-label-align">
+                          <label class="col-md-5 textalignright ">Gift Image
+                              <span>:</span></label>
+                          <div class="col-md-7 textaligncenter">
+                              <div class="col" >
+                                  <label for="fileInput">
+                                      <img  [src]="img?img:'assets/img/profile-img.jpg'" alt="" class="onHover"/>
+
+                                  </label>
+                              </div>
+                          </div>
+
+                      </div>
+
+                        <div class="form-group row align-items-baseline view-label-align">
+                          <label class="col-md-5 textalignright ">Gift Title
+                              <span>:</span></label>
+                          <div class="col-md-7 textaligncenter">
+                              <div class="form-group">
+                               <p>{{title}}</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group row align-items-baseline view-label-align">
+                        <label class="col-md-5 textalignright ">Discount (in %)
+                            <span>:</span></label>
+                        <div class="col-md-7 textaligncenter">
+                            <div class="form-group">
+                             <p>{{discount}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row align-items-baseline view-label-align">
+                      <label class="col-md-5 textalignright ">Maximum amount
+                          <span>:</span></label>
+                      <div class="col-md-7 textaligncenter">
+                          <div class="form-group">
+                            <p>{{maxAmount}}</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="form-group row align-items-baseline view-label-align">
+                    <label class="col-md-5 textalignright ">Expiry date
+                        <span>:</span></label>
+                    <div class="col-md-7 textaligncenter">
+                        <div class="form-group">
+                          <p>{{expiriry}}</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                          <div class="text-center mt40 mb40">
+                              <button type="button" class="btn btn-large  max-WT-150 btn-secondary"
+                                  [routerLink]="['/gift-card-management']">Back</button>
+
+                          </div>
+
+                  </form>
+              </div>
+              </div>
+          </div>
+      </div>
+
+  </main>
+</div>

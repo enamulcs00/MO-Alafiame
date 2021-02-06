@@ -28,12 +28,14 @@ export class StaticContentManagementComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage);
       } else {
-        this.result = res.result ? res.result : ''
+        this.result = []
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
     }, (error) => {
+      this.result = []
       this.mainService.hideSpinner()
+      this.mainService.errorToast('Something went wrong')
     })
   }
 
@@ -41,5 +43,5 @@ export class StaticContentManagementComponent implements OnInit {
   editStatic(id, type) {
     this.router.navigate(['edit-static-content-management'], { queryParams: { id: id, type: type } })
   }
-  
+
 }

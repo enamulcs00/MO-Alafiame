@@ -41,7 +41,7 @@ export class ForgotPasswordComponent implements OnInit {
     console.log("apireq",apireq);
     this.service.showSpinner();
 
-    this.service.postApi('admin/forgotPassword', apireq,  0).subscribe(success => {
+    this.service.postApi('admin/forgotPassword', apireq,  0).subscribe((success:any) => {
       console.log("success2",success);
       this.service.hideSpinner()
       localStorage.setItem('number', this.form.value.number)
@@ -50,23 +50,24 @@ export class ForgotPasswordComponent implements OnInit {
         this.service.successToast(success.responseMessage);
         $('#exampleModal').modal('show');
       }
-     else if(success.responseCode == 401) {
-        this.service.successToast(success.responseMessage)
-        $('#exampleModal').modal({ backdrop: 'static', keyboard: false });
+     else  {
+        this.service.errorToast(success.responseMessage)
+        //$('#exampleModal').modal({ backdrop: 'static', keyboard: false });
       }
-      else if (this.status == false) {
-          console.log("success3",success);
-          this.service.errorToast(success.responseMessage);
-          this.status = true;
-          return;
-        }
-       
+      // else if (this.status == false) {
+      //     console.log("success3",success);
+      //     this.service.errorToast(success.responseMessage);
+      //     this.status = true;
+      //     return;
+      //   }
+
     },(err)=>{
+      this.service.hideSpinner()
       this.service.errorToast("Something went wrong.")
     })
   }
 
-  
+
   onOtpChange(e) {
     this.otp = e;
   }
@@ -87,7 +88,7 @@ export class ForgotPasswordComponent implements OnInit {
           $('#exampleModal').modal('hide');
           this.otpForm.reset()
           this.router.navigate(['reset-password'])
-        
+
         }
         else {
           this.service.errorToast(success.responseMessage);
@@ -104,5 +105,5 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
   }
-
+ 
 }

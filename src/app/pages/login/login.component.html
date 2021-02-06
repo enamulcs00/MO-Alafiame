@@ -50,6 +50,11 @@
                                             *ngIf="loginForm.get('password').hasError('maxlength') && !(loginForm.get('password').hasError('pattern')) && loginForm.get('password').dirty">
                                             *Maximum length should not more than 16.
                                         </div>
+                                        <div class="text-danger" *ngIf="loginForm.get('password').hasError('pattern')">
+                                            *Password should have minimum 8 characters, at
+                                            least 1 uppercase letter, 1 lowercase letter, 1
+                                            number and 1 special character.
+                                        </div>
                                     </div>
 
                                     <div class="form-group row">

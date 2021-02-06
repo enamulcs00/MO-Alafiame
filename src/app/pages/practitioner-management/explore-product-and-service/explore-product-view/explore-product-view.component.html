@@ -1,0 +1,72 @@
+<div class="content-section">
+  <div class="page_title_block" style="padding-left: 21%;padding-top: 7%;">
+      <h1 class="page_title">View Product</h1>
+  </div>
+  <div class="order-view  max-WT-700  setting-page" style="margin-left: 33%;">
+      <div class="  mb40">
+          <form>
+              <div class="add-store-block input-style mb20 mt20 ">
+                  <div class="form-group row align-items-baseline view-label-align">
+                      <label class="col-md-4 textalignright ">Product Title
+                          <span>:</span></label>
+                      <div class="col-md-8 textaligncenter">
+                          <div class="form-group">
+                              <!-- <input type="text" class="form-control" placeholder="Enter banner name" formControlName="firstName"> -->
+                              <label>{{bannerFormValues?.title||"N/A"}}</label>
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <div class="form-group row view-label-align">
+                    <label class="col-md-4 textalignright">Product image
+                        <span>:</span></label>
+                    <div class="col-md-8 textaligncenter">
+                        <div class="form-group">
+                          <label for="fileInput"class="hoverable">
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                              <div class="carousel-inner">
+                              <div class="carousel-item active" *ngFor="let photo of profile let i = index"
+                              [ngClass]="{'active': i == 0 }">
+                             <img  [src]="photo?photo:'assets/img/profile-img.jpg'" alt="" (click)="removeImage(i)"/>
+                              </div>
+                              </div>
+                              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </div>
+
+
+                            <!-- <input type="file" id="fileInput"class="custom-file-input" name="imageUrl" formControlName="bannerFile" accept="image/*" (change)="handleInputChange($event)"> -->
+                             </label>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row  view-label-align">
+                  <label class="col-md-4 textalignright">Description
+                      <span>:</span></label>
+                  <div class="col-md-8 textaligncenter">
+                      <div class="form-group ">
+                        <textarea class="border-0" id="exampleFormControlTextarea1" rows="4"
+                    readonly>{{bannerFormValues?.description||"N/A"}}</textarea>
+                      </div>
+                  </div>
+              </div>
+              </div>
+
+              <div class="text-center mt40 mb40">
+                  <!-- <button class="btn btn-large  max-WT-150 btn-theme" (click)="GoForEdit()">Edit</button> -->
+                  <button class="btn btn-large  max-WT-150 btn-theme"routerLink="/explore-product">Close</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

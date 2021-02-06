@@ -1,0 +1,96 @@
+<div class="content-section">
+  <div class="page_title_block" style="padding-left: 21%;padding-top: 7%;">
+      <h1 class="page_title">Edit Product</h1>
+  </div>
+  <div class="order-view  max-WT-700  setting-page" style="margin-left: 33%;">
+      <div class="  mb40">
+          <form [formGroup]="EditBannerForm" #f="ngForm">
+              <div class="add-store-block input-style mb20 mt20 ">
+                <div class="form-group row align-items-baseline view-label-align">
+                  <label class="col-md-4 textalignright">Product Title
+                      <span>:</span></label>
+                  <div class="col-md-8 textaligncenter">
+                      <div class="form-group ">
+                          <input type="text" class="form-control" placeholder="Enter title"
+                              formControlName="title" (keypress)="mainService.preventSpace($event)"
+                              maxlength="50">
+                          <div class="text-danger">
+                              <span
+                                  *ngIf="EditBannerForm.get('title').hasError('required') && (EditBannerForm.get('title').dirty || EditBannerForm.get('title').touched || f.submitted)">
+                                  *Please enter title.
+                              </span>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                  <div class="form-group row view-label-align">
+                    <label class="col-md-4 textalignright">Upload image
+                        <span>:</span></label>
+                    <div class="col-md-4 textaligncenter">
+                        <div class="form-group">
+
+                            <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                              <div class="carousel-inner">
+                              <div class="carousel-item active" *ngFor="let photo of profile let i = index"
+                              [ngClass]="{'active': i == 0 }">
+
+                             <img  [src]="photo?photo:'assets/img/profile-img.jpg'" alt="Empty"/>
+                             <i class="fa fa-times delete-image-button bg-light text-danger" (click)="removeImage(i)" aria-hidden="true"></i>
+                              </div>
+                              </div>
+                              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+<div class="form-group">
+  <label for="fileInput"class="hoverable">
+  <input type="file" id="fileInput"class="custom-file-input" name="imageUrl" formControlName="bannerFile" accept="image/*" (change)="selectMediaFile($event)">
+  <em class="fa fa-upload" title="Upload Image" style="font-size: 50px;"></em>
+</label>
+</div>
+
+                    </div>
+                </div>
+
+                <div class="form-group row align-items-baseline view-label-align">
+                  <label class="col-md-4 textalignright ">Description
+                      </label>
+              </div>
+
+                <div class="form-group row  view-label-align">
+
+                  <div class="col-md-12 textaligncenter">
+                      <div class="form-group ">
+                        <ck-editor id="editornewData" formControlName="description"
+                        name="editor1" language="en" [config]="config"></ck-editor>
+                          <div class="text-danger">
+                              <span
+                                  *ngIf="EditBannerForm.get('description').hasError('required') && (EditBannerForm.get('description').dirty || EditBannerForm.get('description').touched || f.submitted)">
+                                  *Please enter description.
+                              </span>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </div>
+
+              <div class="text-center mt40 mb40">
+                  <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/explore-product">Back</button>
+                  <button class="btn btn-large  max-WT-150 btn-theme" (click)="EditBanner()">Update</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

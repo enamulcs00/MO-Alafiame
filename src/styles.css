@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 .custom-pagination /deep/ .ngx-pagination .current {
-    background-color: #86559f;
+    background-color: #83b63c;
+}
+.btn-theme{
+  background-color: #83b63c;
+  border-radius: 50px
+
 }
 .text-align-end {
     text-align: end !important;
@@ -34,7 +39,7 @@
     overflow: hidden;
 }
 /* .tooltip-class-custom{
-    background-color: #86559f !important;
+    background-color: #83b63c !important;
 } */
 
 @media (max-width: 1024px) {

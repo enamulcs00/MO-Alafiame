@@ -1,0 +1,23 @@
+.hoverable{
+    position: relative;
+    display: block;
+    cursor: pointer;
+  
+  }
+  .hoverable:hover .hover-text{
+    display: block;
+  }
+  
+  .hoverable .hover-text{
+    font-size: 30px;
+    position: absolute;
+    display: none;
+    top: 50%;
+    left:  48%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+  }
+  #fileInput{
+    display: none;
+  }
+  

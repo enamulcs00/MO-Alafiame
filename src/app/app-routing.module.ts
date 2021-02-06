@@ -1,3 +1,36 @@
+import { ViewGiftComponent } from './pages/gift-card-management/view-gift/view-gift.component';
+import { RefferalViewComponent } from './pages/refferal/refferal-view/refferal-view.component';
+import { RefferalManagementComponent } from './pages/refferal/refferal-management/refferal-management.component';
+import { ExploreProductViewComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-view/explore-product-view.component';
+import { ExploreProductEditComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-edit/explore-product-edit.component';
+import { ExploreProductAddComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-add/explore-product-add.component';
+import { ExploreProductComponent } from './pages/practitioner-management/explore-product-and-service/explore-product/explore-product.component';
+import { ExploreServiceViewComponent } from './pages/practitioner-management/explore-product-and-service/explore-service-view/explore-service-view.component';
+import { ExploreServiceEditComponent } from './pages/practitioner-management/explore-product-and-service/explore-service-edit/explore-service-edit.component';
+import { ExploreServiceAddComponent } from './pages/practitioner-management/explore-product-and-service/explore-service-add/explore-service-add.component';
+import { ExploreServiceComponent } from './pages/practitioner-management/explore-product-and-service/explore-service/explore-service.component';
+import { BookPractionerViewComponent } from './pages/practitioner-management/explore-product-and-service/book-practioner-view/book-practioner-view.component';
+import { BookPractionerEditComponent } from './pages/practitioner-management/explore-product-and-service/book-practioner-edit/book-practioner-edit.component';
+import { BookPractionerAddComponent } from './pages/practitioner-management/explore-product-and-service/book-practioner-add/book-practioner-add.component';
+import { BookPractionerListComponent } from './pages/practitioner-management/explore-product-and-service/book-practioner-list/book-practioner-list.component';
+import { ViewLoginContentComponent } from './pages/dashboard/login-screen-content/view-login-content/view-login-content.component';
+import { EditLoginContentComponent } from './pages/dashboard/login-screen-content/edit-login-content/edit-login-content.component';
+import { AddLoginContentComponent } from './pages/dashboard/login-screen-content/add-login-content/add-login-content.component';
+import { LoginScreenContentComponent } from './pages/dashboard/login-screen-content/login-screen-content.component';
+import { HomeBannerViewComponent } from './pages/dashboard/static-content-management/home-banner-view/home-banner-view.component';
+import { HomeBannerEditComponent } from './pages/dashboard/static-content-management/home-banner-edit/home-banner-edit.component';
+import { HomeBannerAddComponent } from './pages/dashboard/static-content-management/home-banner-add/home-banner-add.component';
+import { HomeBannerComponent } from './pages/dashboard/static-content-management/home-banner/home-banner.component';
+import { HomeSectionComponent } from './pages/dashboard/static-content-management/home-section/home-section.component';
+import { EditSectionComponent } from './pages/dashboard/static-content-management/edit-section/edit-section.component';
+import { ViewSectionComponent } from './pages/dashboard/static-content-management/view-section/view-section.component';
+import { AddSectionComponent } from './pages/dashboard/static-content-management/add-section/add-section.component';
+import { HomeContentComponent } from './pages/dashboard/static-content-management/home-content/home-content.component';
+import { AddSubServiceComponent } from './pages/home-visit-service/add-sub-service/add-sub-service.component';
+import { EditBannerComponent } from './pages/banner-management/edit-banner/edit-banner.component';
+import { ViewBannerComponent } from './pages/banner-management/view-banner/view-banner.component';
+import { AddBannerComponent } from './pages/banner-management/add-banner/add-banner.component';
+import { BannerManagementComponent } from './pages/banner-management/banner-management.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
@@ -70,6 +103,10 @@ import { ProductCategoryComponent } from './pages/product-category/product-categ
 import { ViewProductCategoryComponent } from './pages/view-product-category/view-product-category.component';
 import { EditproductCategoryComponent } from './pages/editproduct-category/editproduct-category.component';
 import { AddproductCategoryComponent } from './pages/addproduct-category/addproduct-category.component';
+import { VendorManagementComponent } from './pages/vendor-management/vendor-management.component';
+import { ViewVendorComponent } from './pages/vendor-management/view-vendor/view-vendor.component';
+import { EditVendorComponent } from './pages/vendor-management/edit-vendor/edit-vendor.component';
+import { AddVendorComponent } from './pages/vendor-management/add-vendor/add-vendor.component';
 
 
 const routes: Routes = [
@@ -85,14 +122,14 @@ const routes: Routes = [
   { path: 'faq', component: FaqComponent },
   { path: 'add-faq', component: AddFaqComponent },
   { path: 'edit-faq/:id', component: EditFaqComponent },
-  { path: 'view-faq', component: ViewFaqComponent },
+  { path: 'view-faq/:id', component: ViewFaqComponent },
   // helpline number
- 
+
   { path: 'helpline-number', component: HelplineNumberComponent },
   { path: 'add-number', component: AddNumberComponent },
   { path: 'edit-number', component: EditNumberComponent },
   // hospital
- 
+
   { path: 'hospital-management', component: HospitalManagementComponent },
   { path: 'add-hospital', component: AddHospitalComponent },
   { path: 'edit-hospital', component: EditHospitalComponent },
@@ -100,25 +137,29 @@ const routes: Routes = [
   { path: 'view-patient-management-hospital', component: ViewPatientManagementHospitalComponent },
   { path: 'view-plasma-donated-patient-management-hospital', component: ViewPlasmaDonatedPatientManagementHospitalComponent },
   // my profile
- 
- 
+
+
   { path: 'my-profile', component: MyProfileComponent },
   { path: 'edit-profile', component: EditMyProfileComponent },
   // notification
-  
+
   { path: 'notification-management', component: NotificationManagementComponent },
   { path: 'add-notification', component: AddNotificationComponent },
   { path: 'view-notification/:id', component: ViewNotificationComponent},
 
-
   // static content management
- 
-  
   { path: 'static-content-management', component: StaticContentManagementComponent },
   { path: 'edit-static-content-management', component: EditStaticContentManagementComponent },
   // test center management
-  
-  
+  {path:'home-banner',component:HomeBannerComponent},
+  {path:'home-banner-add',component:HomeBannerAddComponent},
+  {path:'home-banner-edit/:id',component:HomeBannerEditComponent},
+  {path:'home-banner-view/:id',component:HomeBannerViewComponent},
+  {path:'home-section',component:HomeSectionComponent},
+{path: 'home-content',component:HomeContentComponent},
+{path:'add-section',component:AddSectionComponent},
+{path:'view-section/:id',component:ViewSectionComponent},
+{path: 'edit-section/:id',component:EditSectionComponent},
   { path: 'hospital-management', component: HospitalManagementComponent },
   { path: 'add-hospital', component: AddHospitalComponent },
   { path: 'edit-hospital', component: EditHospitalComponent },
@@ -149,13 +190,16 @@ const routes: Routes = [
   { path: 'view-patient-management-test-center', component: ViewPatientManagementTestCenterComponent },
   // { path: 'view-plasma-donated-patient-management-test-center', component: ViewPlasmaDonatedPatientManagementTestCenterComponent },
   // user management
-  
-  
+
+
   { path: 'user-management', component: UserManagementComponent },
   { path: 'edit-user', component: EditUserComponent },
   { path: 'view-user', component: ViewUserComponent },
   { path: 'add-user', component: AddUserComponent },
- 
+  { path: 'banner-management',component:BannerManagementComponent},
+  {path: 'add-banner', component:AddBannerComponent},
+  {path: 'view-banner/:id',component:ViewBannerComponent},
+  {path:'edit-banner/:id',component:EditBannerComponent},
   // { path: 'corporate-customer-management', component: CorporateCustomerManagementComponent },
   { path: 'add-corporate-customer-management', component: AddCorporateCustomerComponent },
   { path: 'edit-corporate-customer-management', component: EditCorporateCustomerComponent },
@@ -163,8 +207,8 @@ const routes: Routes = [
 
   { path: 'practitioner-management', component: PractitionerManagementComponent },
   { path: 'add-practitioner', component: AddPractitionerComponent },
-  { path: 'edit-practitioner', component: EditPractitionerComponent },
-  { path: 'view-practitioner', component: ViewPractitionerComponent },
+  { path: 'edit-practitioner/:id', component: EditPractitionerComponent },
+  { path: 'view-practitioner/:id', component: ViewPractitionerComponent },
 
   { path: 'view-companies', component: ViewCompaniesComponent },
   { path: 'view-companies-edit', component: ViewCompaniesEditComponent },
@@ -178,16 +222,40 @@ const routes: Routes = [
   { path: 'gift-card-management', component: GiftCardManagementComponent },
   { path: 'add-gift', component: AddGiftComponent},
   { path: 'edit-gift/:id', component: EditGiftComponent },
-
+  {path:'view-gift/:id',component:ViewGiftComponent},
   { path: 'home-visit-service', component: HomeVisitServiceComponent },
   { path: 'add-home-visit', component: AddHomeVisitComponent },
   { path: 'edit-home-visit/:id', component: EditHomeVisitComponent },
   { path: 'view-home-visit/:id', component: ViewHomeVisitComponent },
+  {path: 'add-sub-service', component:AddSubServiceComponent},
   { path: 'link-management', component: LinkManagementComponent },
   { path: 'product-category', component: ProductCategoryComponent },
   { path: 'view-productcategory/:id', component: ViewProductCategoryComponent },
   { path: 'edit-productcategory/:id', component: EditproductCategoryComponent },
-  { path: 'add-productcategory', component: AddproductCategoryComponent }
+  { path: 'add-productcategory', component: AddproductCategoryComponent },
+
+  { path: 'vendor-management', component: VendorManagementComponent },
+  { path: 'view-vendor/:id', component: ViewVendorComponent },
+  { path: 'edit-vendor/:id', component: EditVendorComponent },
+  { path: 'add-vendor', component: AddVendorComponent },
+{path:'login-screen-content',component:LoginScreenContentComponent},
+{path:'add-login-content',component:AddLoginContentComponent},
+{path:'edit-login-content/:id',component:EditLoginContentComponent},
+{path:'view-login-content/:id',component:ViewLoginContentComponent},
+{path:'book-practioner-list',component:BookPractionerListComponent},
+{path:'book-practioner-add',component:BookPractionerAddComponent},
+{path:'book-practioner-edit/:id',component:BookPractionerEditComponent},
+{path:'book-practioner-view/:id',component:BookPractionerViewComponent},
+{path:'explore-service',component:ExploreServiceComponent},
+{path:'explore-service-add',component:ExploreServiceAddComponent},
+{path:'explore-service-edit/:id',component:ExploreServiceEditComponent},
+{path:'explore-service-view/:id',component:ExploreServiceViewComponent},
+{path:'explore-product',component:ExploreProductComponent},
+{path:'explore-product-add',component:ExploreProductAddComponent},
+{path:'explore-product-edit/:id',component:ExploreProductEditComponent},
+{path:'explore-product-view/:id',component:ExploreProductViewComponent},
+{path:'referral-management',component:RefferalManagementComponent},
+{path:'referral-view/:id',component:RefferalViewComponent}
 
 ];
 

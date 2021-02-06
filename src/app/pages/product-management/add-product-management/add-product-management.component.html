@@ -1,84 +1,119 @@
-<div class="wrapper" style="width: 80%;
-margin-left: 2%;">
+<div class="wrapper" >
     <main class="middle-content">
         <div class="page_title_block">
             <h1 class="page_title"> ADD PRODUCT</h1>
-            <hr style="background: black; opacity: 0.5;width: 135%;">
+            <hr style="background: black; opacity: 0.5;">
         </div>
-        <div class="order-view  max-WT-700 mrgn-0-auto setting-page" style="margin-left: 20%;">
-        <form [formGroup]="addproductForm" style="margin-left: -15%;">
-            <div style="margin-left: 49%;">
-                <label for="fileInput">
-                    
-                <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
-                <em class="fa fa-camera" style="color: #86559f!important;font-size: 20px;
-                position: relative;
-                right: 10px;"></em>
-                <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="position: relative;top: -66px;left: 35px;opacity: -0.9;"> 
-                
-            </label>
-            </div>
-            <div  style="margin-left: 18%;">
-                <div class="row" style=" margin-left: 2%; margin-right: 2%;">
-                    <div class="col">
-                        <div class="row mt-2">
-                            <label class="col-md-4">Name of product</label>
-                            <span  class="col-md-1">:</span>
-                            <div class="col-md-6">
-                            <input type="text" class="form-control " formControlName="productName">
-                            <span class="text text-danger"
-                                *ngIf="addproductForm.controls.productName.touched && addproductForm.controls.productName.invalid && addproductForm.controls.productName.errors.required">*Product
-                                Name is Required</span></div>
-                        </div>
-                        <div class="row mt-2">
-                            <label class="col-md-4">Price</label>
-                            <span  class="col-md-1">:</span>
-                            <div class="col-md-6">
-                            <input type="text" class="form-control " formControlName="price">
-                            <span class="text text-danger"
-                                *ngIf="addproductForm.controls.price.touched && addproductForm.controls.price.invalid && addproductForm.controls.price.errors.required">*Price
-                                is Required</span></div>
-                        </div>
-                        <div class="row mt-2">
-                            <label class="col-md-4">Used for</label>
-                            <span  class="col-md-1">:</span>
-                            <div class="col-md-6">
-                            <input type="text" class="form-control" formControlName="UsedFor">
-                            <span class="text text-danger"
-                                *ngIf="addproductForm.controls.UsedFor.touched && addproductForm.controls.UsedFor.invalid && addproductForm.controls.UsedFor.errors.required">*Usedfor
-                                is Required</span></div>
-                        </div>
-                        <div class="row mt-2">
-                            <label class="col-md-4">Type</label>
-                            <span  class="col-md-1">:</span>
-                            <div class="col-md-6">
-                            <input type="text" class="form-control  " formControlName="type">
-                        <span class="text text-danger" *ngIf="addproductForm.controls.type.touched && addproductForm.controls.type.invalid && addproductForm.controls.type.errors.required">*Type is Required</span><br>
+        <div class="content-section">
+            <div class="order-view  max-WT-700 mrgn-0-auto setting-page" >
+                <div class="  mb40">
+                    <div class="add-store-block input-style mb20 mt20 ">
+                        <form [formGroup]="addproductForm" >
+                            <div class="user-profile">
+                                <div class="image-box">
+                                    <img style="border-radius: 50%;" [src]="profile?profile:'assets/img/profile-img.jpg'" alt="" />
+                                    <label for="fileInput" class="upload-label"> <em class="fa fa-camera" ></em>
+                                    <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="position: relative;top: -66px;left: 35px;opacity: -0.9;"> 
+                                    
+                                </label>
+                                </div>
                             </div>
-                        </div>
-                       <div class="row mt-2" >
-                            <label class="col-md-4">Category</label>
-                            <span  class="col-md-1">:</span>
-                            <div class="col-md-6">
-                             <select class="form-control " placeholder="Enter Category"
-                                    formControlName="category" (change)="selected($event)" >
-                                    <option *ngFor="let item of categoryList" value="{{item._id}}"  > {{item.categoryName}}
-                                    </option>
-                                </select></div>
-                        </div>
-                   
+    
+    
+                                <div class="form-group row align-items-baseline view-label-align">
+                                    <label class="col-md-4 textalignright ">Product name
+                                        <span>:</span></label>
+                                    <div class="col-md-8 textaligncenter">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control " formControlName="productName">
+                                           
+                                            <div class="text-danger">
+                                                <span class="text text-danger"
+                                                *ngIf="addproductForm.controls.productName.touched && addproductForm.controls.productName.invalid && addproductForm.controls.productName.errors.required">*Product
+                                                Name is Required</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="form-group row align-items-baseline view-label-align">
+                                    <label class="col-md-4 textalignright ">Price
+                                        <span>:</span></label>
+                                    <div class="col-md-8 textaligncenter">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control " formControlName="price">
+                                           
+                                            <div class="text-danger">
+                                                <span class="text text-danger"
+                                                *ngIf="addproductForm.controls.price.touched && addproductForm.controls.price.invalid && addproductForm.controls.price.errors.required">*Price
+                                                is Required</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="form-group row align-items-baseline view-label-align">
+                                    <label class="col-md-4 textalignright ">Used for
+                                        <span>:</span></label>
+                                    <div class="col-md-8 textaligncenter">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="UsedFor">
+                                           
+                                            <div class="text-danger">
+                                                <span class="text text-danger"
+                                                *ngIf="addproductForm.controls.UsedFor.touched && addproductForm.controls.UsedFor.invalid && addproductForm.controls.UsedFor.errors.required">*Usedfor
+                                                is Required</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="form-group row align-items-baseline view-label-align">
+                                    <label class="col-md-4 textalignright ">Type
+                                        <span>:</span></label>
+                                    <div class="col-md-8 textaligncenter">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control  " formControlName="type">
+                                           
+                                            <div class="text-danger">
+                                                <span class="text text-danger" *ngIf="addproductForm.controls.type.touched && addproductForm.controls.type.invalid && addproductForm.controls.type.errors.required">*Type is Required</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="form-group row align-items-baseline view-label-align">
+                                    <label class="col-md-4 textalignright ">Category
+                                        <span>:</span></label>
+                                    <div class="col-md-8 textaligncenter">
+                                        <div class="form-group">
+                                            <select class="form-control " placeholder="Enter Category"
+                                                    formControlName="category" (change)="selected($event)" >
+                                                    <option *ngFor="let item of categoryList" value="{{item._id}}"  > {{item.categoryName}}
+                                                    </option>
+                                                </select>
+                                           
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center mt40 mb40">
+                                    <button type="button" class="btn btn-large  max-WT-150 btn-secondary" 
+                                        [routerLink]="['/product-management']">Back</button>
+                                        <button type="button" class="btn btn-large  max-WT-150 btn-primary ml-2" 
+                                        [disabled]=addproductForm.invalid (click)="addProduct()">Save </button>
+    
+                                   
+    
+                                </div>
+                        </form>
                     </div>
+                  
+                </div>
              
-                </div>
-
-                <div class="row" style="margin-left: 25%;margin-top: 5%; margin-bottom: 8%; ">
-                    <button type="button" class="btn btn-theme" style="margin-left: -5%; width: 12%;"
-                        [routerLink]="['/product-management']">Back</button>
-                    <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
-                        [disabled]=addproductForm.invalid (click)="addProduct()">Save </button>
-                </div>
             </div>
-        </form>
-    </div>
+        </div>
+     
+
     </main>
 </div>

@@ -2,6 +2,7 @@
     <main class="middle-content">
         <div class="page_title_block">
             <h1 class="page_title">FAQs / View</h1>
+            <hr style="background: black; opacity: 0.5;">
         </div>
         <div class="content-section">
             <div class="order-view max-WT setting-page">
@@ -10,15 +11,30 @@
                         <form>
                             <div class="form-group row align-items-baseline">
                                 <div class="col-md-12">
-                                    <h4 class="mt20">Question</h4>
-                                    <p>{{faqList?.question || '--'}} </p>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                           <label class=" textalignright">Question :</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p id="wordLimit" >{{faqList?.question || '--'}}</p>    
+                                        </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row align-items-baseline">
                                 <div class="col-md-12">
-                                    <h4 class="mt20">Message</h4>
-                                    <p> {{faqList?.message}} </p>
-                                    <p class="mt30">{{(faqList?.createdAt | date : 'd/M/y') || '--'}}</p>
+                                   <label class=" textalignright">Answer :</label>
+                                    <p id="wordLimit"> {{faqList?.answer}} </p>
+                                   
+                                </div>
+                            </div>
+                            <div class="form-group row align-items-baseline">
+                                <div class="col-md-12">
+                                   <label class=" textalignright">Created on :</label>
+                                   <p class="">{{(faqList?.createdAt | date : 'd/M/y') || '--'}}</p>
                                 </div>
                             </div>
                         </form>

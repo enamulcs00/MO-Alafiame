@@ -1,15 +1,15 @@
-<div class="wrapper" style="overflow-x: hidden;">
+<div class="wrapper" >
     <main class="middle-content">
         <div class="page_title_block">
-            <h1 class="page_title">Static Content Management</h1>
-            <hr style="width: 118%; margin-left: -9%; background-color: black;">
+            <h1 class="page_title">Home Content Management</h1>
+            <hr style="background: black; opacity: 0.5;">
         </div>
-        <div class="content-section" style="margin-top: -3%;">
+        <div class="content-section" >
             <div class="outer-box">
                 <div class="global-table no-radius p0">
                     <div class="tab-content1">
                         <div class="tab-pane1">
-                            <div class="table-responsive" style="width: fit-content;">
+                            <div class="table-responsive">
                                 <table class="table table-bordered" aria-describedby="static content list">
                                     <thead>
                                         <tr class="no_wrap_th text-center">
@@ -21,29 +21,78 @@
                                     <tbody>
                                         <tr class="" *ngFor="let item of result">
 
-                                            <td class="text-center">{{item.title}}</td>
+                                            <td class="text-center">{{item?.title}}</td>
 
                                             <td class="content" [innerHtml]=item.description></td>
                                             <td class="justify-content-center d-flex">
                                                 <div>
-                                                    <button class="btn btn-large  max-WT-150 btn-theme"
-
-                                                        style="margin-left: -12%;"
-                                                        routerLink="/view_terms/{{item.type}}">View</button>
+                                                    <button class="btn btn-info ml-2 bt-margin"
+                                                        routerLink="/view_terms/{{item.type}}"> <em class="fa fa-eye" aria-hidden="true" ></em></button>
                                                 </div>
                                                 <div>
-                                                    <button class="btn btn-large  max-WT-150 btn-theme"
-
-                                                        style="margin-left: 39%;"
-                                                        routerLink="/edit-static-content-management/{{item.type}}/{{item._id}}">Edit</button>
+                                                    <button class="btn btn-info ml-2 bt-margin"
+                                                        routerLink="/edit-static-content-management/{{item.type}}/{{item._id}}"><em class="fa fa-edit" aria-hidden="true"></em></button>
                                                 </div>
                                             </td>
                                         </tr>
-
+                                        <tr *ngIf="result==0">
+                                          <td class="table-no-record" colspan="9">No Record Found</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Home Content</td>
+                                        <td></td>
+                                        <td class="justify-content-center d-flex">
+                                          <button class="btn btn-info ml-2 bt-margin"
+                                          type="button" [routerLink]="['/home-section']"><em class="fa fa-eye" aria-hidden="true" ></em></button>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>Practioner Content</td>
+                                        <td></td>
+                                        <td class="justify-content-center d-flex">
+                                          <button class="btn btn-info ml-2 bt-margin"
+                                          type="button" [routerLink]="['/practitioner-management']"><em class="fa fa-eye" aria-hidden="true" ></em></button>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td>Login Screen Content</td>
+                                        <td></td>
+                                        <td class="justify-content-center d-flex">
+                                          <button class="btn btn-info ml-2 bt-margin"
+                                          type="button" [routerLink]="['/login-screen-content']"><em class="fa fa-eye" aria-hidden="true" ></em></button>
+                                        </td>
+                                      </tr>
                                     </tbody>
                                 </table>
                             </div>
 
+                            <!-- <div class="input-group mt-1" style="width: 91%">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-white">Home Content</span>
+                              </div>
+                              <input type="text" class="form-control bg-white border-left-0" disabled>
+                              <div class="input-group-append">
+                                <button class="btn btn-theme" type="button" [routerLink]="['/home-section']" id="button-addon2">View</button>
+                              </div>
+                            </div>
+                            <div class="input-group mt-1" style="width: 91%">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-white">Practioner Content</span>
+                              </div>
+                              <input type="text" class="form-control bg-white border-left-0" disabled >
+                              <div class="input-group-append">
+                                <button class="btn btn-theme" type="button" id="button-addon2" [routerLink]="['/practitioner-management']">View</button>
+                              </div>
+                            </div>
+                            <div class="input-group mt-1"style="width: 91%">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text bg-white">Login Screen Content</span>
+                              </div>
+                              <input type="text" class="form-control bg-white border-left-0" disabled >
+                              <div class="input-group-append">
+                                <button class="btn btn-theme" type="button" id="button-addon2"[routerLink]="['/login-screen-content']">View</button>
+                              </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

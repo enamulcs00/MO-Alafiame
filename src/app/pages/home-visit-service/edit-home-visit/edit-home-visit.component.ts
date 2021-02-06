@@ -12,12 +12,13 @@ export class EditHomeVisitComponent implements OnInit {
   profile: any;
   user: any;
   categoryId: any;
+
   constructor(private actRoute:ActivatedRoute,private route:Router,public mainService: MainService) {
     this.edithomeForm = new FormGroup({
       "categoryName": new FormControl('', Validators.required),
-      // "subCategories": new FormControl('', Validators.required)
+
     });
-   }   
+   }
   ngOnInit() {
     this.actRoute.paramMap.subscribe(params => {
       this.categoryId = params.get('id');
@@ -26,7 +27,7 @@ export class EditHomeVisitComponent implements OnInit {
   }
   handleInputChange(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-    
+
     var reader = new FileReader();
     reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
@@ -34,7 +35,7 @@ export class EditHomeVisitComponent implements OnInit {
   _handleReaderLoaded(e) {
     let reader = e.target;
     this.profile = reader.result;
-   
+
   }
   viewCategory()
   {
@@ -44,11 +45,10 @@ export class EditHomeVisitComponent implements OnInit {
      if (res && res.responseCode == 200 && res.result) {
       this.user = res.result;
       this.profile= this.user.categoryImage;
-      //this.subcategorList = (res.serviceData)?res.serviceData:null;
        this.edithomeForm.patchValue({
          'categoryName':this.user.categoryName
        })
-      
+
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
        } else {
@@ -60,17 +60,17 @@ export class EditHomeVisitComponent implements OnInit {
         this.mainService.errorToast(error.responseMessage)
       }
     })
-    
-  }
 
+  }
 
 EditServiceCtegory(){
   let endpoint = 'admin/editCategory'
-let data = 
+let data =
     {
       'categoryId':this.categoryId,
       'categoryName': this.edithomeForm.value.categoryName,
       'categoryImage': this.profile,
+
      }
    this.mainService.showSpinner()
     this.mainService.putApi(endpoint,data,1).subscribe((res:any)=>{
@@ -80,7 +80,7 @@ let data =
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
        this.route.navigateByUrl('/home-visit-service')
-        
+
       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)

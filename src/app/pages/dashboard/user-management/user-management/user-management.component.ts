@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/provider/main.service';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
+import { ExportToCsv } from 'export-to-csv';
 declare var $: any;
 
 @Component({
@@ -12,6 +13,8 @@ declare var $: any;
 })
 export class UserManagementComponent implements OnInit {
   searchForm: FormGroup;
+  Isapprove:boolean = false;
+  
   userDataList: any = [];
   itemPerPage = 5;
   currentPage = 1;
@@ -45,6 +48,7 @@ export class UserManagementComponent implements OnInit {
   file: any;
   imageType: any;
   imageUrl = '';
+  corporateImg = ''
   addUserForm: FormGroup;
   viewCorporate: any;
   editCorporateForm: FormGroup;
@@ -66,7 +70,9 @@ export class UserManagementComponent implements OnInit {
   corporateLength: any;
   practionerLength: any;
   companyLength: any;
-
+approveItem:any = [];
+approveId:any;
+viewApproveItem:any = []
   constructor(private router: Router, public mainService: MainService) { }
 
   ngOnInit() {
@@ -80,10 +86,11 @@ export class UserManagementComponent implements OnInit {
   // =========tab link====//
   selectTab(tab){
     this.currTab = tab;
-    console.log('hh',this.currTab);
+    console.log(`You are in ${this.currTab} Tab`);
 
     if(this.currTab === 'Customer'){
       this.getCustomer();
+      this.Isapprove = false;
       this.customerValue=true;
       this.customerUserValue=true;
       this.customerUserEditValue=true;
@@ -92,6 +99,7 @@ export class UserManagementComponent implements OnInit {
     }
    else if(this.currTab === 'Corporate'){
       this.getCorporate();
+      this.Isapprove = false;
       this.corporateUserValue=true;
       this.corporateUserEditValue=true;
       this.corporateUserAddValue=true;
@@ -101,6 +109,16 @@ export class UserManagementComponent implements OnInit {
     }
     else if (this.currTab === 'Practioner'){
       this.getPractioner();
+      this.Isapprove = false;
+      this.practionerUserValue=true;
+      this.practionerUserEditValue=true;
+      this.practionerUserAddValue=true;
+      this.practionerValue=true;
+
+    }
+    else if (this.currTab === 'Approve'){
+      this.approveList();
+      this.Isapprove = true;
       this.practionerUserValue=true;
       this.practionerUserEditValue=true;
       this.practionerUserAddValue=true;
@@ -108,9 +126,77 @@ export class UserManagementComponent implements OnInit {
 
     }
 
+
   }
+approveList(){
+  this.mainService.showSpinner();
+  let url = 'admin/applicantList'
+  this.mainService.getApi(url,1).subscribe((res:any)=>{
+    console.log('This is Approval list',res.result);
+    if(res.responseCode==200){
+      this.mainService.hideSpinner()
+      this.mainService.successToast(res.responseMessage)
+      this.approveItem = res.result
+      console.log('Len',this.approveItem.length);
+    }
+    else{
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(res.responseMessage)
+    }
+  },(error)=>{
+    this.mainService.hideSpinner();
+    this.mainService.errorToast('something went wrong')
+  }
+  )
+}
+viewUserApproveInModal(id){
+  $('#approveModal').modal('show')
+  this.approveId = id,
+  this.ViewApproveUser()
+}
+ViewApproveUser(){
+  this.mainService.showSpinner()
+  let url = `admin/viewApplicant/${this.approveId}`
+  this.mainService.getApi(url,1).subscribe((res:any)=>{
+    console.log('This is View of approve',res.result)
+    if(res.responseCode==200){
+      this.mainService.hideSpinner()
+      this.mainService.successToast(res.responseMessage)
+      this.viewApproveItem = res.result;
+    }
+    else{
+      this.mainService.hideSpinner()
+      this.mainService.errorToast(res.responseMessage)
+    }
+  },(error)=>{
+    this.mainService.hideSpinner();
+    this.mainService.errorToast('something went wrong')
+  })
+}
+appApprove(){
+  $('#approveModal').modal('hide')
+  let url = 'admin/applicantApproval'
+  let obj = {
+    userId: this.approveId
+  }
+  this.mainService.showSpinner();
+  this.mainService.postApi(url,obj,1).subscribe((res:any)=>{
+    this.mainService.hideSpinner();
+    console.log('This is AppApprove resPonse',res);
+    if(res.response_code==200){
 
-
+      this.mainService.successToast(res.response_message);
+      this.approveList()
+    }
+    else{
+      this.mainService.hideSpinner();
+      this.mainService.errorToast(res.response_message);
+    }
+  },(error)=>{
+    this.mainService.hideSpinner();
+    this.mainService.errorToast('something went wrong')
+  })
+}
 
   searchFormValidation() {
     this.searchForm = new FormGroup({
@@ -121,14 +207,14 @@ export class UserManagementComponent implements OnInit {
     this.editUserForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
-      'EditCustomerNumber': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
+      'EditCustomerNumber': new FormControl('', [Validators.required,Validators.pattern(/^[^0][0-9]*$/),Validators.minLength(8),Validators.maxLength(18)]),
       'DOB': new FormControl('', Validators.required),
       'image': new FormControl(''),
     });
     this.addUserForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
-      'Customernumber': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
+      'Customernumber': new FormControl('', [Validators.required,Validators.pattern(/^[^0][0-9]*$/),Validators.minLength(8),Validators.maxLength(18)]),
       'DOB': new FormControl('', Validators.required),
       'image': new FormControl(''),
       'password':new FormControl('', [Validators.required,Validators.pattern(/^(?=^.{8,16}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-])(?!.*\s).*$/)]),
@@ -136,7 +222,7 @@ export class UserManagementComponent implements OnInit {
     this.editCorporateForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
-      'number': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
+      'number': new FormControl('', [Validators.required,Validators.pattern(/^[^0][0-9]*$/),Validators.maxLength(18),Validators.minLength(8)]),
       'DOB': new FormControl('', Validators.required),
       'image': new FormControl(''),
       'company':new FormControl('', [Validators.required,Validators.pattern(/^[^0-9][a-zA-Z ]*$/i)]),
@@ -144,7 +230,7 @@ export class UserManagementComponent implements OnInit {
     this.addCorporateForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
-      'number': new FormControl('', [Validators.required,Validators.pattern(/^[6-9]{1}[0-9]{9}$/)]),
+      'number': new FormControl('', [Validators.required,Validators.pattern(/^[^0][0-9]*$/),Validators.minLength(8),Validators.maxLength(18)]),
       'DOB': new FormControl('', Validators.required),
       'image': new FormControl(''),
       'company':new FormControl('', [Validators.required,Validators.pattern(/^[^0-9][a-zA-Z ]*$/i)]),
@@ -165,15 +251,15 @@ export class UserManagementComponent implements OnInit {
     this.editPractionerForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
-      'number': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
+      'number': new FormControl('', [Validators.required,Validators.pattern(/^[^0][0-9]*$/),Validators.maxLength(18),Validators.minLength(8)]),
       'DOB': new FormControl('', Validators.required),
-      //'image': new FormControl(''),
+      'image': new FormControl(''),
 
     });
     this.addPractionerForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
       'email': new FormControl('', [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,9}|[0-9]{1,3})(\]?)$/i)]),
-      'number': new FormControl('', [Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)]),
+      'number': new FormControl('', [Validators.required,Validators.pattern(/^[^0][0-9]*$/),Validators.minLength(8),Validators.maxLength(18)]),
       'DOB': new FormControl('', Validators.required),
       'image': new FormControl(''),
       'password':new FormControl('', [Validators.required,Validators.pattern(/^(?=^.{8,16}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*?[#?!@$%^&*-])(?!.*\s).*$/)]),
@@ -216,12 +302,14 @@ export class UserManagementComponent implements OnInit {
 
     }
     this.mainService.postApi('admin/serviceList','', 1).subscribe((res:any)=>{
-      console.log("This is ServilistResponse:", res);
+      console.log("This is ServilistResponseByPost:", res.result.docs);
+      this.mainService.hideSpinner();
       if(res.responseCode==200){
-        this.mainService.hideSpinner();
+this.mainService.successToast(res.responseMessage)
         this.serviceData=res.result.docs;
-
-
+      }
+      else{
+        this.mainService.errorToast(res.responseMessage)
       }
     },(error)=>{
       this.mainService.hideSpinner();
@@ -277,6 +365,10 @@ export class UserManagementComponent implements OnInit {
         console.log("f", this.customerLength);
 
       }
+      else{
+        this.mainService.hideSpinner();
+      this.mainService.errorToast(res.responseMessage)
+      }
 
     },(error)=>{
       this.mainService.hideSpinner();
@@ -299,9 +391,14 @@ export class UserManagementComponent implements OnInit {
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/viewCustomer',data,1).subscribe((res)=>{
+      console.log('View Custome',res)
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.viewCustomer=res.result[0]
+      }
+      else{
+        this.mainService.hideSpinner();
+      this.mainService.errorToast(res.responseMessage)
       }
     },(error)=>{
       this.mainService.hideSpinner();
@@ -324,6 +421,7 @@ export class UserManagementComponent implements OnInit {
     this.mainService.showSpinner();
     this.mainService.postApi('admin/editCustomer',data, 1).subscribe((res:any)=>{
       console.log('This is Edit User items',res);
+      this.mainService.hideSpinner();
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.customerData=res.result;
@@ -337,6 +435,11 @@ export class UserManagementComponent implements OnInit {
         })
 
       }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
+
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -356,11 +459,13 @@ export class UserManagementComponent implements OnInit {
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/editCustomer', data, 1).subscribe((res: any) => {
-      console.log("add helpline number list response ==>", res)
+      console.log("Customer Update Response response ==>", res)
       if (res.responseCode == 200) {
         this.mainService.hideSpinner()
         this.mainService.successToast(res.responseMessage);
         this.selectTab('Customer');
+        this.imageUrl = ''
+        this.editUserForm.reset()
         this.customerValue=true;
         this.customerUserEditValue=true;
       } else {
@@ -417,6 +522,7 @@ export class UserManagementComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.imageUrl = e.target.result;
+        this.corporateImg = e.target.result;
       };
       reader.readAsDataURL(this.file[0]);
     }
@@ -453,6 +559,10 @@ export class UserManagementComponent implements OnInit {
         console.log("f", this.practionerData);
 
       }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -482,6 +592,10 @@ export class UserManagementComponent implements OnInit {
         this.mainService.hideSpinner();
         this.viewCorporate=res.result[0]
       }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -509,7 +623,7 @@ export class UserManagementComponent implements OnInit {
       if(res.responseCode==200){
         this.mainService.hideSpinner();
         this.corporateDataa=res.result;
-        this.imageUrl=res.result.profilePic;
+        this.corporateImg=res.result.profilePic;
         this.corpcompany = res.result.company;
         console.log('Company is: ',this.corpcompany)
         this.editCorporateForm.setValue({
@@ -518,12 +632,15 @@ export class UserManagementComponent implements OnInit {
           'company':this.corpcompany,
           'number':this.corporateDataa.mobileNumber,
           'DOB':this.corporateDataa.dateOfBirth,
-          'image':this.imageUrl,
+          'image':this.corporateImg,
 
         })
         console.log("Patch vales in EditCorporate", this.editCorporateForm.value);
         console.log("f", this.practionerData);
-
+      }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
       }
     },(error)=>{
       this.mainService.hideSpinner();
@@ -538,7 +655,7 @@ export class UserManagementComponent implements OnInit {
       'corporateId':this.userId,
       'name': this.editCorporateForm.value.firstName,
       'email': this.editCorporateForm.value.email,
-      'image': this.imageUrl,
+      'image': this.corporateImg,
       'mobileNumber':this.editCorporateForm.value.number,
       'dateOfBirth':this.editCorporateForm.value.DOB,
       'company':this.editCorporateForm.value.company,
@@ -615,6 +732,9 @@ export class UserManagementComponent implements OnInit {
     this.corporateUserAddValue=true;
     this.corporateValue=false;
     this.viewCompanyValue=false;
+
+    
+
   }
   // add company api
   addCompany(){
@@ -694,6 +814,10 @@ export class UserManagementComponent implements OnInit {
         this.mainService.hideSpinner();
         this.viewCompanyDataa=res.result
       }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -731,6 +855,10 @@ export class UserManagementComponent implements OnInit {
         console.log("f", this.practionerData);
 
       }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
+      }
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -759,7 +887,11 @@ export class UserManagementComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },(error)=>{
+      this.mainService.hideSpinner();
+      this.mainService.errorToast('something went wrong')
+    }
+    )
   }
 
 
@@ -816,7 +948,12 @@ export class UserManagementComponent implements OnInit {
     this.mainService.getApi('admin/viewPractitioner?practitionerId='+this.userId,1).subscribe((res)=>{
       if(res.responseCode==200){
         this.mainService.hideSpinner();
+        this.mainService.successToast(res.responseMessage)
         this.viewPractionerDataa=res.result
+      }
+      else{
+        this.mainService.hideSpinner();
+        this.mainService.errorToast(res.responseMessage)
       }
     },(error)=>{
       this.mainService.hideSpinner();
@@ -846,16 +983,21 @@ export class UserManagementComponent implements OnInit {
         this.mainService.hideSpinner();
         this.practionerDataa=res.result;
         this.imageUrl=res.result.profilePic
+
         this.editPractionerForm.patchValue({
           'firstName':this.practionerDataa.name,
           'email':this.practionerDataa.email,
           'number':this.practionerDataa.mobileNumber,
-          'DOB':this.practionerDataa.dateOfBirth,
-          'image':this.imageUrl,
+          'DOB':this.practionerDataa.dateOfBirth
+
         })
         console.log("f", this.practionerData);
-
       }
+      else{
+        this.mainService.hideSpinner()
+        this.mainService.errorToast(res.responseMessage)
+      }
+
     },(error)=>{
       this.mainService.hideSpinner();
       this.mainService.errorToast('something went wrong')
@@ -884,7 +1026,11 @@ export class UserManagementComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },err=>{
+      this.mainService.hideSpinner()
+        this.mainService.errorToast('Something went wrong')
+    }
+    )
   }
 
   // add practioner
@@ -923,7 +1069,11 @@ export class UserManagementComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },err=>{
+      this.mainService.hideSpinner()
+        this.mainService.errorToast('Something went wrong')
+    }
+    )
   }
 
 
@@ -937,59 +1087,175 @@ export class UserManagementComponent implements OnInit {
 
   //=============================== practioner all end ========================//
   // ================================ export csv start ================================//
+Exportcorporate(){
+  this.mainService.showSpinner()
+    setTimeout( r => {
+      this.mainService.hideSpinner()
+    },3000)
+    let Arr = [];
+    this.practionerData.forEach((element,ind) => {
+      let obj ={}
+      obj = {
+      Index:ind+1,
+      Name:element.name,
+      DOB:String(element.dateOfBirth).slice(0,10),
+      Email:element.email,
+      Contact:element.mobileNumber,
+      Company:element.company
+      };
+      Arr.push(obj)
+          });
+          const options = { 
+            fieldSeparator:' ',
+            quoteStrings:'',
+            decimalSeparator:'',
+            showLabels:true, 
+            showTitle:true,
+            title: 'Corporate-management',
+            useTextFile:false,
+            useBom:true,
+            useKeysAsHeaders:true,
+          };
+          const csvExporter = new ExportToCsv(options);
+          csvExporter.generateCsv(Arr);
+}
+
+ExportCSV(){
+  this.mainService.showSpinner()
+    setTimeout( r => {
+      this.mainService.hideSpinner()
+    },3000)
+    let Arr = [];
+    this.practionerData.forEach((element,ind) => {
+      let obj ={}
+      obj = {
+      Index:ind+1,
+      Name:element.name,
+      DOB:String(element.dateOfBirth).slice(0,10),
+      Email:element.email,
+      Contact:element.mobileNumber,
+      
+      };
+      Arr.push(obj)
+          });
+          const options = { 
+            fieldSeparator:' ',
+            quoteStrings:'',
+            decimalSeparator:'',
+            showLabels:true, 
+            showTitle:true,
+            title: 'Practioner-management',
+            useTextFile:false,
+            useBom:true,
+            useKeysAsHeaders:true,
+          };
+          const csvExporter = new ExportToCsv(options);
+          csvExporter.generateCsv(Arr);
+}
+exportCompanyCSV(){
+  this.mainService.showSpinner()
+    setTimeout( r => {
+      this.mainService.hideSpinner()
+    },3000)
+    let Arr = [];
+    this.practionerData.forEach((element,ind) => {
+      let obj ={}
+      obj = {
+      Index:ind+1,
+      Name:element.name,
+      CreatedOn:String(element.createdAt).slice(0,10),
+      UserLimit:element.userLimit,
+      Service:element.service,
+      CompanyCode:element.companyCode
+    
+      };
+      Arr.push(obj)
+          });
+          const options = { 
+            fieldSeparator:' ',
+            quoteStrings:'',
+            decimalSeparator:'',
+            showLabels:true, 
+            showTitle:true,
+            title: 'Company-management',
+            useTextFile:false,
+            useBom:true,
+            useKeysAsHeaders:true,
+          };
+          const csvExporter = new ExportToCsv(options);
+          csvExporter.generateCsv(Arr);
+}
+
   exportCSV() {
+    this.mainService.showSpinner()
+    setTimeout( r => {
+      this.mainService.hideSpinner()
+    },3000)
+
     if(this.currTab=='Customer'){
       let dataArr = [];
-     dataArr.push({
-        sno: "S.No.",
-        Name: "Name",
-        DOB: "D.O.B",
-        Email:"Email",
-        Contact:"Contact Number"
+       this.customerData.forEach((element,ind) => {
+      let obj ={}
+obj = {
+Index:ind+1,
+Name:element.name,
+DOB:String(element.dateOfBirth).slice(0,10),
+Email:element.email,
+Contact:element.mobileNumber
+}
+dataArr.push(obj)
+        
     });
-
-    this.customerData.forEach((element,ind) => {
-        dataArr.push({
-            sno:ind+1,
-            Name:element.name?element.name:'--',
-            DOB:element.dateOfBirth?element.dateOfBirth:'--',
-            Email:element.email?element.email:'--',
-            Contact:element.mobileNumber?element.mobileNumber:'--',
-        })
-    })
-    new ngxCsv(dataArr, 'Customer_management');
+    const options = { 
+      fieldSeparator:' ',
+      quoteStrings:'',
+      decimalSeparator:'',
+      showLabels:true, 
+      showTitle:true,
+      title: 'Customer-management',
+      useTextFile:false,
+      useBom:true,
+      useKeysAsHeaders:true,
+    };
+    const csvExporter = new ExportToCsv(options);
+    csvExporter.generateCsv(dataArr);
     }
     else if(this.currTab=='Corporate'){
       let dataArr = [];
-     dataArr.push({
-        sno: "S.No.",
-        Name: "Name",
-        DOB: "D.O.B",
-        Email:"Email",
-        Contact:"Contact Number",
-        Company:"Company Name",
-    });
-
     this.practionerData.forEach((element,ind) => {
-        dataArr.push({
-            sno:ind+1,
-            Name:element.name?element.name:'--',
-            DOB:element.dateOfBirth?element.dateOfBirth:'--',
-            Email:element.email?element.email:'--',
-            Contact:element.mobileNumber?element.mobileNumber:'--',
-            Company:element.company?element.company:'--',
-        })
-    })
-    new ngxCsv(dataArr, 'Corporate Customer_management');
+      let obj ={}
+      obj = {
+      Index:ind+1,
+      Name:element.name,
+      DOB:String(element.dateOfBirth).slice(0,10),
+      Email:element.email,
+      Contact:element.mobileNumber,
+      Company:element.company
+      }
+      dataArr.push(obj)
+          });
+          const options = { 
+            fieldSeparator:' ',
+            quoteStrings:'',
+            decimalSeparator:'',
+            showLabels:true, 
+            showTitle:true,
+            title: 'Corporate-management',
+            useTextFile:false,
+            useBom:true,
+            useKeysAsHeaders:true,
+          };
+          const csvExporter = new ExportToCsv(options);
+          csvExporter.generateCsv(dataArr);
     }
     else if(this.currTab=='Practioner'){
         let dataArr = [];
        dataArr.push({
-          sno: "S.No.",
-          Name: "Name",
-          DOB: "D.O.B",
-          Email:"Email",
-          Contact:"Contact Number"
+          sno: '',
+          Name: '',
+          DOB: '',
+          Email:'',
+          Contact:''
       });
 
       this.customerData.forEach((element,ind) => {
@@ -1006,30 +1272,30 @@ export class UserManagementComponent implements OnInit {
 }
 
   // export company csv
-  exportCompanyCSV(){
-    let dataArr = [];
-     dataArr.push({
-        sno: "S.No.",
-        Name: "Name",
-        UserLimit: "UserLimit",
-        Service: "Service",
-        CompanyCode:"CompanyCode",
-        AddedOn:"AddedOn",
-    });
+  // exportCompanyCSV(){
+  //   let dataArr = [];
+  //    dataArr.push({
+  //       sno: "S.No.",
+  //       Name: "Name",
+  //       UserLimit: "UserLimit",
+  //       Service: "Service",
+  //       CompanyCode:"CompanyCode",
+  //       AddedOn:"AddedOn",
+  //   });
 
-    this.companyData.forEach((element,ind) => {
-        dataArr.push({
-            sno:ind+1,
-            Name:element.name?element.name:'--',
-            UserLimit:element.userLimit?element.userLimit:'--',
-            Service:element.service?element.service:'--',
-            CompanyCode:element.companyCode?element.companyCode:'--',
-            AddedOn:element.createdAt?element.createdAt.slice(0, 10):'--',
-        })
-    })
-    new ngxCsv(dataArr, 'Corporate Company_Management');
+  //   this.companyData.forEach((element,ind) => {
+  //       dataArr.push({
+  //           sno:ind+1,
+  //           Name:element.name?element.name:'--',
+  //           UserLimit:element.userLimit?element.userLimit:'--',
+  //           Service:element.service?element.service:'--',
+  //           CompanyCode:element.companyCode?element.companyCode:'--',
+  //           AddedOn:element.createdAt?element.createdAt.slice(0, 10):'--',
+  //       })
+  //   })
+  //   new ngxCsv(dataArr, 'Corporate Company_Management');
 
-  }
+  // }
   // ================================ export csv end ================================//
 
   //==========================serach========================================//

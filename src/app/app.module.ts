@@ -49,7 +49,7 @@ import { ErrorInterceptor } from './provider/interceptor/error-interceptor/error
 import { AuthGuard } from './guard/auth.guard';
 import { ViewTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-test-center/view-test-center.component';
 import { ViewPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-patient-management-test-center/view-patient-management-test-center.component';
-import { ViewPlasmaDonatedPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-plasma-donated-patient-management-test-center/view-plasma-donated-patient-management-test-center.component';
+// import { ViewPlasmaDonatedPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-plasma-donated-patient-management-test-center/view-plasma-donated-patient-management-test-center.component';
 import { ViewPatientManagementHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-patient-management-hospital/view-patient-management-hospital.component';
 import { ViewPlasmaDonatedPatientManagementHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-plasma-donated-patient-management-hospital/view-plasma-donated-patient-management-hospital.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
@@ -91,6 +91,44 @@ import { ProductCategoryComponent } from './pages/product-category/product-categ
 import { ViewProductCategoryComponent } from './pages/view-product-category/view-product-category.component';
 import { EditproductCategoryComponent } from './pages/editproduct-category/editproduct-category.component';
 import { AddproductCategoryComponent } from './pages/addproduct-category/addproduct-category.component';
+import { BannerManagementComponent } from './pages/banner-management/banner-management.component';
+import { VendorManagementComponent } from './pages/vendor-management/vendor-management.component';
+import { ViewVendorComponent } from './pages/vendor-management/view-vendor/view-vendor.component';
+import { EditVendorComponent } from './pages/vendor-management/edit-vendor/edit-vendor.component';
+import { AddVendorComponent } from './pages/vendor-management/add-vendor/add-vendor.component';
+import { SocialMediaManagementComponent } from './pages/social-media-management/social-media-management.component';
+import { AddBannerComponent } from './pages/banner-management/add-banner/add-banner.component';
+import { EditBannerComponent } from './pages/banner-management/edit-banner/edit-banner.component';
+import { ViewBannerComponent } from './pages/banner-management/view-banner/view-banner.component';
+import { AddSubServiceComponent } from './pages/home-visit-service/add-sub-service/add-sub-service.component';
+import { HomeContentComponent } from './pages/dashboard/static-content-management/home-content/home-content.component';
+import { AddSectionComponent } from './pages/dashboard/static-content-management/add-section/add-section.component';
+import { ViewSectionComponent } from './pages/dashboard/static-content-management/view-section/view-section.component';
+import { EditSectionComponent } from './pages/dashboard/static-content-management/edit-section/edit-section.component';
+import { HomeSectionComponent } from './pages/dashboard/static-content-management/home-section/home-section.component';
+import { HomeBannerComponent } from './pages/dashboard/static-content-management/home-banner/home-banner.component';
+import { HomeBannerAddComponent } from './pages/dashboard/static-content-management/home-banner-add/home-banner-add.component';
+import { HomeBannerEditComponent } from './pages/dashboard/static-content-management/home-banner-edit/home-banner-edit.component';
+import { HomeBannerViewComponent } from './pages/dashboard/static-content-management/home-banner-view/home-banner-view.component';
+import { LoginScreenContentComponent } from './pages/dashboard/login-screen-content/login-screen-content.component';
+import { AddLoginContentComponent } from './pages/dashboard/login-screen-content/add-login-content/add-login-content.component';
+import { EditLoginContentComponent } from './pages/dashboard/login-screen-content/edit-login-content/edit-login-content.component';
+import { ViewLoginContentComponent } from './pages/dashboard/login-screen-content/view-login-content/view-login-content.component';
+import { BookPractionerListComponent } from './pages/practitioner-management/explore-product-and-service/book-practioner-list/book-practioner-list.component';
+import { BookPractionerAddComponent } from './pages/practitioner-management/explore-product-and-service/book-practioner-add/book-practioner-add.component';
+import { BookPractionerEditComponent } from './pages/practitioner-management/explore-product-and-service/book-practioner-edit/book-practioner-edit.component';
+import { BookPractionerViewComponent } from './pages/practitioner-management/explore-product-and-service/book-practioner-view/book-practioner-view.component';
+import { ExploreServiceComponent } from './pages/practitioner-management/explore-product-and-service/explore-service/explore-service.component';
+import { ExploreServiceAddComponent } from './pages/practitioner-management/explore-product-and-service/explore-service-add/explore-service-add.component';
+import { ExploreServiceEditComponent } from './pages/practitioner-management/explore-product-and-service/explore-service-edit/explore-service-edit.component';
+import { ExploreServiceViewComponent } from './pages/practitioner-management/explore-product-and-service/explore-service-view/explore-service-view.component';
+import { ExploreProductComponent } from './pages/practitioner-management/explore-product-and-service/explore-product/explore-product.component';
+import { ExploreProductAddComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-add/explore-product-add.component';
+import { ExploreProductEditComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-edit/explore-product-edit.component';
+import { ExploreProductViewComponent } from './pages/practitioner-management/explore-product-and-service/explore-product-view/explore-product-view.component';
+import { RefferalManagementComponent } from './pages/refferal/refferal-management/refferal-management.component';
+import { RefferalViewComponent } from './pages/refferal/refferal-view/refferal-view.component';
+import { ViewGiftComponent } from './pages/gift-card-management/view-gift/view-gift.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -134,7 +172,7 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     ViewHospitalComponent,
     ViewTestCenterComponent,
     ViewPatientManagementTestCenterComponent,
-    ViewPlasmaDonatedPatientManagementTestCenterComponent,
+    // ViewPlasmaDonatedPatientManagementTestCenterComponent,
     ViewPatientManagementHospitalComponent,
     ViewPlasmaDonatedPatientManagementHospitalComponent,
     AddUserComponent,
@@ -173,7 +211,46 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     ProductCategoryComponent,
     ViewProductCategoryComponent,
     EditproductCategoryComponent,
-    AddproductCategoryComponent
+    AddproductCategoryComponent,
+    BannerManagementComponent,
+    VendorManagementComponent,
+    ViewVendorComponent,
+    EditVendorComponent,
+    AddVendorComponent,
+    SocialMediaManagementComponent,
+    AddBannerComponent,
+    EditBannerComponent,
+    ViewBannerComponent,
+    AddSubServiceComponent,
+    HomeContentComponent,
+    AddSectionComponent,
+    ViewSectionComponent,
+    EditSectionComponent,
+    HomeSectionComponent,
+    HomeBannerComponent,
+    HomeBannerAddComponent,
+    HomeBannerEditComponent,
+    HomeBannerViewComponent,
+    LoginScreenContentComponent,
+    AddLoginContentComponent,
+    EditLoginContentComponent,
+    ViewLoginContentComponent,
+    BookPractionerListComponent,
+    BookPractionerAddComponent,
+    BookPractionerEditComponent,
+    BookPractionerViewComponent,
+    ExploreServiceComponent,
+    ExploreServiceAddComponent,
+    ExploreServiceEditComponent,
+    ExploreServiceViewComponent,
+    ExploreProductComponent,
+    ExploreProductAddComponent,
+    ExploreProductEditComponent,
+    ExploreProductViewComponent,
+    RefferalManagementComponent,
+    RefferalViewComponent,
+    ViewGiftComponent,
+
   ],
   imports: [
     BrowserModule,

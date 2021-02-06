@@ -32,6 +32,8 @@ export class LinkManagementComponent implements OnInit {
   getLink() {
     this.mainService.showSpinner();
     this.mainService.getApi('appSharing/appSharingData',1).subscribe((res: any) => {
+      console.log('These are links Res',res)
+      this.mainService.hideSpinner();
       if (res.responseCode == 200 && res.result) {
         this.link = res.result;
         this.id= res.result._id;
@@ -52,7 +54,11 @@ export class LinkManagementComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },err=>{
+      this.mainService.hideSpinner()
+      this.mainService.errorToast('Something went wrong')
+    }
+    )
   }
   saveList() {
     const data = {
@@ -68,15 +74,19 @@ export class LinkManagementComponent implements OnInit {
     }
     this.mainService.showSpinner();
     this.mainService.postApi('appSharing/appSharingDataUpdate',data,1).subscribe((res: any) => {
+      console.log('This is Submitted links',res)
+      this.mainService.hideSpinner();
       if (res.responseCode == 200) {
-        // this.router.navigate(['faq'])
-        this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage);
+        this.route.navigate(['dashboard'])
       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
       }
-    })
+    },err=>{
+      this.mainService.errorToast('Something went wrong')
+    }
+    )
   }
 
 }

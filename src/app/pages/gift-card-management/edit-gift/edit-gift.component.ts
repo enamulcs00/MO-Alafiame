@@ -15,8 +15,9 @@ export class EditGiftComponent implements OnInit {
   img: any;
   file: any;
   imageType: any;
-
-  constructor(private service:MainService, private activatedroute:ActivatedRoute,private router:Router) { }
+  marked = false;
+  theCheckbox = false;
+  constructor(public service:MainService, private activatedroute:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
 this.activatedroute.params.subscribe((res:any)=>{
@@ -28,19 +29,16 @@ this.activatedroute.params.subscribe((res:any)=>{
 
   giftList() {
     this.service.showSpinner()
-    let formData = {
-      "page":0 ,
-      "limit":1,
-      "_id":this.giftId
-    }
-    this.service.postApi('admin/giftList', formData, 1).subscribe((res: any) => {
+
+    this.service.getApi(`admin/viewGift/${this.giftId}`, 1).subscribe((res: any) => {
       if(res.responseCode==200){
-        this.img= res.result.docs[0].giftImage
+        this.img= res.result.giftImage
+        this.theCheckbox = res.result.active
         this.editGiftForm.patchValue({
-          'title':res.result.docs[0].title, 
-          'discount':res.result.docs[0].discount,
-          'maxAmount':res.result.docs[0].maxAmount,
-          'expiry':res.result.docs[0].expiryDate.split('T')[0],
+          'title':res.result.title,
+          'discount':res.result.discount,
+          'maxAmount':res.result.maxAmount,
+          'expiry':res.result.expiryDate.split('T')[0],
         })
         this.service.hideSpinner()
         this.service.successToast(res.responseMessage)
@@ -61,18 +59,7 @@ this.activatedroute.params.subscribe((res:any)=>{
       'image': new FormControl(''),
     })
   }
- 
-  // ValidateFileUpload(e) {
-  //   var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-  //   var reader = new FileReader();
-  //   reader.onload = this._handleReaderLoaded.bind(this);
-  //   reader.readAsDataURL(file);
-  // }
-  // _handleReaderLoaded(e) {
-  //   let reader = e.target;
-  //   this.img = reader.result;
-  //   console.log("profile", this.img)
-  // }
+
   ValidateFileUpload(event) {
     this.file = event.target.files;
     if (this.file[0]) {
@@ -84,7 +71,7 @@ this.activatedroute.params.subscribe((res:any)=>{
       reader.readAsDataURL(this.file[0]);
     }
   }
-  
+
   editGift(){
     let data={
       'title':this.editGiftForm.value.title,
@@ -93,6 +80,7 @@ this.activatedroute.params.subscribe((res:any)=>{
       'expiryDate':Math.round(new Date(this.editGiftForm.value.expiry).getTime()) ,
       'giftImage' :this.img,
       'giftId':this.giftId,
+      'active':this.marked,
     }
     console.log(data)
    this.service.postApi('admin/editGift',data,1).subscribe((res:any)=>{
@@ -103,11 +91,13 @@ this.activatedroute.params.subscribe((res:any)=>{
     }else{
       this.service.hideSpinner()
       this.service.errorToast(res.responseMessage)
-    } 
+    }
    }, (error) => {
       this.service.hideSpinner()
   })
 }
-  
-  
+toggleVisibility(e){
+  this.marked= e.target.checked;
+}
+
 }

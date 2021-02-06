@@ -1,4 +1,75 @@
-<div class="wrapper" style="width: 80%;
+<div class="wrapper">
+    <main class="middle-content">
+        <div class="page_title_block" >
+            <h1 class="page_title">ADD CATEGORY</h1>
+            <hr style="background: black; opacity: 0.5;">
+        </div>
+ <div class="content-section">
+ 
+  <div class="order-view  max-WT-700  setting-page">
+      <div class="  mb40">
+          <form [formGroup]="addhomeForm">
+              <div class="add-store-block input-style mb20 mt20 ">
+                  <div class="row align-items-baseline view-label-align">
+                      <label class="col-md-4 textalignright ">Category name
+                          <span>:</span></label>
+                      <div class="col-md-8 textaligncenter">
+                          <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Enter category name" formControlName="categoryName"
+                                  (keypress)="mainService.AlphabetOnly($event)" maxlength="20">
+                              <div class="text-danger">
+                                  <span
+                                      *ngIf="addhomeForm.get('categoryName').hasError('required') && (addhomeForm.get('categoryName').dirty || addhomeForm.get('categoryName').touched)">
+                                      *Please enter category name.
+                                  </span>
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group row align-items-baseline view-label-align">
+                      <label class="col-md-4 textalignright">Mark as Featured
+                          <span>:</span></label>
+                      <div class="col-md-8 textaligncenter">
+                          <div>
+                              <input type="checkbox" [(ngModel)]="theCheckbox" [ngModelOptions]="{standalone: true}" data-md-icheck (change)="toggleVisibility($event)">
+
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="form-group row view-label-align">
+                    <label class="col-md-4 textalignright">Category image
+                        <span>:</span></label>
+                    <div class="col-md-4 textaligncenter">
+                        <div class="form-group">
+                          <label for="fileInput"class="hoverable">
+                            <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
+                            <div class="hover-text">
+                              <em class="fa fa-upload"></em>
+                            </div>
+                            <input type="file" id="fileInput"class="custom-file-input" name="imageUrl"  accept="image/*" (change)="handleInputChange($event)">
+                             </label>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="text-center mt40 mb40">
+                  <button class="btn btn-large  max-WT-150 btn-secondary" routerLink="/home-visit-service">Cancel</button>
+                  <button class="btn btn-large  max-WT-150 btn-primary ml-2" [disabled]="addhomeForm.invalid" (click)="addservice()">Submit</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+</main>
+</div>
+
+
+
+
+ <!-- <div class="wrapper" style="width: 80%;
 margin-left: 2%;">
     <main class="middle-content">
         <div class="page_title_block">
@@ -7,7 +78,7 @@ margin-left: 2%;">
         </div>
         <form [formGroup]="addhomeForm">
             <div class="order-view  max-WT-700 mrgn-0-auto setting-page" style="margin-left: 18%;">
-                <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
+                              <div class="row" style=" margin-left: 2%; margin-top: 8%; margin-right: 2%;">
                     <div class="col">
                         <label>Category name:</label><br><br>
                         <label>Category image:</label><br><br><br><br><br>
@@ -24,8 +95,8 @@ margin-left: 2%;">
                     </label>
                         <input type="text" class="form-control" formControlName="subCategories">
                         <span class="text text-danger" *ngIf="addhomeForm.controls.subCategories.touched && addhomeForm.controls.subCategories.invalid && addhomeForm.controls.subCategories.errors.required">*Subcategory  is Required</span><br>
-                        
-                               
+
+
                     </div>
                 </div>
 
@@ -33,9 +104,9 @@ margin-left: 2%;">
                     <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
                     [routerLink]="['/home-visit-service']">Back</button>
                     <button type="button" class="btn btn-theme" style="margin-left: 10%; width: 12%;"
-                        (click)="addservice()" [disabled]=addhomeForm.invalid>Save</button>
+                        (click)="addservice()">Save</button>
                 </div>
             </div>
         </form>
     </main>
-</div>
+</div> -->

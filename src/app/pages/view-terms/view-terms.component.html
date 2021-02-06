@@ -1,31 +1,51 @@
 <div class="wrapper">
     <main class="middle-content">
         <div class="page_title_block">
-            <h1 class="page_title" style="font-size: 20px;">VIEW STATIC CONTENT</h1>
-            <hr style="width: 118%; margin-left: -9%; background-color: black;">
+            <h1 class="page_title" >VIEW STATIC CONTENT</h1>
+            <hr style="background: black; opacity: 0.5;">
         </div>
-        <form [formGroup]="Viewform">
-        <div class="col order-view main-block-innner mb20 mt40 view-label-align" style=" margin-left: 10%;margin-top: 2% ;width: 65%">
-            <div class="row" style="margin-left: 2%; margin-right:2%">
-                <div class="col">
-                    <label>Title:</label><br><br>
-                    <label>Description:</label>
-                </div>
 
-                <div class="col ">
-        <input type="text" class="form-control" maxlength="100" formControlName="Title" readonly><br>
-        <textarea class="form-control" rows="7" readonly style="width: 440px;" formControlName="Description"></textarea>
+        <div class="content-section" >
+            <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
+                <div class="  mb40">
+                    <div class="add-store-block input-style mb20 mt20 ">
+                        <form [formGroup]="Viewform">
+
+                            <div class="form-group row align-items-baseline view-label-align">
+                                <label class="col-md-4 textalignright ">Title
+                                    <span>:</span></label>
+                                <div class="col-md-8 textaligncenter">
+                                    <div class="form-group">
+                                        <input type="text" class="border-0" maxlength="100" formControlName="Title" readonly>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row  view-label-align">
+                                <label class="col-md-4 textalignright ">Description
+                                    <span>:</span></label>
+                                <div class="col-md-8 textaligncenter">
+                                    <div class="form-group">
+                                        <textarea class="border-0" rows="7" readonly id="exampleFormControlTextarea1" formControlName="Description"></textarea>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                                <div class="text-center mt40 mb40" >
+                                    <button class="btn btn-large  max-WT-150 btn-secondary"
+                                        routerLink="/static-content-management">Back</button>
+                                <!-- <button class="btn btn-login btn-large width100 font-100" routerLink="/edit-static-content-management/{{result.type}}/{{result._id}}"
+                                        style="width: 14%; background-color: deep blue;margin-left: 2%;">Edit</button> -->
+                                </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="row" style="position: relative;
-            left: 217px;
-            top: 10px;">
-                <button class="btn btn-login btn-large width100 font-100"
-                    style="width: 14%; background-color: deep blue;" routerLink="/static-content-management">Back</button>
-            <!-- <button class="btn btn-login btn-large width100 font-100" routerLink="/edit-static-content-management/{{result.type}}/{{result._id}}"  
-                    style="width: 14%; background-color: deep blue;margin-left: 2%;">Edit</button> -->
-            </div>
-        </div>
-    </form>
+
+</div>
     </main>
 </div>

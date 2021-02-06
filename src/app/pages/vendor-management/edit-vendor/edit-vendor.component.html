@@ -1,0 +1,272 @@
+<div class="wrapper">
+    <main class="middle-content">
+<div class="page_title_block" >
+    <h1 class="page_title">Edit Vendor</h1>
+    <hr style="background: black; opacity: 0.5;">
+</div>
+<div class="content-section">
+ 
+    <div class="order-view  max-WT-700  setting-page" >
+        <div class="  mb40">
+            <form [formGroup]="addVendorForm" #f="ngForm">
+                <div class="add-store-block input-style mb20 mt20 ">
+                    <div class="form-group row align-items-baseline view-label-align">
+                        <label class="col-md-4 textalignright ">Name
+                            <span>:</span></label>
+                        <div class="col-md-8 textaligncenter">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name" formControlName="firstName"
+                                    (keypress)="mainservice.AlphabetOnly($event)" maxlength="60">
+                                <div class="text-danger">
+                                    <span
+                                        *ngIf="addVendorForm.get('firstName').hasError('required') && (addVendorForm.get('firstName').dirty || addVendorForm.get('firstName').touched)">
+                                        *Please enter Name.
+                                    </span>
+                                    <span
+                                        *ngIf="addVendorForm.get('firstName').hasError('pattern') && (addVendorForm.get('firstName').dirty || f.submitted)">
+                                        *Name accept only alphabets.
+                                    </span>
+                                    <span
+                                        *ngIf="addVendorForm.get('firstName').hasError('minlength') && !(addVendorForm.get('firstName').hasError('pattern')) && (addVendorForm.get('firstName').dirty || f.submitted)">
+                                        *Minimum length must be 2.
+                                    </span>
+                                    <span
+                                        *ngIf="addVendorForm.get('firstName').hasError('maxlength') && !(addVendorForm.get('firstName').hasError('pattern')) && (addVendorForm.get('firstName').dirty || f.submitted)">
+                                        *Maximum length should not more than 20.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row align-items-baseline view-label-align">
+                        <label class="col-md-4 textalignright">Email
+                            <span>:</span></label>
+                        <div class="col-md-8 textaligncenter">
+                            <div class="form-group ">
+                                <input type="text" class="form-control" placeholder="Email Address"
+                                    formControlName="email" (keypress)="mainservice.preventSpace($event)"
+                                    maxlength="50">
+                                <div class="text-danger">
+                                    <span
+                                        *ngIf="addVendorForm.get('email').hasError('required') && (addVendorForm.get('email').dirty || addVendorForm.get('email').touched)">
+                                        *Please enter you email.
+                                    </span>
+                                    <span *ngIf="addVendorForm.get('email').hasError('pattern')">
+                                        *Please enter valid email.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row align-items-baseline view-label-align">
+                        <label class="col-md-4 textalignright">Mobile Number
+                            <span>:</span></label>
+                        <div class="col-md-8 textaligncenter">
+                            <div class="form-group ">
+                                <input type="tel" class="form-control" placeholder="Mobile Number"
+                                    formControlName="Customernumber" (keypress)="mainservice.NumOnly($event)"
+                                    maxlength="18" minlength="8">
+                                <div class="text-danger">
+                                    <span
+                                        *ngIf="addVendorForm.get('Customernumber').hasError('required') && (addVendorForm.get('Customernumber').dirty || addVendorForm.get('Customernumber').touched)">
+                                        *Please enter your number.
+                                    </span>
+                                    <span *ngIf="addVendorForm.get('Customernumber').hasError('pattern')">
+                                        *Please enter valid number.
+                                    </span>
+                                    <span *ngIf="addVendorForm.get('Customernumber').hasError('maxlength')||addVendorForm.get('Customernumber').hasError('minlength')">
+                                        *Please enter valid number.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group row align-items-baseline view-label-align">
+                        <label class="col-md-4 textalignright">Password
+                            <span>:</span></label>
+                        <div class="col-md-8 textaligncenter">
+                            <div class="form-group ">
+                                <input type="password" class="form-control" placeholder="Enter Password"
+                                    formControlName="password" (keypress)="mainservice.preventSpace($event)"
+                                    maxlength="15">
+                                <div class="text-danger">
+                                    <span
+                                        *ngIf="addVendorForm.get('password').hasError('required') && (addVendorForm.get('password').dirty || addVendorForm.get('password').touched)">
+                                        *Please enter you password.
+                                    </span>
+                                    <span *ngIf="addVendorForm.get('password').hasError('pattern')">
+                                        *Password should have minimum 8 characters, at
+                                        least 1 uppercase letter, 1 lowercase letter, 1
+                                        number and 1 special character.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-12">
+                        <div class="row mb-4" style="padding-left: 5%;">
+                            <div class="col-md-9">
+                                <h3 class="card-description">
+                                    Permission Module
+                                </h3>
+                            </div>
+                            <div class="col-md-3">
+                                <h3 class="card-description">
+                                    Action
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="row mb-1" style="padding-left: 10%;">
+                            <div class="col-md-9">
+                                <p>
+                                    Vendor Management
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check form-check-flat">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox" formControlName='vendorManagement'>
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-1" style="padding-left: 10%;">
+                            <div class="col-md-9">
+                                <p>
+                                    Transaction Management
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check form-check-flat">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox" formControlName='transactionManagement'>
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-1" style="padding-left: 10%;">
+                            <div class="col-md-9">
+                                <p>
+                                    Dashboard Management
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check form-check-flat">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox" formControlName='dashboardManagement'>
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-1" style="padding-left: 10%;">
+                            <div class="col-md-9">
+                                <p>
+                                    Product Management
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check form-check-flat">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox" formControlName='productManagement'>
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-1" style="padding-left: 10%;">
+                            <div class="col-md-9">
+                                <p>
+                                    Service Management
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check form-check-flat">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox" formControlName='serviceManagement'>
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-1" style="padding-left: 10%;">
+                            <div class="col-md-9">
+                                <p>
+                                    Gift Card Management
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check form-check-flat">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox" formControlName='giftCardManagement'>
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-1" style="padding-left: 10%;">
+                            <div class="col-md-9">
+                                <p>
+                                    Notification Management
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check form-check-flat">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox"
+                                            formControlName='notificationManagement'>
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-1" style="padding-left: 10%;">
+                            <div class="col-md-9">
+                                <p>
+                                    Static Content Management
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check form-check-flat">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox"
+                                            formControlName='staticContentManagement'>
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-1" style="padding-left: 10%;">
+                            <div class="col-md-9">
+                                <p>
+                                    Referral Management
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-check form-check-flat">
+                                    <label class="form-check-label">
+                                        <input class="checkbox" type="checkbox"
+                                            formControlName='referralmanagement'>
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt40 mb40">
+                    <button class="btn btn-large  max-WT-150 btn-secondary" routerLink="/vendor-management">Back</button>
+                    <button class="btn btn-large  max-WT-150 btn-primary ml-2" (click)="editVendor()">Edit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</main>
+</div>

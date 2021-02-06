@@ -12,7 +12,7 @@ export class ViewTermsComponent implements OnInit {
   type: any;
   result: any;
   Viewform:FormGroup;
-  constructor(private activatedroute :ActivatedRoute,private mainService:MainService) { 
+  constructor(private activatedroute :ActivatedRoute,private mainService:MainService) {
 
     this.Viewform = new FormGroup({
       "Description": new FormControl(''),
@@ -24,6 +24,9 @@ export class ViewTermsComponent implements OnInit {
     this.activatedroute.params.subscribe((res:any)=>{
       console.log('Activated res',res);
       this.type=res.type
+      if(res.type=='T&C'){
+        this.type = encodeURIComponent('T&C')
+      }
     })
     this.getStaticData()
   }
@@ -49,5 +52,5 @@ export class ViewTermsComponent implements OnInit {
     })
   }
   }
- 
+
 

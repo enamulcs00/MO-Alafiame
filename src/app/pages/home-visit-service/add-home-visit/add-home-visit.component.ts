@@ -13,19 +13,22 @@ export class AddHomeVisitComponent implements OnInit {
   profile: any;
   user: any;
 
+marked = false;
+  theCheckbox = false;
   constructor(private actRoute:ActivatedRoute,private route:Router,public mainService: MainService) {
-    this.addhomeForm = new FormGroup({
-      "categoryName": new FormControl('', Validators.required),
-      "subCategories": new FormControl('', Validators.required)
-    });
+
    }
 
   ngOnInit() {
-    
+    this.addhomeForm = new FormGroup({
+      "categoryName": new FormControl('', Validators.required),
+
+    });
+
   }
   handleInputChange(e) {
     var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-    
+
     var reader = new FileReader();
     reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
@@ -35,15 +38,19 @@ export class AddHomeVisitComponent implements OnInit {
     this.profile = reader.result;
     console.log("profile", this.profile)
   }
+  toggleVisibility(e){
+    this.marked= e.target.checked;
+  }
+
   addservice()
   {
-    
-    let data = 
+
+    let data =
     {
       'categoryName': this.addhomeForm.value.categoryName,
-      
+       'markAs': this.marked,
       'categoryImage': this.profile,
-      'subCategoryName':this.addhomeForm.value.subCategories
+
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/addServiceCategory', data, 1).subscribe((res: any) => {
@@ -52,7 +59,7 @@ export class AddHomeVisitComponent implements OnInit {
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
        this.route.navigateByUrl('/home-visit-service')
-        
+
       } else {
         this.mainService.hideSpinner();
         this.mainService.errorToast(res.responseMessage)
@@ -65,5 +72,7 @@ export class AddHomeVisitComponent implements OnInit {
 
 
   }
- 
+  markas(event){
+console.log('Event',event)
+  }
 }
