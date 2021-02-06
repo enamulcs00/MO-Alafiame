@@ -9,14 +9,15 @@ import { MainService } from 'src/app/provider/main.service';
   styleUrls: ['./home-banner-add.component.css']
 })
 export class HomeBannerAddComponent implements OnInit {
-
+  marked = false;
+  theCheckbox = false;
   addBannerForm:FormGroup;
   profile = ''
   config = {
     uiColor: '#F0F3F4',
     height: '40%',
-    enterMode :2
-
+    enterMode :2,
+    autoParagraph:false
   };
   constructor(public mainService:MainService, private router:Router) { }
 
@@ -33,7 +34,7 @@ export class HomeBannerAddComponent implements OnInit {
 
     let data =
       {
-        'active': true,
+        'active': this.marked,
         'title': this.addBannerForm.value.title,
         'description': this.addBannerForm.value.description,
         'image': this.profile,
@@ -70,5 +71,8 @@ _handleReaderLoaded(e) {
   let reader = e.target;
   this.profile = reader.result;
   console.log("profile", this.profile)
+}
+toggleVisibility(e){
+  this.marked= e.target.checked;
 }
 }

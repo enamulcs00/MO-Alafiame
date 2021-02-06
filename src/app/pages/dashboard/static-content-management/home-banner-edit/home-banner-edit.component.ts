@@ -14,7 +14,8 @@ export class HomeBannerEditComponent implements OnInit {
   profile = ''
   BannerEditId:any;
   bannerFormValues:any = []
-
+  marked = false;
+  theCheckbox = false;
   config = {
     uiColor: '#F0F3F4',
     height: '40%',
@@ -45,7 +46,7 @@ export class HomeBannerEditComponent implements OnInit {
       let data =
         {
           '_id': this.BannerEditId,
-
+          'active'  :this.marked,
           'description':this.EditBannerForm.value.description,
           'title': this.EditBannerForm.value.title,
           'image': this.profile,
@@ -55,8 +56,6 @@ export class HomeBannerEditComponent implements OnInit {
           console.log("EditBanner  response ==>", res)
           this.mainService.hideSpinner();
           if (res.responseCode == 200 && res.result) {
-
-
             this.mainService.successToast(res.responseMessage)
             this.router.navigate(['/home-banner'])
             this.EditBannerForm.reset()
@@ -94,10 +93,11 @@ export class HomeBannerEditComponent implements OnInit {
       this.mainService.hideSpinner();
         if (res.responseCode == 200) {
           this.bannerFormValues = res.result;
+          this.theCheckbox = res.result.active
           this.profile = this.bannerFormValues.image
           this.EditBannerForm.patchValue({
             'title': this.bannerFormValues.title,
-            'description': this.bannerFormValues.description
+            'description': res.result.description
           });
          } else {
 
@@ -110,5 +110,7 @@ export class HomeBannerEditComponent implements OnInit {
       })
 
     }
-
+    toggleVisibility(e){
+      this.marked= e.target.checked;
+    }
 }

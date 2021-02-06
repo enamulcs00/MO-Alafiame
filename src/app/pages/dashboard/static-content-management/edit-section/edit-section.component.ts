@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { debounceTime } from 'rxjs/operators';
 import { MainService } from 'src/app/provider/main.service';
 
 @Component({

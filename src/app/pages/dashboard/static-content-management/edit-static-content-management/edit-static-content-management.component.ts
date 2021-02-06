@@ -11,6 +11,7 @@ import { ApiUrls } from 'src/app/config/api-urls/api-urls';
 })
 export class EditStaticContentManagementComponent implements OnInit {
   userId: any;
+
   result: any;
   expTitle:any
   ExpertDescprition:any
@@ -62,9 +63,10 @@ IsAbout:boolean = false
       console.log("get static content management list response ==>", res)
       if (res.responseCode == 200) {
         this.result = res.result;
+
           this.form.patchValue({
             Title: this.result.title,
-            editorValue: this.result.description,
+            editorValue: res.result.description,
           });
           this.profile = this.result.image
 
@@ -146,6 +148,5 @@ IsAbout:boolean = false
         this.ExpertDescprition = id.target.value
         console.log('This is serve id',id.target.value);
           }
-
 
 }

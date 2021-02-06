@@ -40,7 +40,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group row align-items-baseline view-label-align">
+                  <label class="col-md-4 textalignright">Activate
+                      <span>:</span></label>
+                  <div class="col-md-8 textaligncenter">
+                      <div>
+                          <input type="checkbox" [(ngModel)]="theCheckbox" [ngModelOptions]="{standalone: true}" data-md-icheck (change)="toggleVisibility($event)">
 
+                      </div>
+                  </div>
+              </div>
                 <div class="form-group row align-items-baseline view-label-align">
                   <label class="col-md-4 textalignright ">Description
                       </label>
