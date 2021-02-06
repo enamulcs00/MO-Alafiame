@@ -45,27 +45,17 @@ import { ViewFaqComponent } from './pages/dashboard/faq/view-faq/view-faq.compon
 import { HelplineNumberComponent } from './pages/dashboard/helpline-number/helpline-number/helpline-number.component';
 import { AddNumberComponent } from './pages/dashboard/helpline-number/add-number/add-number.component';
 import { EditNumberComponent } from './pages/dashboard/helpline-number/edit-number/edit-number.component';
-import { HospitalManagementComponent } from './pages/dashboard/hospital-management/hospital-management/hospital-management.component';
-import { AddHospitalComponent } from './pages/dashboard/hospital-management/add-hospital/add-hospital.component';
-import { EditHospitalComponent } from './pages/dashboard/hospital-management/edit-hospital/edit-hospital.component';
+
 import { MyProfileComponent } from './pages/dashboard/my-profile/my-profile/my-profile.component';
 import { EditMyProfileComponent } from './pages/dashboard/my-profile/edit-my-profile/edit-my-profile.component';
 import { NotificationManagementComponent } from './pages/dashboard/notification-management/notification-management.component';
 import { StaticContentManagementComponent } from './pages/dashboard/static-content-management/static-content-management/static-content-management.component';
 import { EditStaticContentManagementComponent } from './pages/dashboard/static-content-management/edit-static-content-management/edit-static-content-management.component';
-import { TestCenterManagementComponent } from './pages/dashboard/test-center-management/test-center-management/test-center-management.component';
-import { AddTestCenterComponent } from './pages/dashboard/test-center-management/add-test-center/add-test-center.component';
-import { EditTestCenterComponent } from './pages/dashboard/test-center-management/edit-test-center/edit-test-center.component';
+
 import { UserManagementComponent } from './pages/dashboard/user-management/user-management/user-management.component';
 import { EditUserComponent } from './pages/dashboard/user-management/edit-user/edit-user.component';
 import { ViewUserComponent } from './pages/dashboard/user-management/view-user/view-user.component';
-// import { ViewHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-hospital/view-hospital.componen} from './guard/auth.guard';
-import { ViewTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-test-center/view-test-center.component';
-import { ViewPatientManagementHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-patient-management-hospital/view-patient-management-hospital.component';
-import { ViewPlasmaDonatedPatientManagementHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-plasma-donated-patient-management-hospital/view-plasma-donated-patient-management-hospital.component';
-import { ViewPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-patient-management-test-center/view-patient-management-test-center.component';
-//import { ViewPlasmaDonatedPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-plasma-donated-patient-management-test-center/view-plasma-donated-patient-management-test-center.component';
-import { ViewHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-hospital/view-hospital.component';
+
 import { AddUserComponent } from './pages/dashboard/user-management/add-user/add-user.component';
 //import { CorporateCustomerManagementComponent } from './pages/corporate-customer-management/corporate-customer-management.component';
 import { AddCorporateCustomerComponent } from './pages/corporate-customer-management/add-corporate-customer/add-corporate-customer.component';
@@ -107,6 +97,7 @@ import { VendorManagementComponent } from './pages/vendor-management/vendor-mana
 import { ViewVendorComponent } from './pages/vendor-management/view-vendor/view-vendor.component';
 import { EditVendorComponent } from './pages/vendor-management/edit-vendor/edit-vendor.component';
 import { AddVendorComponent } from './pages/vendor-management/add-vendor/add-vendor.component';
+import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
@@ -117,145 +108,131 @@ const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent },
   { path: 'otp', component: OtpComponent },
   // dashboard
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent , canActivate: [AuthGuard]},
   // faq
-  { path: 'faq', component: FaqComponent },
-  { path: 'add-faq', component: AddFaqComponent },
-  { path: 'edit-faq/:id', component: EditFaqComponent },
-  { path: 'view-faq/:id', component: ViewFaqComponent },
+  { path: 'faq', component: FaqComponent , canActivate: [AuthGuard]},
+  { path: 'add-faq', component: AddFaqComponent , canActivate: [AuthGuard]},
+  { path: 'edit-faq/:id', component: EditFaqComponent , canActivate: [AuthGuard]},
+  { path: 'view-faq/:id', component: ViewFaqComponent , canActivate: [AuthGuard]},
   // helpline number
 
-  { path: 'helpline-number', component: HelplineNumberComponent },
-  { path: 'add-number', component: AddNumberComponent },
-  { path: 'edit-number', component: EditNumberComponent },
+  { path: 'helpline-number', component: HelplineNumberComponent , canActivate: [AuthGuard]},
+  { path: 'add-number', component: AddNumberComponent , canActivate: [AuthGuard]},
+  { path: 'edit-number', component: EditNumberComponent , canActivate: [AuthGuard]},
   // hospital
 
-  { path: 'hospital-management', component: HospitalManagementComponent },
-  { path: 'add-hospital', component: AddHospitalComponent },
-  { path: 'edit-hospital', component: EditHospitalComponent },
-  { path: 'view-hospital', component: ViewHospitalComponent},
-  { path: 'view-patient-management-hospital', component: ViewPatientManagementHospitalComponent },
-  { path: 'view-plasma-donated-patient-management-hospital', component: ViewPlasmaDonatedPatientManagementHospitalComponent },
+
   // my profile
 
 
-  { path: 'my-profile', component: MyProfileComponent },
-  { path: 'edit-profile', component: EditMyProfileComponent },
+  { path: 'my-profile', component: MyProfileComponent , canActivate: [AuthGuard]},
+  { path: 'edit-profile', component: EditMyProfileComponent , canActivate: [AuthGuard]},
   // notification
 
-  { path: 'notification-management', component: NotificationManagementComponent },
-  { path: 'add-notification', component: AddNotificationComponent },
-  { path: 'view-notification/:id', component: ViewNotificationComponent},
+  { path: 'notification-management', component: NotificationManagementComponent , canActivate: [AuthGuard]},
+  { path: 'add-notification', component: AddNotificationComponent , canActivate: [AuthGuard]},
+  { path: 'view-notification/:id', component: ViewNotificationComponent, canActivate: [AuthGuard]},
 
   // static content management
-  { path: 'static-content-management', component: StaticContentManagementComponent },
-  { path: 'edit-static-content-management', component: EditStaticContentManagementComponent },
+  { path: 'static-content-management', component: StaticContentManagementComponent , canActivate: [AuthGuard]},
+  { path: 'edit-static-content-management', component: EditStaticContentManagementComponent , canActivate: [AuthGuard]},
   // test center management
-  {path:'home-banner',component:HomeBannerComponent},
-  {path:'home-banner-add',component:HomeBannerAddComponent},
-  {path:'home-banner-edit/:id',component:HomeBannerEditComponent},
-  {path:'home-banner-view/:id',component:HomeBannerViewComponent},
-  {path:'home-section',component:HomeSectionComponent},
-{path: 'home-content',component:HomeContentComponent},
-{path:'add-section',component:AddSectionComponent},
-{path:'view-section/:id',component:ViewSectionComponent},
-{path: 'edit-section/:id',component:EditSectionComponent},
-  { path: 'hospital-management', component: HospitalManagementComponent },
-  { path: 'add-hospital', component: AddHospitalComponent },
-  { path: 'edit-hospital', component: EditHospitalComponent },
-  // { path: 'view-hospital', component: ViewHospitalComponent },
-  { path: 'view-patient-management-hospital', component: ViewPatientManagementHospitalComponent },
-  { path: 'view-plasma-donated-patient-management-hospital', component: ViewPlasmaDonatedPatientManagementHospitalComponent },
+  {path:'home-banner',component:HomeBannerComponent, canActivate: [AuthGuard]},
+  {path:'home-banner-add',component:HomeBannerAddComponent, canActivate: [AuthGuard]},
+  {path:'home-banner-edit/:id',component:HomeBannerEditComponent, canActivate: [AuthGuard]},
+  {path:'home-banner-view/:id',component:HomeBannerViewComponent, canActivate: [AuthGuard]},
+  {path:'home-section',component:HomeSectionComponent, canActivate: [AuthGuard]},
+{path: 'home-content',component:HomeContentComponent, canActivate: [AuthGuard]},
+{path:'add-section',component:AddSectionComponent, canActivate: [AuthGuard]},
+{path:'view-section/:id',component:ViewSectionComponent, canActivate: [AuthGuard]},
+{path: 'edit-section/:id',component:EditSectionComponent, canActivate: [AuthGuard]},
+
   // my profile
-  { path: 'my-profile', component: MyProfileComponent },
-  { path: 'edit-profile', component: EditMyProfileComponent },
+  { path: 'my-profile', component: MyProfileComponent , canActivate: [AuthGuard]},
+  { path: 'edit-profile', component: EditMyProfileComponent , canActivate: [AuthGuard]},
   // notification
-  { path: 'notification-management', component: NotificationManagementComponent },
+  { path: 'notification-management', component: NotificationManagementComponent , canActivate: [AuthGuard]},
   //about_us
   //edit_about_us
-  { path: 'about_us', component: AboutUsComponent },
-  { path: 'edit_about_us', component: EditAboutUsComponent },
+  { path: 'about_us', component: AboutUsComponent , canActivate: [AuthGuard]},
+  { path: 'edit_about_us', component: EditAboutUsComponent , canActivate: [AuthGuard]},
   // static content management
-  { path: 'static-content-management', component: StaticContentManagementComponent },
-  { path: 'edit-static-content-management/:type/:id', component: EditStaticContentManagementComponent },
-  { path: 'edit_privacy_policy', component: EditPrivacyPolicyComponent },
-  { path: 'view_terms/:type', component: ViewTermsComponent },
-  { path: 'edit_terms/:id', component: EditTermsComponent },
+  { path: 'static-content-management', component: StaticContentManagementComponent , canActivate: [AuthGuard]},
+  { path: 'edit-static-content-management/:type/:id', component: EditStaticContentManagementComponent , canActivate: [AuthGuard]},
+  { path: 'edit_privacy_policy', component: EditPrivacyPolicyComponent , canActivate: [AuthGuard]},
+  { path: 'view_terms/:type', component: ViewTermsComponent , canActivate: [AuthGuard]},
+  { path: 'edit_terms/:id', component: EditTermsComponent , canActivate: [AuthGuard]},
 
   // test center management
-  { path: 'test-center-management', component: TestCenterManagementComponent },
-  { path: 'add-test-center', component: AddTestCenterComponent },
-  { path: 'edit-test-center', component: EditTestCenterComponent },
-  { path: 'view-test-center', component: ViewTestCenterComponent },
-  { path: 'view-patient-management-test-center', component: ViewPatientManagementTestCenterComponent },
+
   // { path: 'view-plasma-donated-patient-management-test-center', component: ViewPlasmaDonatedPatientManagementTestCenterComponent },
   // user management
 
 
-  { path: 'user-management', component: UserManagementComponent },
-  { path: 'edit-user', component: EditUserComponent },
-  { path: 'view-user', component: ViewUserComponent },
-  { path: 'add-user', component: AddUserComponent },
-  { path: 'banner-management',component:BannerManagementComponent},
-  {path: 'add-banner', component:AddBannerComponent},
-  {path: 'view-banner/:id',component:ViewBannerComponent},
-  {path:'edit-banner/:id',component:EditBannerComponent},
+  { path: 'user-management', component: UserManagementComponent , canActivate: [AuthGuard]},
+  { path: 'edit-user', component: EditUserComponent , canActivate: [AuthGuard]},
+  { path: 'view-user', component: ViewUserComponent , canActivate: [AuthGuard]},
+  { path: 'add-user', component: AddUserComponent , canActivate: [AuthGuard]},
+  { path: 'banner-management',component:BannerManagementComponent, canActivate: [AuthGuard]},
+  {path: 'add-banner', component:AddBannerComponent, canActivate: [AuthGuard]},
+  {path: 'view-banner/:id',component:ViewBannerComponent, canActivate: [AuthGuard]},
+  {path:'edit-banner/:id',component:EditBannerComponent, canActivate: [AuthGuard]},
   // { path: 'corporate-customer-management', component: CorporateCustomerManagementComponent },
-  { path: 'add-corporate-customer-management', component: AddCorporateCustomerComponent },
-  { path: 'edit-corporate-customer-management', component: EditCorporateCustomerComponent },
-  { path: 'view-corporate-customer-management', component: ViewCorporateCustomerComponent },
+  { path: 'add-corporate-customer-management', component: AddCorporateCustomerComponent , canActivate: [AuthGuard]},
+  { path: 'edit-corporate-customer-management', component: EditCorporateCustomerComponent , canActivate: [AuthGuard]},
+  { path: 'view-corporate-customer-management', component: ViewCorporateCustomerComponent , canActivate: [AuthGuard]},
 
-  { path: 'practitioner-management', component: PractitionerManagementComponent },
-  { path: 'add-practitioner', component: AddPractitionerComponent },
-  { path: 'edit-practitioner/:id', component: EditPractitionerComponent },
-  { path: 'view-practitioner/:id', component: ViewPractitionerComponent },
+  { path: 'practitioner-management', component: PractitionerManagementComponent , canActivate: [AuthGuard]},
+  { path: 'add-practitioner', component: AddPractitionerComponent , canActivate: [AuthGuard]},
+  { path: 'edit-practitioner/:id', component: EditPractitionerComponent , canActivate: [AuthGuard]},
+  { path: 'view-practitioner/:id', component: ViewPractitionerComponent , canActivate: [AuthGuard]},
 
-  { path: 'view-companies', component: ViewCompaniesComponent },
-  { path: 'view-companies-edit', component: ViewCompaniesEditComponent },
-  { path: 'view-companies-view', component: ViewCompaniesViewComponent },
+  { path: 'view-companies', component: ViewCompaniesComponent , canActivate: [AuthGuard]},
+  { path: 'view-companies-edit', component: ViewCompaniesEditComponent , canActivate: [AuthGuard]},
+  { path: 'view-companies-view', component: ViewCompaniesViewComponent , canActivate: [AuthGuard]},
 
-  { path: 'product-management', component: ProductManagementComponent },
-  { path: 'add-product-management', component: AddProductManagementComponent },
-  { path: 'edit-product-management/:id', component: EditProductManagementComponent },
-  { path: 'view-product-management/:id', component: ViewProductManagementComponent },
+  { path: 'product-management', component: ProductManagementComponent , canActivate: [AuthGuard]},
+  { path: 'add-product-management', component: AddProductManagementComponent , canActivate: [AuthGuard]},
+  { path: 'edit-product-management/:id', component: EditProductManagementComponent , canActivate: [AuthGuard]},
+  { path: 'view-product-management/:id', component: ViewProductManagementComponent , canActivate: [AuthGuard]},
 
-  { path: 'gift-card-management', component: GiftCardManagementComponent },
-  { path: 'add-gift', component: AddGiftComponent},
-  { path: 'edit-gift/:id', component: EditGiftComponent },
-  {path:'view-gift/:id',component:ViewGiftComponent},
-  { path: 'home-visit-service', component: HomeVisitServiceComponent },
-  { path: 'add-home-visit', component: AddHomeVisitComponent },
-  { path: 'edit-home-visit/:id', component: EditHomeVisitComponent },
-  { path: 'view-home-visit/:id', component: ViewHomeVisitComponent },
-  {path: 'add-sub-service', component:AddSubServiceComponent},
-  { path: 'link-management', component: LinkManagementComponent },
-  { path: 'product-category', component: ProductCategoryComponent },
-  { path: 'view-productcategory/:id', component: ViewProductCategoryComponent },
-  { path: 'edit-productcategory/:id', component: EditproductCategoryComponent },
-  { path: 'add-productcategory', component: AddproductCategoryComponent },
+  { path: 'gift-card-management', component: GiftCardManagementComponent , canActivate: [AuthGuard]},
+  { path: 'add-gift', component: AddGiftComponent, canActivate: [AuthGuard]},
+  { path: 'edit-gift/:id', component: EditGiftComponent , canActivate: [AuthGuard]},
+  {path:'view-gift/:id',component:ViewGiftComponent, canActivate: [AuthGuard]},
+  { path: 'home-visit-service', component: HomeVisitServiceComponent , canActivate: [AuthGuard]},
+  { path: 'add-home-visit', component: AddHomeVisitComponent , canActivate: [AuthGuard]},
+  { path: 'edit-home-visit/:id', component: EditHomeVisitComponent , canActivate: [AuthGuard]},
+  { path: 'view-home-visit/:id', component: ViewHomeVisitComponent , canActivate: [AuthGuard]},
+  {path: 'add-sub-service', component:AddSubServiceComponent, canActivate: [AuthGuard]},
+  { path: 'link-management', component: LinkManagementComponent , canActivate: [AuthGuard]},
+  { path: 'product-category', component: ProductCategoryComponent , canActivate: [AuthGuard]},
+  { path: 'view-productcategory/:id', component: ViewProductCategoryComponent , canActivate: [AuthGuard]},
+  { path: 'edit-productcategory/:id', component: EditproductCategoryComponent , canActivate: [AuthGuard]},
+  { path: 'add-productcategory', component: AddproductCategoryComponent , canActivate: [AuthGuard]},
 
-  { path: 'vendor-management', component: VendorManagementComponent },
-  { path: 'view-vendor/:id', component: ViewVendorComponent },
-  { path: 'edit-vendor/:id', component: EditVendorComponent },
-  { path: 'add-vendor', component: AddVendorComponent },
-{path:'login-screen-content',component:LoginScreenContentComponent},
-{path:'add-login-content',component:AddLoginContentComponent},
-{path:'edit-login-content/:id',component:EditLoginContentComponent},
-{path:'view-login-content/:id',component:ViewLoginContentComponent},
-{path:'book-practioner-list',component:BookPractionerListComponent},
-{path:'book-practioner-add',component:BookPractionerAddComponent},
-{path:'book-practioner-edit/:id',component:BookPractionerEditComponent},
-{path:'book-practioner-view/:id',component:BookPractionerViewComponent},
-{path:'explore-service',component:ExploreServiceComponent},
-{path:'explore-service-add',component:ExploreServiceAddComponent},
-{path:'explore-service-edit/:id',component:ExploreServiceEditComponent},
-{path:'explore-service-view/:id',component:ExploreServiceViewComponent},
-{path:'explore-product',component:ExploreProductComponent},
-{path:'explore-product-add',component:ExploreProductAddComponent},
-{path:'explore-product-edit/:id',component:ExploreProductEditComponent},
-{path:'explore-product-view/:id',component:ExploreProductViewComponent},
-{path:'referral-management',component:RefferalManagementComponent},
-{path:'referral-view/:id',component:RefferalViewComponent}
+  { path: 'vendor-management', component: VendorManagementComponent , canActivate: [AuthGuard]},
+  { path: 'view-vendor/:id', component: ViewVendorComponent , canActivate: [AuthGuard]},
+  { path: 'edit-vendor/:id', component: EditVendorComponent , canActivate: [AuthGuard]},
+  { path: 'add-vendor', component: AddVendorComponent , canActivate: [AuthGuard]},
+{path:'login-screen-content',component:LoginScreenContentComponent, canActivate: [AuthGuard]},
+{path:'add-login-content',component:AddLoginContentComponent, canActivate: [AuthGuard]},
+{path:'edit-login-content/:id',component:EditLoginContentComponent, canActivate: [AuthGuard]},
+{path:'view-login-content/:id',component:ViewLoginContentComponent, canActivate: [AuthGuard]},
+{path:'book-practioner-list',component:BookPractionerListComponent, canActivate: [AuthGuard]},
+{path:'book-practioner-add',component:BookPractionerAddComponent, canActivate: [AuthGuard]},
+{path:'book-practioner-edit/:id',component:BookPractionerEditComponent, canActivate: [AuthGuard]},
+{path:'book-practioner-view/:id',component:BookPractionerViewComponent, canActivate: [AuthGuard]},
+{path:'explore-service',component:ExploreServiceComponent, canActivate: [AuthGuard]},
+{path:'explore-service-add',component:ExploreServiceAddComponent, canActivate: [AuthGuard]},
+{path:'explore-service-edit/:id',component:ExploreServiceEditComponent, canActivate: [AuthGuard]},
+{path:'explore-service-view/:id',component:ExploreServiceViewComponent, canActivate: [AuthGuard]},
+{path:'explore-product',component:ExploreProductComponent, canActivate: [AuthGuard]},
+{path:'explore-product-add',component:ExploreProductAddComponent, canActivate: [AuthGuard]},
+{path:'explore-product-edit/:id',component:ExploreProductEditComponent, canActivate: [AuthGuard]},
+{path:'explore-product-view/:id',component:ExploreProductViewComponent, canActivate: [AuthGuard]},
+{path:'referral-management',component:RefferalManagementComponent, canActivate: [AuthGuard]},
+{path:'referral-view/:id',component:RefferalViewComponent, canActivate: [AuthGuard]}
 
 ];
 

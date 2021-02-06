@@ -22,9 +22,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UserManagementComponent } from './pages/dashboard/user-management/user-management/user-management.component';
 import { ViewUserComponent } from './pages/dashboard/user-management/view-user/view-user.component';
 import { EditUserComponent } from './pages/dashboard/user-management/edit-user/edit-user.component';
-import { HospitalManagementComponent } from './pages/dashboard/hospital-management/hospital-management/hospital-management.component';
-import { AddHospitalComponent } from './pages/dashboard/hospital-management/add-hospital/add-hospital.component';
-import { EditHospitalComponent } from './pages/dashboard/hospital-management/edit-hospital/edit-hospital.component';
+
 import { TestCenterManagementComponent } from './pages/dashboard/test-center-management/test-center-management/test-center-management.component';
 import { AddTestCenterComponent } from './pages/dashboard/test-center-management/add-test-center/add-test-center.component';
 import { EditTestCenterComponent } from './pages/dashboard/test-center-management/edit-test-center/edit-test-center.component';
@@ -44,14 +42,13 @@ import { ViewFaqComponent } from './pages/dashboard/faq/view-faq/view-faq.compon
 import { HeaderComponent } from './pages/header/header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
-import { ViewHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-hospital/view-hospital.component';
+
 import { ErrorInterceptor } from './provider/interceptor/error-interceptor/error-interceptor';
 import { AuthGuard } from './guard/auth.guard';
 import { ViewTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-test-center/view-test-center.component';
 import { ViewPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-patient-management-test-center/view-patient-management-test-center.component';
 // import { ViewPlasmaDonatedPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-plasma-donated-patient-management-test-center/view-plasma-donated-patient-management-test-center.component';
-import { ViewPatientManagementHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-patient-management-hospital/view-patient-management-hospital.component';
-import { ViewPlasmaDonatedPatientManagementHospitalComponent } from './pages/dashboard/hospital-management/view-hospital/view-plasma-donated-patient-management-hospital/view-plasma-donated-patient-management-hospital.component';
+
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AddUserComponent } from './pages/dashboard/user-management/add-user/add-user.component';
 //import { CorporateCustomerManagementComponent } from './pages/corporate-customer-management/corporate-customer-management.component';
@@ -147,9 +144,7 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     UserManagementComponent,
     ViewUserComponent,
     EditUserComponent,
-    HospitalManagementComponent,
-    AddHospitalComponent,
-    EditHospitalComponent,
+
     TestCenterManagementComponent,
     AddTestCenterComponent,
     EditTestCenterComponent,
@@ -169,12 +164,11 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    ViewHospitalComponent,
+
     ViewTestCenterComponent,
     ViewPatientManagementTestCenterComponent,
     // ViewPlasmaDonatedPatientManagementTestCenterComponent,
-    ViewPatientManagementHospitalComponent,
-    ViewPlasmaDonatedPatientManagementHospitalComponent,
+
     AddUserComponent,
   //  CorporateCustomerManagementComponent,
     AddCorporateCustomerComponent,
