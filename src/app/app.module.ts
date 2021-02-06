@@ -48,7 +48,6 @@ import { AuthGuard } from './guard/auth.guard';
 import { ViewTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-test-center/view-test-center.component';
 import { ViewPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-patient-management-test-center/view-patient-management-test-center.component';
 // import { ViewPlasmaDonatedPatientManagementTestCenterComponent } from './pages/dashboard/test-center-management/view-test-center/view-plasma-donated-patient-management-test-center/view-plasma-donated-patient-management-test-center.component';
-
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AddUserComponent } from './pages/dashboard/user-management/add-user/add-user.component';
 //import { CorporateCustomerManagementComponent } from './pages/corporate-customer-management/corporate-customer-management.component';
@@ -168,7 +167,6 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     ViewTestCenterComponent,
     ViewPatientManagementTestCenterComponent,
     // ViewPlasmaDonatedPatientManagementTestCenterComponent,
-
     AddUserComponent,
   //  CorporateCustomerManagementComponent,
     AddCorporateCustomerComponent,

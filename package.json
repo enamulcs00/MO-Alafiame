@@ -21,7 +21,7 @@
     "@angular/router": "~8.2.14",
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.0.0",
-    "export-to-csv": "^0.2.1",
+    "export-to-csv": "^0.1.2",
     "file-saver": "^2.0.5",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
