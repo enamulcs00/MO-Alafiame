@@ -125,6 +125,10 @@ import { ExploreProductViewComponent } from './pages/practitioner-management/exp
 import { RefferalManagementComponent } from './pages/refferal/refferal-management/refferal-management.component';
 import { RefferalViewComponent } from './pages/refferal/refferal-view/refferal-view.component';
 import { ViewGiftComponent } from './pages/gift-card-management/view-gift/view-gift.component';
+import { ExpertDetailsComponent } from './pages/expert-details/expert-details.component';
+import { AddExpertComponent } from './pages/expert-details/add-expert/add-expert.component';
+import { EditExpertComponent } from './pages/expert-details/edit-expert/edit-expert.component';
+import { ViewExpertComponent } from './pages/expert-details/view-expert/view-expert.component';
 export const MyDefaultTooltipOptions: TooltipOptions = {
   'placement': 'top',
   'show-delay': 100,
@@ -242,6 +246,10 @@ export const MyDefaultTooltipOptions: TooltipOptions = {
     RefferalManagementComponent,
     RefferalViewComponent,
     ViewGiftComponent,
+    ExpertDetailsComponent,
+    AddExpertComponent,
+    EditExpertComponent,
+    ViewExpertComponent,
 
   ],
   imports: [

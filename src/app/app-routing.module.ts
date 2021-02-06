@@ -1,3 +1,7 @@
+import { ViewExpertComponent } from './pages/expert-details/view-expert/view-expert.component';
+import { EditExpertComponent } from './pages/expert-details/edit-expert/edit-expert.component';
+import { AddExpertComponent } from './pages/expert-details/add-expert/add-expert.component';
+import { ExpertDetailsComponent } from './pages/expert-details/expert-details.component';
 import { ViewGiftComponent } from './pages/gift-card-management/view-gift/view-gift.component';
 import { RefferalViewComponent } from './pages/refferal/refferal-view/refferal-view.component';
 import { RefferalManagementComponent } from './pages/refferal/refferal-management/refferal-management.component';
@@ -231,7 +235,11 @@ const routes: Routes = [
 {path:'explore-product-edit/:id',component:ExploreProductEditComponent, canActivate: [AuthGuard]},
 {path:'explore-product-view/:id',component:ExploreProductViewComponent, canActivate: [AuthGuard]},
 {path:'referral-management',component:RefferalManagementComponent, canActivate: [AuthGuard]},
-{path:'referral-view/:id',component:RefferalViewComponent, canActivate: [AuthGuard]}
+{path:'referral-view/:id',component:RefferalViewComponent, canActivate: [AuthGuard]},
+{path:'expert-details',component:ExpertDetailsComponent,canActivate: [AuthGuard]},
+{path:'add-expert',component:AddExpertComponent,canActivate: [AuthGuard]},
+{path:'edit-expert/:id',component:EditExpertComponent,canActivate: [AuthGuard]},
+{path:'view-expert/:id',component:ViewExpertComponent},
 
 ];
 

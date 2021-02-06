@@ -1,0 +1,105 @@
+<div class="content-section">
+  <div class="page_title_block" style="padding-left: 21%;padding-top: 7%;">
+      <h1 class="page_title">Add Expert</h1>
+  </div>
+  <div class="order-view  max-WT-700  setting-page" style="margin-left: 33%;">
+      <div class="  mb40">
+          <form [formGroup]="addBannerForm" #f="ngForm">
+              <div class="add-store-block input-style mb20 mt20 ">
+                <div class="form-group row align-items-baseline view-label-align">
+                  <label class="col-md-4 textalignright">Expert Title
+                      <span>:</span></label>
+                  <div class="col-md-8 textaligncenter">
+                      <div class="form-group ">
+                          <input type="text" class="form-control" placeholder="Enter title"
+                              formControlName="title" (keypress)="mainService.preventSpace($event)"
+                              maxlength="50">
+                          <div class="text-danger">
+                              <span
+                                  *ngIf="addBannerForm.get('title').hasError('required') && (addBannerForm.get('title').dirty || addBannerForm.get('title').touched || f.submitted)">
+                                  *Please enter title.
+                              </span>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+                  <div class="form-group row view-label-align">
+                    <label class="col-md-4 textalignright">Expert Image
+                        <span>:</span></label>
+                    <div class="col-md-4 textaligncenter">
+                        <div class="form-group">
+                          <label for="fileInput"class="hoverable">
+                            <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
+                            <div class="hover-text">
+                              <em class="fa fa-upload"></em>
+                            </div>
+
+                            <input type="file" id="fileInput"class="custom-file-input" name="imageUrl" formControlName="bannerFile" accept="image/*" (change)="handleInputChange($event)">
+                             </label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row align-items-baseline view-label-align">
+                  <label class="col-md-4 textalignright">Activate
+                      <span>:</span></label>
+                  <div class="col-md-8 textaligncenter">
+                      <div>
+                          <input type="checkbox" [(ngModel)]="theCheckbox" [ngModelOptions]="{standalone: true}" data-md-icheck (change)="toggleVisibility($event)">
+
+                      </div>
+                  </div>
+              </div>
+
+                <div class="form-group row align-items-baseline view-label-align">
+                  <label class="col-md-4 textalignright ">Description
+                      </label>
+              </div>
+
+                <div class="form-group row  view-label-align">
+
+                  <div class="col-md-12 textaligncenter">
+                      <div class="form-group ">
+                        <ck-editor id="editornewData" formControlName="description"
+                        name="editor1" language="en" [config]="config"></ck-editor>
+                          <div class="text-danger">
+                              <span
+                                  *ngIf="addBannerForm.get('description').hasError('required') && (addBannerForm.get('description').dirty || addBannerForm.get('description').touched || f.submitted)">
+                                  *Please enter description.
+                              </span>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </div>
+
+              <div class="text-center mt40 mb40">
+                  <button class="btn btn-large  max-WT-150 btn-theme" routerLink="/expert-details">Cancel</button>
+                  <button class="btn btn-large  max-WT-150 btn-theme" [disabled]="!addBannerForm.valid" (click)="addNewBanner()">Submit</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+<!-- <label class="form-control" for="fileInput">
+  <img  [src]="profile?profile:'assets/img/profile-img.jpg'" alt=""/>
+  <em class="fa fa-camera" style="color: #86559f!important;font-size: 12px"></em>
+  <input type="file" id="fileInput" name="imageUrl" accept="image/*" (change)="handleInputChange($event)" style="visibility:hidden;">
+   </label>
+   <ck-editor id="editornewData" formControlName="editorValue"
+           name="editor1" language="en" [config]="config"></ck-editor>
+   -->
+
+<!-- <div class="input-group">
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile04">
+    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+  </div>
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button">Button</button>
+  </div>
+</div> -->
