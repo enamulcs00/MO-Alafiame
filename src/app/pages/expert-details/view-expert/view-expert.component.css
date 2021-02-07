@@ -3,5 +3,9 @@
   outline:0px;
   width:100%;
   resize: none;
+white-space: pre-wrap;
+
+white-space: pre-line;
 
 }
+

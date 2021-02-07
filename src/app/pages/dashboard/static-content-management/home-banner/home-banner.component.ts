@@ -32,6 +32,7 @@ export class HomeBannerComponent implements OnInit {
   }
   else{
     this.service.errorToast(res.responseMessage);
+    this.totalItems = ''
   }
   },err=>{
     this.service.hideSpinner()

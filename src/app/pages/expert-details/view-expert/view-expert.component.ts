@@ -8,7 +8,8 @@ import { MainService } from 'src/app/provider/main.service';
   styleUrls: ['./view-expert.component.css']
 })
 export class ViewExpertComponent implements OnInit {
-
+desc:any
+tagFree:any
   profile = ''
   BannerEditId:any;
   bannerFormValues:any = []
@@ -28,6 +29,8 @@ export class ViewExpertComponent implements OnInit {
       if (res.responseCode == 200) {
         this.bannerFormValues = res.result;
         this.profile = this.bannerFormValues.expertImage
+        this.desc = this.bannerFormValues.expertDescription
+      this.tagFree=  this.desc.replace(/(<([^>]+)>)/ig,"")
 
        } else {
 

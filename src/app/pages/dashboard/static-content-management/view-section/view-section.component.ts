@@ -8,7 +8,7 @@ import { MainService } from 'src/app/provider/main.service';
   styleUrls: ['./view-section.component.css']
 })
 export class ViewSectionComponent implements OnInit {
-
+  tagsFree:any;
   profile = ''
   BannerEditId:any;
   bannerFormValues:any = []
@@ -28,7 +28,7 @@ export class ViewSectionComponent implements OnInit {
       if (res.responseCode == 200) {
         this.bannerFormValues = res.result;
         this.profile = this.bannerFormValues.image
-
+        this.tagsFree = res.result.description.replace(/(<([^>]+)>)/ig,"")
        } else {
 
         this.mainService.errorToast(res.responseMessage)

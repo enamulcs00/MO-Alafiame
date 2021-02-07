@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewPractitionerComponent implements OnInit {
   profile = ''
+  tagsFree:any;
   BannerEditId:any;
   bannerFormValues:any = []
   constructor(public mainService: MainService, private activateRoute:ActivatedRoute) { }
@@ -27,7 +28,7 @@ export class ViewPractitionerComponent implements OnInit {
       if (res.responseCode == 200) {
         this.bannerFormValues = res.result;
         this.profile = this.bannerFormValues.image
-
+        this.tagsFree = res.result.description.replace(/(<([^>]+)>)/ig,"")
        } else {
 
         this.mainService.errorToast(res.responseMessage)

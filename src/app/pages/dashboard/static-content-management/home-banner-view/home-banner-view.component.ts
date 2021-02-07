@@ -8,7 +8,7 @@ import { MainService } from 'src/app/provider/main.service';
   styleUrls: ['./home-banner-view.component.css']
 })
 export class HomeBannerViewComponent implements OnInit {
-
+tagsFree:any
   profile = ''
   BannerEditId:any;
   bannerFormValues:any = []
@@ -28,10 +28,10 @@ export class HomeBannerViewComponent implements OnInit {
       if (res.responseCode == 200) {
         this.bannerFormValues = res.result;
         this.profile = this.bannerFormValues.image
+this.tagsFree = res.result.description.replace(/(<([^>]+)>)/ig,"")
 
        } else {
-
-        this.mainService.errorToast(res.responseMessage)
+     this.mainService.errorToast(res.responseMessage)
       }
     },
     error=>{

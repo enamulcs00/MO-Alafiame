@@ -20,3 +20,8 @@
 #fileInput{
   display: none;
 }
+#editornewData{
+  white-space: pre-wrap;
+  white-space: pre-line;
+  white-space: pre;
+}

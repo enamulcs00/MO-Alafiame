@@ -18,7 +18,10 @@ export class AddExpertComponent implements OnInit {
     uiColor: '#F0F3F4',
     height: '40%',
     enterMode :2,
-    autoParagraph:false
+    breakBeforeOpen:false,
+    breakAfterOpen:false,
+    autoParagraph:false,
+    indent:false
   };
   constructor(public mainService:MainService, private router:Router) { }
 

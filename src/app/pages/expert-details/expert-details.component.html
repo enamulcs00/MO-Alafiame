@@ -41,7 +41,7 @@
 
                                       <td class="content"><img [src]="item?.expertImage" alt="" style="width: 66px;">
                                       </td>
-                                      <td class="content"> {{item?.expertDescription}}</td>
+                                      <td class="content" [innerHTML]="item?.expertDescription"></td>
                                       <td class="justify-content-center" style="padding-top: 27px;padding-bottom: 24px;">
                                         <button [routerLink]="['/view-expert',item?._id]"
                        class="btn btn-info ml-2 bt-margin" title="View"><i class="fa fa-eye" aria-hidden="true"

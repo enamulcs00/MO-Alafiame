@@ -11,13 +11,16 @@ import { ApiUrls } from 'src/app/config/api-urls/api-urls';
 })
 export class EditStaticContentManagementComponent implements OnInit {
   userId: any;
-
   result: any;
-  expTitle:any
-  ExpertDescprition:any
   profile = ''
-  expertImage=''
-  config:any
+
+  config = {
+    uiColor: '#F0F3F4',
+    height: '50%',
+    allowedContent: false,
+  autoParagraph: false,
+  enterMode: 2 // CKEDITOR.ENTER_BR
+  };
   form: FormGroup;
   editorValue;
   type: any;
@@ -44,17 +47,9 @@ IsAbout:boolean = false
     this.form = new FormGroup({
       "editorValue": new FormControl('', ([Validators.required])),
       "Title": new FormControl('', ([Validators.required, Validators.minLength(3), Validators.pattern(/^[^\s][A-Za-z&\s]*$/)])),
-      "ExDescription": new FormControl(''),
-      "ExTitle": new FormControl('')
     });
     this.viewStaticData()
-    this.config = {
-      uiColor: '#F0F3F4',
-      height: '50%',
-      allowedContent: true,
-    autoParagraph: false,
-    enterMode: 2 // CKEDITOR.ENTER_BR
-    };
+
   }
 
   viewStaticData() {
@@ -83,14 +78,14 @@ IsAbout:boolean = false
   Update() {
     console.log('UserId',this.userId);
     const description = this.form.value.editorValue
-    const expDesc = this.form.value.ExDescription
+
     let data = {
       '_id': this.userId,
       "title": this.form.value.Title,
       "image": this.profile,
-      "expertImage": this.expertImage,
-      "experTitle": this.form.value.ExTitle,
-      "expertDescription": expDesc.slice(3, (expDesc.length - 5)),
+      'expertDescription':'',
+      'experTitle':'',
+      'expertImage':'',
       "description": description.slice(3, (description.length - 5))
     }
     console.log('data', data)
@@ -123,30 +118,5 @@ IsAbout:boolean = false
     let reader = e.target;
       this.profile = reader.result;
   }
-  //For Side Image Upload
-
-  SideImageInput(e) {
-
-    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-
-    var reader = new FileReader();
-    reader.onload = this._SideImageLoaded.bind(this);
-    reader.readAsDataURL(file);
-  }
-  _SideImageLoaded(e) {
-    let reader = e.target;
-      this.expertImage = reader.result;
-  }
-  selected(id){
-    this.expTitle = id.target.value
-
-    console.log('This is serve id',id);
-      }
-
-      selecteddesc(id){
-
-        this.ExpertDescprition = id.target.value
-        console.log('This is serve id',id.target.value);
-          }
 
 }
