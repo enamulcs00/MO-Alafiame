@@ -13,6 +13,7 @@ declare var $: any;
 export class HomeVisitServiceComponent implements OnInit {
   search: string;
   profile: any;
+  selectCategory:boolean = true
   addSubForm: FormGroup;
   limit:number= 5;
   currentPage: number = 1;
@@ -22,8 +23,8 @@ ServiceId:any;
 categoryList: any=[];
 categoryLength:any;
   categoryId: string;
-  marked = false;
-  theCheckbox = false;
+  marked:boolean = false;
+  theCheckbox:boolean = false;
 
   constructor(private router: Router,public mainService: MainService) { }
 
@@ -66,6 +67,8 @@ categoryLength:any;
       if (res.responseCode == 200 && res.result) {
         this.profile = ''
       this.addSubForm.reset();
+      this.selectCategory = true
+      this.theCheckbox = false
       this.serviceList()
         this.mainService.hideSpinner();
         this.mainService.successToast(res.responseMessage)
@@ -162,6 +165,7 @@ categoryLength:any;
   selected(id){
 this.ServiceId = id.target.value
 console.log('This is serve id',id.target.value);
+this.selectCategory = false
   }
   serviceList()
   {

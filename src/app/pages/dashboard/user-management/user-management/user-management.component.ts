@@ -14,7 +14,7 @@ declare var $: any;
 export class UserManagementComponent implements OnInit {
   searchForm: FormGroup;
   Isapprove:boolean = false;
-  
+
   userDataList: any = [];
   itemPerPage = 5;
   currentPage = 1;
@@ -238,6 +238,7 @@ appApprove(){
     });
     this.companyForm= new FormGroup({
       'firstName': new FormControl('', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/i)]),
+      'code': new FormControl('', [Validators.required]),
       'limit': new FormControl('', Validators.required),
       'service': new FormControl('', Validators.required),
 
@@ -733,7 +734,7 @@ this.mainService.successToast(res.responseMessage)
     this.corporateValue=false;
     this.viewCompanyValue=false;
 
-    
+
 
   }
   // add company api
@@ -742,7 +743,7 @@ this.mainService.successToast(res.responseMessage)
       'name': this.companyForm.value.firstName,
       'userLimit': this.companyForm.value.limit,
       'service': this.companyForm.value.service,
-      'companyCode':'',
+      'companyCode':this.companyForm.value.code,
     }
     this.mainService.showSpinner();
     this.mainService.postApi('admin/addCompany', data, 1).subscribe((res: any) => {
@@ -1105,11 +1106,11 @@ Exportcorporate(){
       };
       Arr.push(obj)
           });
-          const options = { 
+          const options = {
             fieldSeparator:' ',
             quoteStrings:'',
             decimalSeparator:'',
-            showLabels:true, 
+            showLabels:true,
             showTitle:true,
             title: 'Corporate-management',
             useTextFile:false,
@@ -1134,15 +1135,15 @@ ExportCSV(){
       DOB:String(element.dateOfBirth).slice(0,10),
       Email:element.email,
       Contact:element.mobileNumber,
-      
+
       };
       Arr.push(obj)
           });
-          const options = { 
+          const options = {
             fieldSeparator:' ',
             quoteStrings:'',
             decimalSeparator:'',
-            showLabels:true, 
+            showLabels:true,
             showTitle:true,
             title: 'Practioner-management',
             useTextFile:false,
@@ -1167,15 +1168,15 @@ exportCompanyCSV(){
       UserLimit:element.userLimit,
       Service:element.service,
       CompanyCode:element.companyCode
-    
+
       };
       Arr.push(obj)
           });
-          const options = { 
+          const options = {
             fieldSeparator:' ',
             quoteStrings:'',
             decimalSeparator:'',
-            showLabels:true, 
+            showLabels:true,
             showTitle:true,
             title: 'Company-management',
             useTextFile:false,
@@ -1204,13 +1205,13 @@ Email:element.email,
 Contact:element.mobileNumber
 }
 dataArr.push(obj)
-        
+
     });
-    const options = { 
+    const options = {
       fieldSeparator:' ',
       quoteStrings:'',
       decimalSeparator:'',
-      showLabels:true, 
+      showLabels:true,
       showTitle:true,
       title: 'Customer-management',
       useTextFile:false,
@@ -1234,11 +1235,11 @@ dataArr.push(obj)
       }
       dataArr.push(obj)
           });
-          const options = { 
+          const options = {
             fieldSeparator:' ',
             quoteStrings:'',
             decimalSeparator:'',
-            showLabels:true, 
+            showLabels:true,
             showTitle:true,
             title: 'Corporate-management',
             useTextFile:false,

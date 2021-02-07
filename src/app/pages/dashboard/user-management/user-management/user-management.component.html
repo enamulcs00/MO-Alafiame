@@ -77,7 +77,7 @@
                                                         <button type="button" class="btn  btn-theme " (click)="reset()">Reset</button>
                                                         <button type="button" class="btn btn-theme" (click)="exportCSV()">Export
                                                             csv</button>
-                                                      
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,12 +128,12 @@
                                                         *ngIf="item?.status == 'ACTIVE'"
                                                         (click)="BlockModal(item?._id, 'BLOCK')" title="deactivate"><em
                                                             class="fa fa-ban"
-                                                           
+
                                                             aria-hidden="true"></em></button>
                                                     <button class="btn btn-danger ml-2 bt-margin"
                                                         *ngIf="item?.status == 'BLOCK'"
                                                         (click)="BlockModal(item?._id, 'ACTIVE')" title="activate"><em
-                                                            class="fa fa-ban" 
+                                                            class="fa fa-ban"
                                                             aria-hidden="true"></em></button>
                                                     <button class="btn btn-danger ml-2 bt-margin" title="delete"
                                                         (click)="deleteUserModal(item?._id)"><em
@@ -153,7 +153,7 @@
                             </div>
                             <!-- customer view start -->
                             <div *ngIf="customerUserValue==false">
-                                
+
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="page_title_block pl-0 pt-0">
@@ -221,7 +221,7 @@
                             <!-- customer view end -->
                             <!-- customer edit start -->
                             <div *ngIf="customerUserEditValue==false">
-                               
+
                                <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="page_title_block pl-0 pt-0">
@@ -361,7 +361,7 @@
                             <!-- customer edit end -->
                             <!-- customer add start -->
                             <div *ngIf="customerUserAddValue==false">
-                            
+
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="page_title_block pl-0 pt-0">
@@ -563,7 +563,7 @@
                                                         <button type="button" class="btn  btn-theme  " (click)="reset()">Reset</button>
                                                         <button type="button" class="btn btn-theme"(click)="exportCSV()">Export
                                                             csv</button>
-                                                       
+
 
                                                     </div>
                                                 </div>
@@ -620,12 +620,12 @@
                                                         *ngIf="item?.status == 'ACTIVE'"
                                                         (click)="BlockModal(item?._id, 'BLOCK')" title="deactivate"><em
                                                             class="fa fa-ban"
-                                                           
+
                                                             aria-hidden="true"></em></button>
                                                     <button class="btn btn-danger ml-2 bt-margin"
                                                         *ngIf="item?.status == 'BLOCK'"
                                                         (click)="BlockModal(item?._id, 'ACTIVE')" title="activate"><em
-                                                            class="fa fa-ban" 
+                                                            class="fa fa-ban"
                                                             aria-hidden="true"></em></button>
                                                     <button class="btn btn-danger ml-2 bt-margin" title="delete"
                                                         (click)="deleteUserModal(item?._id)"><em
@@ -645,7 +645,7 @@
                             </div>
                             <!-- corporate view start -->
                             <div *ngIf="corporateUserValue==false">
-                             
+
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="page_title_block pl-0 pt-0">
@@ -713,7 +713,7 @@
                             <!-- corporate view end -->
                             <!-- corporate edit start -->
                             <div *ngIf="corporateUserEditValue==false">
-                               
+
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="page_title_block pl-0 pt-0">
@@ -877,7 +877,7 @@
 
                             <!-- corporate add start -->
                             <div *ngIf="corporateUserAddValue==false">
-                                
+
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="page_title_block pt-0 pl-0">
@@ -1094,7 +1094,7 @@
                                                         <button type="button" class="btn  btn-theme "(click)="resetCompany()">Reset</button>
                                                         <button type="button" class="btn btn-theme" (click)="exportCompanyCSV()">Export
                                                             csv</button>
-                                                        
+
 
                                                     </div>
                                                 </div>
@@ -1115,40 +1115,53 @@
                                 <div class="col">
                                     <h5>Add Corporate Company</h5>
                                     <form [formGroup]="companyForm">
-                                    <div class="row" style="margin-top: 2%;" >
-                                        <div class="col-md-2">
-                                        <label>Name</label>
-                                        <span style="position: absolute;left: 60%;">:</span>
-                                     </div>
+                                    <div class="form-group row" style="margin-top: 2%;" >
 
-                                        <div class="col-md-4">
-                                            <input type="text" formControlName="firstName" placeholder="Enter Company " class="form-control" style="position: absolute;right: 4%;">
-                                        </div>
+                                        <label class="col-sm-2 col-form-label">Company name</label>
+                                           <div class="col-sm-4">
+                                            <input type="text" formControlName="firstName" placeholder="Enter company name" class="form-control" style="position: absolute;right: 4%;">
+                                            <div class="text-danger">
+                                              <span
+                                                  *ngIf="companyForm.get('firstName').hasError('required') && (companyForm.get('firstName').dirty || companyForm.get('firstName').touched)">
+                                                  *Please enter company name.
+                                              </span>
+                                            </div>
+                                          </div>
+
                                     </div>
+                                    <div class="form-group row" style="margin-top: 2%;" >
 
-                                    <div class="row" style="margin-top: 2%;">
-                                        <div class="col-md-2">
-                                        <label>Limit</label>
-                                        <span style="position: absolute;left: 60%;">:</span>
-                                    </div>
+                                      <label class="col-sm-2 col-form-label">Company code</label>
 
-                                    <div class="col-md-4">
+
+                                      <div class="col-sm-4">
+                                          <input type="text" formControlName="code" placeholder="Enter company code" class="form-control" style="position: absolute;right: 4%;">
+                                      </div>
+                                  </div>
+                                    <div class="form-group row" style="margin-top: 2%;">
+
+                                        <label class="col-sm-2 col-form-label">User limit</label>
+
+
+                                    <div class="col-sm-4">
                                         <select class="form-control" formControlName="limit" style="position: absolute;right: 4%;">
                                             <option value="">User limit</option>
                                             <option *ngFor="let UserLimit of companyData">{{UserLimit.userLimit}}</option>
                                             </select>
                                     </div>
                                     </div>
-                                    <div class="row" style="margin-top: 2%;">
-                                        <div class="col-md-2">
-                                        <label>Services</label>
-                                        <span style="position: absolute;left: 60%;">:</span>
-                                    </div>
-                                    <div class="col-md-4">
+                                    <div class="form-group row" style="margin-top: 2%;">
+
+                                        <label class="col-sm-2 col-form-label">Services</label>
+
+                                    <div class="col-sm-4">
                                         <select class="form-control" formControlName="service" style="position: absolute;right: 4%;">
                                             <option value="">Select</option>
-                                            <option *ngFor="let item of companyData">{{item?.service}}</option>
 
+                                            <optgroup [label]="item?.categoryName" *ngFor="let item of serviceData" >
+                                              <option *ngFor="let service of item?.subcategoryData">{{service?.subCategoryName}}</option>
+
+                                            </optgroup>
                                         </select>
                                     </div>
                                     </div>
@@ -1215,7 +1228,7 @@
 
                             <!-- company view start -->
                             <div *ngIf="companyUserValue==false">
-                                 
+
                                     <div class="content-section">
                                         <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                             <div class="page_title_block pl-0 pt-0">
@@ -1269,7 +1282,7 @@
                             <!-- company view end -->
                              <!-- company edit start -->
                             <div *ngIf="companyUserEditValue==false">
-                             
+
                                     <form [formGroup]="editCompanyForm">
                                      <div class="col" style="margin-top: 10%">
                                     <div class="content-section">
@@ -1372,7 +1385,7 @@
                                                         <button type="button" class="btn  btn-theme " (click)="reset()">Reset</button>
                                                         <button type="button" class="btn btn-theme" (click)="exportCSV()">Export
                                                             csv</button>
-                                                    
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -1418,7 +1431,7 @@
                                                         *ngIf="item?.status == 'ACTIVE'"
                                                         (click)="BlockModal(item?._id, 'BLOCK')" title="deactivate"><em
                                                             class="fa fa-ban"
-                                                           
+
                                                             aria-hidden="true"></em></button>
                                                     <button class="btn btn-danger ml-2 bt-margin"
                                                         *ngIf="item?.status == 'BLOCK'"
@@ -1441,7 +1454,7 @@
                             </div>
                             <!-- practioner view start -->
                             <div *ngIf="practionerUserValue==false">
-                             
+
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="page_title_block pl-0 pt-0">
@@ -1509,7 +1522,7 @@
                             <!-- practioner view end -->
                             <!-- practioner edit start -->
                             <div *ngIf="practionerUserEditValue==false">
-                              
+
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="page_title_block pt-0 pl-0">
@@ -1649,7 +1662,7 @@
                             <!-- practioner edit end -->
                             <!-- practioner add start -->
                             <div *ngIf="practionerUserAddValue==false">
-                            
+
                                 <div class="content-section">
                                     <div class="order-view  max-WT-700 mrgn-0-auto setting-page">
                                         <div class="page_title_block pl-0 pt-0">
