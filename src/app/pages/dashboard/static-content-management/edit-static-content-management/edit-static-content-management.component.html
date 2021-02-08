@@ -45,7 +45,7 @@
                                                   </div>
 
                                                       <ck-editor id="editornewData" formControlName="editorValue"
-                                                        name="editor1" language="en" [config]="config"></ck-editor>
+                                                        name="editor1" language="en" [config]="config" [hide-delay]="false"></ck-editor>
                                                     <div *ngIf="form.get('editorValue').invalid && (form.get('editorValue').dirty || form.get('editorValue').touched)"
                                                         class="text-danger">
                                                         <span *ngIf="form.get('editorValue').hasError('required')">
